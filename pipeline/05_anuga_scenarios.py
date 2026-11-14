@@ -259,7 +259,7 @@ def tri_index_raster(nodes, triangles, T, shape):
     return features.rasterize(((g, i + 1) for i, g in enumerate(P)), out_shape=shape, transform=T, dtype="int32") - 1
 
 
-def post(sid: str, cfg: dict, results_dir=None):
+def post(sid: str, cfg: dict, results_dir=None, frames_mb: float = 1.2):
     sys.path.insert(0, str(ROOT / "pipeline"))
     import importlib.util
 
@@ -403,7 +403,7 @@ def post(sid: str, cfg: dict, results_dir=None):
         for i, k in enumerate(sel):
             depth_png(to30(frames[k], 0), fd / "frames" / f"{i}.png", 0.03)
         size = sum(f.stat().st_size for f in (fd / "frames").glob("*.png"))
-        if size <= 3e6 or step >= 8:
+        if size <= frames_mb * 1e6 or step >= 8:
             break
         step *= 2
     dt_s = float(ft[1] - ft[0]) * step
@@ -416,9 +416,10 @@ def post(sid: str, cfg: dict, results_dir=None):
     # ---- index.json
     ip = out / C.BUNDLE_PATHS["anuga_index"]
     index = json.loads(ip.read_text("utf-8"))
+    mesh_txt = (f"≤ {meta['max_area_corridor_m2']:g} m² everywhere" if meta.get("uniform") else
+                f"≤ {meta['max_area_corridor_m2']:g} m² where HAND < 5 m, ≤ {meta['max_area_elsewhere_m2']:g} m² elsewhere")
     method = (f"ANUGA {meta['anuga_version']} 2D shallow-water (DE0) on Reach 1 (dam → Medjerda confluence + 2 km, "
-              f"{meta['domain_km2']:.0f} km², {meta['triangles']} triangles ≤ {meta['max_area_corridor_m2']:g} m² where "
-              f"HAND < 5 m, ≤ {meta['max_area_elsewhere_m2']:g} m² elsewhere). DEM: {DEM_LABEL[dem]}, flow-path cells "
+              f"{meta['domain_km2']:.0f} km², {meta['triangles']} triangles, {mesh_txt}). DEM: {DEM_LABEL[dem]}, flow-path cells "
               f"lowered {meta['burn_m']:g} m. Manning n from ESA WorldCover. Triangular release hydrograph at the dam "
               f"outlet: V = {V / 1e6:g} Mm³ over {meta['duration_s'] / 3600:g} h, peak {meta['Q_peak_m3s']:.0f} m³/s at "
               f"0.3 D (scenario values, not measurements). Dry start, free outflow at the downstream face, "
@@ -451,6 +452,7 @@ def main() -> int:
     ap.add_argument("--finaltime-h", type=float, default=None)
     ap.add_argument("--uniform", action="store_true", help="one triangle size (the corridor value) over the whole domain")
     ap.add_argument("--threads", type=int, default=4, help="OpenMP threads (8 on this 8-vCPU Docker VM oversubscribes: ×6 slower)")
+    ap.add_argument("--frames-mb", type=float, default=1.2, help="post: cap on the frames per scenario (bundle flood/ ≤ 5 MB)")
     ap.add_argument("--prepare-only", action="store_true")
     ap.add_argument("--config", type=Path, default=None)
     ap.add_argument("--results-dir", type=Path, default=None, help="post: read results from here (testing)")
@@ -465,7 +467,7 @@ def main() -> int:
         sc = next(s for s in cfg["anuga"]["scenarios"] if s["id"] == args.scenario)
         run(sc, cfg, args.dem, args.coarsen, args.finaltime_h, args.uniform)
     if args.post:
-        post(args.post, cfg, args.results_dir)
+        post(args.post, cfg, args.results_dir, args.frames_mb)
     return 0
 
 
