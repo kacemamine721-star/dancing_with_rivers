@@ -1,0 +1,235 @@
+{
+  "$defs": {
+    "AnugaFiles": {
+      "additionalProperties": false,
+      "properties": {
+        "maxdepth": {
+          "title": "Maxdepth",
+          "type": "string"
+        },
+        "arrival": {
+          "title": "Arrival",
+          "type": "string"
+        },
+        "frames": {
+          "title": "Frames",
+          "type": "string"
+        },
+        "n_frames": {
+          "title": "N Frames",
+          "type": "integer"
+        },
+        "dt_s": {
+          "title": "Dt S",
+          "type": "number"
+        }
+      },
+      "required": [
+        "maxdepth",
+        "arrival",
+        "frames",
+        "n_frames",
+        "dt_s"
+      ],
+      "title": "AnugaFiles",
+      "type": "object"
+    },
+    "AnugaScenario": {
+      "additionalProperties": false,
+      "properties": {
+        "badge": {
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "method": {
+          "default": "",
+          "title": "Method",
+          "type": "string"
+        },
+        "uncertainty": {
+          "default": "",
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "placeholder": {
+          "default": false,
+          "title": "Placeholder",
+          "type": "boolean"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "volume_m3": {
+          "title": "Volume M3",
+          "type": "number"
+        },
+        "duration_h": {
+          "title": "Duration H",
+          "type": "number"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "computed": {
+          "title": "Computed",
+          "type": "boolean"
+        },
+        "files": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnugaFiles"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "depth_encoding": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Encoding"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "stats": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stats"
+        }
+      },
+      "required": [
+        "badge",
+        "source",
+        "id",
+        "volume_m3",
+        "duration_h",
+        "label",
+        "computed"
+      ],
+      "title": "AnugaScenario",
+      "type": "object"
+    },
+    "Encoding": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "db8",
+            "rg16",
+            "r16",
+            "r8",
+            "rgb",
+            "mask8",
+            "logratio8"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "min": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale"
+        },
+        "offset": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offset"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Encoding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "scenarios": {
+      "items": {
+        "$ref": "#/$defs/AnugaScenario"
+      },
+      "title": "Scenarios",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dam_id",
+    "scenarios"
+  ],
+  "title": "AnugaIndex",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/anuga_index.schema.json",
+  "x-schema-version": 1
+}

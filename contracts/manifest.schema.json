@@ -1,0 +1,348 @@
+{
+  "$defs": {
+    "Encoding": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "db8",
+            "rg16",
+            "r16",
+            "r8",
+            "rgb",
+            "mask8",
+            "logratio8"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "min": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale"
+        },
+        "offset": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offset"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Encoding",
+      "type": "object"
+    },
+    "Layer": {
+      "additionalProperties": false,
+      "properties": {
+        "badge": {
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "method": {
+          "default": "",
+          "title": "Method",
+          "type": "string"
+        },
+        "uncertainty": {
+          "default": "",
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "placeholder": {
+          "default": false,
+          "title": "Placeholder",
+          "type": "boolean"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "terrain",
+            "basemap",
+            "hillshade",
+            "radar",
+            "mask",
+            "change",
+            "hand",
+            "flood",
+            "vector",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "grid": {
+          "enum": [
+            "scene",
+            "lake_chip",
+            "none"
+          ],
+          "title": "Grid",
+          "type": "string"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date"
+        },
+        "time_utc": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Utc"
+        },
+        "sensor": {
+          "anyOf": [
+            {
+              "enum": [
+                "NISAR",
+                "S1",
+                "S2",
+                "SWOT",
+                "NASADEM",
+                "COPDEM",
+                "WorldCover",
+                "OSM",
+                "model"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sensor"
+        },
+        "band": {
+          "anyOf": [
+            {
+              "enum": [
+                "L",
+                "S",
+                "C",
+                "optical"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Band"
+        },
+        "pol": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pol"
+        },
+        "track": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Track"
+        },
+        "frame": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Frame"
+        },
+        "product_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Id"
+        },
+        "encoding": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Encoding"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mask": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mask"
+        }
+      },
+      "required": [
+        "badge",
+        "source",
+        "id",
+        "kind",
+        "grid",
+        "file",
+        "label"
+      ],
+      "title": "Layer",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    },
+    "generated_utc": {
+      "title": "Generated Utc",
+      "type": "string"
+    },
+    "product": {
+      "title": "Product",
+      "type": "string"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    },
+    "layers": {
+      "items": {
+        "$ref": "#/$defs/Layer"
+      },
+      "title": "Layers",
+      "type": "array"
+    },
+    "files": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "logical name -> path of each JSON in the bundle",
+      "title": "Files",
+      "type": "object"
+    }
+  },
+  "required": [
+    "version",
+    "generated_utc",
+    "product",
+    "dam_id",
+    "layers"
+  ],
+  "title": "Manifest",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/manifest.schema.json",
+  "x-schema-version": 1
+}

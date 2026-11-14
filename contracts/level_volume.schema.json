@@ -1,0 +1,284 @@
+{
+  "$defs": {
+    "DeltaVolume": {
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "title": "From",
+          "type": "string"
+        },
+        "to": {
+          "title": "To",
+          "type": "string"
+        },
+        "dV_m3": {
+          "title": "Dv M3",
+          "type": "number"
+        },
+        "low": {
+          "title": "Low",
+          "type": "number"
+        },
+        "high": {
+          "title": "High",
+          "type": "number"
+        },
+        "method": {
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "from",
+        "to",
+        "dV_m3",
+        "low",
+        "high",
+        "method"
+      ],
+      "title": "DeltaVolume",
+      "type": "object"
+    },
+    "Reported": {
+      "additionalProperties": false,
+      "properties": {
+        "what": {
+          "title": "What",
+          "type": "string"
+        },
+        "value_m3": {
+          "title": "Value M3",
+          "type": "number"
+        },
+        "alt": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alt"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "what",
+        "value_m3",
+        "source"
+      ],
+      "title": "Reported",
+      "type": "object"
+    },
+    "ShorelineLevel": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "level_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Level M"
+        },
+        "sigma_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sigma M"
+        },
+        "measurable": {
+          "default": true,
+          "title": "Measurable",
+          "type": "boolean"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "date"
+      ],
+      "title": "ShorelineLevel",
+      "type": "object"
+    },
+    "Swot": {
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "title": "Available",
+          "type": "boolean"
+        },
+        "lake_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lake Id"
+        },
+        "reason": {
+          "default": "",
+          "title": "Reason",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/$defs/SwotPoint"
+          },
+          "title": "Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "available"
+      ],
+      "title": "Swot",
+      "type": "object"
+    },
+    "SwotPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "time": {
+          "title": "Time",
+          "type": "string"
+        },
+        "wse_m": {
+          "title": "Wse M",
+          "type": "number"
+        },
+        "wse_u": {
+          "title": "Wse U",
+          "type": "number"
+        },
+        "area_km2": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Area Km2"
+        },
+        "quality": {
+          "title": "Quality",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "time",
+        "wse_m",
+        "wse_u",
+        "quality"
+      ],
+      "title": "SwotPoint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "badge": {
+      "enum": [
+        "MEASURED",
+        "REPORTED",
+        "MODELLED",
+        "ILLUSTRATIVE"
+      ],
+      "title": "Badge",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "method": {
+      "default": "",
+      "title": "Method",
+      "type": "string"
+    },
+    "uncertainty": {
+      "default": "",
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "swot": {
+      "$ref": "#/$defs/Swot"
+    },
+    "dem_shoreline": {
+      "items": {
+        "$ref": "#/$defs/ShorelineLevel"
+      },
+      "title": "Dem Shoreline",
+      "type": "array"
+    },
+    "delta_volume": {
+      "items": {
+        "$ref": "#/$defs/DeltaVolume"
+      },
+      "title": "Delta Volume",
+      "type": "array"
+    },
+    "reported": {
+      "items": {
+        "$ref": "#/$defs/Reported"
+      },
+      "title": "Reported",
+      "type": "array"
+    }
+  },
+  "required": [
+    "badge",
+    "source",
+    "dam_id",
+    "swot",
+    "dem_shoreline",
+    "delta_volume",
+    "reported"
+  ],
+  "title": "LevelVolume",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/level_volume.schema.json",
+  "x-schema-version": 1
+}

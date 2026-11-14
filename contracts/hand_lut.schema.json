@@ -1,0 +1,196 @@
+{
+  "$defs": {
+    "Encoding": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "db8",
+            "rg16",
+            "r16",
+            "r8",
+            "rgb",
+            "mask8",
+            "logratio8"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "min": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale"
+        },
+        "offset": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offset"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Encoding",
+      "type": "object"
+    },
+    "HandRow": {
+      "additionalProperties": false,
+      "properties": {
+        "h": {
+          "title": "H",
+          "type": "number"
+        },
+        "V_m3": {
+          "title": "V M3",
+          "type": "number"
+        },
+        "area_km2": {
+          "title": "Area Km2",
+          "type": "number"
+        },
+        "cropland_ha": {
+          "title": "Cropland Ha",
+          "type": "number"
+        },
+        "builtup_ha": {
+          "title": "Builtup Ha",
+          "type": "number"
+        },
+        "villages": {
+          "title": "Villages",
+          "type": "integer"
+        },
+        "road_km": {
+          "title": "Road Km",
+          "type": "number"
+        }
+      },
+      "required": [
+        "h",
+        "V_m3",
+        "area_km2",
+        "cropland_ha",
+        "builtup_ha",
+        "villages",
+        "road_km"
+      ],
+      "title": "HandRow",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "badge": {
+      "enum": [
+        "MEASURED",
+        "REPORTED",
+        "MODELLED",
+        "ILLUSTRATIVE"
+      ],
+      "title": "Badge",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "method": {
+      "default": "",
+      "title": "Method",
+      "type": "string"
+    },
+    "uncertainty": {
+      "default": "",
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "corridor": {
+      "title": "Corridor",
+      "type": "string"
+    },
+    "reach": {
+      "title": "Reach",
+      "type": "string"
+    },
+    "hand_file": {
+      "title": "Hand File",
+      "type": "string"
+    },
+    "hand_encoding": {
+      "$ref": "#/$defs/Encoding"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/HandRow"
+      },
+      "title": "Rows",
+      "type": "array"
+    }
+  },
+  "required": [
+    "badge",
+    "source",
+    "dam_id",
+    "corridor",
+    "reach",
+    "hand_file",
+    "hand_encoding",
+    "rows"
+  ],
+  "title": "HandLut",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/hand_lut.schema.json",
+  "x-schema-version": 1
+}

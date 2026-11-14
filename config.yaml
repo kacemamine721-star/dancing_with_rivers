@@ -1,0 +1,90 @@
+# Dancing with Dams — single pipeline configuration (docs/03_TRD.md §2, §5; docs/07)
+brand:
+  product: HydroStress          # on-screen product name (open decision: "Dancing with Dams")
+  project: Dancing with Dams
+
+bundle:
+  version: "2026-11-15"
+  out: apps/web/public/data/2026-11-15
+  schema_version: 1
+
+crs:
+  analysis: EPSG:32632          # UTM 32N
+  scene_res_m: 30
+  lake_res_m: 10
+
+aoi:                            # lon0, lat0, lon1, lat1 (WGS84)
+  scene:      [8.45, 36.10, 9.50, 36.75]    # 3D terrain, flow path to Sidi Salem
+  valley:     [8.55, 36.20, 8.95, 36.56]    # change maps, ANUGA domain
+  lake:       [8.665, 36.290, 8.735, 36.330] # tight reservoir box (go/no-go: wide box is contaminated by dry fields)
+  sidi_salem: [9.25, 36.52, 9.50, 36.68]
+
+dam:
+  id: mellegue
+  name: Mellègue
+  built: 1954
+  lonlat: [8.702611, 36.314248]   # user-supplied dam point (geojson_data/BARRAGE_MELLEGUE.geojson, QGIS)
+  outlet_snap_m: 300              # snap to max flow accumulation within this radius (docs/03 §5.5)
+
+context:                          # 00_context_data.py — ancillary geodata (all cached under cache/context/)
+  dams_bbox: [8.30, 35.80, 11.20, 37.40]      # northern Tunisia: other reservoirs for Dam Watch
+  hydro_bbox: [7.20, 35.20, 10.60, 37.30]     # Medjerda + Mellègue catchment incl. the Algerian part
+  overpass: https://overpass-api.de/api/interpreter
+  user_agent: dancing-with-dams-hackathon/0.1
+  sources:
+    hydrorivers: https://data.hydrosheds.org/file/HydroRIVERS/HydroRIVERS_v10_af_shp.zip
+    hydrobasins: https://data.hydrosheds.org/file/HydroBASINS/standard/hybas_af_lev01-12_v1c.zip
+    worldpop: https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/BSGM/TUN/tun_ppp_2020_constrained.tif
+    geoboundaries_api: https://www.geoboundaries.org/api/current/gbOpen/{iso}/{adm}/
+
+event:
+  failure_local: "2026-06-17T21:15:00+01:00"
+  s1_before: {date: "2026-06-17", time_utc: "17:20", orbit: 88}
+  first_nisar: {date: "2026-06-19", track: D80}
+  gap: ["2026-07-25", "2026-08-13"]
+
+period:
+  nisar: ["2026-06-15", "2026-11-15"]
+  s1: ["2026-05-15", "2026-11-15"]
+
+water:
+  hh_db: -18.0                  # L-band open water typically −20 … −25 dB
+  hv_db_confirm: -25.0
+  otsu_clamp_db: -15.0
+  s1_vv_db: -18.0
+  s1_wind_flag_median_db: -16.0
+  boxcar: 5
+  min_component_px: 20
+  fill_hole_px: 50
+  polygon_dilate_m: 100
+  sensitivity_db: [-16.0, -18.0, -20.0]
+
+anomaly:
+  z_alert: -3.0
+  drop_alert: -0.15
+  z_warn: -2.0
+  drop_warn: -0.08
+  seasonal_prior_per_day: -0.003
+  min_points_for_seasonal: 6
+
+hand:
+  stream_area_km2: 5
+  corridor_km: 5
+  h_step_m: 0.25
+  h_max_m: 15.0
+
+anuga:
+  scenarios:                    # volume Mm³, duration h; P1 first
+    - {id: v21_d12, volume_mm3: 21, duration_h: 12, label: "June 2026 reconstruction"}
+    - {id: v195_d12, volume_mm3: 195, duration_h: 12, label: "Upper Mellègue worst case (hypothetical)"}
+    - {id: v50_d12, volume_mm3: 50, duration_h: 12, label: "50 million m³"}
+  max_triangle_area_m2: {corridor: 2500, elsewhere: 20000}
+  finaltime_h: 48
+  yieldstep_s: 300
+  manning: {cropland: 0.035, grassland: 0.035, shrub: 0.05, trees: 0.10, builtup: 0.08, bare: 0.03, water: 0.03}
+
+events:                         # REPORTED (docs/01 §6)
+  - {date: "2026-06-17", label: "Gate failure ~21:15", kind: failure}
+  - {date: "2026-06-21", label: "Water reaches Sidi Salem", kind: arrival}
+  - {date: "2026-07-16", label: "Gate repaired", kind: repair}
+  - {date: "2026-09-15", label: "Upper Mellègue planned start", kind: plan}

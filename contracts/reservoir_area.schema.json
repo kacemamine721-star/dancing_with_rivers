@@ -1,0 +1,251 @@
+{
+  "$defs": {
+    "AreaPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "time_utc": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Utc"
+        },
+        "sensor": {
+          "enum": [
+            "NISAR",
+            "S1"
+          ],
+          "title": "Sensor",
+          "type": "string"
+        },
+        "track": {
+          "title": "Track",
+          "type": "string"
+        },
+        "area_km2": {
+          "title": "Area Km2",
+          "type": "number"
+        },
+        "area_norm_km2": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Area Norm Km2"
+        },
+        "sigma_km2": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sigma Km2"
+        },
+        "confidence": {
+          "default": "high",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "layer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "date",
+        "sensor",
+        "track",
+        "area_km2"
+      ],
+      "title": "AreaPoint",
+      "type": "object"
+    },
+    "Event": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "default": "other",
+          "enum": [
+            "failure",
+            "arrival",
+            "repair",
+            "plan",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "badge": {
+          "default": "REPORTED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
+        },
+        "source": {
+          "default": "",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "date",
+        "label"
+      ],
+      "title": "Event",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "badge": {
+      "enum": [
+        "MEASURED",
+        "REPORTED",
+        "MODELLED",
+        "ILLUSTRATIVE"
+      ],
+      "title": "Badge",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "method": {
+      "default": "",
+      "title": "Method",
+      "type": "string"
+    },
+    "uncertainty": {
+      "default": "",
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "reservoir": {
+      "title": "Reservoir",
+      "type": "string"
+    },
+    "polygon": {
+      "title": "Polygon",
+      "type": "string"
+    },
+    "unit": {
+      "const": "km2",
+      "default": "km2",
+      "title": "Unit",
+      "type": "string"
+    },
+    "threshold_db": {
+      "title": "Threshold Db",
+      "type": "number"
+    },
+    "points": {
+      "items": {
+        "$ref": "#/$defs/AreaPoint"
+      },
+      "title": "Points",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/Event"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "gaps": {
+      "items": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "type": "array"
+      },
+      "title": "Gaps",
+      "type": "array"
+    }
+  },
+  "required": [
+    "badge",
+    "source",
+    "dam_id",
+    "reservoir",
+    "polygon",
+    "threshold_db",
+    "points",
+    "events"
+  ],
+  "title": "ReservoirArea",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/reservoir_area.schema.json",
+  "x-schema-version": 1
+}

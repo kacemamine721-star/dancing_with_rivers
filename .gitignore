@@ -1,0 +1,38 @@
+# secrets
+.env
+.env.*
+!.env.example
+docs/earthdata_token.md
+*token*.md
+
+# data caches and intermediates
+cache/
+work/
+TESTS/**/cache/
+*.npz
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# node
+node_modules/
+dist/
+.vite/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# os / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local-only: third-party skills (licences not ours to redistribute) and inspiration screenshots
+.claude/skills/
+UI_REFERENCES/

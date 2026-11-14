@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "mass_balance_err": {
+      "title": "Mass Balance Err",
+      "type": "number"
+    },
+    "peak_Q_m3s": {
+      "title": "Peak Q M3S",
+      "type": "number"
+    },
+    "inundated_km2": {
+      "title": "Inundated Km2",
+      "type": "number"
+    },
+    "arrival_h": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Arrival H",
+      "type": "object"
+    },
+    "max_depth_m": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Max Depth M",
+      "type": "object"
+    }
+  },
+  "required": [
+    "mass_balance_err",
+    "peak_Q_m3s",
+    "inundated_km2",
+    "arrival_h",
+    "max_depth_m"
+  ],
+  "title": "AnugaStats",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/anuga_stats.schema.json",
+  "x-schema-version": 1
+}

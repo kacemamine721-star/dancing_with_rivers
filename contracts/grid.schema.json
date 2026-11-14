@@ -1,0 +1,202 @@
+{
+  "$defs": {
+    "ChipGrid": {
+      "additionalProperties": false,
+      "properties": {
+        "bounds_m": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bounds M",
+          "type": "array"
+        },
+        "bounds_lonlat": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bounds Lonlat",
+          "type": "array"
+        },
+        "res_m": {
+          "title": "Res M",
+          "type": "number"
+        },
+        "size_px": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Size Px",
+          "type": "array"
+        }
+      },
+      "required": [
+        "bounds_m",
+        "bounds_lonlat",
+        "res_m",
+        "size_px"
+      ],
+      "title": "ChipGrid",
+      "type": "object"
+    },
+    "HeightEncoding": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "rg16",
+          "default": "rg16",
+          "title": "Type",
+          "type": "string"
+        },
+        "scale": {
+          "default": 0.1,
+          "title": "Scale",
+          "type": "number"
+        },
+        "offset": {
+          "default": -100.0,
+          "title": "Offset",
+          "type": "number"
+        }
+      },
+      "title": "HeightEncoding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "crs": {
+      "title": "Crs",
+      "type": "string"
+    },
+    "bounds_m": {
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "title": "Bounds M",
+      "type": "array"
+    },
+    "bounds_lonlat": {
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "title": "Bounds Lonlat",
+      "type": "array"
+    },
+    "res_m": {
+      "title": "Res M",
+      "type": "number"
+    },
+    "size_px": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "title": "Size Px",
+      "type": "array"
+    },
+    "height_encoding": {
+      "$ref": "#/$defs/HeightEncoding"
+    },
+    "z_min": {
+      "title": "Z Min",
+      "type": "number"
+    },
+    "z_max": {
+      "title": "Z Max",
+      "type": "number"
+    },
+    "lake_chip": {
+      "$ref": "#/$defs/ChipGrid"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "crs",
+    "bounds_m",
+    "bounds_lonlat",
+    "res_m",
+    "size_px",
+    "height_encoding",
+    "z_min",
+    "z_max",
+    "lake_chip"
+  ],
+  "title": "Grid",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/grid.schema.json",
+  "x-schema-version": 1
+}

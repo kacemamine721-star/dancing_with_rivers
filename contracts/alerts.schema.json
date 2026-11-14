@@ -1,0 +1,182 @@
+{
+  "$defs": {
+    "Evaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "prev": {
+          "title": "Prev",
+          "type": "string"
+        },
+        "days": {
+          "title": "Days",
+          "type": "number"
+        },
+        "delta": {
+          "title": "Delta",
+          "type": "number"
+        },
+        "expected": {
+          "title": "Expected",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        },
+        "level": {
+          "enum": [
+            "ALERT",
+            "WARNING",
+            "NORMAL"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "cross_sensor": {
+          "title": "Cross Sensor",
+          "type": "boolean"
+        },
+        "text": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "date",
+        "prev",
+        "days",
+        "delta",
+        "expected",
+        "z",
+        "level",
+        "cross_sensor",
+        "text"
+      ],
+      "title": "Evaluation",
+      "type": "object"
+    },
+    "Rule": {
+      "additionalProperties": false,
+      "properties": {
+        "z_alert": {
+          "title": "Z Alert",
+          "type": "number"
+        },
+        "drop_alert": {
+          "title": "Drop Alert",
+          "type": "number"
+        },
+        "z_warn": {
+          "title": "Z Warn",
+          "type": "number"
+        },
+        "drop_warn": {
+          "title": "Drop Warn",
+          "type": "number"
+        },
+        "seasonal_rate_per_day": {
+          "title": "Seasonal Rate Per Day",
+          "type": "number"
+        },
+        "sigma_per_sqrt_day": {
+          "title": "Sigma Per Sqrt Day",
+          "type": "number"
+        }
+      },
+      "required": [
+        "z_alert",
+        "drop_alert",
+        "z_warn",
+        "drop_warn",
+        "seasonal_rate_per_day",
+        "sigma_per_sqrt_day"
+      ],
+      "title": "Rule",
+      "type": "object"
+    },
+    "Text": {
+      "additionalProperties": false,
+      "properties": {
+        "everyone": {
+          "title": "Everyone",
+          "type": "string"
+        },
+        "experts": {
+          "title": "Experts",
+          "type": "string"
+        }
+      },
+      "required": [
+        "everyone",
+        "experts"
+      ],
+      "title": "Text",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "badge": {
+      "enum": [
+        "MEASURED",
+        "REPORTED",
+        "MODELLED",
+        "ILLUSTRATIVE"
+      ],
+      "title": "Badge",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "method": {
+      "default": "",
+      "title": "Method",
+      "type": "string"
+    },
+    "uncertainty": {
+      "default": "",
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "placeholder": {
+      "default": false,
+      "title": "Placeholder",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dam_id": {
+      "title": "Dam Id",
+      "type": "string"
+    },
+    "rule": {
+      "$ref": "#/$defs/Rule"
+    },
+    "evaluations": {
+      "items": {
+        "$ref": "#/$defs/Evaluation"
+      },
+      "title": "Evaluations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "badge",
+    "source",
+    "dam_id",
+    "rule",
+    "evaluations"
+  ],
+  "title": "Alerts",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/alerts.schema.json",
+  "x-schema-version": 1
+}

@@ -1,0 +1,73 @@
+{
+  "$defs": {
+    "Event": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "default": "other",
+          "enum": [
+            "failure",
+            "arrival",
+            "repair",
+            "plan",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "badge": {
+          "default": "REPORTED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
+        },
+        "source": {
+          "default": "",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "date",
+        "label"
+      ],
+      "title": "Event",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/Event"
+      },
+      "title": "Events",
+      "type": "array"
+    }
+  },
+  "required": [
+    "events"
+  ],
+  "title": "Events",
+  "type": "object",
+  "$id": "https://dancing-with-dams/contracts/events.schema.json",
+  "x-schema-version": 1
+}

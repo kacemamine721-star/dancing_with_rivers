@@ -1,0 +1,23 @@
+# Dancing with Dams pipeline — Python 3.11
+asf_search>=11
+h5py
+numpy<2.3
+pandas
+scipy
+pyproj
+shapely>=2
+rasterio
+geopandas
+pystac-client
+planetary-computer
+requests
+pillow
+matplotlib
+plotly
+pyyaml
+pydantic>=2.7
+jsonschema
+earthaccess
+pysheds
+pytest
+ruff
