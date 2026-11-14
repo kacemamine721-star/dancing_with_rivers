@@ -66,6 +66,12 @@ anomaly:
   drop_warn: -0.08
   seasonal_prior_per_day: -0.003
   min_points_for_seasonal: 6
+  # primary rule (chosen after tests, see work/anomaly/report.md): departure from a rolling multi-sensor
+  # baseline, confirmed by an independent observation (other sensor or track) within confirm_days
+  baseline_days: 21
+  confirm_days: 6
+  dep_alert: -0.20
+  dep_warn: -0.12
 
 hand:
   stream_area_km2: 5

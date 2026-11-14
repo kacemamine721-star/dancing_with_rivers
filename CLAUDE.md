@@ -107,7 +107,12 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
 ## 7. Environment notes (this machine)
 
 - Windows 11, PowerShell + Git Bash. Node 24, pnpm 9.15, Python 3.14 default (**use `py -3.11` for the venv**), no `gh`, no conda.
-- **`registry.npmjs.org` times out on this network; `registry.yarnpkg.com` works.** `.mcp.json` launches servers with `--registry=https://registry.yarnpkg.com`. Package installs need the same mirror (pending the user's approval of a project `.npmrc`).
+- **`registry.npmjs.org` times out on this network; `registry.yarnpkg.com` works.** `.mcp.json` launches servers with `--registry=https://registry.yarnpkg.com`. No `.npmrc` (pending the user's approval). `pnpm add` hangs because the mirror's metadata still points tarballs at npmjs.org. To change dependencies in `apps/web`: edit `package.json` (exact versions), then
+  `pnpm install --lockfile-only --registry=https://registry.yarnpkg.com` →
+  `sed -i -E 's#, tarball: https://registry\.npmjs\.org/[^}]*\}#}#' pnpm-lock.yaml` →
+  `pnpm install --frozen-lockfile --registry=https://registry.yarnpkg.com`. Only the lead changes dependencies.
+- Web versions: React 18.3.1, three 0.187.0, R3F 8.18.0, drei 9.122.0, postprocessing 2.19.1, GSAP 3.15.1, Vite 5.4, TS 5.9, Tailwind 3.4. CSP is `script-src 'self'`: self-host any decoder (Draco/Basis), no CDNs.
+- Contract paths inside JSON (manifest `file`, anuga `files`/`stats`) are relative to the bundle root.
 - GitHub and PyPI are reachable. ASF downloads need `EARTHDATA_TOKEN` and are slow or reset: rely on the cache in `TESTS/mellegue_test_output/cache/`.
 - MCP servers (project `.mcp.json`): playwright, chrome-devtools, context7, shadcn.
 - Project skills (`.claude/skills/`): threejs-* (r186), gsap-* (official), shadcn (official), webapp-testing (Anthropic), accessibility, web-performance, vitest, plus the design skills (impeccable, frontend-design, design-taste-frontend, ui-ux-pro-max, ui-styling, design-system, brand, design, banner-design).
@@ -117,6 +122,11 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
 - 1,755 NISAR L-band products over Tunisia, 17 Jun → 31 Oct 2026; over Mellègue, 31 dates across D80/A101/A173/D8, gap 25 Jul → 13 Aug.
 - Go/no-go (`TESTS/mellegue_test_output/`): the lake is clearly visible on 19 Jun and gone by 13 Jul (visual check), but the **wide-box** water area *rose* (D80 5.5 → 9.4 km²; A101 16.9 → 22.7 km²) because harvested fields darken. Use the tight `A_LAKE` box (8.665–8.735 E, 36.29–36.33 N) and then `lake_max.geojson`. The lake sits at about 8.69–8.71 E, 36.31–36.32 N.
 - Change-map noise 0.6–0.9 dB; changed pixels are 92% cropland; SME2 decline is a regional heatwave signal (do not use).
+- **Reservoir series (02_reservoir.py, 14 Nov):** fixed −18 dB fails (17 Jun S1 orbit 88 lake is wind-roughened at −15…−17 dB; post-failure NISAR wet mud at −15…−18 dB). Adaptive per-image Otsu inside the pre-failure lake polygon (4.68 km² incl. 100 m dilation; user's dam point 6 m from it) gives 131 good + 2 low-confidence (wind, 29–30 May) measurements.
+  Story the data supports: pre-failure ≈ 2.6–3.2 km² → **gradual decline 17 Jun → ~20 Jul to ≈ 1.7 km²** (gate open until repaired 16 Jul) → plateau in August → rise late September (autumn rain). Same-orbit S1 o168: 2.88 (16 Jun) → 2.21 (23 Jun) → 1.51 km² (11 Jul).
+  Caveats: threshold ±2 dB moves area ≈ ±20% (A1 ⚠️, show the band); NISAR area lags right after the failure (wet mud ≈ water at L-band: D80 19 Jun → 1 Jul 2.49 → 2.50 km²) while the **median dB inside the lake polygon rises at once** (≈ −16…−17.5 → ≈ −14 dB). It is a drawdown over weeks, not an overnight vanishing: never say "the lake disappeared".
+- **Anomaly detector (03_anomaly.py, 14 Nov):** the docs' single-pair z-score rule failed validation (Aug–Oct 3 ALERT + 3 WARNING; −20% synthetic drops detected 52%). Primary rule now: harmonised area vs 21-day multi-sensor baseline, WARNING < −12%, ALERT < −20%, each **confirmed by an independent pass** within 6 days. Result: **first ALERT 22 Jun 2026** (S1 o161 −21%, confirmed by S1 o88), 5 days after the failure; **0 flags before the failure**; first NISAR flag 26 Jun (A173, WARNING, −13%); flags in mid-Oct–Nov coincide with a real multi-sensor decline after the late-September rise (report as "needs operator check", not as false alarms).
+  **Act 6 wording:** "NISAR and Sentinel-1 together would have raised an alarm on 22 June, five days after the failure, with no ground sensor." Never "on 19 June", never "NISAR alone". Full test report: `work/anomaly/report.md`.
 
 ## 9. Design direction (user's references in `UI_REFERENCES/`)
 
