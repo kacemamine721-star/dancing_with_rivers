@@ -27,3 +27,10 @@ Date accessed for every source: **14 Nov 2026**.
 | Dataset | Provider | URL | Version / accessed | Licence | Attribution to show | Used for |
 |---|---|---|---|---|---|---|
 | GEM-15: Near-Global Surface and Terrain Elevation Models (15 m), experimental | Google Research | https://developers.google.com/earth-engine/datasets/catalog/projects_climate-and-sustainability_assets_gem-15_v1 · COGs: https://storage.googleapis.com/climate-and-sustainability/gem-15/ | v1, tiles w8s36 + w9s36, accessed 14 Nov 2026 | CC-BY 4.0 | "This dataset is produced by Google" · Batchu et al. (2026), doi:10.31223/X55N75 | 15 m bare-earth DTM for flow routing, HAND and ANUGA in the valley (`pipeline/01b_gem15.py`); NASADEM fills masked cells |
+
+## Added 14 Nov 2026: irrigated cropland
+
+| Dataset | Provider | URL | Version / accessed | Licence | Attribution | Used for |
+|---|---|---|---|---|---|---|
+| LGRIP30 v001: Landsat-Derived Global Rainfed and Irrigated-Cropland Product, 30 m (2015) | NASA MEaSUREs / USGS, LP DAAC | https://doi.org/10.5067/Community/LGRIP/LGRIP30.001 | tile N30E00, accessed 14 Nov 2026 | NASA data policy (open) | "LGRIP30 v001, NASA LP DAAC" | check for the irrigated-cropland layer (`pipeline/00b_irrigation.py`) |
+| Sentinel-2 L2A, Jul–Aug 2026 (8 scenes, tiles 32SMF/32SNF) | ESA Copernicus via Microsoft Planetary Computer | https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a | accessed 14 Nov 2026 | Copernicus open licence | "Contains modified Copernicus Sentinel data 2026" | summer-green (irrigated) cropland |

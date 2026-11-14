@@ -26,7 +26,7 @@ Read them in this order. Each one is self-contained, and they cross-reference ea
 | 08 | `08_CLAUDE_CODE_BRIEF.md` | The kick-off prompt and build order for Claude Code: what to build first, constraints, definition of done | Paste it into Claude Code to start |
 | 09 | `09_GENERALIZATION_AND_RIVER_DETECTION.md` | Generalization from Mellègue to any dam: automated dam snapping, amont (watershed/rivers), aval (oued flowpath), and reservoir detection | After the hackathon (v2 roadmap); its §0 lists what v1 uses, and §3.6 covers GEM-15 |
 
-## Status (14 Nov 2026, 22:30)
+## Status (14 Nov 2026, 23:30)
 
 | Area | State |
 |---|---|
@@ -34,9 +34,11 @@ Read them in this order. Each one is self-contained, and they cross-reference ea
 | Terrain, Sentinel-2 basemap, context layers (OSM, HydroSHEDS, JRC, WorldCover, WorldPop) | ✅ in the bundle (→ `DATA_SOURCES.md`) |
 | Reservoir area series (41 NISAR + 92 Sentinel-1) and anomaly detector | ✅ done; results change the story wording (→ 01 §7) |
 | GEM-15 15 m terrain for the flood valley | ✅ downloaded and checked (→ 09 §3.6) |
-| Cinematic intro port + 3D Mellègue stage | ⏳ in progress |
-| Flow path, HAND, ANUGA scenarios, impacts | ⏳ in progress |
-| Acts 1–9 UI, Dam Watch, Methods page, submission assets | ⬜ to do |
+| Cinematic intro port + 3D Mellègue stage + dive | ✅ done (visual parity with the prototype) |
+| Flow path, HAND lookup table | ✅ in the bundle |
+| ANUGA flood scenarios (Docker) + impacts | ⏳ June-2026 scenario done; 195 and 50 Mm³ running |
+| Irrigated cropland (Sentinel-2 summer 2026 + NASA LGRIP30) | ✅ in the bundle |
+| Acts 1–9 UI, Dam Watch, Methods page, water level/volume (07), submission assets | ⬜ to do (next session: `CLAUDE.md` §11) |
 
 Where a document and `CLAUDE.md` disagree, **`CLAUDE.md` is current**: it records the decisions taken during the build.
 

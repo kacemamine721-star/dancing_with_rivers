@@ -80,6 +80,12 @@
    "kind": "data"
   },
   {
+   "id": "lgrip30",
+   "title": "NASA LGRIP30 v001 irrigated/rainfed cropland, 30 m (LP DAAC)",
+   "url": "https://doi.org/10.5067/Community/LGRIP/LGRIP30.001",
+   "kind": "data"
+  },
+  {
    "id": "anuga",
    "title": "ANUGA hydrodynamic model",
    "url": "https://github.com/GeoscienceAustralia/anuga_core",
