@@ -1,0 +1,155 @@
+{
+ "schema_version": 1,
+ "sources": [
+  {
+   "id": "asf-nisar",
+   "title": "NISAR Data User Guide (ASF DAAC)",
+   "url": "https://nisar-docs.asf.alaska.edu/",
+   "kind": "data"
+  },
+  {
+   "id": "nisar-worldview",
+   "title": "NISAR in Worldview / GIBS",
+   "url": "https://nisar-docs.asf.alaska.edu/worldview/",
+   "kind": "data"
+  },
+  {
+   "id": "nasa-nisar-pol",
+   "title": "NISAR polarimetry (NASA)",
+   "url": "https://science.nasa.gov/mission/nisar/polarimetry/",
+   "kind": "data"
+  },
+  {
+   "id": "pc",
+   "title": "Microsoft Planetary Computer (Sentinel-1 RTC, NASADEM, ESA WorldCover)",
+   "url": "https://planetarycomputer.microsoft.com/",
+   "kind": "data"
+  },
+  {
+   "id": "hydrocron",
+   "title": "SWOT Hydrocron API (PO.DAAC)",
+   "url": "https://podaac.github.io/hydrocron/timeseries",
+   "kind": "data"
+  },
+  {
+   "id": "osm",
+   "title": "OpenStreetMap contributors (ODbL)",
+   "url": "https://www.openstreetmap.org/copyright",
+   "kind": "data"
+  },
+  {
+   "id": "hydrorivers",
+   "title": "HydroRIVERS v1.0 (HydroSHEDS, Lehner & Grill 2013)",
+   "url": "https://www.hydrosheds.org/products/hydrorivers",
+   "kind": "data"
+  },
+  {
+   "id": "hydrobasins",
+   "title": "HydroBASINS v1c (HydroSHEDS, Lehner & Grill 2013)",
+   "url": "https://www.hydrosheds.org/products/hydrobasins",
+   "kind": "data"
+  },
+  {
+   "id": "jrc-gsw",
+   "title": "JRC Global Surface Water v1.3 1984–2020 (EC JRC/Google, Pekel et al. 2016)",
+   "url": "https://global-surface-water.appspot.com/",
+   "kind": "data"
+  },
+  {
+   "id": "esa-worldcover",
+   "title": "ESA WorldCover 10 m 2021 v200 (CC BY 4.0)",
+   "url": "https://esa-worldcover.org/",
+   "kind": "data"
+  },
+  {
+   "id": "worldpop",
+   "title": "WorldPop 2020 constrained population, Tunisia 100 m (CC BY 4.0)",
+   "url": "https://hub.worldpop.org/geodata/summary?id=49920",
+   "kind": "data"
+  },
+  {
+   "id": "geoboundaries",
+   "title": "geoBoundaries gbOpen (Runfola et al. 2020)",
+   "url": "https://www.geoboundaries.org/",
+   "kind": "data"
+  },
+  {
+   "id": "anuga",
+   "title": "ANUGA hydrodynamic model",
+   "url": "https://github.com/GeoscienceAustralia/anuga_core",
+   "kind": "method"
+  },
+  {
+   "id": "bn-gate",
+   "title": "Gate failure details (Business News, 18 Jun 2026)",
+   "url": "https://businessnews.com.tn/2026/06/18/la-fuite-spectaculaire-du-barrage-de-mellegue-na-cause-aucun-degat/1406440/",
+   "kind": "press"
+  },
+  {
+   "id": "lp-21mm3",
+   "title": "21 Mm³ released in a few hours (La Presse, 19 Jun 2026)",
+   "url": "https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/",
+   "kind": "press"
+  },
+  {
+   "id": "lp-farmland",
+   "title": "Farmland damaged (La Presse, 18 Jun 2026)",
+   "url": "https://www.lapresse.tn/2026/06/18/tunisie-des-terres-agricoles-endommagees-apres-la-montee-des-eaux-a-mellegue/",
+   "kind": "press"
+  },
+  {
+   "id": "aa-sidisalem",
+   "title": "Arrival at Sidi Salem, 80% silted (AllAfrica)",
+   "url": "https://fr.allafrica.com/stories/202606240126.html",
+   "kind": "press"
+  },
+  {
+   "id": "tn-29mm3",
+   "title": "What we know, 29 Mm³ (Tunisie Numérique)",
+   "url": "https://www.tunisienumerique.com/incident-du-barrage-de-mellegue-ce-que-lon-sait-apres-lecoulement-de-29-millions-de-m%C2%B3/",
+   "kind": "press"
+  },
+  {
+   "id": "mg-repair",
+   "title": "Gate back in service, 16 Jul 2026 (Managers)",
+   "url": "https://managers.tn/2026/07/16/barrage-de-mellegue-la-vanne-est-de-nouveau-operationnelle-un-mois-apres-lincident-qui-a-libere-21-millions-de-m%C2%B3-deau/",
+   "kind": "press"
+  },
+  {
+   "id": "wd-divers",
+   "title": "Divers inspect leaks (Webdo, Sep 2026)",
+   "url": "https://www.webdo.tn/fr/actualite/regions/barrage-de-mellegue-des-plongeurs-mobilises-pour-inspecter-les-infiltrations/404376/",
+   "kind": "press"
+  },
+  {
+   "id": "wd-upper",
+   "title": "Upper Mellègue dam, 195 Mm³ (Webdo)",
+   "url": "https://www.webdo.tn/fr/?p=396788",
+   "kind": "press"
+  },
+  {
+   "id": "lp-46pct",
+   "title": "Dam reserves 46% on 23 Oct 2026 (La Presse)",
+   "url": "https://www.lapresse.tn/2026/10/24/barrages-tunisiens-les-reserves-atteignent-1075-milliard-de-m³/",
+   "kind": "press"
+  },
+  {
+   "id": "bn-onagri",
+   "title": "ONAGRI stopped daily bulletins (Business News)",
+   "url": "https://businessnews.com.tn/2026/06/23/barrages-le-taux-de-remplissage-atteint-60-selon-le-ministere-de-lagriculture/1407255/",
+   "kind": "press"
+  },
+  {
+   "id": "wd-stress",
+   "title": "Water stress below 400 m³/person (Webdo)",
+   "url": "https://webdo.tn/en/?p=396510",
+   "kind": "press"
+  },
+  {
+   "id": "spaceapps",
+   "title": "NASA Space Apps judging & awards",
+   "url": "https://www.spaceappschallenge.org/resources/judging-awards-guide",
+   "kind": "challenge"
+  }
+ ]
+}

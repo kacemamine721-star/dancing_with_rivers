@@ -1,0 +1,25 @@
+{
+ "badge": "ILLUSTRATIVE",
+ "source": "Placeholder fixture — replaced by pipeline output",
+ "method": "",
+ "uncertainty": "",
+ "placeholder": true,
+ "schema_version": 1,
+ "dam_id": "mellegue",
+ "swot": {
+  "available": false,
+  "lake_id": null,
+  "reason": "Not queried yet (07_level_volume.py)",
+  "points": []
+ },
+ "dem_shoreline": [],
+ "delta_volume": [],
+ "reported": [
+  {
+   "what": "Released volume",
+   "value_m3": 21000000.0,
+   "alt": 29000000.0,
+   "source": "https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/"
+  }
+ ]
+}

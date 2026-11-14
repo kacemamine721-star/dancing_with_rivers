@@ -1,0 +1,51 @@
+{
+ "schema_version": 1,
+ "dam_id": "mellegue",
+ "scenarios": [
+  {
+   "badge": "ILLUSTRATIVE",
+   "source": "Placeholder fixture — replaced by pipeline output",
+   "method": "",
+   "uncertainty": "",
+   "placeholder": true,
+   "id": "v21_d12",
+   "volume_m3": 21000000.0,
+   "duration_h": 12.0,
+   "label": "June 2026 reconstruction",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  },
+  {
+   "badge": "ILLUSTRATIVE",
+   "source": "Placeholder fixture — replaced by pipeline output",
+   "method": "",
+   "uncertainty": "",
+   "placeholder": true,
+   "id": "v195_d12",
+   "volume_m3": 195000000.0,
+   "duration_h": 12.0,
+   "label": "Upper Mellègue worst case (hypothetical)",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  },
+  {
+   "badge": "ILLUSTRATIVE",
+   "source": "Placeholder fixture — replaced by pipeline output",
+   "method": "",
+   "uncertainty": "",
+   "placeholder": true,
+   "id": "v50_d12",
+   "volume_m3": 50000000.0,
+   "duration_h": 12.0,
+   "label": "50 million m³",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  }
+ ]
+}

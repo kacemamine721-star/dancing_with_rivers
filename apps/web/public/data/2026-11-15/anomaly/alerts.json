@@ -1,0 +1,1797 @@
+{
+ "badge": "MODELLED",
+ "source": "Rule-based detector on MEASURED NISAR + Sentinel-1 water areas (this project)",
+ "method": "harmonised area vs 21-day multi-sensor baseline; WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days",
+ "uncertainty": "σ of departures 15.5% (Aug–Oct); flags in Oct–Nov coincide with a real multi-sensor decline after the late-September rise and cannot be classified without operator data",
+ "placeholder": false,
+ "schema_version": 1,
+ "dam_id": "mellegue",
+ "rule": {
+  "z_alert": -3.0,
+  "drop_alert": -0.15,
+  "z_warn": -2.0,
+  "drop_warn": -0.08,
+  "seasonal_rate_per_day": -0.00219,
+  "sigma_per_sqrt_day": 0.0346
+ },
+ "evaluations": [
+  {
+   "date": "2026-05-18",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.1838,
+   "expected": 0.0,
+   "z": 1.19,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "18 May 2026 (Sentinel-1): lake area +18% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.11 km² vs median of 4 obs since 2026-05-16 → departure +18.4% (z 1.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-23",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.206,
+   "expected": 0.0,
+   "z": 1.33,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 May 2026 (Sentinel-1): lake area +21% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.18 km² vs median of 5 obs since 2026-05-16 → departure +20.6% (z 1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-23",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": -0.014,
+   "expected": 0.0,
+   "z": -0.09,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 May 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.60 km² vs median of 5 obs since 2026-05-16 → departure -1.4% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-24",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": -0.0322,
+   "expected": 0.0,
+   "z": -0.21,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "24 May 2026 (Sentinel-1): lake area -3% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.55 km² vs median of 7 obs since 2026-05-16 → departure -3.2% (z -0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-28",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.0,
+   "expected": 0.0,
+   "z": 0.0,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 May 2026 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.63 km² vs median of 8 obs since 2026-05-16 → departure +0.0% (z 0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-29",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.2139,
+   "expected": 0.0,
+   "z": 1.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 May 2026 (Sentinel-1): lake area +21% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.19 km² vs median of 9 obs since 2026-05-16 → departure +21.4% (z 1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-05-29",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": -0.0107,
+   "expected": 0.0,
+   "z": -0.07,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 May 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.60 km² vs median of 9 obs since 2026-05-16 → departure -1.1% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-04",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.21,
+   "expected": 0.0,
+   "z": 1.36,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "4 Jun 2026 (Sentinel-1): lake area +21% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.18 km² vs median of 11 obs since 2026-05-16 → departure +21.0% (z 1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-04",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": -0.14,
+   "expected": 0.0,
+   "z": -0.91,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "4 Jun 2026 (Sentinel-1): lake area -14% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.26 km² vs median of 11 obs since 2026-05-16 → departure -14.0% (z -0.9, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-10",
+   "prev": "2026-05-23",
+   "days": 21.0,
+   "delta": 0.005,
+   "expected": 0.0,
+   "z": 0.03,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "10 Jun 2026 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.63 km² vs median of 8 obs since 2026-05-23 → departure +0.5% (z 0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-10",
+   "prev": "2026-05-23",
+   "days": 21.0,
+   "delta": -0.0084,
+   "expected": 0.0,
+   "z": -0.05,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "10 Jun 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.59 km² vs median of 8 obs since 2026-05-23 → departure -0.8% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-11",
+   "prev": "2026-05-23",
+   "days": 21.0,
+   "delta": 0.1865,
+   "expected": 0.0,
+   "z": 1.21,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "11 Jun 2026 (Sentinel-1): lake area +19% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.10 km² vs median of 10 obs since 2026-05-23 → departure +18.7% (z 1.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-16",
+   "prev": "2026-05-28",
+   "days": 21.0,
+   "delta": 0.1749,
+   "expected": 0.0,
+   "z": 1.13,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "16 Jun 2026 (Sentinel-1): lake area +17% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 3.09 km² vs median of 8 obs since 2026-05-28 → departure +17.5% (z 1.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-17",
+   "prev": "2026-05-28",
+   "days": 21.0,
+   "delta": 0.0175,
+   "expected": 0.0,
+   "z": 0.11,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "17 Jun 2026 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.67 km² vs median of 9 obs since 2026-05-28 → departure +1.8% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-19",
+   "prev": "2026-05-29",
+   "days": 21.0,
+   "delta": 0.0165,
+   "expected": 0.0,
+   "z": 0.11,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "19 Jun 2026 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 2.72 km² vs median of 9 obs since 2026-05-29 → departure +1.6% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-21",
+   "prev": "2026-06-04",
+   "days": 21.0,
+   "delta": 0.0159,
+   "expected": 0.0,
+   "z": 0.1,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Jun 2026 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 2.74 km² vs median of 8 obs since 2026-06-04 → departure +1.6% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-22",
+   "prev": "2026-06-04",
+   "days": 21.0,
+   "delta": -0.2053,
+   "expected": 0.0,
+   "z": -1.33,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "22 Jun 2026 (Sentinel-1): lake area -21% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-06-22). ALERT: far outside normal.",
+    "experts": "S1 o161: harmonised area 2.16 km² vs median of 9 obs since 2026-06-04 → departure -20.5% (z -1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-06-22."
+   }
+  },
+  {
+   "date": "2026-06-22",
+   "prev": "2026-06-04",
+   "days": 21.0,
+   "delta": -0.2884,
+   "expected": 0.0,
+   "z": -1.86,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "22 Jun 2026 (Sentinel-1): lake area -29% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-06-22). ALERT: far outside normal.",
+    "experts": "S1 o88: harmonised area 1.93 km² vs median of 9 obs since 2026-06-04 → departure -28.8% (z -1.9, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-06-22."
+   }
+  },
+  {
+   "date": "2026-06-23",
+   "prev": "2026-06-04",
+   "days": 21.0,
+   "delta": -0.1092,
+   "expected": 0.0,
+   "z": -0.71,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 Jun 2026 (Sentinel-1): lake area -11% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.38 km² vs median of 11 obs since 2026-06-04 → departure -10.9% (z -0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-26",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.1307,
+   "expected": 0.0,
+   "z": -0.85,
+   "level": "WARNING",
+   "cross_sensor": true,
+   "text": {
+    "everyone": "26 Jun 2026 (NISAR): lake area -13% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-06-22, S1 o88 2026-06-22). WARNING: unusual.",
+    "experts": "NISAR A173/F20: harmonised area 2.30 km² vs median of 10 obs since 2026-06-10 → departure -13.1% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-06-22, S1 o88 2026-06-22."
+   }
+  },
+  {
+   "date": "2026-06-26",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.0372,
+   "expected": 0.0,
+   "z": -0.24,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "26 Jun 2026 (NISAR): lake area -4% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 2.55 km² vs median of 10 obs since 2026-06-10 → departure -3.7% (z -0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-06-28",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.2677,
+   "expected": 0.0,
+   "z": -1.73,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 Jun 2026 (Sentinel-1): lake area -27% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-06-22, S1 o168 2026-06-28). ALERT: far outside normal.",
+    "experts": "S1 o161: harmonised area 1.91 km² vs median of 12 obs since 2026-06-10 → departure -26.8% (z -1.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-06-22, S1 o168 2026-06-28."
+   }
+  },
+  {
+   "date": "2026-06-28",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.2236,
+   "expected": 0.0,
+   "z": -1.45,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 Jun 2026 (Sentinel-1): lake area -22% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-06-22, S1 o88 2026-06-22, S1 o161 2026-06-28). ALERT: far outside normal.",
+    "experts": "S1 o168: harmonised area 2.03 km² vs median of 12 obs since 2026-06-10 → departure -22.4% (z -1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-06-22, S1 o88 2026-06-22, S1 o161 2026-06-28."
+   }
+  },
+  {
+   "date": "2026-06-29",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.2002,
+   "expected": 0.0,
+   "z": -1.29,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 Jun 2026 (Sentinel-1): lake area -20% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-06-28). ALERT: far outside normal.",
+    "experts": "S1 o168: harmonised area 2.06 km² vs median of 14 obs since 2026-06-10 → departure -20.0% (z -1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-06-28."
+   }
+  },
+  {
+   "date": "2026-07-01",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": 0.0674,
+   "expected": 0.0,
+   "z": 0.44,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "1 Jul 2026 (NISAR): lake area +7% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 2.72 km² vs median of 15 obs since 2026-06-10 → departure +6.7% (z 0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-03",
+   "prev": "2026-06-16",
+   "days": 21.0,
+   "delta": 0.1167,
+   "expected": 0.0,
+   "z": 0.75,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Jul 2026 (NISAR): lake area +12% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 2.66 km² vs median of 13 obs since 2026-06-16 → departure +11.7% (z 0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-04",
+   "prev": "2026-06-16",
+   "days": 21.0,
+   "delta": -0.2639,
+   "expected": 0.0,
+   "z": -1.71,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "4 Jul 2026 (Sentinel-1): lake area -26% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-06-28, S1 o168 2026-06-29). ALERT: far outside normal.",
+    "experts": "S1 o161: harmonised area 1.82 km² vs median of 14 obs since 2026-06-16 → departure -26.4% (z -1.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-06-28, S1 o168 2026-06-29."
+   }
+  },
+  {
+   "date": "2026-07-05",
+   "prev": "2026-06-16",
+   "days": 21.0,
+   "delta": -0.2506,
+   "expected": 0.0,
+   "z": -1.62,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "5 Jul 2026 (Sentinel-1): lake area -25% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-07-04). ALERT: far outside normal.",
+    "experts": "S1 o168: harmonised area 1.78 km² vs median of 15 obs since 2026-06-16 → departure -25.1% (z -1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-07-04."
+   }
+  },
+  {
+   "date": "2026-07-08",
+   "prev": "2026-06-17",
+   "days": 21.0,
+   "delta": 0.0556,
+   "expected": 0.0,
+   "z": 0.36,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Jul 2026 (NISAR): lake area +6% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 2.43 km² vs median of 15 obs since 2026-06-17 → departure +5.6% (z 0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-08",
+   "prev": "2026-06-17",
+   "days": 21.0,
+   "delta": 0.0764,
+   "expected": 0.0,
+   "z": 0.49,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Jul 2026 (NISAR): lake area +8% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 2.48 km² vs median of 15 obs since 2026-06-17 → departure +7.6% (z 0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-10",
+   "prev": "2026-06-19",
+   "days": 21.0,
+   "delta": -0.2949,
+   "expected": 0.0,
+   "z": -1.91,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "10 Jul 2026 (Sentinel-1): lake area -29% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-07-05). ALERT: far outside normal.",
+    "experts": "S1 o161: harmonised area 1.65 km² vs median of 16 obs since 2026-06-19 → departure -29.5% (z -1.9, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-07-05."
+   }
+  },
+  {
+   "date": "2026-07-11",
+   "prev": "2026-06-21",
+   "days": 21.0,
+   "delta": -0.2697,
+   "expected": 0.0,
+   "z": -1.74,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "11 Jul 2026 (Sentinel-1): lake area -27% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-07-10, S1 o88 2026-07-11). ALERT: far outside normal.",
+    "experts": "S1 o168: harmonised area 1.63 km² vs median of 16 obs since 2026-06-21 → departure -27.0% (z -1.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-07-10, S1 o88 2026-07-11."
+   }
+  },
+  {
+   "date": "2026-07-11",
+   "prev": "2026-06-21",
+   "days": 21.0,
+   "delta": -0.2823,
+   "expected": 0.0,
+   "z": -1.82,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "11 Jul 2026 (Sentinel-1): lake area -28% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-07-05, S1 o161 2026-07-10, S1 o168 2026-07-11). ALERT: far outside normal.",
+    "experts": "S1 o88: harmonised area 1.60 km² vs median of 16 obs since 2026-06-21 → departure -28.2% (z -1.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-07-05, S1 o161 2026-07-10, S1 o168 2026-07-11."
+   }
+  },
+  {
+   "date": "2026-07-13",
+   "prev": "2026-06-22",
+   "days": 21.0,
+   "delta": 0.087,
+   "expected": 0.0,
+   "z": 0.56,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "13 Jul 2026 (NISAR): lake area +9% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 2.24 km² vs median of 17 obs since 2026-06-22 → departure +8.7% (z 0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-15",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": 0.07,
+   "expected": 0.0,
+   "z": 0.45,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "15 Jul 2026 (NISAR): lake area +7% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 2.20 km² vs median of 15 obs since 2026-06-26 → departure +7.0% (z 0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-16",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": -0.0554,
+   "expected": 0.0,
+   "z": -0.36,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "16 Jul 2026 (Sentinel-1): lake area -6% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.01 km² vs median of 16 obs since 2026-06-26 → departure -5.5% (z -0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-17",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": -0.0408,
+   "expected": 0.0,
+   "z": -0.26,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "17 Jul 2026 (Sentinel-1): lake area -4% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.97 km² vs median of 17 obs since 2026-06-26 → departure -4.1% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-17",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": -0.2027,
+   "expected": 0.0,
+   "z": -1.31,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "17 Jul 2026 (Sentinel-1): lake area -20% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-07-11). ALERT: far outside normal.",
+    "experts": "S1 o88: harmonised area 1.64 km² vs median of 17 obs since 2026-06-26 → departure -20.3% (z -1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-07-11."
+   }
+  },
+  {
+   "date": "2026-07-20",
+   "prev": "2026-06-29",
+   "days": 21.0,
+   "delta": 0.0169,
+   "expected": 0.0,
+   "z": 0.11,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "20 Jul 2026 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 2.04 km² vs median of 15 obs since 2026-06-29 → departure +1.7% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-20",
+   "prev": "2026-06-29",
+   "days": 21.0,
+   "delta": -0.0184,
+   "expected": 0.0,
+   "z": -0.12,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "20 Jul 2026 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 1.97 km² vs median of 15 obs since 2026-06-29 → departure -1.8% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-22",
+   "prev": "2026-07-01",
+   "days": 21.0,
+   "delta": -0.0178,
+   "expected": 0.0,
+   "z": -0.12,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "22 Jul 2026 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.96 km² vs median of 16 obs since 2026-07-01 → departure -1.8% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-23",
+   "prev": "2026-07-03",
+   "days": 21.0,
+   "delta": -0.0915,
+   "expected": 0.0,
+   "z": -0.59,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 Jul 2026 (Sentinel-1): lake area -9% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.79 km² vs median of 16 obs since 2026-07-03 → departure -9.1% (z -0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-23",
+   "prev": "2026-07-03",
+   "days": 21.0,
+   "delta": -0.2496,
+   "expected": 0.0,
+   "z": -1.61,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 Jul 2026 (Sentinel-1): lake area -25% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.48 km² vs median of 16 obs since 2026-07-03 → departure -25.0% (z -1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "prev": "2026-07-04",
+   "days": 21.0,
+   "delta": -0.1037,
+   "expected": 0.0,
+   "z": -0.67,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "25 Jul 2026 (NISAR): lake area -10% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.75 km² vs median of 17 obs since 2026-07-04 → departure -10.4% (z -0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-27",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": 0.0015,
+   "expected": 0.0,
+   "z": 0.01,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "27 Jul 2026 (NISAR): lake area +0% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 1.97 km² vs median of 16 obs since 2026-07-08 → departure +0.2% (z 0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-28",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": 0.0234,
+   "expected": 0.0,
+   "z": 0.15,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 Jul 2026 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.01 km² vs median of 17 obs since 2026-07-08 → departure +2.3% (z 0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-29",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": -0.0053,
+   "expected": 0.0,
+   "z": -0.03,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 Jul 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.96 km² vs median of 18 obs since 2026-07-08 → departure -0.5% (z -0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-07-29",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": -0.118,
+   "expected": 0.0,
+   "z": -0.76,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 Jul 2026 (Sentinel-1): lake area -12% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.74 km² vs median of 18 obs since 2026-07-08 → departure -11.8% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-03",
+   "prev": "2026-07-13",
+   "days": 21.0,
+   "delta": 0.0025,
+   "expected": 0.0,
+   "z": 0.02,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Aug 2026 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.97 km² vs median of 15 obs since 2026-07-13 → departure +0.3% (z 0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-04",
+   "prev": "2026-07-15",
+   "days": 21.0,
+   "delta": 0.0478,
+   "expected": 0.0,
+   "z": 0.31,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "4 Aug 2026 (Sentinel-1): lake area +5% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.06 km² vs median of 15 obs since 2026-07-15 → departure +4.8% (z 0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-04",
+   "prev": "2026-07-15",
+   "days": 21.0,
+   "delta": -0.0935,
+   "expected": 0.0,
+   "z": -0.6,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "4 Aug 2026 (Sentinel-1): lake area -9% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.78 km² vs median of 15 obs since 2026-07-15 → departure -9.3% (z -0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-09",
+   "prev": "2026-07-20",
+   "days": 21.0,
+   "delta": 0.0888,
+   "expected": 0.0,
+   "z": 0.57,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "9 Aug 2026 (Sentinel-1): lake area +9% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.13 km² vs median of 13 obs since 2026-07-20 → departure +8.9% (z 0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-10",
+   "prev": "2026-07-20",
+   "days": 21.0,
+   "delta": 0.1156,
+   "expected": 0.0,
+   "z": 0.75,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "10 Aug 2026 (Sentinel-1): lake area +12% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.19 km² vs median of 14 obs since 2026-07-20 → departure +11.6% (z 0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-10",
+   "prev": "2026-07-20",
+   "days": 21.0,
+   "delta": -0.053,
+   "expected": 0.0,
+   "z": -0.34,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "10 Aug 2026 (Sentinel-1): lake area -5% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.86 km² vs median of 14 obs since 2026-07-20 → departure -5.3% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-13",
+   "prev": "2026-07-23",
+   "days": 21.0,
+   "delta": -0.0801,
+   "expected": 0.0,
+   "z": -0.52,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "13 Aug 2026 (NISAR): lake area -8% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.80 km² vs median of 13 obs since 2026-07-23 → departure -8.0% (z -0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-13",
+   "prev": "2026-07-23",
+   "days": 21.0,
+   "delta": -0.1296,
+   "expected": 0.0,
+   "z": -0.84,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "13 Aug 2026 (NISAR): lake area -13% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 1.71 km² vs median of 13 obs since 2026-07-23 → departure -13.0% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "prev": "2026-07-25",
+   "days": 21.0,
+   "delta": -0.1347,
+   "expected": 0.0,
+   "z": -0.87,
+   "level": "WARNING",
+   "cross_sensor": true,
+   "text": {
+    "everyone": "15 Aug 2026 (Sentinel-1): lake area -13% compared with the previous 21 days. Confirmed by another satellite pass (NISAR D8/F70 2026-08-13). WARNING: unusual.",
+    "experts": "S1 o161: harmonised area 1.70 km² vs median of 13 obs since 2026-07-25 → departure -13.5% (z -0.9, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: NISAR D8/F70 2026-08-13."
+   }
+  },
+  {
+   "date": "2026-08-16",
+   "prev": "2026-07-27",
+   "days": 21.0,
+   "delta": -0.0816,
+   "expected": 0.0,
+   "z": -0.53,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "16 Aug 2026 (Sentinel-1): lake area -8% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.80 km² vs median of 13 obs since 2026-07-27 → departure -8.2% (z -0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-16",
+   "prev": "2026-07-27",
+   "days": 21.0,
+   "delta": -0.0418,
+   "expected": 0.0,
+   "z": -0.27,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "16 Aug 2026 (Sentinel-1): lake area -4% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.88 km² vs median of 13 obs since 2026-07-27 → departure -4.2% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-18",
+   "prev": "2026-07-28",
+   "days": 21.0,
+   "delta": -0.0899,
+   "expected": 0.0,
+   "z": -0.58,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "18 Aug 2026 (NISAR): lake area -9% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.70 km² vs median of 14 obs since 2026-07-28 → departure -9.0% (z -0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": -0.0341,
+   "expected": 0.0,
+   "z": -0.22,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "20 Aug 2026 (NISAR): lake area -3% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 1.77 km² vs median of 12 obs since 2026-08-03 → departure -3.4% (z -0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": 0.2174,
+   "expected": 0.0,
+   "z": 1.41,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Aug 2026 (Sentinel-1): lake area +22% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.19 km² vs median of 13 obs since 2026-08-03 → departure +21.7% (z 1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-22",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": 0.0729,
+   "expected": 0.0,
+   "z": 0.47,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "22 Aug 2026 (Sentinel-1): lake area +7% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.97 km² vs median of 14 obs since 2026-08-03 → departure +7.3% (z 0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-22",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": -0.3382,
+   "expected": 0.0,
+   "z": -2.19,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "22 Aug 2026 (Sentinel-1): lake area -34% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.21 km² vs median of 14 obs since 2026-08-03 → departure -33.8% (z -2.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "prev": "2026-08-04",
+   "days": 21.0,
+   "delta": -0.0233,
+   "expected": 0.0,
+   "z": -0.15,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "25 Aug 2026 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.76 km² vs median of 15 obs since 2026-08-04 → departure -2.3% (z -0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "prev": "2026-08-04",
+   "days": 21.0,
+   "delta": -0.0494,
+   "expected": 0.0,
+   "z": -0.32,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "25 Aug 2026 (NISAR): lake area -5% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 1.71 km² vs median of 15 obs since 2026-08-04 → departure -4.9% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": 0.06,
+   "expected": 0.0,
+   "z": 0.39,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "27 Aug 2026 (Sentinel-1): lake area +6% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.91 km² vs median of 15 obs since 2026-08-09 → departure +6.0% (z 0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": 0.2234,
+   "expected": 0.0,
+   "z": 1.44,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 Aug 2026 (Sentinel-1): lake area +22% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.20 km² vs median of 16 obs since 2026-08-09 → departure +22.3% (z 1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": 0.0436,
+   "expected": 0.0,
+   "z": 0.28,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "28 Aug 2026 (Sentinel-1): lake area +4% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.88 km² vs median of 16 obs since 2026-08-09 → departure +4.4% (z 0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-08-30",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": -0.074,
+   "expected": 0.0,
+   "z": -0.48,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "30 Aug 2026 (NISAR): lake area -7% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.70 km² vs median of 18 obs since 2026-08-09 → departure -7.4% (z -0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": -0.0417,
+   "expected": 0.0,
+   "z": -0.27,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "1 Sep 2026 (NISAR): lake area -4% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 1.71 km² vs median of 16 obs since 2026-08-13 → departure -4.2% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": 0.1572,
+   "expected": 0.0,
+   "z": 1.02,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2 Sep 2026 (Sentinel-1): lake area +16% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.05 km² vs median of 17 obs since 2026-08-13 → departure +15.7% (z 1.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": 0.2026,
+   "expected": 0.0,
+   "z": 1.31,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Sep 2026 (Sentinel-1): lake area +20% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.15 km² vs median of 18 obs since 2026-08-13 → departure +20.3% (z 1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": 0.0916,
+   "expected": 0.0,
+   "z": 0.59,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Sep 2026 (Sentinel-1): lake area +9% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.95 km² vs median of 18 obs since 2026-08-13 → departure +9.2% (z 0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-06",
+   "prev": "2026-08-16",
+   "days": 21.0,
+   "delta": -0.0548,
+   "expected": 0.0,
+   "z": -0.35,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "6 Sep 2026 (NISAR): lake area -5% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.77 km² vs median of 17 obs since 2026-08-16 → departure -5.5% (z -0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-06",
+   "prev": "2026-08-16",
+   "days": 21.0,
+   "delta": -0.0724,
+   "expected": 0.0,
+   "z": -0.47,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "6 Sep 2026 (NISAR): lake area -7% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 1.74 km² vs median of 17 obs since 2026-08-16 → departure -7.2% (z -0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "prev": "2026-08-18",
+   "days": 21.0,
+   "delta": 0.2507,
+   "expected": 0.0,
+   "z": 1.62,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Sep 2026 (Sentinel-1): lake area +25% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.22 km² vs median of 17 obs since 2026-08-18 → departure +25.1% (z 1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "prev": "2026-08-20",
+   "days": 21.0,
+   "delta": 0.0431,
+   "expected": 0.0,
+   "z": 0.28,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "9 Sep 2026 (Sentinel-1): lake area +4% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.96 km² vs median of 17 obs since 2026-08-20 → departure +4.3% (z 0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "prev": "2026-08-20",
+   "days": 21.0,
+   "delta": 0.1702,
+   "expected": 0.0,
+   "z": 1.1,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "9 Sep 2026 (Sentinel-1): lake area +17% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.20 km² vs median of 17 obs since 2026-08-20 → departure +17.0% (z 1.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "prev": "2026-08-21",
+   "days": 21.0,
+   "delta": -0.1992,
+   "expected": 0.0,
+   "z": -1.29,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "11 Sep 2026 (NISAR): lake area -20% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.54 km² vs median of 18 obs since 2026-08-21 → departure -19.9% (z -1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-13",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.2212,
+   "expected": 0.0,
+   "z": -1.43,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "13 Sep 2026 (NISAR): lake area -22% compared with the previous 21 days. Confirmed by another satellite pass (NISAR D80/F70 2026-09-11). WARNING: unusual.",
+    "experts": "NISAR A101/F20: harmonised area 1.48 km² vs median of 16 obs since 2026-08-25 → departure -22.1% (z -1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: NISAR D80/F70 2026-09-11."
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.0112,
+   "expected": 0.0,
+   "z": -0.07,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "14 Sep 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.86 km² vs median of 17 obs since 2026-08-25 → departure -1.1% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.1292,
+   "expected": 0.0,
+   "z": -0.84,
+   "level": "WARNING",
+   "cross_sensor": true,
+   "text": {
+    "everyone": "15 Sep 2026 (Sentinel-1): lake area -13% compared with the previous 21 days. Confirmed by another satellite pass (NISAR D80/F70 2026-09-11, NISAR A101/F20 2026-09-13). WARNING: unusual.",
+    "experts": "S1 o168: harmonised area 1.63 km² vs median of 18 obs since 2026-08-25 → departure -12.9% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: NISAR D80/F70 2026-09-11, NISAR A101/F20 2026-09-13."
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.0543,
+   "expected": 0.0,
+   "z": -0.35,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "15 Sep 2026 (Sentinel-1): lake area -5% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.77 km² vs median of 18 obs since 2026-08-25 → departure -5.4% (z -0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "prev": "2026-08-28",
+   "days": 21.0,
+   "delta": -0.0463,
+   "expected": 0.0,
+   "z": -0.3,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "18 Sep 2026 (NISAR): lake area -5% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.77 km² vs median of 17 obs since 2026-08-28 → departure -4.6% (z -0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "prev": "2026-08-28",
+   "days": 21.0,
+   "delta": -0.1888,
+   "expected": 0.0,
+   "z": -1.22,
+   "level": "WARNING",
+   "cross_sensor": true,
+   "text": {
+    "everyone": "18 Sep 2026 (NISAR): lake area -19% compared with the previous 21 days. Confirmed by another satellite pass (NISAR A101/F20 2026-09-13, S1 o168 2026-09-15). WARNING: unusual.",
+    "experts": "NISAR D8/F70: harmonised area 1.51 km² vs median of 17 obs since 2026-08-28 → departure -18.9% (z -1.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: NISAR A101/F20 2026-09-13, S1 o168 2026-09-15."
+   }
+  },
+  {
+   "date": "2026-09-20",
+   "prev": "2026-08-30",
+   "days": 21.0,
+   "delta": 0.0124,
+   "expected": 0.0,
+   "z": 0.08,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "20 Sep 2026 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.79 km² vs median of 17 obs since 2026-08-30 → departure +1.2% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "prev": "2026-09-01",
+   "days": 21.0,
+   "delta": 0.2315,
+   "expected": 0.0,
+   "z": 1.5,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Sep 2026 (Sentinel-1): lake area +23% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.19 km² vs median of 17 obs since 2026-09-01 → departure +23.2% (z 1.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "prev": "2026-09-01",
+   "days": 21.0,
+   "delta": 0.058,
+   "expected": 0.0,
+   "z": 0.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Sep 2026 (Sentinel-1): lake area +6% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.88 km² vs median of 17 obs since 2026-09-01 → departure +5.8% (z 0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "prev": "2026-09-02",
+   "days": 21.0,
+   "delta": 0.2551,
+   "expected": 0.0,
+   "z": 1.65,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "23 Sep 2026 (NISAR): lake area +26% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 2.29 km² vs median of 18 obs since 2026-09-02 → departure +25.5% (z 1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.3546,
+   "expected": 0.0,
+   "z": 2.29,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "25 Sep 2026 (NISAR): lake area +35% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 2.42 km² vs median of 16 obs since 2026-09-06 → departure +35.5% (z 2.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-26",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.1265,
+   "expected": 0.0,
+   "z": 0.82,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "26 Sep 2026 (Sentinel-1): lake area +13% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 2.02 km² vs median of 17 obs since 2026-09-06 → departure +12.6% (z 0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-27",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.1494,
+   "expected": 0.0,
+   "z": 0.97,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "27 Sep 2026 (Sentinel-1): lake area +15% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.10 km² vs median of 18 obs since 2026-09-06 → departure +14.9% (z 1.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-27",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.2775,
+   "expected": 0.0,
+   "z": 1.79,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "27 Sep 2026 (Sentinel-1): lake area +28% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.33 km² vs median of 18 obs since 2026-09-06 → departure +27.8% (z 1.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "prev": "2026-09-09",
+   "days": 21.0,
+   "delta": 0.2694,
+   "expected": 0.0,
+   "z": 1.74,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "30 Sep 2026 (NISAR): lake area +27% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 2.38 km² vs median of 17 obs since 2026-09-09 → departure +26.9% (z 1.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "prev": "2026-09-09",
+   "days": 21.0,
+   "delta": 0.2396,
+   "expected": 0.0,
+   "z": 1.55,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "30 Sep 2026 (NISAR): lake area +24% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 2.33 km² vs median of 17 obs since 2026-09-09 → departure +24.0% (z 1.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "prev": "2026-09-11",
+   "days": 21.0,
+   "delta": 0.0517,
+   "expected": 0.0,
+   "z": 0.33,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2 Oct 2026 (Sentinel-1): lake area +5% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.98 km² vs median of 17 obs since 2026-09-11 → departure +5.2% (z 0.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-03",
+   "prev": "2026-09-13",
+   "days": 21.0,
+   "delta": 0.2101,
+   "expected": 0.0,
+   "z": 1.36,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Oct 2026 (Sentinel-1): lake area +21% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 2.39 km² vs median of 17 obs since 2026-09-13 → departure +21.0% (z 1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-03",
+   "prev": "2026-09-13",
+   "days": 21.0,
+   "delta": 0.1099,
+   "expected": 0.0,
+   "z": 0.71,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "3 Oct 2026 (Sentinel-1): lake area +11% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 2.19 km² vs median of 17 obs since 2026-09-13 → departure +11.0% (z 0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "prev": "2026-09-14",
+   "days": 21.0,
+   "delta": 0.2528,
+   "expected": 0.0,
+   "z": 1.63,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "5 Oct 2026 (NISAR): lake area +25% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 2.58 km² vs median of 18 obs since 2026-09-14 → departure +25.3% (z 1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": 0.0626,
+   "expected": 0.0,
+   "z": 0.4,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "7 Oct 2026 (NISAR): lake area +6% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 2.33 km² vs median of 16 obs since 2026-09-18 → departure +6.3% (z 0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": -0.1556,
+   "expected": 0.0,
+   "z": -1.01,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Oct 2026 (Sentinel-1): lake area -16% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.85 km² vs median of 17 obs since 2026-09-18 → departure -15.6% (z -1.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": -0.1686,
+   "expected": 0.0,
+   "z": -1.09,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "9 Oct 2026 (Sentinel-1): lake area -17% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-10-08, S1 o88 2026-10-09). WARNING: unusual.",
+    "experts": "S1 o168: harmonised area 1.82 km² vs median of 18 obs since 2026-09-18 → departure -16.9% (z -1.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-10-08, S1 o88 2026-10-09."
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": -0.2901,
+   "expected": 0.0,
+   "z": -1.88,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "9 Oct 2026 (Sentinel-1): lake area -29% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-10-08, S1 o168 2026-10-09). WARNING: unusual.",
+    "experts": "S1 o88: harmonised area 1.55 km² vs median of 18 obs since 2026-09-18 → departure -29.0% (z -1.9, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-10-08, S1 o168 2026-10-09."
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "prev": "2026-09-21",
+   "days": 21.0,
+   "delta": -0.1086,
+   "expected": 0.0,
+   "z": -0.7,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "12 Oct 2026 (NISAR): lake area -11% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.95 km² vs median of 17 obs since 2026-09-21 → departure -10.9% (z -0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "prev": "2026-09-21",
+   "days": 21.0,
+   "delta": -0.1314,
+   "expected": 0.0,
+   "z": -0.85,
+   "level": "WARNING",
+   "cross_sensor": true,
+   "text": {
+    "everyone": "12 Oct 2026 (NISAR): lake area -13% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-10-08, S1 o168 2026-10-09, S1 o88 2026-10-09). WARNING: unusual.",
+    "experts": "NISAR D8/F70: harmonised area 1.90 km² vs median of 17 obs since 2026-09-21 → departure -13.1% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-10-08, S1 o168 2026-10-09, S1 o88 2026-10-09."
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "prev": "2026-09-23",
+   "days": 21.0,
+   "delta": -0.2441,
+   "expected": 0.0,
+   "z": -1.58,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "14 Oct 2026 (Sentinel-1): lake area -24% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-10-09). ALERT: far outside normal.",
+    "experts": "S1 o161: harmonised area 1.66 km² vs median of 17 obs since 2026-09-23 → departure -24.4% (z -1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-10-09."
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "prev": "2026-09-25",
+   "days": 21.0,
+   "delta": -0.1305,
+   "expected": 0.0,
+   "z": -0.84,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "15 Oct 2026 (Sentinel-1): lake area -13% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-10-09, NISAR D8/F70 2026-10-12, S1 o161 2026-10-14, S1 o88 2026-10-15). WARNING: unusual.",
+    "experts": "S1 o168: harmonised area 1.83 km² vs median of 17 obs since 2026-09-25 → departure -13.0% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-10-09, NISAR D8/F70 2026-10-12, S1 o161 2026-10-14, S1 o88 2026-10-15."
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "prev": "2026-09-25",
+   "days": 21.0,
+   "delta": -0.2433,
+   "expected": 0.0,
+   "z": -1.57,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "15 Oct 2026 (Sentinel-1): lake area -24% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-10-14). ALERT: far outside normal.",
+    "experts": "S1 o88: harmonised area 1.59 km² vs median of 17 obs since 2026-09-25 → departure -24.3% (z -1.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-10-14."
+   }
+  },
+  {
+   "date": "2026-10-17",
+   "prev": "2026-09-26",
+   "days": 21.0,
+   "delta": -0.0633,
+   "expected": 0.0,
+   "z": -0.41,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "17 Oct 2026 (NISAR): lake area -6% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.87 km² vs median of 18 obs since 2026-09-26 → departure -6.3% (z -0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": -0.027,
+   "expected": 0.0,
+   "z": -0.17,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "19 Oct 2026 (NISAR): lake area -3% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised area 1.88 km² vs median of 16 obs since 2026-09-30 → departure -2.7% (z -0.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": -0.1728,
+   "expected": 0.0,
+   "z": -1.12,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "20 Oct 2026 (Sentinel-1): lake area -17% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-10-15, S1 o88 2026-10-15). WARNING: unusual.",
+    "experts": "S1 o161: harmonised area 1.57 km² vs median of 17 obs since 2026-09-30 → departure -17.3% (z -1.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-10-15, S1 o88 2026-10-15."
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": -0.0981,
+   "expected": 0.0,
+   "z": -0.63,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Oct 2026 (Sentinel-1): lake area -10% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.71 km² vs median of 18 obs since 2026-09-30 → departure -9.8% (z -0.6, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": -0.2129,
+   "expected": 0.0,
+   "z": -1.38,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "21 Oct 2026 (Sentinel-1): lake area -21% compared with the previous 21 days. Confirmed by another satellite pass (S1 o168 2026-10-15, S1 o161 2026-10-20). WARNING: unusual.",
+    "experts": "S1 o88: harmonised area 1.49 km² vs median of 18 obs since 2026-09-30 → departure -21.3% (z -1.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o168 2026-10-15, S1 o161 2026-10-20."
+   }
+  },
+  {
+   "date": "2026-10-24",
+   "prev": "2026-10-03",
+   "days": 21.0,
+   "delta": 0.0108,
+   "expected": 0.0,
+   "z": 0.07,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "24 Oct 2026 (NISAR): lake area +1% compared with the previous 21 days.",
+    "experts": "NISAR A173/F20: harmonised area 1.87 km² vs median of 17 obs since 2026-10-03 → departure +1.1% (z 0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-24",
+   "prev": "2026-10-03",
+   "days": 21.0,
+   "delta": 0.1302,
+   "expected": 0.0,
+   "z": 0.84,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "24 Oct 2026 (NISAR): lake area +13% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised area 2.09 km² vs median of 17 obs since 2026-10-03 → departure +13.0% (z 0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "prev": "2026-10-05",
+   "days": 21.0,
+   "delta": -0.1837,
+   "expected": 0.0,
+   "z": -1.19,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "26 Oct 2026 (Sentinel-1): lake area -18% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-10-21). WARNING: unusual.",
+    "experts": "S1 o161: harmonised area 1.51 km² vs median of 17 obs since 2026-10-05 → departure -18.4% (z -1.2, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-10-21."
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "prev": "2026-10-07",
+   "days": 21.0,
+   "delta": -0.1188,
+   "expected": 0.0,
+   "z": -0.77,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "27 Oct 2026 (Sentinel-1): lake area -12% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.61 km² vs median of 17 obs since 2026-10-07 → departure -11.9% (z -0.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "prev": "2026-10-08",
+   "days": 21.0,
+   "delta": 0.0016,
+   "expected": 0.0,
+   "z": 0.01,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "29 Oct 2026 (NISAR): lake area +0% compared with the previous 21 days.",
+    "experts": "NISAR D80/F70: harmonised area 1.82 km² vs median of 17 obs since 2026-10-08 → departure +0.2% (z 0.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-01",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": -0.2063,
+   "expected": 0.0,
+   "z": -1.33,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "1 Nov 2026 (Sentinel-1): lake area -21% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.45 km² vs median of 15 obs since 2026-10-12 → departure -20.6% (z -1.3, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": -0.0561,
+   "expected": 0.0,
+   "z": -0.36,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2 Nov 2026 (Sentinel-1): lake area -6% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.67 km² vs median of 16 obs since 2026-10-12 → departure -5.6% (z -0.4, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": -0.2857,
+   "expected": 0.0,
+   "z": -1.85,
+   "level": "ALERT",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2 Nov 2026 (Sentinel-1): lake area -29% compared with the previous 21 days. Confirmed by another satellite pass (S1 o161 2026-11-01). ALERT: far outside normal.",
+    "experts": "S1 o88: harmonised area 1.26 km² vs median of 16 obs since 2026-10-12 → departure -28.6% (z -1.8, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o161 2026-11-01."
+   }
+  },
+  {
+   "date": "2026-11-07",
+   "prev": "2026-10-17",
+   "days": 21.0,
+   "delta": -0.1508,
+   "expected": 0.0,
+   "z": -0.97,
+   "level": "WARNING",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "7 Nov 2026 (Sentinel-1): lake area -15% compared with the previous 21 days. Confirmed by another satellite pass (S1 o88 2026-11-02). WARNING: unusual.",
+    "experts": "S1 o161: harmonised area 1.41 km² vs median of 13 obs since 2026-10-17 → departure -15.1% (z -1.0, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days. Confirmed by: S1 o88 2026-11-02."
+   }
+  },
+  {
+   "date": "2026-11-08",
+   "prev": "2026-10-19",
+   "days": 21.0,
+   "delta": -0.0106,
+   "expected": 0.0,
+   "z": -0.07,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Nov 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.59 km² vs median of 13 obs since 2026-10-19 → departure -1.1% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-08",
+   "prev": "2026-10-19",
+   "days": 21.0,
+   "delta": -0.0783,
+   "expected": 0.0,
+   "z": -0.51,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "8 Nov 2026 (Sentinel-1): lake area -8% compared with the previous 21 days.",
+    "experts": "S1 o88: harmonised area 1.48 km² vs median of 13 obs since 2026-10-19 → departure -7.8% (z -0.5, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-13",
+   "prev": "2026-10-24",
+   "days": 21.0,
+   "delta": -0.1093,
+   "expected": 0.0,
+   "z": -0.71,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "13 Nov 2026 (Sentinel-1): lake area -11% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised area 1.42 km² vs median of 11 obs since 2026-10-24 → departure -10.9% (z -0.7, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  },
+  {
+   "date": "2026-11-14",
+   "prev": "2026-10-24",
+   "days": 21.0,
+   "delta": -0.0132,
+   "expected": 0.0,
+   "z": -0.09,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "14 Nov 2026 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised area 1.53 km² vs median of 12 obs since 2026-10-24 → departure -1.3% (z -0.1, σ 15.5% from the Aug–Oct period). Levels: WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days."
+   }
+  }
+ ]
+}

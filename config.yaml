@@ -28,7 +28,7 @@ dam:
 
 context:                          # 00_context_data.py — ancillary geodata (all cached under cache/context/)
   dams_bbox: [8.30, 35.80, 11.20, 37.40]      # northern Tunisia: other reservoirs for Dam Watch
-  hydro_bbox: [7.20, 35.20, 10.60, 37.30]     # Medjerda + Mellègue catchment incl. the Algerian part
+  hydro_bbox: [6.90, 34.90, 10.60, 37.30]     # Medjerda + Mellègue catchment incl. the Algerian part (catchments reach 7.19 E, 35.20 N)
   overpass: https://overpass-api.de/api/interpreter
   user_agent: dancing-with-dams-hackathon/0.1
   sources:

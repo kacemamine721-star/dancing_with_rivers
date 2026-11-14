@@ -1,0 +1,33 @@
+{
+ "schema_version": 1,
+ "events": [
+  {
+   "date": "2026-06-17",
+   "label": "Gate failure ~21:15",
+   "kind": "failure",
+   "badge": "REPORTED",
+   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+  },
+  {
+   "date": "2026-06-21",
+   "label": "Water reaches Sidi Salem",
+   "kind": "arrival",
+   "badge": "REPORTED",
+   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+  },
+  {
+   "date": "2026-07-16",
+   "label": "Gate repaired",
+   "kind": "repair",
+   "badge": "REPORTED",
+   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+  },
+  {
+   "date": "2026-09-15",
+   "label": "Upper Mellègue planned start",
+   "kind": "plan",
+   "badge": "REPORTED",
+   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+  }
+ ]
+}
