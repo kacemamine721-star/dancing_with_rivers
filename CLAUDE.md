@@ -99,8 +99,8 @@ Lanes run in parallel: **Data** (geo-pipeline) · **Model** (hydro-modeler) · *
 | M3 | Intro port (parity) → dive → `/story/1`; Stage + Terrain shader + shots on real terrain | Scene | QA parity + ≤ 4 s | Sun 03:00 | ✅ done, commit e7c2c12 (dive 3.9 s; bloom sweep not built) |
 | M4 | `02_reservoir` lake polygon + chips; Acts 1–3, scrubber, swipe, badges | Data + UI + Scene | QA | Sun 06:00 | ◐ data ✅; **UI acts 1–3 to do** |
 | M5 | `03_anomaly` + Acts 5–6 (chart, alert card) | Data + UI | QA + Sci (B1–B3) | Sun 08:00 | ◐ detector ✅; **chart + alert card UI to do** |
-| M6 | `04_routing_hand` + Act 4 path + Act 7 slider and counters; ANUGA v21 in Docker in background | Model + UI + Scene | QA + Sci (D1–D5) | Sun 11:00 | ◐ 04_routing_hand ✅ (outputs in bundle); **UI to do** |
-| M7 | ANUGA ingest, `06_impacts`, `07_level_volume` + Act 8 | Model + Data + UI | Sci (E, F, L) | Sun 13:00 | ◐ ANUGA runs in Docker (see §11); `07_level_volume` **not started**; UI to do |
+| M6 | `04_routing_hand` + Act 4 path + Act 7 slider and counters; ANUGA v21 in Docker in background | Model + UI + Scene | QA + Sci (D1–D5) | Sun 11:00 | ◐ 04_routing_hand ✅ (D1⚠️ D2✅ D3✅); **UI to do** |
+| M7 | ANUGA ingest, `06_impacts`, `07_level_volume` + Act 8 | Model + Data + UI | Sci (E, F, L) | Sun 13:00 | ◐ ANUGA v21 + impacts ✅ interim; fine-mesh re-runs in progress (§11); `07_level_volume` **not started**; UI to do |
 | M8 | Act 9, Dam Watch drawer, Methods/Validation (07 §8 filled), Sources, 2D fallback, a11y pass | UI + Pitch | QA full + Sci full | Sun 14:30 | ⬜ |
 | M9 | Deploy, private-window test, 30 s video from Tour, project page, deck | lead + Pitch | QA on public URL | **Sun 16:00** | ⬜ |
 
@@ -136,6 +136,8 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
 - **GEM-15 (01b_gem15.py, 14 Nov):** Google Research 15 m DTM (experimental, CC-BY 4.0, public COGs, no account). Valley dam → Sidi Salem: 99.2% valid, GEM-15 − NASADEM median −0.96 m (5–95%: −5.8…+3.5 m). `work/gem15_dtm_15m.tif` (gaps filled from NASADEM) is the **preferred bed for routing, HAND and ANUGA if the D8 path passes test D2**; else NASADEM. Water is masked in GEM-15 (no bathymetry). Attribution: "This dataset is produced by Google"; cite doi:10.31223/X55N75. Details: docs/09 §3.6.
 - **Context data (00_context_data.py):** Mellègue catchment 10,315 km², Sidi Salem 18,069 km²; dam point 5 m from the OSM crest line; 102 villages, 16,553 building centroids, WorldPop 601,577 people in the scene. OSM lacks the Upper Mellègue dam and the Jendouba irrigated perimeter (user to draw in `geojson_data/`).
 
+- **Flow path & flood (04–06, 14 Nov, MODELLED):** DEM = GEM-15 block-averaged to 30 m (D2: 98.8% of path within 300 m of OSM rivers; NASADEM 98.6%). Path **101.0 km** dam → Sidi Salem; Jendouba km 37.6 (town 4.4 km off the path), Medjerda confluence km 44.9, Bou Salem km 66.8. HAND bathtub (main-stem HAND, whole corridor): **21 Mm³ → h 0.97 m, 26.5 km², 1,309 ha cropland, 1 village, ~980 people; 50 Mm³ → 1.90 m, 35.7 km², ~1,460 people; 195 Mm³ → 4.54 m, 79.1 km², 5,321 ha, 4 villages (Bou Salem, Muthul, Sidi Smail, Ben Bchir), ~6,600 people**. ANUGA v21_d12 interim (two-zone mesh): mass balance ~1e-12, **arrival at the Medjerda confluence 19.1 h**, 15.0 km² wet, D5 IoU 0.48–0.53. Being re-run on a uniform 2,500 m² mesh (the canyon below the dam was too coarse): numbers will shift; use the files in the bundle, not these.
+
 ## 9. Design direction (user's references in `UI_REFERENCES/`)
 
 The prototype stays the base look; these two references raise the bar:
@@ -151,7 +153,7 @@ Components: `<Badge>` (dot pill), `<Stat>`, `<HonestyNote>` in `src/components/`
 
 ## 11. Session handoff (end of session 1 — Sat 14 Nov 2026, ~23:30)
 
-**Commits (all on `main`):** `ff6b68b` foundation · `56263aa` web skeleton · `5e326e0` anomaly detector · `9273527` data bundle + context layers · `dcc4498` rename, doc 09, GEM-15, Docker · `e7c2c12` M3 intro + 3D stage + irrigation. Run `git log --oneline` and `git status` first; anything uncommitted is described below.
+**Commits (all on `main`):** `ff6b68b` foundation · `56263aa` web skeleton · `5e326e0` anomaly detector · `9273527` data bundle + context layers · `dcc4498` rename, doc 09, GEM-15, Docker · `e7c2c12` M3 intro + 3D stage + irrigation · `d2aef07` handoff · `bb6619e` flow path, HAND, ANUGA v21 interim, impacts. Run `git log --oneline` and `git status` first; anything uncommitted is described below.
 
 ### What exists and works
 - **Pipeline** (`.venv`, py 3.11), run in this order; all write to `apps/web/public/data/2026-11-15/` and validate with `python pipeline/08_bundle.py --validate`:
@@ -160,7 +162,7 @@ Components: `<Badge>` (dot pill), `<Stat>`, `<HonestyNote>` in `src/components/`
 - **Dev tips:** `/?t=9.2` freezes the intro; `/?dive=2` freezes the dive; once "Skip intro" is pressed, `/` redirects to `/story/1` — use `/?intro=1` to see the intro again.
 
 ### In flight at handoff (check before redoing anything)
-- **ANUGA queue** (`work/anuga/run_all.sh`, Docker containers `dwd_anuga_<scenario>`): `v21_d12` done (18 min; 21.0 Mm³ in = 17.1 in domain + 3.9 out). `v195_d12` then `v50_d12` were running; status in `work/anuga/run_all.status` and `work/anuga/<id>.log`. To stop: `touch work/anuga/STOP` and `docker stop dwd_anuga_<id>`.
+- **ANUGA re-runs** (hydro-modeler agent, Docker containers `dwd_anuga_<scenario>`, logs `work/anuga/<id>.log`, status `work/anuga/run_all.status`): v21_d12 interim results are **committed (bb6619e)**; the agent is re-running v21, v195, v50 on a uniform 2,500 m² mesh and replaces `flood/anuga/<id>/` + `impacts/impacts.json` in place. Docker OMP: 4 threads (8 oversubscribes, ×6 slower). If the session ended first: check `docker ps`, the logs and `git status`; finish post-processing with `pipeline/05_anuga_scenarios.py` (see its `--help`) and `06_impacts.py`, validate, commit. To stop the queue: `touch work/anuga/STOP` + `docker stop dwd_anuga_<id>`.
 - **Post-processing** into `flood/anuga/<id>/` (maxdepth, arrival, frames, stats) and `06_impacts.py` → `impacts/impacts.json`: done by the hydro-modeler agent if its report arrived; otherwise run `python pipeline/05_anuga_scenarios.py --help` / `pipeline/06_impacts.py` (check their CLI) and `08_bundle.py --validate`. Its test results (D1–D5, E1–E7, F1–F3) go into docs/07 §8.
 
 ### Next steps, in order (deadline Sun 15 Nov 16:30)
