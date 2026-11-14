@@ -1,0 +1,51 @@
+/*
+ * Design tokens — single source (docs/04 §3.1).
+ * Mirrored as a typed object in ./tokens.ts for shaders, charts and the canvas.
+ * Keep both files in sync (tests/tokens.test.ts checks it).
+ */
+:root {
+  /* colour */
+  --bg: #03050a;
+  --ink: #e9f1ff;
+  --mute: #9aa7bd; /* raised from the prototype's #8b98ad for AA contrast */
+  --teal: #5ff3ff;
+  --teal-dim: rgba(95, 243, 255, 0.18);
+  --mag: #ff4fd2;
+  --water: #2f8fff;
+  --flood-1: #9be7ff;
+  --flood-2: #2f8fff;
+  --flood-3: #1b3a9e;
+  --flood-4: #120b4a;
+  --alert: #ffb547;
+  --danger: #ff5a5a;
+  --ok: #6dffa8;
+  --model: #b38cff;
+
+  /* evidence badges (docs/04 §6.2-A) */
+  --badge-measured: var(--teal);
+  --badge-reported: var(--ink);
+  --badge-modelled: var(--model);
+  --badge-illustrative: var(--mute);
+
+  /* surfaces */
+  --glass-bg: rgba(8, 14, 24, 0.72);
+  --glass-blur: 14px;
+  --hairline: rgba(233, 241, 255, 0.08);
+
+  /* shape */
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  /* motion */
+  --ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-ui: 200ms;
+  --dur-cam: 900ms;
+
+  /* type */
+  --font-display: 'Bowlby One', 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* button text on teal fill (prototype .btn.primary) */
+  --on-teal: #021014;
+}

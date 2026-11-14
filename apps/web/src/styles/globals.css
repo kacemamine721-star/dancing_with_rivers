@@ -1,0 +1,137 @@
+/* Self-hosted fonts (no Google Fonts runtime request) — docs/04 §3.1 */
+@import '@fontsource/bowlby-one/400.css';
+@import '@fontsource/space-grotesk/300.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/600.css';
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(95, 243, 255, 0.3);
+    color: var(--ink);
+  }
+
+  /* Visible teal focus ring: 2px + 2px offset, keyboard only (docs/04 §12) */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  a {
+    color: #8fb7c8;
+    text-underline-offset: 2px;
+  }
+  a:hover {
+    color: var(--teal);
+  }
+}
+
+@layer components {
+  /* Glass card (docs/04 §3.2) */
+  .glass {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--teal-dim);
+    border-radius: var(--radius-card);
+  }
+
+  /* Uppercase tracked mono label (prototype .kick / HUD) */
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 12px;
+    top: -100px;
+    z-index: 100;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--teal);
+    color: var(--on-teal);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .skip-link:focus-visible {
+    top: 12px;
+  }
+}
+
+/* Logo radar arcs pulse (prototype .mark .arcs) */
+.logo-arcs path {
+  animation: logo-arc 2.2s infinite;
+}
+.logo-arcs path:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.logo-arcs path:nth-child(3) {
+  animation-delay: 0.5s;
+}
+@keyframes logo-arc {
+  0%,
+  100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.25;
+  }
+}
+
+/* Reduced motion: no animation or smooth scroll (docs/04 §8, §12) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
