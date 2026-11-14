@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "version": "2026-11-15",
- "generated_utc": "2026-11-14T22:10Z",
+ "generated_utc": "2026-11-14T22:43Z",
  "product": "HydroStress",
  "dam_id": "mellegue",
  "placeholder": false,
@@ -770,6 +770,28 @@
     "scale": 0.01,
     "offset": null
    },
+   "mask": null
+  },
+  {
+   "badge": "REPORTED",
+   "source": "Digitised by the project team on satellite imagery (geojson_data/BARRAGE_MELLEGUE_LINE.geojson)",
+   "method": "hand-digitised LineString (21 vertices) reprojected WGS84 → EPSG:32632, 1 m precision, no simplification; length 994 m, 9 m from the config dam point; OSM crest line 587 m",
+   "uncertainty": "Manual tracing on imagery: ±5–10 m in position; length includes abutments as traced",
+   "placeholder": false,
+   "id": "dam_line",
+   "kind": "vector",
+   "grid": "none",
+   "file": "vectors/dam_line.geojson",
+   "label": "Mellègue dam crest",
+   "date": null,
+   "time_utc": null,
+   "sensor": null,
+   "band": null,
+   "pol": null,
+   "track": null,
+   "frame": null,
+   "product_id": null,
+   "encoding": null,
    "mask": null
   }
  ],

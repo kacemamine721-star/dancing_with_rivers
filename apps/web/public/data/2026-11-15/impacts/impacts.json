@@ -19,6 +19,19 @@
      "max_depth_m": 5.1
     }
    ]
+  },
+  "v195_d12": {
+   "cropland_ha": 5573.0,
+   "builtup_ha": 165.3,
+   "buildings": 398,
+   "road_km": 150.36,
+   "villages": [
+    {
+     "name": "Muthul",
+     "arrival_h": 2.67,
+     "max_depth_m": 8.19
+    }
+   ]
   }
  }
 }

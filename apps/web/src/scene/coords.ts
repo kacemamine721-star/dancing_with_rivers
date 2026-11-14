@@ -62,6 +62,9 @@ export class SceneFrame {
   readonly width: number;
   readonly depth: number;
   exag: number;
+  /** Terrain mesh subdivisions (set by the scene for the current quality tier). */
+  segX = 512;
+  segZ = 392;
   private heights: HeightData | null = null;
 
   constructor(
@@ -138,5 +141,35 @@ export class SceneFrame {
   /** Terrain height in scene units (km × exaggeration) at a scene position, for placing markers. */
   sampleHeight(sx: number, sz: number): number {
     return this.metresToY(this.sampleMetres(sx, sz));
+  }
+
+  /** Mesh subdivisions for a long-side segment count (same rule as the terrain PlaneGeometry). */
+  setMesh(long: number): void {
+    this.segX = long;
+    this.segZ = Math.round((long * this.depth) / this.width);
+  }
+
+  /**
+   * Height of the rendered terrain SURFACE (scene units): the mesh is only sampled at its vertices
+   * and linearly interpolated between them, so in narrow valleys it sits above the true DEM. Lines
+   * draped on rivers must follow this surface or they are buried. Triangulation = PlaneGeometry's
+   * (diagonal from (ix, iy+1) to (ix+1, iy), iy = 0 on the north edge).
+   */
+  surfaceHeight(sx: number, sz: number): number {
+    const fxAll = (sx / this.width + 0.5) * this.segX;
+    const fzAll = (sz / this.depth + 0.5) * this.segZ;
+    const ix = Math.min(this.segX - 1, Math.max(0, Math.floor(fxAll)));
+    const iz = Math.min(this.segZ - 1, Math.max(0, Math.floor(fzAll)));
+    const fx = Math.min(1, Math.max(0, fxAll - ix));
+    const fz = Math.min(1, Math.max(0, fzAll - iz));
+    const vx = (i: number) => (i / this.segX - 0.5) * this.width;
+    const vz = (j: number) => (j / this.segZ - 0.5) * this.depth;
+    const h = (i: number, j: number) => this.sampleHeight(vx(i), vz(j));
+    const a = h(ix, iz);
+    const b = h(ix, iz + 1);
+    const d = h(ix + 1, iz);
+    if (fx + fz <= 1) return a + (d - a) * fx + (b - a) * fz;
+    const c = h(ix + 1, iz + 1);
+    return c + (b - c) * (1 - fx) + (d - c) * (1 - fz);
   }
 }

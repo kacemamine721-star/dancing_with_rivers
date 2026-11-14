@@ -148,7 +148,7 @@ Components: `<Badge>` (dot pill), `<Stat>`, `<HonestyNote>` in `src/components/`
 ## 10. Open decisions (ask the user; do not assume)
 
 - On-screen product name: keep "HydroStress" (current) or show "Dancing with the Rivers" as the title too? The project name itself is settled.
-- Hosting: Vercel (docs/02 §8) or GitHub Pages (docs/08). Either way the app stays static.
+- ~~Hosting~~ **Decided 14 Nov: Cloudflare (Pages / static assets)** for the static app (`_redirects` SPA fallback + `_headers` CSP). On-demand ANUGA for any user is **v2 only**: a Render background worker running the `dwd-anuga` image behind a job queue (30–45 min per run, paid instance). v1 offers the HAND slider (any volume) + precomputed ANUGA scenarios.
 - Project `.npmrc` pointing at `registry.yarnpkg.com`.
 
 ## 11. Session handoff (end of session 1 — Sat 14 Nov 2026, ~23:50; all agents and Docker runs stopped)

@@ -16,7 +16,9 @@ Outputs
   <bundle>/vectors/*.geojson (EPSG:32632 metres, 1 m precision)  <bundle>/landcover/worldcover.png
   <bundle>/water/gsw_occurrence.png — all registered in manifest.json
 
-  python pipeline/00_context_data.py [--config config.yaml] [--only osm|boundaries|hydrosheds|gsw|worldcover|worldpop|checks|report]
+  dam_line     team-digitised Mellègue dam crest (geojson_data/BARRAGE_MELLEGUE_LINE.geojson) → vectors/dam_line.geojson
+
+  python pipeline/00_context_data.py [--config config.yaml] [--only osm|boundaries|hydrosheds|gsw|worldcover|worldpop|dam_line|checks|report]
 """
 from __future__ import annotations
 
@@ -1406,12 +1408,60 @@ def step_report(cfg, st):
     log(f"wrote {(CTX / 'report.md').relative_to(ROOT)}")
 
 
+# ================================================================================================ step: team vectors
+def step_dam_line(cfg, st, bnd: Bundle):
+    """Mellègue dam crest digitised by the project team (geojson_data/BARRAGE_MELLEGUE_LINE.geojson, WGS84)
+    → vectors/dam_line.geojson (EPSG:32632, 1 m precision, not simplified). Offline, deterministic."""
+    import geopandas as gpd
+    log("== dam crest line (team digitisation)")
+    src = ROOT / "geojson_data" / "BARRAGE_MELLEGUE_LINE.geojson"
+    g = gpd.read_file(src)
+    if g.crs is None:
+        g = g.set_crs(4326)
+    g = g.to_crs(CRS)
+    g = g[g.geometry.geom_type.isin(["LineString", "MultiLineString"])].reset_index(drop=True)
+    if len(g) != 1:
+        raise ValueError(f"expected one crest LineString in {src.name}, found {len(g)}")
+    line = g.geometry.iloc[0]
+    dam_pt = dam_point_utm(cfg)
+    osm_len = None
+    try:  # OSM crest for comparison (analysis copy from the osm step)
+        d = gpd.read_file(CTX / "dams.gpkg").to_crs(CRS)
+        d = d[d.geometry.geom_type.isin(["LineString", "MultiLineString"]) & (d.distance(dam_pt) < 1000)]
+        if len(d):
+            osm_len = round(float(d.geometry.length.max()), 0)
+    except Exception:  # noqa: BLE001
+        pass
+    length = round(float(line.length), 0)
+    dist = round(float(line.distance(dam_pt)), 1)
+    g = g[["geometry"]].copy()
+    g["name"] = f"{cfg['dam']['name']} dam crest ({cfg['dam']['built']})"
+    g["length_m"] = length
+    g["dist_to_dam_point_m"] = dist
+    g["source"] = "Digitised by the project team on satellite imagery (geojson_data/BARRAGE_MELLEGUE_LINE.geojson)"
+    g["badge"] = "REPORTED"
+    web = st.setdefault("web", {})
+    web["dam_line"] = write_web_geojson(g, bnd.out / "vectors" / "dam_line.geojson",
+                                        ["name", "length_m", "dist_to_dam_point_m", "source", "badge"], tol=0,
+                                        name="dam_line")
+    st["dam_line"] = dict(length_m=length, dist_to_dam_point_m=dist, osm_crest_length_m=osm_len,
+                          vertices=len(line.coords), src=str(src.relative_to(ROOT)).replace("\\", "/"))
+    bnd.register(id="dam_line", kind="vector", grid="none", file="vectors/dam_line.geojson",
+                 label=f"{cfg['dam']['name']} dam crest", badge="REPORTED",
+                 source="Digitised by the project team on satellite imagery (geojson_data/BARRAGE_MELLEGUE_LINE.geojson)",
+                 method=f"hand-digitised LineString ({len(line.coords)} vertices) reprojected WGS84 → EPSG:32632, "
+                        f"1 m precision, no simplification; length {length:.0f} m, {dist:.0f} m from the config dam point"
+                        + (f"; OSM crest line {osm_len:.0f} m" if osm_len else ""),
+                 uncertainty="Manual tracing on imagery: ±5–10 m in position; length includes abutments as traced")
+    log(f"  dam_line: {length:.0f} m, {dist:.1f} m from dam point (OSM crest {osm_len} m)")
+
+
 def step_sources(cfg, st, bnd: Bundle):
     """Refresh story/sources.json from 08_bundle.SOURCES (same as the fixture writer does)."""
     bnd.b.write_json(bnd.out / C.BUNDLE_PATHS["sources"], C.Sources(sources=bnd.b.SOURCES), force=True)
 
 
-STEPS = ["osm", "boundaries", "hydrosheds", "gsw", "worldcover", "worldpop", "checks", "report"]
+STEPS = ["osm", "boundaries", "hydrosheds", "gsw", "worldcover", "worldpop", "dam_line", "checks", "report"]
 
 
 def main() -> int:
@@ -1426,6 +1476,7 @@ def main() -> int:
     fn = dict(osm=lambda: step_osm(cfg, st, bnd), boundaries=lambda: step_boundaries(cfg, st, bnd),
               hydrosheds=lambda: step_hydrosheds(cfg, st, bnd), gsw=lambda: step_gsw(cfg, st, bnd),
               worldcover=lambda: step_worldcover(cfg, st, bnd), worldpop=lambda: step_worldpop(cfg, st, bnd),
+              dam_line=lambda: step_dam_line(cfg, st, bnd),
               checks=lambda: step_checks(cfg, st), report=lambda: step_report(cfg, st))
     rc = 0
     RUN_KEYS.update(todo)

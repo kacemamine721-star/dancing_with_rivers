@@ -30,19 +30,31 @@
    "stats": "flood/anuga/v21_d12/stats.json"
   },
   {
-   "badge": "ILLUSTRATIVE",
-   "source": "Placeholder fixture — replaced by pipeline output",
-   "method": "",
-   "uncertainty": "",
-   "placeholder": true,
+   "badge": "MODELLED",
+   "source": "ANUGA (Geoscience Australia / ANU, GPL) on GEM-15 (experimental) DTM, Google Research, CC-BY 4.0 (gaps: NASADEM); ESA WorldCover 2021; OpenStreetMap",
+   "method": "ANUGA 4.2.0 2D shallow-water (DE0) on Reach 1 (dam → Medjerda confluence + 2 km, 112 km², 69616 triangles, ≤ 2500 m² everywhere). DEM: GEM-15 (experimental) bare-earth DTM 15 m block-averaged to 30 m, flow-path cells lowered 2 m. Manning n from ESA WorldCover. Triangular release hydrograph at the dam outlet: V = 195 Mm³ over 12 h, peak 9028 m³/s at 0.3 D (scenario values, not measurements). Dry start, free outflow at the downstream face, 48 h simulated. Wet = max depth > 0.1 m. maxdepth/frames: uint8, depth = value/255 × 8 m; arrival.png: 0 = not reached, else hours = value × 0.2. Frames every 120 min.",
+   "uncertainty": "Scenario exploration, not a forecast. 30 m terrain without channel bathymetry: the river channel is narrower than a mesh triangle, so depths, speeds and arrival times are indicative only; the release hydrograph shape and duration are assumptions; no calibration data (no gauge, no surveyed flood marks). Mass balance error 0.000% of V. Reach 2 (Medjerda to Sidi Salem) is not modelled.",
+   "placeholder": false,
    "id": "v195_d12",
    "volume_m3": 195000000.0,
    "duration_h": 12.0,
    "label": "Upper Mellègue worst case (hypothetical)",
-   "computed": false,
-   "files": null,
-   "depth_encoding": null,
-   "stats": null
+   "computed": true,
+   "files": {
+    "maxdepth": "flood/anuga/v195_d12/maxdepth.png",
+    "arrival": "flood/anuga/v195_d12/arrival.png",
+    "frames": "flood/anuga/v195_d12/frames/{i}.png",
+    "n_frames": 25,
+    "dt_s": 7200.0
+   },
+   "depth_encoding": {
+    "type": "r8",
+    "min": null,
+    "max": 8.0,
+    "scale": null,
+    "offset": null
+   },
+   "stats": "flood/anuga/v195_d12/stats.json"
   },
   {
    "badge": "ILLUSTRATIVE",

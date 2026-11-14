@@ -7,7 +7,10 @@ uniform sampler2D uRadarA; // lake chip, "before" side of the swipe (db8, linear
 uniform sampler2D uRadarB; // lake chip, current date
 uniform sampler2D uMaskA;  // water masks of A / B
 uniform sampler2D uMaskB;
-uniform sampler2D uHand;   // HAND (M6)
+uniform sampler2D uHand;   // HAND, metres (half float; outside the corridor = 9999)
+uniform sampler2D uFloodMax;          // ANUGA max depth, crop of the scene grid (r8)
+uniform highp sampler2DArray uFloodFrames; // ANUGA depth frames, same crop (r8, one layer per frame)
+uniform sampler2D uCrop;   // irrigated cropland mask (rasterised polygons)
 
 uniform vec4 uLakeChipRect; // lake chip bounds in image UV (u0, v0, u1, v1)
 uniform vec4 uOpacity;      // x basemap, y radar chip, z water mask, w contours
@@ -17,6 +20,16 @@ uniform float uNight;       // 0 day .. 1 night (Act 2)
 uniform float uExag;
 uniform float uHandH;       // flood height above nearest drainage, metres (0 = off)
 uniform float uHandScale;   // HAND texel → metres
+uniform float uFloodOn;     // 0..1 flood layer opacity
+uniform float uFloodMode;   // 0 HAND bathtub, 1 ANUGA depth
+uniform vec4 uFloodRect;    // ANUGA crop in image UV (u0, v0, u1, v1)
+uniform float uFloodScale;  // ANUGA byte → metres
+uniform float uFloodT;      // ANUGA playhead, fractional frame index
+uniform float uFloodN;      // ANUGA frame count
+uniform float uFloodAnim;   // 0 = max-depth envelope, 1 = animated frames
+uniform vec3 uRamp[4];      // depth ramp, shallow → deep (tokens.color.flood)
+uniform float uCropOn;
+uniform vec3 uCropCol;
 uniform float uTexelKm;     // heightmap texel size in km
 uniform float uTime;
 uniform vec2 uResolution;   // drawing-buffer size
@@ -33,6 +46,12 @@ float hash21(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
   p += dot(p, p + 45.32);
   return fract(p.x * p.y);
+}
+
+vec3 floodRamp(float d) {
+  vec3 c = mix(uRamp[0], uRamp[1], smoothstep(0.0, 1.0, d));
+  c = mix(c, uRamp[2], smoothstep(1.0, 3.0, d));
+  return mix(c, uRamp[3], smoothstep(3.0, 7.0, d));
 }
 
 void main() {
@@ -83,11 +102,47 @@ void main() {
     col = mix(col, uTeal * 1.6, sl);
   }
 
-  // --- HAND quick flood (wired in M6)
-  if (uHandH > 0.0) {
-    float hand = texture2D(uHand, vUv).r * uHandScale;
-    float wet = 1.0 - smoothstep(uHandH - 0.5, uHandH + 0.5, hand);
-    col = mix(col, uWaterCol, wet * 0.7);
+  // --- irrigated cropland, summer 2026 (fill + crisp polygon edge)
+  if (uCropOn > 0.001) {
+    float cm = texture2D(uCrop, vUv).r;
+    float ce = clamp(fwidth(cm) * 1.6, 0.0, 1.0);
+    col = mix(col, uCropCol * 0.55, cm * 0.38 * uCropOn);
+    col = mix(col, uCropCol, ce * 0.8 * uCropOn);
+  }
+
+  // --- flood: HAND bathtub (depth = h − HAND) or ANUGA depth (max envelope / time frames)
+  if (uFloodOn > 0.001) {
+    float depth = -1.0;
+    float wet = 0.0;
+    float ghost = 0.0;
+    if (uFloodMode < 0.5) {
+      depth = uHandH - texture2D(uHand, vUv).r * uHandScale;
+      wet = smoothstep(-0.12, 0.12, depth) * smoothstep(0.0, 0.08, uHandH);
+    } else {
+      vec2 fuv = (vUv - uFloodRect.xy) / (uFloodRect.zw - uFloodRect.xy);
+      if (fuv.x >= 0.0 && fuv.y >= 0.0 && fuv.x <= 1.0 && fuv.y <= 1.0) {
+        float dmax = texture2D(uFloodMax, fuv).r * 255.0 * uFloodScale;
+        depth = dmax;
+        if (uFloodAnim > 0.001) {
+          float i0 = floor(uFloodT);
+          float i1 = min(i0 + 1.0, uFloodN - 1.0);
+          float a = texture(uFloodFrames, vec3(fuv, i0)).r;
+          float b = texture(uFloodFrames, vec3(fuv, i1)).r;
+          float now = mix(a, b, uFloodT - i0) * 255.0 * uFloodScale;
+          depth = mix(dmax, now, uFloodAnim);
+          ghost = smoothstep(0.08, 0.14, dmax) * uFloodAnim;
+        }
+        wet = smoothstep(0.08, 0.14, depth);
+      }
+    }
+    float d = max(depth, 0.0);
+    float sh = 0.93 + 0.07 * sin(uTime * 1.6 + vUv.x * 1400.0 + vUv.y * 900.0);
+    // where the water reached at its peak (behind the animated front)
+    col = mix(col, uRamp[1] * 0.45, ghost * (1.0 - wet) * 0.30 * uFloodOn);
+    col = mix(col, floodRamp(d) * sh, wet * 0.84 * uFloodOn);
+    // soft glow at the wet front (shallow edge)
+    float front = wet * (1.0 - smoothstep(0.0, 0.45, d));
+    col += uRamp[0] * front * 0.28 * uFloodOn;
   }
 
   // --- faint teal contour every 100 m
