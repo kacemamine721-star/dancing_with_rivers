@@ -220,6 +220,8 @@ export const HandLutSchema = z
           builtup_ha: z.number(),
           villages: z.number().int(),
           road_km: z.number(),
+          population: z.number().default(0),
+          buildings: z.number().int().default(0),
         })
         .strict(),
     ),

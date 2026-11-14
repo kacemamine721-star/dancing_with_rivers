@@ -1,0 +1,21 @@
+// ad-hoc: reduced motion + skip behaviour (node e2e/visual/reduced.mjs)
+import { chromium } from '@playwright/test';
+const browser = await chromium.launch({ channel: 'chrome', args: ['--use-angle=d3d11', '--enable-gpu', '--ignore-gpu-blocklist'] });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
+const page = await ctx.newPage();
+const errs = [];
+page.on('pageerror', (e) => errs.push(e.message));
+await page.goto('http://localhost:4173/?intro=1');
+await page.waitForSelector('.ix-loader.off', { timeout: 60000 });
+await page.waitForTimeout(5000);
+await page.screenshot({ path: 'e2e/visual/out/reduced_t5.png' });
+const grain = await page.evaluate(() => [...document.querySelectorAll('div')].some((d) => d.style.mixBlendMode === 'overlay'));
+await page.keyboard.press('Escape');
+await page.waitForURL('**/story/1', { timeout: 5000 });
+const skipped = await page.evaluate(() => localStorage.getItem('dwd.introSkipped'));
+await page.goto('http://localhost:4173/');
+await page.waitForURL('**/story/1', { timeout: 10000 });
+await page.waitForTimeout(1500);
+await page.screenshot({ path: 'e2e/visual/out/reduced_story1.png' });
+console.log(JSON.stringify({ grainUnderReducedMotion: grain, skipStored: skipped, revisitRedirectsTo: new URL(page.url()).pathname, errs }));
+await browser.close();

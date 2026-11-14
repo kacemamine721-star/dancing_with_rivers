@@ -1,0 +1,470 @@
+/* Cinematic intro overlay — ported from reference/NISAR-HydroStress-Cinematic-Intro.html (CSS) */
+.ix-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+.ix-root button {
+  pointer-events: auto;
+}
+
+/* loader */
+.ix-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  background: #000;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--teal);
+  transition: opacity 0.8s;
+  pointer-events: auto;
+}
+.ix-loader.off {
+  opacity: 0;
+  pointer-events: none;
+}
+.ix-loader .ix-lmark {
+  width: 110px;
+  height: 110px;
+  animation: ix-breathe 1.6s ease-in-out infinite;
+}
+@keyframes ix-breathe {
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 18px rgba(95, 243, 255, 0.5));
+  }
+}
+
+/* letterbox, vignette, grain, flare */
+.ix-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 9vh;
+  background: #000;
+  z-index: 5;
+  transition: height 1.2s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.ix-bar.top {
+  top: 0;
+}
+.ix-bar.bot {
+  bottom: 0;
+}
+.ix-root.bars-off .ix-bar {
+  height: 0;
+}
+.ix-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
+}
+.ix-flare {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  mix-blend-mode: screen;
+}
+.ix-flare i {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* captions */
+.ix-captions {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(9vh + 54px);
+  z-index: 7;
+  text-align: center;
+}
+.ix-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+.ix-cap .k {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+.ix-cap .big {
+  font-weight: 700;
+  font-size: clamp(48px, 9vw, 120px);
+  letter-spacing: 0.32em;
+  margin-left: 0.32em;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(95, 243, 255, 0.25);
+}
+.ix-cap .mid {
+  font-weight: 300;
+  font-size: clamp(22px, 3.2vw, 40px);
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+}
+.ix-cap .sub {
+  color: var(--mute);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* HUD */
+.ix-hud {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.ix-hud.on {
+  opacity: 1;
+}
+.ix-hud .ret {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(44vw, 44vh);
+  height: min(44vw, 44vh);
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(95, 243, 255, 0.35);
+  border-radius: 50%;
+  animation: ix-ret 4s linear infinite;
+}
+@keyframes ix-ret {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.ix-hud .ret::before,
+.ix-hud .ret::after {
+  content: '';
+  position: absolute;
+  background: rgba(95, 243, 255, 0.35);
+}
+.ix-hud .ret::before {
+  left: 50%;
+  top: -14px;
+  height: 28px;
+  width: 1px;
+}
+.ix-hud .ret::after {
+  top: 50%;
+  left: -14px;
+  width: 28px;
+  height: 1px;
+}
+.ix-hud .tl,
+.ix-hud .tr {
+  position: absolute;
+  top: calc(9vh + 72px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--teal);
+  letter-spacing: 0.12em;
+  white-space: pre;
+}
+.ix-hud .tl {
+  left: 24px;
+}
+.ix-hud .tr {
+  right: 24px;
+  text-align: right;
+}
+
+/* corner buttons + chapter track */
+.ix-skip {
+  position: fixed;
+  top: calc(9vh + 16px);
+  right: 20px;
+  z-index: 9;
+}
+.ix-sound {
+  position: fixed;
+  top: calc(9vh + 16px);
+  left: 20px;
+  z-index: 9;
+}
+.ix-chap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 9vh;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 4vw;
+  transition: opacity 0.5s;
+}
+.ix-chap.hide {
+  opacity: 0;
+}
+.ix-chap.hide button {
+  pointer-events: none;
+}
+.ix-track {
+  position: relative;
+  flex: 1;
+  height: 30px;
+}
+.ix-track .rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.ix-track .fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+  background: var(--teal);
+  box-shadow: 0 0 8px var(--teal);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.ix-track button {
+  position: absolute;
+  top: 0;
+  transform: translateX(-2px);
+  background: none;
+  border: 0;
+  color: var(--mute);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0;
+  text-align: left;
+  height: 30px;
+  width: 12px;
+}
+.ix-track button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: #000;
+  border: 1px solid var(--mute);
+}
+.ix-track button span {
+  position: absolute;
+  left: 12px;
+  top: -2px;
+  white-space: nowrap;
+}
+.ix-track button.on {
+  color: var(--ink);
+}
+.ix-track button.on::before {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+
+/* explore / hero */
+.ix-explore {
+  position: fixed;
+  inset: 0;
+  z-index: 12;
+}
+.ix-facts {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: min(320px, 80vw);
+  background: rgba(5, 10, 18, 0.66);
+  border: 1px solid rgba(95, 243, 255, 0.22);
+  border-radius: 12px;
+  padding: 16px 18px;
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+.ix-facts h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+.ix-facts dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.ix-facts dt {
+  color: var(--mute);
+}
+.ix-facts dd {
+  margin: 0;
+}
+.ix-back {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+.ix-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ix-explore.hero .ix-hint {
+  top: 24px;
+  bottom: auto;
+}
+.ix-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+.ix-hero {
+  position: absolute;
+  left: 5vw;
+  bottom: 9vh;
+  max-width: min(520px, 90vw);
+  pointer-events: auto;
+}
+.ix-hero p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #cfd9e8;
+  margin: 0 0 18px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+.ix-start {
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  transition:
+    opacity 0.6s,
+    transform 0.6s cubic-bezier(0.2, 1.6, 0.4, 1),
+    background 0.2s;
+}
+.ix-start.pop {
+  opacity: 1;
+  transform: none;
+  animation: ix-glow 2s 1s infinite;
+}
+@keyframes ix-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(95, 243, 255, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgba(95, 243, 255, 0);
+  }
+}
+.ix-hs {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  border: 1px solid var(--teal);
+  background: rgba(2, 16, 20, 0.7);
+  color: var(--teal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  animation: ix-pulse 2s infinite;
+  left: 0;
+  top: 0;
+}
+.ix-hs.sel {
+  background: var(--teal);
+  color: var(--on-teal);
+}
+@keyframes ix-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(95, 243, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(95, 243, 255, 0);
+  }
+}
+.ix-hcard {
+  position: absolute;
+  width: 280px;
+  background: rgba(5, 10, 18, 0.86);
+  border: 1px solid rgba(95, 243, 255, 0.35);
+  border-radius: 12px;
+  padding: 14px 16px;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+}
+.ix-hcard h3 {
+  font-size: 16px;
+  margin: 0 0 6px;
+  color: var(--teal);
+}
+.ix-hcard p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #cfd9e8;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .ix-hero {
+    left: 16px;
+    right: 16px;
+    bottom: 6vh;
+  }
+  .ix-explore.hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60vh;
+    background: linear-gradient(transparent, rgba(3, 5, 10, 0.88) 45%);
+  }
+}
+@media (max-width: 700px) {
+  .ix-hud .tl,
+  .ix-hud .tr,
+  .ix-track button span,
+  .ix-facts {
+    display: none;
+  }
+}

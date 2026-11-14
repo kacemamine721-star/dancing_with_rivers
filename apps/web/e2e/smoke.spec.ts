@@ -24,3 +24,17 @@ test('deep link /story/1 renders the shell with no console errors', async ({ pag
 
   expect(errors).toEqual([]);
 });
+
+test('intro: debug seek reaches the hero, Esc skips to Act 1', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (err) => errors.push(err.message));
+
+  await page.goto('/?t=11.5');
+  await expect(page.getByRole('button', { name: 'Start the mission →' })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByRole('button', { name: 'Explore the satellite' })).toBeVisible();
+
+  await page.keyboard.press('Escape');
+  await expect(page).toHaveURL(/\/story\/1$/);
+  await expect(page.getByTestId('topbar')).toBeVisible();
+  expect(errors).toEqual([]);
+});

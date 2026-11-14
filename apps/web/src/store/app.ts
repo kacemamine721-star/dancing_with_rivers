@@ -18,6 +18,22 @@ export type Pol = 'HH' | 'HV' | 'RGB';
 export type FloodMode = 'hand' | 'anuga';
 export type DurationH = 6 | 12 | 24;
 export type Quality = 'high' | 'medium' | 'low' | '2d';
+/** Which world the persistent Stage shows (the swap happens under the dive's white flash). */
+export type StageScene = 'intro' | 'mellegue';
+/** Named camera shots (docs/04 §7.2); positions live in src/scene/shots.ts. */
+export const SHOT_IDS = [
+  'arrival',
+  'dam_close',
+  'night_dam',
+  'lake_top',
+  'valley_follow',
+  'jendouba_wide',
+  'sidi_salem',
+  'scenario_overview',
+  'catchment_wide',
+] as const;
+export type ShotId = (typeof SHOT_IDS)[number];
+export const EXAG_DEFAULT = 2.5;
 
 export type FloodState = {
   mode: FloodMode;
@@ -38,6 +54,15 @@ export type AppState = {
   damId: string;
   quality: Quality;
   reducedMotion: boolean;
+  /** Stage world (scene-3d). */
+  stageScene: StageScene;
+  /** Terrain vertical exaggeration (×2.5 Everyone, ×1 Experts). */
+  exag: number;
+  /** Explicit camera shot request; `null` = the act's default shot. `shotSeq` re-triggers the same shot. */
+  shot: ShotId | null;
+  shotSeq: number;
+  /** "Before" date for the radar swipe (left of `swipe`); `null` = no swipe, `date` fills the chip. */
+  compareDate: string | null;
 };
 
 /** A partial update where nested objects may also be partial (URL hydration, act configs, Tour). */
@@ -60,6 +85,11 @@ export type AppActions = {
   setDamId: (damId: string) => void;
   setQuality: (quality: Quality) => void;
   setReducedMotion: (reducedMotion: boolean) => void;
+  setStageScene: (stageScene: StageScene) => void;
+  setExag: (exag: number) => void;
+  /** Fly the camera to a named shot (repeat calls re-fly). */
+  setShot: (shot: ShotId | null) => void;
+  setCompareDate: (date: string | null) => void;
   /** Apply a partial state (URL hydration, act configs, Tour). */
   hydrate: (patch: StatePatch) => void;
   reset: () => void;
@@ -93,6 +123,11 @@ export const DEFAULT_STATE: AppState = {
   damId: 'mellegue',
   quality: 'high',
   reducedMotion: false,
+  stageScene: 'intro',
+  exag: EXAG_DEFAULT,
+  shot: null,
+  shotSeq: 0,
+  compareDate: null,
 };
 
 export const clamp01 = (n: number): number => Math.min(1, Math.max(0, n));
@@ -155,6 +190,10 @@ export const useAppStore = create<AppStore>()((set) => ({
   setDamId: (damId) => set({ damId }),
   setQuality: (quality) => set({ quality }),
   setReducedMotion: (reducedMotion) => set({ reducedMotion }),
+  setStageScene: (stageScene) => set({ stageScene }),
+  setExag: (exag) => set({ exag: Math.min(5, Math.max(0.5, exag)) }),
+  setShot: (shot) => set((s) => ({ shot, shotSeq: s.shotSeq + 1 })),
+  setCompareDate: (compareDate) => set({ compareDate }),
   hydrate: (patch) =>
     set((s) => {
       const { layers, flood, ...rest } = patch;
