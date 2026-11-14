@@ -182,6 +182,8 @@ class HandRow(Strict):
     builtup_ha: float
     villages: int
     road_km: float
+    population: float = 0      # WorldPop sum in wet cells (MODELLED)
+    buildings: int = 0         # OSM building centroids in wet cells
 
 
 class HandLut(Provenance):

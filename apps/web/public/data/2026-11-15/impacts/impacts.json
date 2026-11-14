@@ -1,10 +1,24 @@
 {
- "badge": "ILLUSTRATIVE",
- "source": "Placeholder fixture — replaced by pipeline output",
- "method": "",
- "uncertainty": "",
- "placeholder": true,
+ "badge": "MODELLED",
+ "source": "ANUGA scenarios (05_anuga_scenarios.py); ESA WorldCover 2021; OpenStreetMap contributors; GEM-15 (experimental) DTM, Google Research, CC-BY 4.0 (gaps: NASADEM)",
+ "method": "Exposure inside the ANUGA max-depth footprint (depth > 0.1 m) on the 30 m grid, Reach 1 only (dam → Medjerda confluence). DEM: GEM-15 (experimental) bare-earth DTM 15 m block-averaged to 30 m. Cropland = WorldCover class 40, built-up = class 50; buildings = OSM building centroids; roads = OSM highway lines of all classes incl. tracks; villages = OSM place=village|town|hamlet within 200 m of a wet cell, arrival = earliest first time depth > 0.1 m within 200 m, depth = max within 200 m.",
+ "uncertainty": "Scenario exploration, not a forecast. Exposure, not damage: a wet cell is counted whatever the depth above 0.1 m. 30 m terrain without channel bathymetry; OSM buildings and roads are incomplete in rural Tunisia (counts are lower bounds); WorldCover 2021 has its own classification errors.",
+ "placeholder": false,
  "schema_version": 1,
  "dam_id": "mellegue",
- "scenarios": {}
+ "scenarios": {
+  "v21_d12": {
+   "cropland_ha": 749.5,
+   "builtup_ha": 2.4,
+   "buildings": 1,
+   "road_km": 8.47,
+   "villages": [
+    {
+     "name": "Muthul",
+     "arrival_h": 9.08,
+     "max_depth_m": 5.1
+    }
+   ]
+  }
+ }
 }

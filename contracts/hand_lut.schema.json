@@ -101,6 +101,16 @@
         "road_km": {
           "title": "Road Km",
           "type": "number"
+        },
+        "population": {
+          "default": 0,
+          "title": "Population",
+          "type": "number"
+        },
+        "buildings": {
+          "default": 0,
+          "title": "Buildings",
+          "type": "integer"
         }
       },
       "required": [
