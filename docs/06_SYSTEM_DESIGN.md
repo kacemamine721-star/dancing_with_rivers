@@ -70,6 +70,10 @@ flowchart LR
 ```
 New NISAR pass → worker updates every dam → alerts written to PostGIS → API and notifications. Fully automatic Dam Watch.
 
+The full v2 design (click any dam → automatic dam snapping, upstream catchment, reservoir, downstream path, tiered processing, API contracts) is in → 09. It is a roadmap: v1 ships the static Mellègue bundle.
+
+**Local run in Docker:** `docker compose up --build web` builds the SPA with pnpm from the committed lockfile and serves it with nginx at http://localhost:5173 (`docker/web/Dockerfile`). `docker compose --profile simulation run anuga …` runs the flood model (`docker/anuga/Dockerfile`).
+
 ## 2. Repository layout
 
 ```
@@ -84,6 +88,7 @@ hydrostress/
 │  ├─ common/                   # mellegue_test.py functions as a module (RangeFile, read_gcov, boxcar…)
 │  ├─ 00_inventory.py           # = nisar_tunisia_inventory.py / all_platforms.py
 │  ├─ 01_terrain.py
+│  ├─ 01b_gem15.py              # GEM-15 15 m DTM for the flood valley (→ 09 §3.6)
 │  ├─ 02_reservoir.py           # = mellegue_reservoir.py, extended (polygon, chips on the terrain grid)
 │  ├─ 03_anomaly.py
 │  ├─ 04_routing_hand.py
@@ -356,7 +361,7 @@ pnpm build && pnpm preview   # production build check
 | ASF downloads slow/reset (WinError 10054) | High | Delays data | Cache + retries already in `RangeFile`; read only the AOI window; GIBS PNG fallback textures |
 | PROJ conflict on Windows (PostGIS) | Seen | Scripts crash | Env guard at the top of every script |
 | ANUGA too slow or fails to install | Medium | No physics scenarios | Colab; coarser mesh; `run-anuga` exe; if all fails → HAND only with honest labelling |
-| DEM lacks the channel detail | High | Unrealistic depths | Channel burn documented; show depth classes, not exact values; "screening" banner |
+| DEM lacks the channel detail | High | Unrealistic depths | Use the GEM-15 15 m DTM in the valley when it passes test D2 (→ 09 §3.6); channel burn documented; show depth classes, not exact values; "screening" banner |
 | SWOT has no lake ID / no passes | Medium | Act 8 thinner | DEM shoreline method + reported volumes; say so |
 | Area mask contaminated by dry fields | Seen | Wrong numbers | Lake polygon restriction + connectivity + visual QA of every chip |
 | Bundle too heavy | Medium | Slow demo | WebP/JPEG for basemap, 8-bit radar PNGs, lazy-load per act, cap at 15 MB initial |

@@ -1,6 +1,6 @@
 ---
 name: scene-3d
-description: WebGL / React Three Fiber engineer for Dancing with Dams. Use for the persistent R3F Stage, the cinematic intro port from the three.js r128 prototype, the terrain mesh and drape shader (swipe, HAND flood, depth), camera shots and GSAP flights, NISAR beam, post-processing, quality tiers and 3D performance.
+description: WebGL / React Three Fiber engineer for Dancing with the Rivers. Use for the persistent R3F Stage, the cinematic intro port from the three.js r128 prototype, the terrain mesh and drape shader (swipe, HAND flood, depth), camera shots and GSAP flights, NISAR beam, post-processing, quality tiers and 3D performance.
 model: inherit
 skills:
   - threejs-react-three-fiber

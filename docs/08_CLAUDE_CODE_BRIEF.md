@@ -5,7 +5,7 @@ Paste the block below into Claude Code at the root of the repo, with `docs/` (fi
 ---
 
 ```text
-You are building Dancing with Dams for NASA Space Apps 2026 (Tunis). Deadline: Sunday 15 Nov 16:30.
+You are building Dancing with the Rivers for NASA Space Apps 2026 (Tunis). Deadline: Sunday 15 Nov 16:30.
 
 Read docs/00_README.md, then 02_PRD.md, 05_APP_FLOW.md, 06_SYSTEM_DESIGN.md, 03_TRD.md, 04_UI_UX_DESIGN.md
 and 07_ANALYSIS_AND_VALIDATION.md. 01_CONTEXT_AND_RESEARCH.md is the source of truth for facts and sources.

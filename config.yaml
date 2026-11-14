@@ -1,7 +1,7 @@
-# Dancing with Dams — single pipeline configuration (docs/03_TRD.md §2, §5; docs/07)
+# Dancing with the Rivers — single pipeline configuration (docs/03_TRD.md §2, §5; docs/07)
 brand:
-  product: HydroStress          # on-screen product name (open decision: "Dancing with Dams")
-  project: Dancing with Dams
+  product: HydroStress          # on-screen product name (open decision: "Dancing with the Rivers")
+  project: Dancing with the Rivers
 
 bundle:
   version: "2026-11-15"

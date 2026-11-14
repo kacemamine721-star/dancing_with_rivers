@@ -34,6 +34,7 @@ Defines **how** every feature in → 02 is implemented: data, pipelines, algorit
 | **Sentinel-1 RTC** (VV, VH) | ESA via Microsoft Planetary Computer | **Before image (17 Jun 17:20 UTC)**, cross-sensor validation | STAC + signed COG | COG | MEASURED |
 | Sentinel-2 L2A (optional) | ESA via Planetary Computer | Optical basemap and NDWI validation on clear days | STAC | COG | MEASURED |
 | **NASADEM** (or Copernicus DEM GLO-30) | NASA / ESA via Planetary Computer | 3D terrain, flow routing, HAND, ANUGA bed, hypsometry | STAC | COG | MEASURED |
+| **GEM-15 DTM** (15 m, experimental) | Google Research, public COGs + STAC | Preferred bed for flow routing, HAND and ANUGA in the valley if test D2 passes; NASADEM fills its gaps (→ 09 §3.6) | HTTPS COG (no key) | COG | MEASURED (derived, experimental) |
 | **SWOT L2 HR LakeSP** | NASA/CNES via PO.DAAC Hydrocron | Lake water-surface elevation and storage change | Hydrocron REST (`feature=PriorLake`) | JSON/CSV | MEASURED |
 | ESA WorldCover 2021 | ESA via Planetary Computer | Cropland/built-up exposure, Manning's n | STAC | COG | MEASURED |
 | OSM places, roads, buildings | OpenStreetMap (Overpass) | Villages, roads exposure | Overpass API | GeoJSON | REPORTED (map data) |
@@ -56,9 +57,9 @@ Defines **how** every feature in → 02 is implemented: data, pipelines, algorit
 ### 5.1 Water mask & lake polygon (MEASURED)
 1. Read GCOV `HHHH` (and `HVHV`) for the AOI window; convert to γ⁰ dB.
 2. Speckle filter: boxcar 5×5 in linear power (`mt.boxcar`).
-3. Water = `HH_dB < T_w`, with **T_w = −18 dB** by default (L-band open water is typically −20 to −25 dB). Optionally confirm with `HV_dB < −25 dB`. Clamp any Otsu result to ≤ −15 dB.
+3. Water = `dB < T`, with **T chosen per image by Otsu** on the pixels of the lake polygon plus a 300 m ring of land, clamped to −23…−13.5 dB. *(Changed 14 Nov: the fixed −18 dB default failed on real data — the 17 Jun Sentinel-1 lake is wind-roughened at −15…−17 dB, and post-release wet sediment sits at −15…−18 dB in L-band.)* Report the area at T ± 2 dB as the uncertainty band.
 4. Morphology: remove components < 20 px; fill holes < 50 px (scipy.ndimage, or numpy fallback).
-5. **Restrict to the lake polygon** = union of all water masks (+ S1 17 Jun mask) dilated by 100 m, minus pixels flagged as "dry dark fields" (dark on > 70% of dates **outside** the lake connectivity).
+5. **Restrict to the lake polygon** = cells that are water in ≥ 50% of the pre-failure Sentinel-1 images (16 May → 16 Jun), the connected component nearest the dam, holes filled, dilated by 100 m (4.68 km² for Mellègue). Confidence is "low" when the lake is no darker than the surrounding land (wind).
 6. Area = Σ water pixels × pixel area (m² → km²).
 
 **Sentinel-1 (C-band VV):** same steps with `T_w = −18 dB` on VV (and wind check: if the mask's median VV is above −16 dB, flag "wind-roughened, low confidence").
@@ -68,6 +69,8 @@ Defines **how** every feature in → 02 is implemented: data, pipelines, algorit
 - Output: `timeseries/reservoir_area.json` (§6 of → 06).
 
 ### 5.3 Anomaly detection (rule-based, explainable)
+
+> **Rule in use (14 Nov, after tests → 07 §4).** For each observation, departure = harmonised area ÷ median of all observations in the previous 21 days − 1. **WARNING** below −12%, **ALERT** below −20%, each only if an **independent pass** (another sensor or track) within 6 days is also below the level. The pair z-score rule below was the first design; on real data it gave 3 ALERTs in calm months and detected only 52% of synthetic −20% drops, so it is kept as supporting evidence only.
 For each new observation *t* versus the previous valid observation *t−1* (any track):
 
 ```
@@ -98,7 +101,7 @@ Three independent methods, displayed with uncertainty:
 **Display rule:** if A is available, show it as the "level"; B and C are labelled "estimate" with error bars. Never show a single number without its band.
 
 ### 5.5 Flow path (D8 routing) (MODELLED)
-- DEM (NASADEM 30 m) → fill depressions → D8 flow direction → flow accumulation (`pysheds` or `richdem`/`whitebox`).
+- DEM (GEM-15 15 m DTM if it passes D2, else NASADEM 30 m) → fill depressions → D8 flow direction → flow accumulation (`pysheds` or `richdem`/`whitebox`).
 - Trace the steepest-descent path from the dam outlet (snap to the max-accumulation cell within 300 m) to Sidi Salem.
 - Outputs: `vectors/flowpath.geojson` (LineString with `dist_km` per vertex) and the stream network (accumulation > 5 km²) for HAND.
 

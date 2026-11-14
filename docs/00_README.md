@@ -1,4 +1,6 @@
-# Dancing with Dams — Project Documentation Index
+# Dancing with the Rivers — Project Documentation Index
+
+> **Project name: _Dancing with the Rivers_** (formerly "Dancing with Dams"). The product shown on screen is **HydroStress**, and its monitoring tool is **Dam Watch**.
 
 > **NASA Space Apps Challenge 2026 · Tunis local event**
 > Challenge: *"Dancing with SARs"*, an interactive application that uses **NASA–ISRO NISAR** radar data to track and visualize surface change.
@@ -6,7 +8,7 @@
 
 ## One-sentence pitch
 
-**On the night of 17–18 June 2026, a 72-year-old gate failed at Tunisia's Mellègue dam and about 21 million m³ of water escaped. NISAR watched the lake drain through the following weeks. HydroStress replays that night in 3D from real radar data, then turns it into *Dam Watch*: an open tool that monitors any reservoir from space every 6–12 days, raises an alert when a lake drops abnormally, and simulates where the water would go and who it would reach.**
+**On the night of 17–18 June 2026, a gate failed at Tunisia's 72-year-old Mellègue dam and about 21 million m³ of water escaped down the river. NISAR watched the lake drain through the following weeks. HydroStress replays that night in 3D from real radar data, then turns it into *Dam Watch*: an open tool that monitors any reservoir from space every 6–12 days, raises an alert when a lake drops abnormally, and simulates where the water would go and who it would reach.**
 
 ## How to use these documents (for Claude Code and the team)
 
@@ -22,6 +24,21 @@ Read them in this order. Each one is self-contained, and they cross-reference ea
 | 06 | `06_SYSTEM_DESIGN.md` | Architecture (v1 static SPA + v2 production roadmap), monorepo layout, data contracts, frontend architecture, CI/CD, task plan, risks | When structuring the repo |
 | 07 | `07_ANALYSIS_AND_VALIDATION.md` | Step-by-step analysis recipes and **how to test water area, level, volume change, the anomaly detector and the flood model** | When producing and checking results |
 | 08 | `08_CLAUDE_CODE_BRIEF.md` | The kick-off prompt and build order for Claude Code: what to build first, constraints, definition of done | Paste it into Claude Code to start |
+| 09 | `09_GENERALIZATION_AND_RIVER_DETECTION.md` | Generalization from Mellègue to any dam: automated dam snapping, amont (watershed/rivers), aval (oued flowpath), and reservoir detection | After the hackathon (v2 roadmap); its §0 lists what v1 uses, and §3.6 covers GEM-15 |
+
+## Status (14 Nov 2026, 22:30)
+
+| Area | State |
+|---|---|
+| Repo, contracts, CI, Python env, web skeleton | ✅ done (→ `CLAUDE.md` §5) |
+| Terrain, Sentinel-2 basemap, context layers (OSM, HydroSHEDS, JRC, WorldCover, WorldPop) | ✅ in the bundle (→ `DATA_SOURCES.md`) |
+| Reservoir area series (41 NISAR + 92 Sentinel-1) and anomaly detector | ✅ done; results change the story wording (→ 01 §7) |
+| GEM-15 15 m terrain for the flood valley | ✅ downloaded and checked (→ 09 §3.6) |
+| Cinematic intro port + 3D Mellègue stage | ⏳ in progress |
+| Flow path, HAND, ANUGA scenarios, impacts | ⏳ in progress |
+| Acts 1–9 UI, Dam Watch, Methods page, submission assets | ⬜ to do |
+
+Where a document and `CLAUDE.md` disagree, **`CLAUDE.md` is current**: it records the decisions taken during the build.
 
 ## Existing assets
 
@@ -31,7 +48,7 @@ Read them in this order. Each one is self-contained, and they cross-reference ea
 | `scripts/nisar_tunisia_inventory.py` | ✅ Run | ASF inventory of NISAR over Tunisia |
 | `scripts/nisar_tunisia_all_platforms.py` | ✅ Run | ASF + CMR + Worldview/GIBS + Bhoonidhi + Planetary Computer + Earth Engine check |
 | `scripts/mellegue_test.py` | ✅ Run | Go/no-go test: NISAR GCOV + SME2 + Sentinel-1 + WorldCover over Mellègue |
-| `scripts/mellegue_reservoir.py` | ⏳ To run | Reservoir water-area time series (all NISAR dates + Sentinel-1) → the main chart |
+| `scripts/mellegue_reservoir.py` | ✅ Superseded by `pipeline/02a_reservoir_series.py` + `02_reservoir.py` (run 14 Nov) | Reservoir water-area time series (all NISAR dates + Sentinel-1) → the main chart |
 | `scripts/requirements.txt` | ✅ | Python dependencies |
 
 ## Non-negotiable principles

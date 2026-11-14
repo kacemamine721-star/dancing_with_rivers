@@ -1,10 +1,12 @@
-# Dancing with Dams: project brief for Claude Code and its agents
+# Dancing with the Rivers: project brief for Claude Code and its agents
 
 NASA Space Apps 2026 (Tunis), challenge "Dancing with SARs". **Submission Sun 15 Nov 2026 16:30 (local)**, pitch 17:00, final click 23:59.
 
 **What we build.** On the night of 17–18 June 2026 a 72-year-old gate failed at Tunisia's Mellègue dam and about 21 Mm³ escaped. NISAR watched the lake drain. The app replays that night in 3D from real radar data, explains each radar signal in plain language, then unlocks *Dam Watch*: reservoir area from NISAR, automatic anomaly alerts, level and volume estimates, and "what if" flood scenarios.
 
-**Read first:** `docs/00_README.md` → 02 PRD → 05 App flow → 06 System design → 03 TRD → 04 UI/UX → 07 Analysis & validation. `docs/01_CONTEXT_AND_RESEARCH.md` is the source of truth for facts and sources. `docs/08_CLAUDE_CODE_BRIEF.md` is **superseded** where it says vanilla JS, `web/` or "keep three.js r128": the stack is the React/TS one in 03/04/06.
+**Names (decided by the user, 14 Nov):** the project is **Dancing with the Rivers** (formerly "Dancing with Dams"). The on-screen product stays **HydroStress** with its tool **Dam Watch** until the user says otherwise; both come from `apps/web/src/brand.ts` and `config.yaml`, never hard-coded.
+
+**Read first:** `docs/00_README.md` → 02 PRD → 05 App flow → 06 System design → 03 TRD → 04 UI/UX → 07 Analysis & validation. `docs/01_CONTEXT_AND_RESEARCH.md` is the source of truth for facts and sources. `docs/09_GENERALIZATION_AND_RIVER_DETECTION.md` is the **v2 roadmap** (any dam, automatic amont/aval detection, API + workers): not on the v1 critical path; its §0.3 lists the few things v1 uses. `docs/08_CLAUDE_CODE_BRIEF.md` is **superseded** where it says vanilla JS, `web/` or "keep three.js r128": the stack is the React/TS one in 03/04/06.
 
 ---
 
@@ -113,6 +115,7 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
   `pnpm install --frozen-lockfile --registry=https://registry.yarnpkg.com`. Only the lead changes dependencies.
 - Web versions: React 18.3.1, three 0.187.0, R3F 8.18.0, drei 9.122.0, postprocessing 2.19.1, GSAP 3.15.1, Vite 5.4, TS 5.9, Tailwind 3.4. CSP is `script-src 'self'`: self-host any decoder (Draco/Basis), no CDNs.
 - Contract paths inside JSON (manifest `file`, anuga `files`/`stats`) are relative to the bundle root.
+- **Docker:** `docker compose up --build web` serves the built SPA at http://localhost:5173 (pnpm + committed lockfile, nginx; verified 14 Nov). `dwd-anuga:1` (ANUGA 4.2.0) runs the flood scenarios: `docker run --rm -v "<repo>:/work" -w /work dwd-anuga:1 python pipeline/05_anuga_scenarios.py …`.
 - GitHub and PyPI are reachable. ASF downloads need `EARTHDATA_TOKEN` and are slow or reset: rely on the cache in `TESTS/mellegue_test_output/cache/`.
 - MCP servers (project `.mcp.json`): playwright, chrome-devtools, context7, shadcn.
 - Project skills (`.claude/skills/`): threejs-* (r186), gsap-* (official), shadcn (official), webapp-testing (Anthropic), accessibility, web-performance, vitest, plus the design skills (impeccable, frontend-design, design-taste-frontend, ui-ux-pro-max, ui-styling, design-system, brand, design, banner-design).
@@ -128,6 +131,9 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
 - **Anomaly detector (03_anomaly.py, 14 Nov):** the docs' single-pair z-score rule failed validation (Aug–Oct 3 ALERT + 3 WARNING; −20% synthetic drops detected 52%). Primary rule now: harmonised area vs 21-day multi-sensor baseline, WARNING < −12%, ALERT < −20%, each **confirmed by an independent pass** within 6 days. Result: **first ALERT 22 Jun 2026** (S1 o161 −21%, confirmed by S1 o88), 5 days after the failure; **0 flags before the failure**; first NISAR flag 26 Jun (A173, WARNING, −13%); flags in mid-Oct–Nov coincide with a real multi-sensor decline after the late-September rise (report as "needs operator check", not as false alarms).
   **Act 6 wording:** "NISAR and Sentinel-1 together would have raised an alarm on 22 June, five days after the failure, with no ground sensor." Never "on 19 June", never "NISAR alone". Full test report: `work/anomaly/report.md`.
 
+- **GEM-15 (01b_gem15.py, 14 Nov):** Google Research 15 m DTM (experimental, CC-BY 4.0, public COGs, no account). Valley dam → Sidi Salem: 99.2% valid, GEM-15 − NASADEM median −0.96 m (5–95%: −5.8…+3.5 m). `work/gem15_dtm_15m.tif` (gaps filled from NASADEM) is the **preferred bed for routing, HAND and ANUGA if the D8 path passes test D2**; else NASADEM. Water is masked in GEM-15 (no bathymetry). Attribution: "This dataset is produced by Google"; cite doi:10.31223/X55N75. Details: docs/09 §3.6.
+- **Context data (00_context_data.py):** Mellègue catchment 10,315 km², Sidi Salem 18,069 km²; dam point 5 m from the OSM crest line; 102 villages, 16,553 building centroids, WorldPop 601,577 people in the scene. OSM lacks the Upper Mellègue dam and the Jendouba irrigated perimeter (user to draw in `geojson_data/`).
+
 ## 9. Design direction (user's references in `UI_REFERENCES/`)
 
 The prototype stays the base look; these two references raise the bar:
@@ -137,6 +143,6 @@ Components: `<Badge>` (dot pill), `<Stat>`, `<HonestyNote>` in `src/components/`
 
 ## 10. Open decisions (ask the user; do not assume)
 
-- Product name on screen: "Dancing with Dams" vs "HydroStress" (docs use HydroStress; the project is named Dancing with Dams).
+- On-screen product name: keep "HydroStress" (current) or show "Dancing with the Rivers" as the title too? The project name itself is settled.
 - Hosting: Vercel (docs/02 §8) or GitHub Pages (docs/08). Either way the app stays static.
 - Project `.npmrc` pointing at `registry.yarnpkg.com`.

@@ -1,6 +1,6 @@
 ---
 name: frontend-ui
-description: React + TypeScript application engineer for Dancing with Dams. Use for the Vite app shell, routing and deep links, Zustand store and URL sync, the typed DataSource layer (TanStack Query + Zod generated from contracts), story acts and ActCard, TimeScrubber, SwipeHandle, LayerPanel, VolumeSlider, ImpactCounters, AlertCard, ReservoirChart (visx), Dam Watch drawer, Methods/Sources pages, design tokens and Tailwind, shadcn/Radix components, accessibility.
+description: React + TypeScript application engineer for Dancing with the Rivers. Use for the Vite app shell, routing and deep links, Zustand store and URL sync, the typed DataSource layer (TanStack Query + Zod generated from contracts), story acts and ActCard, TimeScrubber, SwipeHandle, LayerPanel, VolumeSlider, ImpactCounters, AlertCard, ReservoirChart (visx), Dam Watch drawer, Methods/Sources pages, design tokens and Tailwind, shadcn/Radix components, accessibility.
 model: inherit
 skills:
   - shadcn

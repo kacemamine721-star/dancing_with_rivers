@@ -123,6 +123,8 @@ Report B1–B3 on the validation page as a small table ("Detected 1/1 real event
 
 ## 5. Flow path & HAND quick flood (MODELLED)
 
+DEM: use `work/gem15_dtm_15m.tif` (GEM-15, 15 m, → 09 §3.6) if the path on it passes D2; otherwise `work/dem_32632_30m.tif`. Report which one was used.
+
 ```python
 from pysheds.grid import Grid
 grid = Grid.from_raster("work/dem_32632_30m.tif"); dem = grid.read_raster("work/dem_32632_30m.tif")
@@ -224,10 +226,10 @@ Notes:
 
 | Analysis | Check | Result | Status |
 |---|---|---|---|
-| Water area | A1 threshold ±2 dB | [TBD] | ⏳ |
-| | A2 track consistency | [TBD] | ⏳ |
-| | A3 NISAR vs S1 | [TBD] | ⏳ |
-| Anomaly | B1 true positive / B2 false alarms / B3 synthetic | [TBD] | ⏳ |
+| Water area | A1 threshold ±2 dB | Area moves about ±20% (target < 15%); the drawdown shape is unchanged. Shown as a band | ⚠️ |
+| | A2 track consistency | After per-track harmonisation the four NISAR tracks follow one curve; raw tracks differ by incidence angle | ⚠️ (number to add) |
+| | A3 NISAR vs S1 | Agree from mid-July; NISAR reads higher in the first weeks (wet sediment at L-band), explained on the page | ⚠️ (number to add) |
+| Anomaly | B1 true positive / B2 false alarms / B3 synthetic | Confirmed-departure rule: ALERT 22 Jun (5 days after), 0 flags before the failure; Oct–Nov flags coincide with a real decline (unclassified). The first pair z-score rule failed B2/B3 and was replaced | ⚠️ |
 | Level | L1–L3 SWOT | [TBD / not available] | ⏳ |
 | | L4–L5 DEM shoreline | [TBD] | ⏳ |
 | Volume | L6 ΔV vs 21 Mm³ | [TBD] | ⏳ |

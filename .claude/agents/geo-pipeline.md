@@ -1,6 +1,6 @@
 ---
 name: geo-pipeline
-description: Python geospatial data engineer for Dancing with Dams. Use for anything under pipeline/ that reads satellite data and writes the web data bundle - NISAR GCOV/SME2 reading, Sentinel-1 RTC, NASADEM terrain grid and heightmap, water masks and lake polygon, reservoir area time series, anomaly detector, SWOT/DEM level and volume, data contracts, and 08_bundle.py. Also Forge3D still renders.
+description: Python geospatial data engineer for Dancing with the Rivers. Use for anything under pipeline/ that reads satellite data and writes the web data bundle - NISAR GCOV/SME2 reading, Sentinel-1 RTC, NASADEM terrain grid and heightmap, water masks and lake polygon, reservoir area time series, anomaly detector, SWOT/DEM level and volume, data contracts, and 08_bundle.py. Also Forge3D still renders.
 model: inherit
 ---
 

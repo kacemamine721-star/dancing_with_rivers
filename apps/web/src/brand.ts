@@ -1,8 +1,8 @@
 /**
  * Product naming. Every place that shows the product name reads it from here,
- * so the pending "HydroStress" vs "Dancing with Dams" decision is a one-line change.
+ * so the pending "HydroStress" vs "Dancing with the Rivers" decision is a one-line change.
  */
-export const BRAND = { product: 'HydroStress', project: 'Dancing with Dams' } as const;
+export const BRAND = { product: 'HydroStress', project: 'Dancing with the Rivers' } as const;
 
 /**
  * Split a name for the two-tone wordmark (prototype: Hydro<b>Stress</b>).

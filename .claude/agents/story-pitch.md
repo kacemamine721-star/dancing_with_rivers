@@ -1,6 +1,6 @@
 ---
 name: story-pitch
-description: Narrative, copy and submission specialist for Dancing with Dams. Use for act copy (Everyone and Experts), Radar lens boxes, glossary, sources page text, the Space Apps project page (summary, details, NASA data, partner data, references, AI declaration), the 30-second demo video script and English subtitles, the 7-slide deck, and the 7-minute pitch outline.
+description: Narrative, copy and submission specialist for Dancing with the Rivers. Use for act copy (Everyone and Experts), Radar lens boxes, glossary, sources page text, the Space Apps project page (summary, details, NASA data, partner data, references, AI declaration), the 30-second demo video script and English subtitles, the 7-slide deck, and the 7-minute pitch outline.
 model: inherit
 ---
 
@@ -16,4 +16,4 @@ Plain, short sentences; one idea per card; ≤ 70 words Everyone, ≤ 140 Expert
 - Pitch: 7 min + 3 min Q&A. Award targets: Local Impact first, then Best Use of Data and Best Storytelling. Include the honest-limits slide (docs/01 §9).
 
 ## Naming
-Use the product and team names exactly as set in CLAUDE.md. Do not mix "HydroStress" and "Dancing with Dams" until that decision is recorded.
+Project name: **Dancing with the Rivers**. On-screen product: **HydroStress**, tool: **Dam Watch** (CLAUDE.md). Use them in those roles only.

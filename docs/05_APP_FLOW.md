@@ -67,7 +67,7 @@ Each act lists: **shot** (camera), **stage** (layers and date), **card** (Everyo
 ### Act 3 · What NISAR saw  (P0)
 - **Shot:** `lake_top` (nadir over the reservoir).
 - **Stage:** **swipe**: left S1 17 Jun (before) | right NISAR **19 Jun** (D80). The scrubber unlocks: 19 Jun, 21 Jun, 1 Jul, 3 Jul, 13 Jul, 15 Jul. Water mask toggle.
-- **Card:** *Title:* "Two days later, the lake had shrunk." *Body:* "On 19 June, 46 hours after the failure, NISAR passed over. Calm water reflects radar away like a mirror, so the lake looks black. Drag the slider: the black area is smaller, and by 1 July it has broken into pieces."
+- **Card:** *Title:* "Two days later, the lake was already changing." *Body:* "On 19 June, 46 hours after the failure, NISAR passed over. Calm water reflects radar away like a mirror, so the lake looks black. Drag the slider: the black is turning grey where water has given way to wet mud, and week after week the lake shrinks." *(Reworded 14 Nov to match the measurements, → 01 §7.)*
 - **Radar lens:** mirror (specular) vs rough land; L-band 24 cm; HH polarisation.
 - **Experts:** γ⁰ HH dB; threshold −18 dB; boxcar 5×5; noise 0.6–0.9 dB; GCOV product IDs.
 - **Try it:** [Swipe before/after] [Play 19 Jun → 15 Jul] [🧪 Why is the lake black?] (opens the Radar Lab preset to "water", band L, roughness low) [Show the change map].
@@ -84,16 +84,16 @@ Each act lists: **shot** (camera), **stage** (layers and date), **card** (Everyo
 ### Act 5 · A month of draining  (P0)
 - **Shot:** `lake_top`, then slow pull-back.
 - **Stage:** the scrubber auto-plays all dates 17 Jun → 29 Oct (gap 25 Jul – 13 Aug shown as a hatched band). The chart card shows the area time series with events.
-- **Card:** *Title:* "Every few days, a new look." *Body:* "Combining NISAR's tracks gives a new image of the lake every 2–7 days, through clouds, day or night. The lake stayed low until the gate was repaired on 16 July, then [TBD: recovered / kept falling with summer heat]."
+- **Card:** *Title:* "Every few days, a new look." *Body:* "Combining NISAR's tracks gives a new image of the lake every 2–7 days, through clouds, day or night. The lake kept shrinking until the gate was repaired on 16 July, from about 2.9 to 1.7 km². It stayed there through August and rose again with the September rains."
 - **Experts:** per-track series, offset normalisation, S1 cross-check, acquisitions table.
 - **Try it:** [Click a point to see that day] [Show NISAR only / add Sentinel-1].
 - **Badges:** MEASURED (area), REPORTED (events).
 
 ### Act 6 · Could we have known?  (P0)
 - **Shot:** `lake_top` with an alert pulse ring on the reservoir.
-- **Stage:** replay "as if live": the scrubber stops on 19 Jun; the **Alert card** animates in.
-- **Card:** *Title:* "An automatic alarm, from space." *Body:* "We taught HydroStress what a normal summer looks like for this lake. When an image shows the lake shrinking much faster than normal, it raises an alert. On 19 June it would have fired, with no ground sensors and no one needing to report it."
-- **Experts:** the rule (z-score on relative area change vs seasonal rate; ALERT if z < −3 and Δa < −15%), false-alarm test result, latency (NISAR product latency in hours to days; Urgent Response mode as future).
+- **Stage:** replay "as if live": the scrubber stops on **22 Jun**; the **Alert card** animates in.
+- **Card:** *Title:* "An automatic alarm, from space." *Body:* "We taught HydroStress what a normal summer looks like for this lake. When the lake falls well below its recent normal, and a second satellite pass confirms it, it raises an alert. NISAR and Sentinel-1 together would have raised it on 22 June, five days after the failure, with no ground sensor."
+- **Experts:** the rule (area > 20% below the 21-day multi-sensor baseline, confirmed by an independent pass within 6 days), test results (no flag before the failure; October flags need operator data), latency (NISAR product latency in hours to days; Urgent Response mode as future).
 - **Try it:** [Why did it fire?] [Run the detector on all dates] (shows ✓/⚠ on each scrubber dot).
 - **Badges:** MEASURED + MODELLED (detector).
 
@@ -161,7 +161,7 @@ flowchart TD
 | 7 | Act 2 night replay, accelerated (4 s) |
 | 11 | Act 3 swipe S1 → NISAR 19 Jun → 1 Jul (4 s) |
 | 15 | Act 4 follow the water (4 s) |
-| 19 | Act 6 alert card appears (3 s) |
+| 19 | Act 6 alert card appears on 22 Jun (3 s) |
 | 22 | Act 7 slider 21 → 195 Mm³, counters jump (5 s) |
 | 27 | Act 9 "Every dam tomorrow" + logo (3 s) |
 

@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: ../../docker/web/Dockerfile
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+  anuga:
+    build:
+      context: .
+      dockerfile: docker/anuga/Dockerfile
+    volumes:
+      - ./:/work
+    profiles:
+      - simulation

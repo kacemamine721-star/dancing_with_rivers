@@ -1,6 +1,6 @@
 ---
 name: science-reviewer
-description: Read-only scientific integrity reviewer for Dancing with Dams. Use before any story copy, number, chart or claim ships, and before the submission - checks every claim against the data bundle and sources, badge correctness, uncertainty shown, the 07 validation table, and the say / do-not-say rules. Use proactively after pipeline outputs change.
+description: Read-only scientific integrity reviewer for Dancing with the Rivers. Use before any story copy, number, chart or claim ships, and before the submission - checks every claim against the data bundle and sources, badge correctness, uncertainty shown, the 07 validation table, and the say / do-not-say rules. Use proactively after pipeline outputs change.
 tools: Read, Grep, Glob, Bash
 model: inherit
 ---

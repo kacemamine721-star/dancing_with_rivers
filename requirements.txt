@@ -1,4 +1,4 @@
-# Dancing with Dams pipeline — Python 3.11
+# Dancing with the Rivers pipeline — Python 3.11
 asf_search>=11
 h5py
 numpy<2.3

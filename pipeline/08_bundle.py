@@ -202,6 +202,7 @@ SOURCES = [C.Source(**s) for s in [
     dict(id="esa-worldcover", title="ESA WorldCover 10 m 2021 v200 (CC BY 4.0)", url="https://esa-worldcover.org/", kind="data"),
     dict(id="worldpop", title="WorldPop 2020 constrained population, Tunisia 100 m (CC BY 4.0)", url="https://hub.worldpop.org/geodata/summary?id=49920", kind="data"),
     dict(id="geoboundaries", title="geoBoundaries gbOpen (Runfola et al. 2020)", url="https://www.geoboundaries.org/", kind="data"),
+    dict(id="gem-15", title="GEM-15 15 m elevation models (Google Research, experimental) — \"This dataset is produced by Google\"", url="https://developers.google.com/earth-engine/datasets/catalog/projects_climate-and-sustainability_assets_gem-15_v1", kind="data"),
     dict(id="anuga", title="ANUGA hydrodynamic model", url="https://github.com/GeoscienceAustralia/anuga_core", kind="method"),
     dict(id="bn-gate", title="Gate failure details (Business News, 18 Jun 2026)", url="https://businessnews.com.tn/2026/06/18/la-fuite-spectaculaire-du-barrage-de-mellegue-na-cause-aucun-degat/1406440/", kind="press"),
     dict(id="lp-21mm3", title="21 Mm³ released in a few hours (La Presse, 19 Jun 2026)", url="https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/", kind="press"),

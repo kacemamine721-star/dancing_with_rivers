@@ -74,6 +74,12 @@
    "kind": "data"
   },
   {
+   "id": "gem-15",
+   "title": "GEM-15 15 m elevation models (Google Research, experimental) — \"This dataset is produced by Google\"",
+   "url": "https://developers.google.com/earth-engine/datasets/catalog/projects_climate-and-sustainability_assets_gem-15_v1",
+   "kind": "data"
+  },
+  {
    "id": "anuga",
    "title": "ANUGA hydrodynamic model",
    "url": "https://github.com/GeoscienceAustralia/anuga_core",

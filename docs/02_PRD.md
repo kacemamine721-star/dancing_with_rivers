@@ -1,6 +1,6 @@
 # 02 · Product Requirements Document (PRD)
 
-**Product:** Dancing with Dams
+**Product:** Dancing with the Rivers
 **Version:** Hackathon v1.0 (submission Sun 15 Nov 2026 16:30)
 **Owner:** Team Starlight Tunisia, NASA Space Apps Tunis 2026
 

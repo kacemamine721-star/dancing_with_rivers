@@ -1,6 +1,6 @@
 ---
 name: qa-verifier
-description: Verification engineer for Dancing with Dams. Use after each milestone to drive the real app in a browser and prove it works - Playwright end-to-end flows, axe accessibility, visual parity of the ported intro against the reference prototype, FPS and load-time budgets, bundle-size budget, data-bundle contract validation, and the P0 acceptance criteria. Reports failures with evidence; does not paper over them.
+description: Verification engineer for Dancing with the Rivers. Use after each milestone to drive the real app in a browser and prove it works - Playwright end-to-end flows, axe accessibility, visual parity of the ported intro against the reference prototype, FPS and load-time budgets, bundle-size budget, data-bundle contract validation, and the P0 acceptance criteria. Reports failures with evidence; does not paper over them.
 model: inherit
 skills:
   - webapp-testing

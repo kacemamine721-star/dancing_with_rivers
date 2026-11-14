@@ -116,12 +116,12 @@ Everything we learned during the hackathon, in one place. Facts carry a source l
 | 17 Jun · evening | Ministry warns residents along the Mellègue and downstream to be vigilant | REPORTED |
 | 18 Jun | Farmland damaged downstream; Ministry says no danger to residents; Medjerda bed "can absorb" the volume | REPORTED |
 | 17–19 Jun | About **21 million m³** released "in a few hours" (some outlets report 29 million m³); flows continue for several days in the Mellègue and Medjerda | REPORTED |
-| **19 Jun** | **NISAR first look** (D80, about 46 h after): reservoir already low | MEASURED |
+| **19 Jun** | **NISAR first look** (D80, about 46 h after): lake brighter than before (water giving way to wet sediment); area not yet clearly lower | MEASURED |
 | **21 Jun** | **NISAR** (A101); **first water arrives at Sidi Salem**, which absorbs it | MEASURED + REPORTED |
-| 1–3 Jul | **NISAR:** lake fragmented, near minimum | MEASURED |
-| 13–15 Jul | **NISAR:** still low | MEASURED |
+| 1–3 Jul | **NISAR:** western arm drying; area still close to 19–21 Jun values (wet mud) | MEASURED |
+| 13–15 Jul | **NISAR:** clear shrinkage on all tracks (about −17 to −19% in 12 days) | MEASURED |
 | **16 Jul** | **Gate repaired and back in service** (about a month after) | REPORTED |
-| Jul–Oct | **NISAR** every few days (gap 25 Jul–13 Aug): recovery / summer drawdown **[TBD from chart]** | MEASURED |
+| Jul–Oct | **NISAR** every few days (gap 25 Jul–13 Aug): plateau near 1.7 km² in August, rise in late September (autumn rain), decline again in October | MEASURED |
 | 15 Sep | Upper Mellègue: planned start of operation | REPORTED (plan) |
 | 22 Sep | Divers inspect leaks at the old dam before the rainy season | REPORTED |
 | Sep–Dec | Old dam to be decommissioned | REPORTED (plan) |
@@ -142,7 +142,19 @@ Everything we learned during the hackathon, in one place. Facts carry a source l
 | Sentinel-1 confirms the drawdown | Orbit 88 change (17 → 22 Jun): the only coherent feature is at the reservoir | ✅ |
 | Farm fields (irrigated perimeter) | Rectangular change patches near Jendouba | Context only |
 
-**Main chart (pending):** `mellegue_reservoir.py`, tight box `8.665 36.290 8.735 36.330`, HH < −18 dB, all tracks + Sentinel-1. **[TBD: area before / min / end values]**
+**Main chart (done 14 Nov, `pipeline/02_reservoir.py`):** 41 NISAR + 92 Sentinel-1 measurements inside the pre-failure lake polygon, with a per-image threshold (the fixed −18 dB failed: wind at C-band, wet mud at L-band).
+
+| Period | Open-water area | Note |
+|---|---|---|
+| Before the failure (16 May → 17 Jun) | about **2.6–3.2 km²** | Sentinel-1, three orbits |
+| 17 Jun → about 20 Jul | **steady decline to about 1.7 km²** | the gate stayed open until repaired on 16 Jul |
+| August → mid-September | plateau, about 1.5–1.8 km² | |
+| Late September | rise to about 2.3–2.6 km² | autumn rain |
+| October → mid-November | decline to about 1.5–1.8 km² | cause unknown: needs operator data |
+
+Same-orbit Sentinel-1 (o168): 2.88 km² (16 Jun) → 2.21 (23 Jun) → 1.51 (11 Jul), about −48% in a month. Threshold ±2 dB moves the area by about ±20% (shown as a band). **NISAR's area lags** in the first weeks (D80: 2.49 km² on 19 Jun, 2.50 on 1 Jul) because exposed wet sediment is as dark as water at L-band; the median backscatter inside the lake rises at once (about −16…−17.5 dB before → about −14 dB on 19–21 Jun).
+
+**Anomaly detector (`pipeline/03_anomaly.py`):** area more than 20% below the 21-day multi-sensor baseline, confirmed by an independent pass within 6 days → **first ALERT 22 Jun 2026**, 5 days after the failure; no flag before it; first NISAR flag 26 Jun. The story therefore says: *the lake drained for a month; NISAR and Sentinel-1 together would have raised an alarm on 22 June.* It does **not** say "the lake vanished", "alarm on 19 June" or "NISAR alone".
 
 ## 8. Decisions log (and why)
 
@@ -192,6 +204,9 @@ Everything we learned during the hackathon, in one place. Facts carry a source l
 - ONAGRI stopped daily reports: https://businessnews.com.tn/2026/06/23/barrages-le-taux-de-remplissage-atteint-60-selon-le-ministere-de-lagriculture/1407255/
 - Water stress (<400 m³/person): https://webdo.tn/en/?p=396510
 - Illegal wells: https://www.webdo.tn/fr/actualite/national/forages-illegaux-en-tunisie-827-millions-de-metres-cubes-preleves-en-2024/405551/ · https://www.webmanagercenter.com/2026/09/02/571934/dossier-stress-hydrique-en-tunisie-les-nappes-souterraines-dernier-recours-agricole-devenu-zone-de-danger/
+
+**Terrain (added 14 Nov)**
+- GEM-15, Google Research (experimental, CC-BY 4.0): https://developers.google.com/earth-engine/datasets/catalog/projects_climate-and-sustainability_assets_gem-15_v1 · Batchu et al. 2026, doi:10.31223/X55N75 · use and test → 09 §3.6
 
 **Methods**
 - ANUGA: https://github.com/GeoscienceAustralia/anuga_core · docs https://anuga.readthedocs.io · Windows exe https://github.com/Hydrata/run_anuga
