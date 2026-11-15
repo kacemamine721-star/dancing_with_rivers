@@ -75,9 +75,9 @@ const ROADMAP = [
   },
 ] as const;
 
-/** `/v2` — landing page for the generalised version (in development, not deployed). */
+/** `/your-dam` — "Dancing with your Dam": the generalised version (in development; its live demo comes from branch v2). */
 export function Component() {
-  useDocumentTitle('V2 · every dam');
+  useDocumentTitle('Dancing with your Dam');
   const experts = useAppStore((s) => s.level === 'experts');
   const figs = useMethodFigures();
   const previews = figs.data ? [...figs.data.values()].filter((f) => f.id.startsWith('v')) : [];
@@ -96,16 +96,16 @@ export function Component() {
               ● Deployment soon · in development
             </span>
             <span className="rounded-pill border border-hairline px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-mute">
-              {BRAND.product} · V2
+              {BRAND.product} · next version
             </span>
           </div>
           <h1 className="mt-5 max-w-3xl text-[clamp(32px,5vw,60px)] font-bold leading-[1.02] tracking-tight">
-            Every dam. <span className="text-teal">Every river below it.</span>
+            Dancing with <span className="text-teal">your Dam</span>
           </h1>
           <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-ink/85">
             {experts
               ? 'V1 replays one event at one dam with a fully validated pipeline. V2 generalises the same steps to any reservoir: automatic upstream / downstream detection, a dynamic lake mask, multi-sensor area series, an out-of-sample-tested detector and queued flood scenarios. First as offline bundles for 5–10 Tunisian reservoirs; a live service only once the method is shown to transfer.'
-              : 'Version 1 tells the story of one dam, Mellègue, from real satellite data. Version 2 will do the same for many dams: pick a reservoir, and the app finds the river above and below it, measures the lake every few days from space, and warns when it drops.'}
+              : 'The story you just saw follows one dam, Mellègue, from real satellite data. Next: pick your dam, and the app finds the river above and below it, measures the lake every few days from space, and warns when it drops.'}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button variant="primary" asChild>
