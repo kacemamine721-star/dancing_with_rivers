@@ -985,7 +985,6 @@ def run(dam_id, spec, dem_choice):
             r = route(P, which, bm)
             if r["D2"]["passed"] or bm == BURNS_M[-1]:
                 break
-            del r
         runs[which] = r
     ok = lambda r: r["D1"]["passed"] and r["D2"]["passed"]  # noqa: E731
     if "gem15" in runs and ok(runs["gem15"]):

@@ -143,7 +143,7 @@ def osm_ref(s: str) -> tuple[str, int]:
     return kind, int(s[1:])
 
 
-def osm_features(js) -> "gpd.GeoDataFrame":
+def osm_features(js):
     import geopandas as gpd
     cat = load_mod(PIPE / "v2" / "dam_catalog.py", "dam_catalog")
     rows = []
