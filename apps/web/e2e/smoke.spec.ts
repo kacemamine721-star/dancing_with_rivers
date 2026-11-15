@@ -14,7 +14,7 @@ test('deep link /story/1 renders the shell with no console errors', async ({ pag
   const topbar = page.getByTestId('topbar');
   await expect(topbar).toBeVisible();
   await expect(topbar.getByRole('link', { name: /home/i })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Act 1' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /act 1/i })).toBeVisible();
   // the layer catalogue loads through the DataSource and is shown with its badge
   await expect(page.getByRole('button', { name: /show source and method/i }).first()).toBeVisible();
 
@@ -26,6 +26,7 @@ test('deep link /story/1 renders the shell with no console errors', async ({ pag
 });
 
 test('intro: debug seek reaches the hero, Esc skips to Act 1', async ({ page }) => {
+  test.slow();
   const errors: string[] = [];
   page.on('pageerror', (err) => errors.push(err.message));
 

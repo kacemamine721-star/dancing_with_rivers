@@ -42,6 +42,7 @@ export function ActCard({ config, className }: ActCardProps) {
         id="act-title"
         className="mt-3 text-[clamp(22px,2.2vw,28px)] font-bold leading-tight tracking-tight text-ink"
       >
+        <span className="sr-only">Act {config.act} · </span>
         {config.title}
       </h2>
 

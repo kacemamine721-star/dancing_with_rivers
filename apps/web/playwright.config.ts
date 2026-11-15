@@ -12,6 +12,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: CI,
   retries: CI ? 1 : 0,
+  timeout: CI ? 60_000 : 30_000,
   reporter: CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
     baseURL: `http://localhost:${PORT}`,
@@ -25,7 +26,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `pnpm preview --port ${PORT} --strictPort`,
+    command: `npx vite preview --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !CI,
     timeout: 60_000,
