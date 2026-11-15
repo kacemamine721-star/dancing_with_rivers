@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","id":"enasr1","badge":"MODELLED","source":"OSM (ODbL) dam + reservoir; HydroBASINS lev-12 v1c catchment; HydroRIVERS v1.0 network","features":[{"type":"Feature","properties":{"role":"dam","id":"enasr1","name":"barrage enasr1","osm_id":"w152926815"},"geometry":{"type":"Point","coordinates":[10.16957,36.86495]}}]}

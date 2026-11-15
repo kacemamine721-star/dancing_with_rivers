@@ -1,0 +1,3301 @@
+{
+ "schema_version": "v2-dams-0.1",
+ "generated_utc": "2026-11-15T08:03:15Z",
+ "badge": "MODELLED",
+ "sources": [
+  "OpenStreetMap contributors (ODbL): waterway/man_made=dam, water=reservoir / natural=water, place, waterway=river names; scope Tunisia (Overpass area ISO3166-1=TN)",
+  "HydroBASINS v1c level 12 and HydroRIVERS v1.0 (Lehner & Grill 2013, WWF / McGill), 15 arc-second SRTM hydrology",
+  "NISAR L2 GCOV product footprints, ASF search inventory 17 Jun – 31 Oct 2026",
+  "geoBoundaries gbOpen TUN ADM0 / ADM1"
+ ],
+ "method": "Dam = OSM dam feature with a dam name (Barrage / سد) or an OSM reservoir polygon ≥ 0.2 km² within 500 m; one entry per reservoir. Crest point = dam-line midpoint. Snapped to the nearest main-stem HydroRIVERS reach within 3 km (upland ≥ 0.5 × local max); catchment = that reach's HydroBASINS lev-12 unit + all units draining to it (dissolved, simplified ~150 m); downstream path = HydroRIVERS NEXT_DOWN chain from the crest to the sea / an endorheic sink / the national border / the next catalogued dam (simplified ~100 m). Towns = OSM places within 2 km of the path (Tunisia). NISAR = distinct GCOV acquisition dates whose product footprint contains the crest point.",
+ "uncertainty": "HydroSHEDS is a 500 m-scale model network: catchments include the whole lev-12 unit at the outlet (can over-count small dams), paths differ from OSM rivers by up to a few hundred metres and from our 30 m D8 path in length. OSM coverage and names are incomplete; null = not in the sources. Reservoir area is the mapped polygon, not current storage.",
+ "tunisia_bbox": [
+  7.522,
+  30.23,
+  11.6,
+  37.542
+ ],
+ "dams": [
+  {
+   "id": "adira",
+   "name": "Lac Adira",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w545319301",
+   "lon": 8.49227,
+   "lat": 35.32657,
+   "river": "Oued El Hatab",
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.356,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 193.7,
+   "catchment_sum_sub_area_km2": 193.8,
+   "snap_m": 68,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 193.6,
+   "snap_warning": null,
+   "downstream_km": 171.1,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Foussana",
+     "km": 15.1
+    },
+    {
+     "name": "Bou Laaba",
+     "km": 33.9
+    },
+    {
+     "name": "Khanguet Jezia",
+     "km": 77.1
+    },
+    {
+     "name": "Ezzaafria",
+     "km": 105.4
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/adira.geojson"
+  },
+  {
+   "id": "al-misri",
+   "name": "Barrage al Misri",
+   "name_en": null,
+   "name_ar": "سد المصرى",
+   "osm_id": "w106487200",
+   "lon": 10.49106,
+   "lat": 36.53397,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 0.733,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 193.8,
+   "catchment_sum_sub_area_km2": 193.8,
+   "snap_m": 86,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 59.2,
+   "snap_warning": null,
+   "downstream_km": 30.7,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Belli Gare",
+     "km": 5.0
+    },
+    {
+     "name": "Belli",
+     "km": 7.7
+    },
+    {
+     "name": "Boucharray",
+     "km": 18.8
+    },
+    {
+     "name": "Soliman",
+     "km": 25.1
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/al-misri.geojson"
+  },
+  {
+   "id": "ar-raml",
+   "name": "Barrage de ar-Raml",
+   "name_en": null,
+   "name_ar": "سد الرمل",
+   "osm_id": "w105618511",
+   "lon": 10.35999,
+   "lat": 36.33164,
+   "river": "Oued ar-Raml",
+   "governorate": "Zaghouan",
+   "reservoir_km2": 5.686,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 811.6,
+   "catchment_sum_sub_area_km2": 811.8,
+   "snap_m": 585,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 671.9,
+   "snap_warning": null,
+   "downstream_km": 15.8,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Bouficha",
+     "km": 11.5
+    },
+    {
+     "name": "Salloum",
+     "km": 14.1
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/ar-raml.geojson"
+  },
+  {
+   "id": "barbara",
+   "name": "Barrage de Barbara",
+   "name_en": null,
+   "name_ar": "سد بربرة",
+   "osm_id": "w563951786",
+   "lon": 8.53216,
+   "lat": 36.73437,
+   "river": null,
+   "governorate": "Jendouba",
+   "reservoir_km2": 4.18,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 236.8,
+   "catchment_sum_sub_area_km2": 236.9,
+   "snap_m": 10,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 218.3,
+   "snap_warning": null,
+   "downstream_km": 15.0,
+   "downstream_to": "border",
+   "towns": [],
+   "nisar_dates": 20,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/barbara.geojson"
+  },
+  {
+   "id": "bargou",
+   "name": "Barrage Bargou",
+   "name_en": null,
+   "name_ar": "سد برقو",
+   "osm_id": "w179721078",
+   "lon": 9.55854,
+   "lat": 36.08384,
+   "river": null,
+   "governorate": "Siliana",
+   "reservoir_km2": 0.101,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 134.6,
+   "catchment_sum_sub_area_km2": 134.7,
+   "snap_m": 20,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 16.0,
+   "snap_warning": null,
+   "downstream_km": 33.3,
+   "downstream_to": "kebir",
+   "towns": [
+    {
+     "name": "Bargou",
+     "km": 1.0
+    },
+    {
+     "name": "Sidi Aouidette",
+     "km": 27.3
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/bargou.geojson"
+  },
+  {
+   "id": "beldia",
+   "name": "Barrage el Beldia",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w211210620",
+   "lon": 9.70948,
+   "lat": 35.93138,
+   "river": null,
+   "governorate": "Kairouan",
+   "reservoir_km2": 0.213,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 456.4,
+   "catchment_sum_sub_area_km2": 456.7,
+   "snap_m": 85,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 27.5,
+   "snap_warning": null,
+   "downstream_km": 27.3,
+   "downstream_to": "nebhana",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/beldia.geojson"
+  },
+  {
+   "id": "beni-mtir",
+   "name": "Barrage Beni-Mtir",
+   "name_en": "Beni-Mtir Dam",
+   "name_ar": "سد بني مطير",
+   "osm_id": "w504108021",
+   "lon": 8.74167,
+   "lat": 36.7471,
+   "river": null,
+   "governorate": "Jendouba",
+   "reservoir_km2": 2.876,
+   "height_m": 78.0,
+   "start_date": null,
+   "catchment_km2": 148.7,
+   "catchment_sum_sub_area_km2": 148.8,
+   "snap_m": 186,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 148.8,
+   "snap_warning": null,
+   "downstream_km": 12.9,
+   "downstream_to": "bou-heurtma",
+   "towns": [
+    {
+     "name": "Beni M'tir",
+     "km": 0.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/beni-mtir.geojson"
+  },
+  {
+   "id": "bezirk",
+   "name": "Lac Bezirk",
+   "name_en": null,
+   "name_ar": "بحيرة بزيرك",
+   "osm_id": "w1442220194",
+   "lon": 10.62717,
+   "lat": 36.71956,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 0.709,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 168.8,
+   "catchment_sum_sub_area_km2": 168.8,
+   "snap_m": 50,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 83.2,
+   "snap_warning": null,
+   "downstream_km": 12.0,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Baddar",
+     "km": 2.6
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/bezirk.geojson"
+  },
+  {
+   "id": "bir-mcherga",
+   "name": "Barrage de Bir Mcherga",
+   "name_en": null,
+   "name_ar": "سد بئر مشارقة",
+   "osm_id": "w164454435",
+   "lon": 10.01099,
+   "lat": 36.51208,
+   "river": "Oued Miliane",
+   "governorate": "Zaghouan",
+   "reservoir_km2": 5.097,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1745.2,
+   "catchment_sum_sub_area_km2": 1746.0,
+   "snap_m": 76,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 1603.5,
+   "snap_warning": null,
+   "downstream_km": 47.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Bir Mcherga La Gare",
+     "km": 0.4
+    },
+    {
+     "name": "Djebel Oust",
+     "km": 9.3
+    },
+    {
+     "name": "Naassene",
+     "km": 37.1
+    },
+    {
+     "name": "Nouvelle Medina",
+     "km": 42.1
+    },
+    {
+     "name": "Radès",
+     "km": 45.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/bir-mcherga.geojson"
+  },
+  {
+   "id": "bou-heurtma",
+   "name": "Barrage Bou Heurtma",
+   "name_en": null,
+   "name_ar": "سد بوهرتمة",
+   "osm_id": "w499556279",
+   "lon": 8.78841,
+   "lat": 36.67184,
+   "river": null,
+   "governorate": "Jendouba",
+   "reservoir_km2": 6.882,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 517.7,
+   "catchment_sum_sub_area_km2": 517.9,
+   "snap_m": 6,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 396.1,
+   "snap_warning": null,
+   "downstream_km": 80.7,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Bou Salem",
+     "km": 27.2
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 43.5
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/bou-heurtma.geojson"
+  },
+  {
+   "id": "djoumine",
+   "name": "Barrage de Djoumine",
+   "name_en": null,
+   "name_ar": "سد جومين",
+   "osm_id": "w128202941",
+   "lon": 9.61465,
+   "lat": 36.99169,
+   "river": "Oued Joumine",
+   "governorate": "Bizerte",
+   "reservoir_km2": 5.159,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 449.2,
+   "catchment_sum_sub_area_km2": 449.4,
+   "snap_m": 147,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 449.4,
+   "snap_warning": null,
+   "downstream_km": 32.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "El Arima",
+     "km": 0.0
+    },
+    {
+     "name": "Mateur",
+     "km": 8.6
+    },
+    {
+     "name": "Tinja",
+     "km": 30.4
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/djoumine.geojson"
+  },
+  {
+   "id": "enasr1",
+   "name": "barrage enasr1",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w152926815",
+   "lon": 10.16957,
+   "lat": 36.86495,
+   "river": null,
+   "governorate": "Ariana",
+   "reservoir_km2": null,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": null,
+   "catchment_sum_sub_area_km2": null,
+   "snap_m": null,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": null,
+   "snap_warning": "no HydroRIVERS reach within 3 km",
+   "downstream_km": null,
+   "downstream_to": null,
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/enasr1.geojson"
+  },
+  {
+   "id": "gamgoum",
+   "name": "Barrage de Gamgoum",
+   "name_en": null,
+   "name_ar": "سد قمقوم",
+   "osm_id": "w499550891",
+   "lon": 9.26722,
+   "lat": 37.19846,
+   "river": null,
+   "governorate": "Bizerte",
+   "reservoir_km2": 1.368,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 187.1,
+   "catchment_sum_sub_area_km2": 187.1,
+   "snap_m": 60,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "oued-el-harka"
+   ],
+   "snap_reach_upland_km2": 39.3,
+   "snap_warning": null,
+   "downstream_km": 2.3,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Ferjani",
+     "km": 1.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/gamgoum.geojson"
+  },
+  {
+   "id": "ghazela",
+   "name": "Barrage El Ghazela",
+   "name_en": null,
+   "name_ar": "سد الغزالة",
+   "osm_id": "w254040332",
+   "lon": 9.54717,
+   "lat": 37.05859,
+   "river": "Oued Ghezala",
+   "governorate": "Bizerte",
+   "reservoir_km2": 0.903,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 186.0,
+   "catchment_sum_sub_area_km2": 186.1,
+   "snap_m": 75,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 59.0,
+   "snap_warning": null,
+   "downstream_km": 30.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Tinja",
+     "km": 28.4
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/ghazela.geojson"
+  },
+  {
+   "id": "harka",
+   "name": "Barrage El Harka",
+   "name_en": "Harka Dam",
+   "name_ar": "سد الحركة",
+   "osm_id": "w1432390981",
+   "lon": 9.57096,
+   "lat": 37.26261,
+   "river": null,
+   "governorate": "Bizerte",
+   "reservoir_km2": 0.058,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 559.2,
+   "catchment_sum_sub_area_km2": 559.3,
+   "snap_m": 1168,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": [
+    "osm-w1370754086"
+   ],
+   "snap_reach_upland_km2": 58.3,
+   "snap_warning": null,
+   "downstream_km": 29.3,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Tinja",
+     "km": 27.3
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/harka.geojson"
+  },
+  {
+   "id": "houareb",
+   "name": "Barrage El Houareb",
+   "name_en": "Al-Hawarib Dam",
+   "name_ar": "سد الهوارب",
+   "osm_id": "w185163027",
+   "lon": 9.74614,
+   "lat": 35.57363,
+   "river": null,
+   "governorate": "Kairouan",
+   "reservoir_km2": 4.051,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1354.2,
+   "catchment_sum_sub_area_km2": 1355.0,
+   "snap_m": 467,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 1209.5,
+   "snap_warning": null,
+   "downstream_km": 117.7,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "El Haouareb",
+     "km": 2.2
+    },
+    {
+     "name": "Chebika",
+     "km": 20.4
+    },
+    {
+     "name": "Rakkada",
+     "km": 35.6
+    },
+    {
+     "name": "Kairouan",
+     "km": 42.2
+    },
+    {
+     "name": "El Ghabet",
+     "km": 50.7
+    },
+    {
+     "name": "Ouled Hammouda",
+     "km": 66.7
+    },
+    {
+     "name": "Dar Youssef",
+     "km": 94.5
+    },
+    {
+     "name": "Kenana",
+     "km": 99.6
+    },
+    {
+     "name": "Sidi Bou Ali",
+     "km": 107.9
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/houareb.geojson"
+  },
+  {
+   "id": "kebir",
+   "name": "Barrage el Kebir",
+   "name_en": "Barrage el Kebir",
+   "name_ar": "سد الكبير",
+   "osm_id": "w128504388",
+   "lon": 9.79362,
+   "lat": 36.25051,
+   "river": "Oued El Kebir",
+   "governorate": "Zaghouan",
+   "reservoir_km2": 2.457,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 381.0,
+   "catchment_sum_sub_area_km2": 381.2,
+   "snap_m": 101,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 281.1,
+   "snap_warning": null,
+   "downstream_km": 45.3,
+   "downstream_to": "bir-mcherga",
+   "towns": [
+    {
+     "name": "El Fahs",
+     "km": 21.0
+    },
+    {
+     "name": "Bir Mcherga La Gare",
+     "km": 45.3
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/kebir.geojson"
+  },
+  {
+   "id": "kesseb",
+   "name": "Barrage Kesseb",
+   "name_en": null,
+   "name_ar": "سد كساب",
+   "osm_id": "w317553611",
+   "lon": 9.00244,
+   "lat": 36.76148,
+   "river": null,
+   "governorate": "Béja",
+   "reservoir_km2": 4.091,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 246.5,
+   "catchment_sum_sub_area_km2": 246.6,
+   "snap_m": 191,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 110.6,
+   "snap_warning": null,
+   "downstream_km": 71.1,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Sidi Smail",
+     "km": 33.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/kesseb.geojson"
+  },
+  {
+   "id": "khetheiria",
+   "name": "Barrage de Khetheiria",
+   "name_en": "Khetheyria Dam",
+   "name_ar": "سدّ الخذايرية",
+   "osm_id": "w150261276",
+   "lon": 8.72149,
+   "lat": 36.88065,
+   "river": "Oued Mahatab",
+   "governorate": "Jendouba",
+   "reservoir_km2": 2.584,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 219.5,
+   "catchment_sum_sub_area_km2": 219.6,
+   "snap_m": 58,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "oued-sidi-salem"
+   ],
+   "snap_reach_upland_km2": 81.8,
+   "snap_warning": null,
+   "downstream_km": 10.0,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Jaballah",
+     "km": 3.4
+    },
+    {
+     "name": "Tabarka",
+     "km": 10.0
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/khetheiria.geojson"
+  },
+  {
+   "id": "lakhmess",
+   "name": "Barrage Lakhmess",
+   "name_en": null,
+   "name_ar": "سد لخماس",
+   "osm_id": "w203679607",
+   "lon": 9.47486,
+   "lat": 35.99942,
+   "river": null,
+   "governorate": "Siliana",
+   "reservoir_km2": 0.992,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 159.5,
+   "catchment_sum_sub_area_km2": 159.6,
+   "snap_m": 200,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 141.2,
+   "snap_warning": null,
+   "downstream_km": 24.4,
+   "downstream_to": "siliana",
+   "towns": [
+    {
+     "name": "Siliana",
+     "km": 14.6
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/lakhmess.geojson"
+  },
+  {
+   "id": "lebna",
+   "name": "Barrage Lebna",
+   "name_en": null,
+   "name_ar": "سد لبنة",
+   "osm_id": "w197850072",
+   "lon": 10.92136,
+   "lat": 36.73862,
+   "river": "Vallée de Menzel Horr",
+   "governorate": "Nabeul",
+   "reservoir_km2": 5.697,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 231.9,
+   "catchment_sum_sub_area_km2": 231.9,
+   "snap_m": 176,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 214.2,
+   "snap_warning": null,
+   "downstream_km": 4.7,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Lebna",
+     "km": 3.7
+    },
+    {
+     "name": "Menzel Horr",
+     "km": 4.1
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/lebna.geojson"
+  },
+  {
+   "id": "melah",
+   "name": "Lac El Melah",
+   "name_en": null,
+   "name_ar": "بحيرة المالح",
+   "osm_id": "w1570770077",
+   "lon": 9.41239,
+   "lat": 37.07117,
+   "river": "Oued Melah",
+   "governorate": "Bizerte",
+   "reservoir_km2": 2.801,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 232.6,
+   "catchment_sum_sub_area_km2": 232.7,
+   "snap_m": 730,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 103.0,
+   "snap_warning": null,
+   "downstream_km": 41.7,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Ghezala",
+     "km": 13.4
+    },
+    {
+     "name": "El Arab",
+     "km": 15.4
+    },
+    {
+     "name": "Tinja",
+     "km": 39.7
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/melah.geojson"
+  },
+  {
+   "id": "mellegue",
+   "name": "Barrage Mellègue",
+   "name_en": "Mellegue Dam",
+   "name_ar": "سد ملاق",
+   "osm_id": "w177960794",
+   "lon": 8.70261,
+   "lat": 36.31425,
+   "river": "Oued Mellegue",
+   "governorate": "El Kef",
+   "reservoir_km2": 2.029,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 10314.9,
+   "catchment_sum_sub_area_km2": 10320.8,
+   "snap_m": 60,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 10270.1,
+   "snap_warning": null,
+   "downstream_km": 104.9,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Muthul",
+     "km": 15.2
+    },
+    {
+     "name": "Ben Bchir",
+     "km": 37.9
+    },
+    {
+     "name": "Bou Salem",
+     "km": 51.4
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 67.6
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "processed",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/mellegue.geojson"
+  },
+  {
+   "id": "nebhana",
+   "name": "Barrage de Nebhana",
+   "name_en": null,
+   "name_ar": "سد نبهانة",
+   "osm_id": "w210897488",
+   "lon": 9.87135,
+   "lat": 36.05718,
+   "river": null,
+   "governorate": "Kairouan",
+   "reservoir_km2": 3.168,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 845.4,
+   "catchment_sum_sub_area_km2": 845.9,
+   "snap_m": 117,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 845.8,
+   "snap_warning": null,
+   "downstream_km": 113.3,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Ain El Battoum",
+     "km": 13.3
+    },
+    {
+     "name": "El Alam",
+     "km": 31.7
+    },
+    {
+     "name": "Edalloussi",
+     "km": 34.6
+    },
+    {
+     "name": "Motbassta",
+     "km": 51.8
+    },
+    {
+     "name": "Ouled Hammouda",
+     "km": 62.3
+    },
+    {
+     "name": "Dar Youssef",
+     "km": 90.1
+    },
+    {
+     "name": "Kenana",
+     "km": 95.2
+    },
+    {
+     "name": "Sidi Bou Ali",
+     "km": 103.5
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/nebhana.geojson"
+  },
+  {
+   "id": "osm-w128417835",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w128417835",
+   "lon": 9.97516,
+   "lat": 36.11455,
+   "river": null,
+   "governorate": "Zaghouan",
+   "reservoir_km2": 0.386,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 223.6,
+   "catchment_sum_sub_area_km2": 223.7,
+   "snap_m": 4,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 85.6,
+   "snap_warning": null,
+   "downstream_km": 112.0,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Belal",
+     "km": 28.7
+    },
+    {
+     "name": "Bir Ejdid",
+     "km": 44.4
+    },
+    {
+     "name": "Bechechema",
+     "km": 46.7
+    },
+    {
+     "name": "Motbassta",
+     "km": 51.8
+    },
+    {
+     "name": "Ouled Hammouda",
+     "km": 61.0
+    },
+    {
+     "name": "Dar Youssef",
+     "km": 88.8
+    },
+    {
+     "name": "Kenana",
+     "km": 93.9
+    },
+    {
+     "name": "Sidi Bou Ali",
+     "km": 102.2
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w128417835.geojson"
+  },
+  {
+   "id": "osm-w1370754086",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w1370754086",
+   "lon": 9.62285,
+   "lat": 37.20729,
+   "river": "Oued Douimis",
+   "governorate": "Bizerte",
+   "reservoir_km2": 0.458,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 559.2,
+   "catchment_sum_sub_area_km2": 559.3,
+   "snap_m": 6,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "harka"
+   ],
+   "snap_reach_upland_km2": 58.3,
+   "snap_warning": null,
+   "downstream_km": 19.2,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Tinja",
+     "km": 17.2
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w1370754086.geojson"
+  },
+  {
+   "id": "osm-w156723650",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w156723650",
+   "lon": 10.16081,
+   "lat": 36.57086,
+   "river": null,
+   "governorate": "Ben Arous",
+   "reservoir_km2": 0.215,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1883.2,
+   "catchment_sum_sub_area_km2": 1884.0,
+   "snap_m": 35,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 49.0,
+   "snap_warning": null,
+   "downstream_km": 31.5,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Naassene",
+     "km": 21.2
+    },
+    {
+     "name": "Nouvelle Medina",
+     "km": 26.2
+    },
+    {
+     "name": "Radès",
+     "km": 29.9
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w156723650.geojson"
+  },
+  {
+   "id": "osm-w1571532493",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w1571532493",
+   "lon": 8.44175,
+   "lat": 35.83121,
+   "river": "Oued Sarrath",
+   "governorate": "El Kef",
+   "reservoir_km2": 1.712,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1942.1,
+   "catchment_sum_sub_area_km2": 1943.5,
+   "snap_m": 143,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 1850.5,
+   "snap_warning": null,
+   "downstream_km": 84.6,
+   "downstream_to": "mellegue",
+   "towns": [],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w1571532493.geojson"
+  },
+  {
+   "id": "osm-w207464242",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w207464242",
+   "lon": 8.40858,
+   "lat": 34.19156,
+   "river": null,
+   "governorate": "Gafsa",
+   "reservoir_km2": 0.235,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 6139.5,
+   "catchment_sum_sub_area_km2": 6144.8,
+   "snap_m": 25,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 6144.5,
+   "snap_warning": null,
+   "downstream_km": 57.1,
+   "downstream_to": "sink",
+   "towns": [],
+   "nisar_dates": 18,
+   "nisar_tracks": [
+    "A101",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w207464242.geojson"
+  },
+  {
+   "id": "osm-w208412772",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w208412772",
+   "lon": 11.03703,
+   "lat": 36.8386,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 1.833,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 357.1,
+   "catchment_sum_sub_area_km2": 356.9,
+   "snap_m": 44,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "osm-w355554012"
+   ],
+   "snap_reach_upland_km2": 74.5,
+   "snap_warning": null,
+   "downstream_km": 3.3,
+   "downstream_to": "sea",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w208412772.geojson"
+  },
+  {
+   "id": "osm-w208735267",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w208735267",
+   "lon": 10.30524,
+   "lat": 36.58746,
+   "river": null,
+   "governorate": "Ben Arous",
+   "reservoir_km2": 1.304,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 166.6,
+   "catchment_sum_sub_area_km2": 166.7,
+   "snap_m": 73,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 128.3,
+   "snap_warning": null,
+   "downstream_km": 25.6,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Mornag",
+     "km": 10.9
+    },
+    {
+     "name": "Zaouia Mornag",
+     "km": 13.9
+    },
+    {
+     "name": "Naassene",
+     "km": 15.9
+    },
+    {
+     "name": "Nouvelle Medina",
+     "km": 20.2
+    },
+    {
+     "name": "Radès",
+     "km": 24.0
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w208735267.geojson"
+  },
+  {
+   "id": "osm-w218369517",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w218369517",
+   "lon": 8.96749,
+   "lat": 35.47057,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.235,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 431.4,
+   "catchment_sum_sub_area_km2": 431.7,
+   "snap_m": 39,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "osm-w545084874"
+   ],
+   "snap_reach_upland_km2": 304.0,
+   "snap_warning": null,
+   "downstream_km": 92.9,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Sbiba",
+     "km": 15.2
+    },
+    {
+     "name": "Ibrahim Ezzahar",
+     "km": 29.4
+    }
+   ],
+   "nisar_dates": 27,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w218369517.geojson"
+  },
+  {
+   "id": "osm-w218533649",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w218533649",
+   "lon": 9.07045,
+   "lat": 35.34057,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.231,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 275.5,
+   "catchment_sum_sub_area_km2": 275.7,
+   "snap_m": 224,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 189.7,
+   "snap_warning": null,
+   "downstream_km": 93.1,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Sbeïtla",
+     "km": 14.6
+    }
+   ],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w218533649.geojson"
+  },
+  {
+   "id": "osm-w243776506",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w243776506",
+   "lon": 10.21689,
+   "lat": 36.14973,
+   "river": null,
+   "governorate": "Sousse",
+   "reservoir_km2": 0.754,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 308.1,
+   "catchment_sum_sub_area_km2": 308.2,
+   "snap_m": 4,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 165.0,
+   "snap_warning": null,
+   "downstream_km": 41.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Aïn Garci",
+     "km": 3.0
+    },
+    {
+     "name": "Menzel Fetah",
+     "km": 8.8
+    },
+    {
+     "name": "Frada",
+     "km": 12.9
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w243776506.geojson"
+  },
+  {
+   "id": "osm-w254031305",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w254031305",
+   "lon": 8.75935,
+   "lat": 35.89885,
+   "river": null,
+   "governorate": "El Kef",
+   "reservoir_km2": 0.328,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 142.4,
+   "catchment_sum_sub_area_km2": 142.5,
+   "snap_m": 96,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 31.7,
+   "snap_warning": null,
+   "downstream_km": 72.0,
+   "downstream_to": "mellegue",
+   "towns": [],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w254031305.geojson"
+  },
+  {
+   "id": "osm-w278432337",
+   "name": "بحيرة غدير القلة",
+   "name_en": null,
+   "name_ar": "بحيرة غدير القلة",
+   "osm_id": "w278432337",
+   "lon": 10.02585,
+   "lat": 36.77492,
+   "river": null,
+   "governorate": "Tunis",
+   "reservoir_km2": 1.447,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 242.2,
+   "catchment_sum_sub_area_km2": 242.3,
+   "snap_m": 922,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 16.0,
+   "snap_warning": null,
+   "downstream_km": 66.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Mornaguia",
+     "km": 1.1
+    },
+    {
+     "name": "El Habibia",
+     "km": 18.3
+    },
+    {
+     "name": "Djedeida",
+     "km": 21.7
+    },
+    {
+     "name": "Essaïda",
+     "km": 22.4
+    },
+    {
+     "name": "Kantarat Benzart",
+     "km": 46.2
+    },
+    {
+     "name": "Utique Nouvelle",
+     "km": 58.2
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w278432337.geojson"
+  },
+  {
+   "id": "osm-w330899418",
+   "name": "Barrage",
+   "name_en": null,
+   "name_ar": "سد",
+   "osm_id": "w330899418",
+   "lon": 7.94632,
+   "lat": 34.3945,
+   "river": null,
+   "governorate": "Tozeur",
+   "reservoir_km2": 0.31,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 739.3,
+   "catchment_sum_sub_area_km2": 740.0,
+   "snap_m": 60,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 687.7,
+   "snap_warning": null,
+   "downstream_km": 38.0,
+   "downstream_to": "sink",
+   "towns": [
+    {
+     "name": "Tameghza",
+     "km": 2.6
+    },
+    {
+     "name": "Sondous",
+     "km": 8.4
+    }
+   ],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w330899418.geojson"
+  },
+  {
+   "id": "osm-w355554012",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w355554012",
+   "lon": 10.9909,
+   "lat": 36.82392,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 0.829,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 357.1,
+   "catchment_sum_sub_area_km2": 356.9,
+   "snap_m": 128,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "osm-w208412772"
+   ],
+   "snap_reach_upland_km2": 35.0,
+   "snap_warning": null,
+   "downstream_km": 5.3,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Jamel Eddine",
+     "km": 4.0
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w355554012.geojson"
+  },
+  {
+   "id": "osm-w477205444",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w477205444",
+   "lon": 8.47902,
+   "lat": 35.42086,
+   "river": "Oued El Hatab",
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.301,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 291.8,
+   "catchment_sum_sub_area_km2": 292.1,
+   "snap_m": 8,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 193.3,
+   "snap_warning": null,
+   "downstream_km": 173.1,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Foussana",
+     "km": 17.1
+    },
+    {
+     "name": "Bou Laaba",
+     "km": 35.9
+    },
+    {
+     "name": "Khanguet Jezia",
+     "km": 79.1
+    },
+    {
+     "name": "Ezzaafria",
+     "km": 107.4
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w477205444.geojson"
+  },
+  {
+   "id": "osm-w477205452",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w477205452",
+   "lon": 8.56996,
+   "lat": 35.41922,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.218,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 423.4,
+   "catchment_sum_sub_area_km2": 423.7,
+   "snap_m": 52,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 66.8,
+   "snap_warning": null,
+   "downstream_km": 169.4,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Foussana",
+     "km": 13.4
+    },
+    {
+     "name": "Bou Laaba",
+     "km": 32.2
+    },
+    {
+     "name": "Khanguet Jezia",
+     "km": 75.4
+    },
+    {
+     "name": "Ezzaafria",
+     "km": 103.7
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w477205452.geojson"
+  },
+  {
+   "id": "osm-w545084874",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w545084874",
+   "lon": 8.92031,
+   "lat": 35.52489,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.249,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 431.4,
+   "catchment_sum_sub_area_km2": 431.7,
+   "snap_m": 45,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "osm-w218369517"
+   ],
+   "snap_reach_upland_km2": 84.2,
+   "snap_warning": null,
+   "downstream_km": 95.2,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Sbiba",
+     "km": 17.5
+    },
+    {
+     "name": "Ibrahim Ezzahar",
+     "km": 31.7
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w545084874.geojson"
+  },
+  {
+   "id": "osm-w550406026",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w550406026",
+   "lon": 8.46172,
+   "lat": 35.52171,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.405,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 314.6,
+   "catchment_sum_sub_area_km2": 314.8,
+   "snap_m": 118,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 41.4,
+   "snap_warning": null,
+   "downstream_km": 59.7,
+   "downstream_to": "osm-w1571532493",
+   "towns": [
+    {
+     "name": "Haïdra",
+     "km": 5.8
+    },
+    {
+     "name": "Kalâat Khasba",
+     "km": 24.7
+    },
+    {
+     "name": "Mahjouba",
+     "km": 52.8
+    }
+   ],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w550406026.geojson"
+  },
+  {
+   "id": "osm-w554105347",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w554105347",
+   "lon": 8.64623,
+   "lat": 35.23945,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.222,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 116.7,
+   "catchment_sum_sub_area_km2": 116.8,
+   "snap_m": 109,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 99.1,
+   "snap_warning": null,
+   "downstream_km": 154.6,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Bou Laaba",
+     "km": 17.4
+    },
+    {
+     "name": "Khanguet Jezia",
+     "km": 60.6
+    },
+    {
+     "name": "Ezzaafria",
+     "km": 88.9
+    }
+   ],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w554105347.geojson"
+  },
+  {
+   "id": "osm-w587768694",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w587768694",
+   "lon": 8.9402,
+   "lat": 35.93073,
+   "river": null,
+   "governorate": "El Kef",
+   "reservoir_km2": 0.22,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 396.2,
+   "catchment_sum_sub_area_km2": 396.4,
+   "snap_m": 57,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 52.8,
+   "snap_warning": null,
+   "downstream_km": 168.8,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Zouarine",
+     "km": 12.5
+    },
+    {
+     "name": "Le Sers",
+     "km": 26.8
+    },
+    {
+     "name": "Sidi Bou Rouis",
+     "km": 44.0
+    },
+    {
+     "name": "Souk Essebt",
+     "km": 102.9
+    },
+    {
+     "name": "Bou Salem",
+     "km": 115.2
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 131.5
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w587768694.geojson"
+  },
+  {
+   "id": "osm-w587826870",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w587826870",
+   "lon": 9.04016,
+   "lat": 36.36506,
+   "river": null,
+   "governorate": "Siliana",
+   "reservoir_km2": 0.329,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 148.5,
+   "catchment_sum_sub_area_km2": 148.6,
+   "snap_m": 53,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 132.0,
+   "snap_warning": null,
+   "downstream_km": 96.0,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Souk Essebt",
+     "km": 30.2
+    },
+    {
+     "name": "Bou Salem",
+     "km": 42.5
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 58.7
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w587826870.geojson"
+  },
+  {
+   "id": "osm-w587944932",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w587944932",
+   "lon": 9.62887,
+   "lat": 36.86494,
+   "river": "Oued Tine",
+   "governorate": "Manouba",
+   "reservoir_km2": 4.39,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 443.7,
+   "catchment_sum_sub_area_km2": 443.8,
+   "snap_m": 141,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 315.6,
+   "snap_warning": null,
+   "downstream_km": 51.0,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Mateur",
+     "km": 29.2
+    },
+    {
+     "name": "Tinja",
+     "km": 49.0
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w587944932.geojson"
+  },
+  {
+   "id": "osm-w594349915",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w594349915",
+   "lon": 10.08385,
+   "lat": 36.18318,
+   "river": null,
+   "governorate": "Zaghouan",
+   "reservoir_km2": 0.609,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 141.4,
+   "catchment_sum_sub_area_km2": 141.4,
+   "snap_m": 140,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 86.2,
+   "snap_warning": null,
+   "downstream_km": 108.2,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Ennadhour",
+     "km": 7.1
+    },
+    {
+     "name": "Chaalil Sud",
+     "km": 9.7
+    },
+    {
+     "name": "Sidi Belal",
+     "km": 24.9
+    },
+    {
+     "name": "Bir Ejdid",
+     "km": 40.6
+    },
+    {
+     "name": "Bechechema",
+     "km": 42.9
+    },
+    {
+     "name": "Motbassta",
+     "km": 48.0
+    },
+    {
+     "name": "Ouled Hammouda",
+     "km": 57.1
+    },
+    {
+     "name": "Dar Youssef",
+     "km": 85.0
+    },
+    {
+     "name": "Kenana",
+     "km": 90.0
+    },
+    {
+     "name": "Sidi Bou Ali",
+     "km": 98.4
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w594349915.geojson"
+  },
+  {
+   "id": "osm-w604765199",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w604765199",
+   "lon": 9.23643,
+   "lat": 35.48087,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.379,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 301.7,
+   "catchment_sum_sub_area_km2": 301.9,
+   "snap_m": 42,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 302.0,
+   "snap_warning": null,
+   "downstream_km": 57.1,
+   "downstream_to": "sidi-saad",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w604765199.geojson"
+  },
+  {
+   "id": "osm-w604766812",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w604766812",
+   "lon": 8.98331,
+   "lat": 35.72387,
+   "river": null,
+   "governorate": "El Kef",
+   "reservoir_km2": 0.297,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 320.1,
+   "catchment_sum_sub_area_km2": 320.3,
+   "snap_m": 80,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 98.0,
+   "snap_warning": null,
+   "downstream_km": 99.4,
+   "downstream_to": "sidi-saad",
+   "towns": [
+    {
+     "name": "Ibrahim Ezzahar",
+     "km": 35.8
+    }
+   ],
+   "nisar_dates": 32,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w604766812.geojson"
+  },
+  {
+   "id": "osm-w628150495",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w628150495",
+   "lon": 8.97061,
+   "lat": 36.20992,
+   "river": null,
+   "governorate": "El Kef",
+   "reservoir_km2": 0.956,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 320.9,
+   "catchment_sum_sub_area_km2": 321.1,
+   "snap_m": 126,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 321.0,
+   "snap_warning": null,
+   "downstream_km": 113.1,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Souk Essebt",
+     "km": 47.3
+    },
+    {
+     "name": "Bou Salem",
+     "km": 59.6
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 75.9
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w628150495.geojson"
+  },
+  {
+   "id": "osm-w630231820",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w630231820",
+   "lon": 9.00429,
+   "lat": 35.96618,
+   "river": null,
+   "governorate": "El Kef",
+   "reservoir_km2": 0.249,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 122.8,
+   "catchment_sum_sub_area_km2": 122.9,
+   "snap_m": 43,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 49.7,
+   "snap_warning": null,
+   "downstream_km": 155.4,
+   "downstream_to": "sidi-salem",
+   "towns": [
+    {
+     "name": "Le Sers",
+     "km": 13.7
+    },
+    {
+     "name": "Sidi Bou Rouis",
+     "km": 30.6
+    },
+    {
+     "name": "Souk Essebt",
+     "km": 89.5
+    },
+    {
+     "name": "Bou Salem",
+     "km": 101.8
+    },
+    {
+     "name": "Sidi Smail",
+     "km": 118.1
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w630231820.geojson"
+  },
+  {
+   "id": "osm-w687553259",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w687553259",
+   "lon": 9.98902,
+   "lat": 36.38085,
+   "river": null,
+   "governorate": "Zaghouan",
+   "reservoir_km2": 0.213,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1387.6,
+   "catchment_sum_sub_area_km2": 1388.2,
+   "snap_m": 11,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 35.6,
+   "snap_warning": null,
+   "downstream_km": 19.3,
+   "downstream_to": "bir-mcherga",
+   "towns": [
+    {
+     "name": "Bir Mcherga La Gare",
+     "km": 19.3
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w687553259.geojson"
+  },
+  {
+   "id": "osm-w933342705",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w933342705",
+   "lon": 8.57652,
+   "lat": 35.00693,
+   "river": null,
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.282,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 223.6,
+   "catchment_sum_sub_area_km2": 223.8,
+   "snap_m": 52,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 224.0,
+   "snap_warning": null,
+   "downstream_km": 41.6,
+   "downstream_to": "sidi-aich",
+   "towns": [
+    {
+     "name": "Thélepte",
+     "km": 3.4
+    },
+    {
+     "name": "Fériana",
+     "km": 8.3
+    }
+   ],
+   "nisar_dates": 22,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w933342705.geojson"
+  },
+  {
+   "id": "osm-w98608663",
+   "name": null,
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w98608663",
+   "lon": 10.7087,
+   "lat": 36.83097,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 0.765,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 351.8,
+   "catchment_sum_sub_area_km2": 351.7,
+   "snap_m": 100,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 82.3,
+   "snap_warning": null,
+   "downstream_km": 6.3,
+   "downstream_to": "sea",
+   "towns": [],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A72",
+    "A173",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/osm-w98608663.geojson"
+  },
+  {
+   "id": "oued-bayech",
+   "name": "Oued Bayech",
+   "name_en": null,
+   "name_ar": "وادي بياش",
+   "osm_id": "w1430483760",
+   "lon": 8.70324,
+   "lat": 34.53483,
+   "river": "Oued El Kebir",
+   "governorate": "Gafsa",
+   "reservoir_km2": 2.887,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 2923.1,
+   "catchment_sum_sub_area_km2": 2925.4,
+   "snap_m": 106,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 2925.0,
+   "snap_warning": null,
+   "downstream_km": 73.8,
+   "downstream_to": "osm-w207464242",
+   "towns": [
+    {
+     "name": "Gafsa",
+     "km": 18.8
+    },
+    {
+     "name": "El Ksar",
+     "km": 20.2
+    }
+   ],
+   "nisar_dates": 22,
+   "nisar_tracks": [
+    "A101",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/oued-bayech.geojson"
+  },
+  {
+   "id": "oued-el-harka",
+   "name": "Lac Oued El Harka",
+   "name_en": null,
+   "name_ar": "بحيرة واد الحركة",
+   "osm_id": "w1432390979",
+   "lon": 9.40282,
+   "lat": 37.22148,
+   "river": "Oued El Harka",
+   "governorate": "Bizerte",
+   "reservoir_km2": 1.86,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 187.1,
+   "catchment_sum_sub_area_km2": 187.1,
+   "snap_m": 138,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "gamgoum"
+   ],
+   "snap_reach_upland_km2": 76.8,
+   "snap_warning": null,
+   "downstream_km": 4.9,
+   "downstream_to": "sea",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/oued-el-harka.geojson"
+  },
+  {
+   "id": "oued-ettoub",
+   "name": "Barrage Oued Ettoub",
+   "name_en": null,
+   "name_ar": "سد وادي الطوب",
+   "osm_id": "w587768704",
+   "lon": 9.34791,
+   "lat": 36.29445,
+   "river": "Oued Ettoub",
+   "governorate": "Siliana",
+   "reservoir_km2": 0.272,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1480.3,
+   "catchment_sum_sub_area_km2": 1481.1,
+   "snap_m": 48,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 38.6,
+   "snap_warning": null,
+   "downstream_km": 163.8,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Gaâfour",
+     "km": 3.6
+    },
+    {
+     "name": "Oued El Araar",
+     "km": 19.3
+    },
+    {
+     "name": "El Aroussa",
+     "km": 20.1
+    },
+    {
+     "name": "Testour",
+     "km": 51.5
+    },
+    {
+     "name": "Slouguia",
+     "km": 58.9
+    },
+    {
+     "name": "Medjez El-Bab",
+     "km": 72.5
+    },
+    {
+     "name": "Qarish al Wadi",
+     "km": 78.7
+    },
+    {
+     "name": "El Herri",
+     "km": 83.7
+    },
+    {
+     "name": "Boussedra",
+     "km": 85.3
+    },
+    {
+     "name": "Bordj Toumi",
+     "km": 90.4
+    },
+    {
+     "name": "El Aroussia",
+     "km": 98.1
+    },
+    {
+     "name": "Tebourba",
+     "km": 104.9
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/oued-ettoub.geojson"
+  },
+  {
+   "id": "oued-sidi-salem",
+   "name": "Oued Sidi Salem",
+   "name_en": "Wadi Sayyidi Salim",
+   "name_ar": "وادي سيدي سالم",
+   "osm_id": "w150261277",
+   "lon": 8.70021,
+   "lat": 36.88209,
+   "river": "Oued Sidi Salem",
+   "governorate": "Jendouba",
+   "reservoir_km2": 1.674,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 219.5,
+   "catchment_sum_sub_area_km2": 219.6,
+   "snap_m": 93,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": [
+    "khetheiria"
+   ],
+   "snap_reach_upland_km2": 66.3,
+   "snap_warning": null,
+   "downstream_km": 12.1,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Jaballah",
+     "km": 5.5
+    },
+    {
+     "name": "Tabarka",
+     "km": 12.1
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/oued-sidi-salem.geojson"
+  },
+  {
+   "id": "ourehniya",
+   "name": "Barrage Ourehniya",
+   "name_en": null,
+   "name_ar": "سد بوترفاس",
+   "osm_id": "w129782934",
+   "lon": 8.84505,
+   "lat": 36.93504,
+   "river": null,
+   "governorate": "Jendouba",
+   "reservoir_km2": 0.946,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 181.8,
+   "catchment_sum_sub_area_km2": 181.9,
+   "snap_m": 116,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 72.4,
+   "snap_warning": null,
+   "downstream_km": 5.4,
+   "downstream_to": "sea",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/ourehniya.geojson"
+  },
+  {
+   "id": "rmil",
+   "name": "Barrage Rmil",
+   "name_en": null,
+   "name_ar": "سد رميل",
+   "osm_id": "w310501619",
+   "lon": 9.5025,
+   "lat": 36.30215,
+   "river": "Oued Ermil",
+   "governorate": "Siliana",
+   "reservoir_km2": 0.551,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 341.8,
+   "catchment_sum_sub_area_km2": 342.0,
+   "snap_m": 25,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 260.8,
+   "snap_warning": null,
+   "downstream_km": 155.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Testour",
+     "km": 43.1
+    },
+    {
+     "name": "Slouguia",
+     "km": 50.5
+    },
+    {
+     "name": "Medjez El-Bab",
+     "km": 64.1
+    },
+    {
+     "name": "Qarish al Wadi",
+     "km": 70.3
+    },
+    {
+     "name": "El Herri",
+     "km": 75.3
+    },
+    {
+     "name": "Boussedra",
+     "km": 76.9
+    },
+    {
+     "name": "Bordj Toumi",
+     "km": 82.0
+    },
+    {
+     "name": "El Aroussia",
+     "km": 89.7
+    },
+    {
+     "name": "Tebourba",
+     "km": 96.5
+    },
+    {
+     "name": "El Battan",
+     "km": 99.0
+    },
+    {
+     "name": "Djedeida",
+     "km": 109.3
+    },
+    {
+     "name": "Essaïda",
+     "km": 111.4
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/rmil.geojson"
+  },
+  {
+   "id": "sejnane",
+   "name": "Barrage de Sejnane",
+   "name_en": "Sejnane Dam",
+   "name_ar": "سد سجنان",
+   "osm_id": "w499556303",
+   "lon": 9.47443,
+   "lat": 37.18113,
+   "river": "Oued Sejenane",
+   "governorate": "Bizerte",
+   "reservoir_km2": 7.427,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 427.9,
+   "catchment_sum_sub_area_km2": 428.0,
+   "snap_m": 13,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 379.2,
+   "snap_warning": null,
+   "downstream_km": 34.2,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Teskraya",
+     "km": 10.0
+    },
+    {
+     "name": "Tinja",
+     "km": 32.1
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sejnane.geojson"
+  },
+  {
+   "id": "sidi-aich",
+   "name": "Barrage de Sidi Aich",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w521083829",
+   "lon": 8.74743,
+   "lat": 34.74654,
+   "river": "Oued Sidi Aich",
+   "governorate": "Kasserine",
+   "reservoir_km2": 0.654,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1796.5,
+   "catchment_sum_sub_area_km2": 1798.1,
+   "snap_m": 45,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 1798.0,
+   "snap_warning": null,
+   "downstream_km": 98.9,
+   "downstream_to": "osm-w207464242",
+   "towns": [
+    {
+     "name": "Gafsa",
+     "km": 43.9
+    },
+    {
+     "name": "El Ksar",
+     "km": 45.3
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A101",
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sidi-aich.geojson"
+  },
+  {
+   "id": "sidi-el-barrak",
+   "name": "Barrage Sidi El Barrak",
+   "name_en": null,
+   "name_ar": "سد سيدي البراق",
+   "osm_id": "w129812160",
+   "lon": 8.93414,
+   "lat": 37.02397,
+   "river": "Oued Sidi El Barrak",
+   "governorate": "Béja",
+   "reservoir_km2": 28.736,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 912.1,
+   "catchment_sum_sub_area_km2": 912.5,
+   "snap_m": 304,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 912.4,
+   "snap_warning": null,
+   "downstream_km": 1.8,
+   "downstream_to": "sea",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sidi-el-barrak.geojson"
+  },
+  {
+   "id": "sidi-saad",
+   "name": "Barrage Sidi Saad",
+   "name_en": null,
+   "name_ar": "سد سيدي سعد",
+   "osm_id": "w499556432",
+   "lon": 9.69649,
+   "lat": 35.38737,
+   "river": "Oued Zeroud",
+   "governorate": "Kairouan",
+   "reservoir_km2": 10.844,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 8845.4,
+   "catchment_sum_sub_area_km2": 8851.6,
+   "snap_m": 246,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 8819.9,
+   "snap_warning": null,
+   "downstream_km": 145.6,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Saad",
+     "km": 6.1
+    },
+    {
+     "name": "Zaafrana",
+     "km": 44.7
+    },
+    {
+     "name": "El Mrazig",
+     "km": 71.0
+    },
+    {
+     "name": "El Ghabet",
+     "km": 78.7
+    },
+    {
+     "name": "Ouled Hammouda",
+     "km": 94.6
+    },
+    {
+     "name": "Dar Youssef",
+     "km": 122.4
+    },
+    {
+     "name": "Kenana",
+     "km": 127.5
+    },
+    {
+     "name": "Sidi Bou Ali",
+     "km": 135.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sidi-saad.geojson"
+  },
+  {
+   "id": "sidi-salah",
+   "name": "Barrage Sidi Salah",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w1308649664",
+   "lon": 10.66569,
+   "lat": 34.88667,
+   "river": null,
+   "governorate": "Sfax",
+   "reservoir_km2": null,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 152.1,
+   "catchment_sum_sub_area_km2": 152.1,
+   "snap_m": 139,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 106.8,
+   "snap_warning": null,
+   "downstream_km": 24.3,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Salah",
+     "km": 9.5
+    },
+    {
+     "name": "El Bederna",
+     "km": 17.9
+    },
+    {
+     "name": "El Awabed",
+     "km": 23.7
+    }
+   ],
+   "nisar_dates": 31,
+   "nisar_tracks": [
+    "A173",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sidi-salah.geojson"
+  },
+  {
+   "id": "sidi-salem",
+   "name": "Barrage Sidi Salem",
+   "name_en": "Sayyidi Salim Dam",
+   "name_ar": "سد سيدي سالم",
+   "osm_id": "w172827257",
+   "lon": 9.39695,
+   "lat": 36.58993,
+   "river": "Medjerda",
+   "governorate": "Béja",
+   "reservoir_km2": 45.692,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 18069.4,
+   "catchment_sum_sub_area_km2": 18079.4,
+   "snap_m": 86,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 18040.3,
+   "snap_warning": null,
+   "downstream_km": 121.5,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Testour",
+     "km": 9.3
+    },
+    {
+     "name": "Slouguia",
+     "km": 16.6
+    },
+    {
+     "name": "Medjez El-Bab",
+     "km": 30.3
+    },
+    {
+     "name": "Qarish al Wadi",
+     "km": 36.4
+    },
+    {
+     "name": "El Herri",
+     "km": 41.4
+    },
+    {
+     "name": "Boussedra",
+     "km": 43.0
+    },
+    {
+     "name": "Bordj Toumi",
+     "km": 48.1
+    },
+    {
+     "name": "El Aroussia",
+     "km": 55.8
+    },
+    {
+     "name": "Tebourba",
+     "km": 62.6
+    },
+    {
+     "name": "El Battan",
+     "km": 65.1
+    },
+    {
+     "name": "Djedeida",
+     "km": 75.4
+    },
+    {
+     "name": "Essaïda",
+     "km": 77.5
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/sidi-salem.geojson"
+  },
+  {
+   "id": "siliana",
+   "name": "Barrage Siliana",
+   "name_en": null,
+   "name_ar": "سد سليانة",
+   "osm_id": "w243876748",
+   "lon": 9.35291,
+   "lat": 36.1573,
+   "river": "Oued Siliana",
+   "governorate": "Siliana",
+   "reservoir_km2": 4.502,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 1191.0,
+   "catchment_sum_sub_area_km2": 1191.6,
+   "snap_m": 131,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 1041.4,
+   "snap_warning": null,
+   "downstream_km": 185.5,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "El Agsab",
+     "km": 8.2
+    },
+    {
+     "name": "Gaâfour",
+     "km": 25.3
+    },
+    {
+     "name": "Oued El Araar",
+     "km": 41.0
+    },
+    {
+     "name": "El Aroussa",
+     "km": 41.8
+    },
+    {
+     "name": "Testour",
+     "km": 73.3
+    },
+    {
+     "name": "Slouguia",
+     "km": 80.6
+    },
+    {
+     "name": "Medjez El-Bab",
+     "km": 94.3
+    },
+    {
+     "name": "Qarish al Wadi",
+     "km": 100.4
+    },
+    {
+     "name": "El Herri",
+     "km": 105.4
+    },
+    {
+     "name": "Boussedra",
+     "km": 107.0
+    },
+    {
+     "name": "Bordj Toumi",
+     "km": 112.1
+    },
+    {
+     "name": "El Aroussia",
+     "km": 119.8
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/siliana.geojson"
+  },
+  {
+   "id": "smati",
+   "name": "Lac Smati",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w310775977",
+   "lon": 9.34305,
+   "lat": 35.62379,
+   "river": "Oued Abdallah",
+   "governorate": "Siliana",
+   "reservoir_km2": 0.628,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 248.0,
+   "catchment_sum_sub_area_km2": 248.1,
+   "snap_m": 12,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 131.5,
+   "snap_warning": null,
+   "downstream_km": 58.6,
+   "downstream_to": "sidi-saad",
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/smati.geojson"
+  },
+  {
+   "id": "tabouda",
+   "name": "Barrage Tabouda",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w97468193",
+   "lon": 11.05706,
+   "lat": 37.04657,
+   "river": null,
+   "governorate": "Nabeul",
+   "reservoir_km2": 0.072,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": null,
+   "catchment_sum_sub_area_km2": null,
+   "snap_m": null,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": null,
+   "snap_warning": "no HydroRIVERS reach within 3 km",
+   "downstream_km": null,
+   "downstream_to": null,
+   "towns": [],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A72",
+    "D80",
+    "D152"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/tabouda.geojson"
+  },
+  {
+   "id": "zayatine",
+   "name": "Barrage Zayatine",
+   "name_en": null,
+   "name_ar": "سد زياتين",
+   "osm_id": "w194070212",
+   "lon": 9.20119,
+   "lat": 37.18643,
+   "river": "Oued Meradi",
+   "governorate": "Bizerte",
+   "reservoir_km2": 3.037,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 113.8,
+   "catchment_sum_sub_area_km2": 113.8,
+   "snap_m": 132,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 109.7,
+   "snap_warning": null,
+   "downstream_km": 5.4,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "Sidi Ferjani",
+     "km": 4.3
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D8",
+    "D80"
+   ],
+   "status": "catalogued",
+   "badge": "MODELLED",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/zayatine.geojson"
+  }
+ ]
+}

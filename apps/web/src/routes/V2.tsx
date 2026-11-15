@@ -6,6 +6,7 @@ import { HonestyNote } from '@/components/HonestyNote';
 import { Button } from '@/components/ui/button';
 import { BRAND } from '@/brand';
 import { figureUrl, useMethodFigures } from '@/features/methods/figures';
+import { YourDam } from '@/features/yourdam/YourDam';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useAppStore } from '@/store/app';
 
@@ -77,48 +78,46 @@ const ROADMAP = [
 
 /** `/v2` — landing page for the generalised version (in development, not deployed). */
 export function Component() {
-  useDocumentTitle('V2 · every dam');
+  useDocumentTitle('Dancing with your Dam');
   const experts = useAppStore((s) => s.level === 'experts');
   const figs = useMethodFigures();
   const previews = figs.data ? [...figs.data.values()].filter((f) => f.id.startsWith('v')) : [];
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6">
-      <header className="glass relative overflow-hidden bg-[rgba(6,12,20,.9)] p-6 sm:p-10">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 size-[420px] rounded-full opacity-40 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(95,243,255,.35), transparent 65%)' }}
-        />
-        <div className="relative">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-pill border border-alert/60 px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-alert">
-              ● Deployment soon · in development
-            </span>
-            <span className="rounded-pill border border-hairline px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-mute">
-              {BRAND.product} · V2
-            </span>
-          </div>
-          <h1 className="mt-5 max-w-3xl text-[clamp(32px,5vw,60px)] font-bold leading-[1.02] tracking-tight">
-            Every dam. <span className="text-teal">Every river below it.</span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-ink/85">
-            {experts
-              ? 'V1 replays one event at one dam with a fully validated pipeline. V2 generalises the same steps to any reservoir: automatic upstream / downstream detection, a dynamic lake mask, multi-sensor area series, an out-of-sample-tested detector and queued flood scenarios. First as offline bundles for 5–10 Tunisian reservoirs; a live service only once the method is shown to transfer.'
-              : 'Version 1 tells the story of one dam, Mellègue, from real satellite data. Version 2 will do the same for many dams: pick a reservoir, and the app finds the river above and below it, measures the lake every few days from space, and warns when it drops.'}
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Button variant="primary" asChild>
-              <Link to="/story/1">
-                See V1: the Mellègue story <ArrowRight aria-hidden />
-              </Link>
-            </Button>
-            <Button variant="ghost" asChild>
-              <Link to="/methods">How V1 works</Link>
-            </Button>
-          </div>
+      <header className="relative">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="rounded-pill border border-alert/60 px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-alert">
+            ● V2 preview · deployment soon
+          </span>
+          <span className="rounded-pill border border-hairline px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-mute">
+            {BRAND.product}
+          </span>
         </div>
+        <h1 className="mt-4 text-[clamp(34px,5.4vw,64px)] font-bold leading-[1.02] tracking-tight">
+          Dancing with <span className="text-teal">your Dam</span>
+        </h1>
+        <p className="mt-4 max-w-3xl text-[16px] leading-relaxed text-ink/85">
+          {experts
+            ? 'Pick any catalogued Tunisian dam and watch the V2 pipeline run on its real geometry: snap to HydroRIVERS, upstream HydroBASINS catchment, mapped reservoir, NISAR passes from the ASF inventory, and the downstream path with the places it passes. Lake series, alerts and floods are computed for Mellègue (V1); for other dams they are the milestone-1 work, shown as planned.'
+            : 'Pick a dam. Watch what we do with it, step by step: find its river, the land that feeds it, the radar passes over its lake, and where its water would go downstream. For Mellègue every step is done; for the other dams the first steps are ready and the rest is coming in V2.'}
+        </p>
       </header>
+
+      <div className="mt-7">
+        <YourDam />
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Button variant="primary" asChild>
+          <Link to="/story/1">
+            See the full Mellègue story (V1) <ArrowRight aria-hidden />
+          </Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link to="/methods">How each step works</Link>
+        </Button>
+      </div>
 
       <section aria-labelledby="v2-features" className="mt-10">
         <h2 id="v2-features" className="kicker">

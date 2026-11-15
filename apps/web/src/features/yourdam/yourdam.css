@@ -1,0 +1,17 @@
+/* Dancing with your Dam: map animations (disabled under reduced motion by the component) */
+@keyframes ywd-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+.ywd-pulse { transform-box: fill-box; transform-origin: center; animation: ywd-pulse 2.2s ease-in-out infinite; }
+@keyframes ywd-sweep {
+  0% { opacity: 0; }
+  20%, 60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.ywd-sweep { animation: ywd-sweep 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ywd-pulse, .ywd-sweep { animation: none; }
+}
+
+@keyframes ywd-fill { from { width: 0; } to { width: 100%; } }
