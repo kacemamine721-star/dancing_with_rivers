@@ -2,7 +2,7 @@
 
 NASA Space Apps Challenge 2026 (Tunis), challenge *Dancing with SARs*.
 
-On the night of 17 June 2026 a 72-year-old gate failed at Tunisia's Mellègue dam, and about 21 million m³ of water was released (reported). **HydroStress**, our web app, replays that night and the month after it in 3D from real radar data. It explains each radar signal in plain language, then opens **Dam Watch**: lake area from NISAR and Sentinel-1, automatic alerts, SWOT level change and labelled "what if" flood scenarios.
+On the night of 17 June 2026 a 72-year-old gate failed at Tunisia's Mellègue dam, and about 21 million m³ of water was released (reported). **Dancing with the Rivers**, our web app, replays that night and the month after it in 3D from real radar data. It explains each radar signal in plain language, then opens **Dam Watch**: lake area from NISAR and Sentinel-1, automatic alerts, SWOT level change and labelled "what if" flood scenarios.
 
 - **Live app:** https://&lt;project&gt;.pages.dev *(Cloudflare Pages; to fill after deploy, see `docs/DEPLOY.md`)*
 - **Project page text:** `submission/project_page.md`

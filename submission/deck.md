@@ -7,7 +7,7 @@ Visual style: dark, like the app (mono labels, big numerals with a small unit, b
 ## Slide 1 · Title
 
 **Dancing with the Rivers**
-HydroStress · Dam Watch from space
+Dancing with the Rivers · Dam Watch from space
 NASA Space Apps 2026 · Tunis · *Dancing with SARs*
 Background: the 3D Mellègue valley from the app.
 

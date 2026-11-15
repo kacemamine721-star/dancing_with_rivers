@@ -9,7 +9,7 @@
 ## 1. Vision
 
 > **See it. Detect it. Anticipate it.**
-> HydroStress makes NASA–ISRO NISAR radar understandable and useful for the people who live below Tunisia's dams. It replays a real dam failure from space, explains every pixel in plain language, and turns the method into an open tool that watches any reservoir every 6–12 days, through clouds, day and night.
+> Dancing with the Rivers makes NASA–ISRO NISAR radar understandable and useful for the people who live below Tunisia's dams. It replays a real dam failure from space, explains every pixel in plain language, and turns the method into an open tool that watches any reservoir every 6–12 days, through clouds, day and night.
 
 ## 2. Problem
 
@@ -23,7 +23,7 @@
 
 ## 3. Target users & personas
 
-| Persona | Need | What HydroStress gives them |
+| Persona | Need | What Dancing with the Rivers gives them |
 |---|---|---|
 | **Citizen / farmer downstream** (Jendouba, Bou Salem) — *primary for the story* | "Was my land at risk? Would I be warned?" | The 3D replay, the flood-exposure map, plain-language explanations |
 | **Educator / student** | "How does radar see water?" | Narrative, Radar Lab, Everyone/Experts switch, glossary |
@@ -140,9 +140,9 @@ Each card has a kick line, title, body (Everyone/Experts), **Radar lens** box, "
 
 ## 9. Project page drafts (paste and adapt)
 
-**Project name:** HydroStress: Dam Watch from Space
+**Project name:** Dancing with the Rivers: Dam Watch from Space
 
 **High-level summary (≈170 words):**
-> On the night of 17 June 2026, a 72-year-old gate failed at Tunisia's Mellègue dam and about 21 million m³ of water rushed down the valley toward Sidi Salem, the country's largest reservoir. HydroStress replays that night from space. Using NASA–ISRO NISAR L-band radar (every 6–12 days, through clouds), we measured the reservoir draining, explained each radar signal in plain language, and turned the method into *Dam Watch*, an open, browser-based tool that (1) tracks any reservoir's water area from NISAR, (2) flags abnormal drops automatically, (3) estimates level and volume change with SWOT and terrain data, and (4) simulates where released water would flow and which farms, roads and villages it would reach, using the open-source ANUGA hydraulic model. Tunisia's daily dam bulletins stopped in 2025, and a 195 million m³ dam is opening on the same river: independent, free monitoring matters. The narrative is built for citizens and students; the tool is built for water managers and civil protection.
+> On the night of 17 June 2026, a 72-year-old gate failed at Tunisia's Mellègue dam and about 21 million m³ of water rushed down the valley toward Sidi Salem, the country's largest reservoir. Dancing with the Rivers replays that night from space. Using NASA–ISRO NISAR L-band radar (every 6–12 days, through clouds), we measured the reservoir draining, explained each radar signal in plain language, and turned the method into *Dam Watch*, an open, browser-based tool that (1) tracks any reservoir's water area from NISAR, (2) flags abnormal drops automatically, (3) estimates level and volume change with SWOT and terrain data, and (4) simulates where released water would flow and which farms, roads and villages it would reach, using the open-source ANUGA hydraulic model. Tunisia's daily dam bulletins stopped in 2025, and a 195 million m³ dam is opening on the same river: independent, free monitoring matters. The narrative is built for citizens and students; the tool is built for water managers and civil protection.
 
 **SI (AI) use:** declare the AI used for code generation, documentation drafting and text editing, and mark any AI-generated media (→ 01 §2).

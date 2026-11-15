@@ -269,7 +269,9 @@ export function FlowPath({ assets }: Props) {
 
   useEffect(() => {
     sceneVectors.valley = path?.valley ?? null;
+    sceneVectors.reachNames = new Set((path?.labels ?? []).map((l) => l.text.trim().toLowerCase()));
     return () => {
+      sceneVectors.reachNames = new Set();
       path?.mesh.geometry.dispose();
       path?.material.dispose();
     };
@@ -411,12 +413,15 @@ export function VillageLabels({ assets }: Props) {
       nextCheck.current = state.clock.elapsedTime + 0.5;
       const w = new Set<string>();
       if (s.layers.flood) for (const vl of list) if (reached(vl, grid)) w.add(vl.id);
-      const key = `${list.length}:${floodRuntime.show}:${[...w].join(',')}`;
+      // a place already named on the flow path (e.g. Bou Salem) is labelled once, by the path
+      const dup = s.layers.flowpath ? sceneVectors.reachNames : null;
+      const key = `${list.length}:${floodRuntime.show}:${dup ? [...dup].join('|') : '-'}:${[...w].join(',')}`;
       if (key !== wetKey.current) {
         wetKey.current = key;
         wet.current = w;
         // candidates, by priority: reached first, then the bigger places
         const cands = list
+          .filter((vl) => !dup?.has(vl.name.trim().toLowerCase()))
           .filter((vl) => w.has(vl.id) || (vl.inCorridor && vl.rank >= 2))
           .sort((a, b) => Number(w.has(b.id)) - Number(w.has(a.id)) || b.rank - a.rank || b.pop - a.pop);
         shownIds.current = new Set(cands.map((c) => c.id));

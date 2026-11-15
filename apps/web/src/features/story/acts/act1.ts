@@ -9,7 +9,7 @@ export const act1: ActConfig = {
   body:
     'Built in 1954 on the Mellègue river, near the Algerian border, this dam feeds the farms of Jendouba. Its lake is now about 80% full of mud. A new, much bigger dam just upstream, Upper Mellègue (195 million m³), was about to replace it.',
   expertBody:
-    'Catchment {catchment.mellegue} km² (derived from HydroBASINS level 12), much of it in Algeria. About 80% silted (press, AllAfrica). Seen by four NISAR tracks: {obs.nisarTracks}. Terrain: GEM-15 (experimental 15 m bare-earth model, Google Research), NASADEM where it has gaps.',
+    'Catchment {catchment.mellegue} km² (derived from HydroBASINS level 12), much of it in Algeria. About 80% silted (press, AllAfrica). Seen by four NISAR tracks: {obs.nisarTracks}. 3D terrain: NASADEM 30 m. Flow path and flood models: GEM-15 (experimental 15 m bare-earth model, Google Research) averaged to 30 m.',
   facts: ['dam.built', 'dam.silted', 'upper.capacity'],
   expertFacts: ['catchment.mellegue', 'obs.nisarTracks'],
   badges: [

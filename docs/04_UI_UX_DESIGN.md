@@ -1,6 +1,6 @@
 # 04 · UI/UX Design Document
 
-HydroStress is built as a **production frontend application** (React + TypeScript + Vite, with three.js through React Three Fiber). The visual language comes from the existing prototype `NISAR-HydroStress-Cinematic-Intro.html`. Its look, motion and content are **ported into a typed component system**; the single HTML file is a reference, not the codebase.
+Dancing with the Rivers is built as a **production frontend application** (React + TypeScript + Vite, with three.js through React Three Fiber). The visual language comes from the existing prototype `NISAR-HydroStress-Cinematic-Intro.html`. Its look, motion and content are **ported into a typed component system**; the single HTML file is a reference, not the codebase.
 
 This document defines the experience, the design system (tokens → Tailwind theme → components), each component's implementation, the 3D scene's art direction and architecture, motion, accessibility, internationalisation and UI quality gates. The full engineering stack is in → 03 §6 and → 06 §4.
 
@@ -30,7 +30,7 @@ This document defines the experience, the design system (tokens → Tailwind the
 | Styling | **Tailwind CSS** with design tokens as CSS variables (§3) | Consistent tokens, responsive utilities, small CSS |
 | Accessible primitives | **Radix UI** (via **shadcn/ui** source components) | Slider, Dialog, Popover, Tooltip, Switch, Tabs, Toast, ScrollArea with correct ARIA and keyboard behaviour |
 | Icons | **lucide-react** | Consistent line icons (alert, layers, info, play…) |
-| Charts | **visx** (D3 scales + React SVG) | Fully custom, accessible SVG charts in the HydroStress style |
+| Charts | **visx** (D3 scales + React SVG) | Fully custom, accessible SVG charts in the Dancing with the Rivers style |
 | State | **Zustand** (+ URL sync) | One small global store (§9), readable from inside and outside the Canvas |
 | Data loading | **TanStack Query** + **Zod** | Cached, retried loading of the data bundle; runtime validation of every JSON against the contracts in → 06 §3 |
 | i18n | **i18next + react-i18next** | Story text in Everyone/Experts × EN (FR/AR later, with RTL) |
@@ -95,7 +95,7 @@ The same tokens are exported as a typed TS object (`src/styles/tokens.ts`) for s
 ### 5.1 Desktop (≥ 1100 px): sticky stage + scrolling cards
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│ TopBar  [logo HydroStress] Act 3/9 ───progress───  Everyone|Experts  │
+│ TopBar  [logo Dancing with the Rivers] Act 3/9 ───progress───  Everyone|Experts  │
 │         🔊  Read aloud  Lab  Tour  Glossary  ⓘ Sources  ☰            │
 ├───────────────┬──────────────────────────────────────────────────────┤
 │ StoryColumn   │ Stage (62%, sticky)                                   │

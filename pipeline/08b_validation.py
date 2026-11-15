@@ -247,6 +247,35 @@ def anuga(c: Collector, out: Path):
                                     anuga_km2=w.get("anuga_km2")), scenario=sid)
 
 
+def mesh_and_pending(c: Collector, out: Path):
+    """E4 (two-zone vs uniform mesh, v21) from both runs' tests.json, plus the docs/07 tests not run (pending)."""
+    pu, pz = W / "anuga/v21_d12/tests.json", W / "anuga/twozone/v21_d12/tests.json"
+    tu, tz = c.load(pu), c.load(pz)
+    if tu is not None and tz is not None:
+        au = tu["D5"]["whole_corridor_LUT"]["anuga_km2"]
+        az = tz["D5"]["whole_corridor_LUT"]["anuga_km2"]
+        hu = tu["E7"]["arrival_at_confluence_h"]
+        hz = tz["E7"]["arrival_at_confluence_h"]
+        da, dh = au / az - 1, hu / hz - 1
+        c.add("E4", "Mesh sensitivity (two-zone 31,074 vs uniform 69,616 triangles)", "Flood (ANUGA)", pu,
+              "MODELLED", "inundated area within 15 %; arrival at the confluence within 20 %",
+              abs(da) <= 0.15 and abs(dh) <= 0.20,
+              dict(area_uniform_km2=au, area_twozone_km2=az, area_change=da,
+                   arrival_uniform_h=hu, arrival_twozone_h=hz, arrival_change=dh),
+              scenario="v21_d12",
+              summary="arrival and wet area depend on the mesh, so the app shows arrival as a 13–19 h range")
+    for tid, name, group, crit in [
+        ("E5", "Friction sensitivity (n × 0.7 / × 1.3)", "Flood (ANUGA)", "report the arrival-time range"),
+        ("E6", "Release-duration sensitivity (6 / 12 / 24 h)", "Flood (ANUGA)", "report peak Q and extent range"),
+        ("E8", "Qualitative damage match (reported farmland)", "Flood (ANUGA)", "wet cells overlap cropland along the lower Mellègue"),
+        ("E9", "Radar hint match (river line 17 → 22 Jun)", "Flood (ANUGA)", "lies inside the ANUGA wet footprint"),
+        ("L7", "Sidi Salem storage change after 21 Jun", "Level", "same order of magnitude as the release minus losses"),
+    ]:
+        c.tests.append(C.ValidationTest(id=tid, name=name, group=group, criterion=crit, passed=None, status="pending",
+                                        summary="not run for v1 (time); listed so the gap is visible",
+                                        source_file="docs/07_ANALYSIS_AND_VALIDATION.md", badge="MODELLED"))
+
+
 def impacts(c: Collector, out: Path):
     p = W / "anuga/impacts_report.json"
     t = c.load(p)
@@ -280,7 +309,7 @@ def main() -> int:
     spec.loader.exec_module(b)
 
     c = Collector()
-    for f in (water_area, anomaly, routing, level, anuga, impacts):
+    for f in (water_area, anomaly, routing, level, anuga, mesh_and_pending, impacts):
         f(c, out)
     # deterministic: the stamp is the newest source file time, not the wall clock
     stamp = max((p.stat().st_mtime for p in c.sources), default=0)

@@ -48,9 +48,10 @@ export function FactTile({ fact, className }: { fact: Fact | undefined; classNam
     );
   }
   return (
-    <div className={cn('min-w-0 border-l border-hairline pl-3', className)}>
-      <div className="flex items-center justify-between gap-1.5">
-        <p className="telemetry-label truncate" title={fact.label}>
+    <div className={cn('flex min-w-0 flex-col border-l border-hairline pl-3', className)}>
+      {/* label grows so values line up across a row even when a label wraps */}
+      <div className="flex flex-1 items-start justify-between gap-1.5">
+        <p className="telemetry-label leading-snug break-words" title={fact.label}>
           {fact.label}
         </p>
       </div>

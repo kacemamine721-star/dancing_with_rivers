@@ -163,7 +163,7 @@ describe('facts from the bundle', () => {
     expect(f['obs.total']?.value).toBe(String(series.points.length));
     expect(f['alert.first']?.value).toBe('22 Jun');
     expect(f['alert.before']?.value).toBe('0');
-    expect(f['anuga.v21.confluence']?.value).toBe('12.9');
+    expect(f['anuga.v21.confluence']?.value).toBe('13–19');
     expect(f['anuga.mesh']?.value).toBe('69,616');
     expect(f['catchment.mellegue']?.value).toBe('10,315');
     expect(f['path.length']?.value).toBe('101');

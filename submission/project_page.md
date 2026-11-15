@@ -2,7 +2,7 @@
 
 NASA Space Apps Challenge 2026 · Tunis · Challenge: *Dancing with SARs*
 
-On screen the web app is called **HydroStress**. Its monitoring tool is **Dam Watch**.
+On screen the web app is called **Dancing with the Rivers**. Its monitoring tool is **Dam Watch**.
 
 Every number on this page comes from our pipeline's data bundle (`apps/web/public/data/2026-11-15/`) or from the press sources listed under References. `submission/numbers_check.md` gives the file behind each number.
 
@@ -10,7 +10,7 @@ Every number on this page comes from our pipeline's data bundle (`apps/web/publi
 
 ## High-level summary (149 words)
 
-On the night of 17 June 2026, a 72-year-old gate failed at the Mellègue dam in Nebeur, northwest Tunisia. The press reported about 21 million m³ of water released toward the Sidi Salem reservoir. Dancing with the Rivers replays that night, and the month after it, in 3D from real radar data. Our web app, HydroStress, measures the lake on NASA–ISRO NISAR L-band and Sentinel-1 images and explains each radar signal in plain language. It checks the radar against SWOT lake heights: the water surface fell 3.75 m between 7 and 28 June. NISAR and Sentinel-1 together would have raised an alarm on 22 June, five days after the failure, with no ground sensor. The story then opens Dam Watch: lake area, automatic alerts, level change and labelled "what if" flood scenarios down to Sidi Salem. Tunisia's daily dam bulletins stopped in October 2025, so free, independent monitoring matters.
+On the night of 17 June 2026, a 72-year-old gate failed at the Mellègue dam in Nebeur, northwest Tunisia. The press reported about 21 million m³ of water released toward the Sidi Salem reservoir. Dancing with the Rivers replays that night, and the month after it, in 3D from real radar data. Our web app, Dancing with the Rivers, measures the lake on NASA–ISRO NISAR L-band and Sentinel-1 images and explains each radar signal in plain language. It checks the radar against SWOT lake heights: the water surface fell 3.75 m between 7 and 28 June. NISAR and Sentinel-1 together would have raised an alarm on 22 June, five days after the failure, with no ground sensor. The story then opens Dam Watch: lake area, automatic alerts, level change and labelled "what if" flood scenarios down to Sidi Salem. Tunisia's daily dam bulletins stopped in October 2025, so free, independent monitoring matters.
 
 ---
 
@@ -26,7 +26,7 @@ On the night of 17 June 2026, a 72-year-old gate failed at the Mellègue dam in 
 
 ### What it does
 
-HydroStress tells the story of one real event in nine short acts, then hands the user a working tool.
+Dancing with the Rivers tells the story of one real event in nine short acts, then hands the user a working tool.
 
 1. **The dam.** The Mellègue dam, built in 1954, feeds the irrigated farms of Jendouba. Its lake is about 80% silted (press). A new dam upstream, Upper Mellègue (195 million m³), was due to replace it.
 2. **The night of 17 June.** The last radar image before the failure is Sentinel-1 at 17:20 UTC (18:20 local). The gate failed at about 21:15 local, during a planned 100,000 m³ release for irrigation (press).

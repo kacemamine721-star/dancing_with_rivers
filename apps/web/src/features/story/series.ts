@@ -83,7 +83,8 @@ export function rollingMedian(
     out.push({
       date: isoFromMs(t),
       median: median(w.map((p) => p.a)),
-      sigma: sig.length ? median(sig) : 0,
+      // sigma_km2 = (hi − lo) / 4 (02_reservoir.py), so the ±2 dB threshold half-range is 2σ
+      sigma: sig.length ? 2 * median(sig) : 0,
       n: w.length,
     });
   }

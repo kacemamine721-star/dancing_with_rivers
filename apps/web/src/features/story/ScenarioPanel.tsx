@@ -43,8 +43,11 @@ function useFloodClock() {
 
 function Counter({ label, value, unit }: { label: string; value: string; unit?: string }) {
   return (
-    <div className="min-w-0 border-l border-hairline pl-3">
-      <p className="telemetry-label truncate">{label}</p>
+    <div className="flex min-w-0 flex-col justify-between border-l border-hairline pl-3">
+      {/* labels wrap instead of being cut ("Buildings (OSM)", "People (WorldPop, modelled)") */}
+      <p className="telemetry-label leading-snug break-words" title={label}>
+        {label}
+      </p>
       <p className="mt-1.5 font-mono leading-none text-ink">
         <span className="text-[22px] tabular-nums">{value}</span>
         {unit ? <span className="ml-1 text-[11px] text-mute">{unit}</span> : null}

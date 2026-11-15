@@ -1,5 +1,4 @@
 import { Badge } from '@/components/Badge';
-import { cn } from '@/lib/utils';
 import { provenanceProps } from '@/components/badge-model';
 import { DataState } from '@/components/DataState';
 import { HonestyNote } from '@/components/HonestyNote';
@@ -37,45 +36,48 @@ export function CorridorStrip({ className }: { className?: string }) {
       right={<span className="font-mono text-[11px] text-ink">{fmt(len)} km</span>}
       className={className}
     >
-      <div className="relative mx-2 mt-4 h-36">
-        <div className="absolute inset-x-0 top-3 h-[3px] rounded-pill bg-gradient-to-r from-teal via-water to-flood-3" aria-hidden />
+      {/* the path as a bar with a dot per station (to scale), then the stations as a list */}
+      <div className="relative mx-1 mt-4 h-4" aria-hidden>
+        <div className="absolute inset-x-0 top-1.5 h-[3px] rounded-pill bg-gradient-to-r from-teal via-water to-flood-3" />
         {conf ? (
           <div
-            aria-hidden
-            className="absolute top-0 h-[9px] border-x border-dashed border-model/60 bg-model/10"
+            className="absolute top-0 h-4 rounded-[3px] border border-dashed border-model/60 bg-model/10"
             style={{ left: 0, width: `${((conf.dist_km + 2) / len) * 100}%` }}
           />
         ) : null}
-        <ol>
-          {stations.map((s, i) => {
-            const h = i === 0 ? 0 : hoursAt(s.name);
-            const isEnd = i === stations.length - 1;
-            return (
-              <li
-                key={s.name}
-                className={cn(
-                  'absolute top-0 flex flex-col',
-                  i === 0 ? 'items-start text-left' : isEnd ? '-translate-x-full items-end text-right' : '-translate-x-1/2 items-center text-center',
-                )}
-                style={{ left: `calc(${(s.dist_km / len) * 100}% + ${i === 0 ? -5 : isEnd ? 5 : 0}px)` }}
-              >
-                <span className="mt-[7px] block size-2.5 rounded-full border-2 border-bg bg-ink" aria-hidden />
-                {i % 2 === 0 ? null : <span className="block h-7 w-px bg-ink/30" aria-hidden />}
-                <span className="mt-1.5 max-w-[96px] font-mono text-[9.5px] leading-tight text-ink">{s.name}</span>
-                <span className="font-mono text-[9px] text-mute">km {fmt(s.dist_km, 1)}</span>
-                {h !== undefined && i > 0 ? (
-                  <span className="mt-0.5 font-mono text-[10px] text-model">+{fmt(h, 1)} h</span>
-                ) : null}
-                {isEnd && arrival ? (
-                  <span className="mt-0.5 font-mono text-[10px] text-ink">
+        {stations.map((s) => (
+          <span
+            key={s.name}
+            className="absolute top-[3px] block size-2.5 -translate-x-1/2 rounded-full border-2 border-bg bg-ink"
+            style={{ left: `${(s.dist_km / len) * 100}%` }}
+          />
+        ))}
+      </div>
+      <ol className="mt-3 divide-y divide-hairline">
+        {stations.map((s, i) => {
+          const h = i === 0 ? 0 : hoursAt(s.name);
+          const isEnd = i === stations.length - 1;
+          return (
+            <li key={s.name} className="grid grid-cols-[minmax(0,1fr)_64px_minmax(0,120px)] items-baseline gap-2 py-1.5 font-mono text-[11px]">
+              <span className="text-ink">{s.name}</span>
+              <span className="text-right text-mute">km {fmt(s.dist_km, 1)}</span>
+              <span className="text-right">
+                {i === 0 ? (
+                  <span className="text-mute">release</span>
+                ) : h !== undefined ? (
+                  <span className="text-model">{/confluence/i.test(s.name) ? '+13–19 h' : `+${fmt(h, 0)} h`}</span>
+                ) : isEnd && arrival ? (
+                  <span className="text-ink">
                     {fmtDay(arrival.date)} · +{daysBetween(FAILURE_DATE, arrival.date)} d
                   </span>
-                ) : null}
-              </li>
-            );
-          })}
-        </ol>
-      </div>
+                ) : (
+                  <span className="text-mute">outside ANUGA</span>
+                )}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
       <div className="mt-2 flex flex-wrap items-center gap-2 font-mono text-[10px] text-mute">
         <span className="inline-block h-2 w-5 border border-dashed border-model/60 bg-model/10" aria-hidden />
         ANUGA domain (21 Mm³, 12 h assumed release; arrival is mesh-sensitive, 13–19 h at the confluence)
@@ -182,8 +184,9 @@ export function LevelVolumeCard({ className }: { className?: string }) {
         ) : null}
       </div>
       <HonestyNote kind="info" label="Storage change ≠ release" className="mt-3">
-        Net of inflow during the window, so it is not the released volume; consistent with the reported figure within
-        a factor of 2. SWOT’s lake polygon is larger than the radar water area; the level is unaffected.
+        About 0.6 × the reported 21 Mm³ (0.4 × the 29 Mm³ report). It is the net storage change 7–28 June, net of
+        inflow, and the release went on until the 16 July repair, so it is not the released volume. SWOT’s lake
+        polygon is larger than the radar water area; the level is unaffected.
       </HonestyNote>
     </Panel>
   );

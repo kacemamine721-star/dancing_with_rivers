@@ -326,7 +326,7 @@ export function ReservoirChart({ className }: { className?: string }) {
                 <th className="px-2 py-1">Sensor</th>
                 <th className="px-2 py-1">Track</th>
                 <th className="px-2 py-1 text-right">Area km²</th>
-                <th className="px-2 py-1 text-right">± km²</th>
+                <th className="px-2 py-1 text-right">± km² (±2 dB)</th>
                 <th className="px-2 py-1">Conf.</th>
               </tr>
             </thead>
@@ -337,7 +337,7 @@ export function ReservoirChart({ className }: { className?: string }) {
                   <td className="px-2 py-0.5">{p.sensor}</td>
                   <td className="px-2 py-0.5">{p.track}</td>
                   <td className="px-2 py-0.5 text-right">{fmt(p.area_km2, 2)}</td>
-                  <td className="px-2 py-0.5 text-right">{p.sigma_km2 === null ? '–' : fmt(p.sigma_km2, 2)}</td>
+                  <td className="px-2 py-0.5 text-right">{p.sigma_km2 === null ? '–' : fmt(2 * p.sigma_km2, 2)}</td>
                   <td className="px-2 py-0.5">{p.confidence}</td>
                 </tr>
               ))}

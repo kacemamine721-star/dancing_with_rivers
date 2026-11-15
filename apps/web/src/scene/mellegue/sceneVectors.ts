@@ -6,4 +6,6 @@ export const sceneVectors = {
   valley: null as Vec3[] | null,
   /** Dam crest midpoint (scene units). */
   damCrest: null as Vec3 | null,
+  /** Lower-cased names already labelled on the flow path (reach breaks), so villages do not repeat them. */
+  reachNames: new Set<string>(),
 };

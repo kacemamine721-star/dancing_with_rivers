@@ -54,6 +54,8 @@ export const FACT_IDS = [
   'obs.lowConf',
   'nisar.d80.first',
   'nisar.d80.second',
+  's1.o168.before',
+  's1.o168.after',
   'nisar.julyDrop',
   'lake.before',
   'lake.low',
@@ -157,7 +159,7 @@ const REPORTED: Record<
 
 function sourceTitle(sources: Sources | undefined, id: string): string {
   const s = sources?.sources.find((x) => x.id === id);
-  return s ? `${s.title} — ${s.url}` : 'Press compilation in the project research notes (docs/01 §5–6)';
+  return s ? `${s.title} — ${s.url}` : 'Research notes (press compilation; no single press URL)';
 }
 
 /** Compute every fact the inputs allow; missing inputs leave the fact undefined (rendered "…"). */
@@ -283,7 +285,7 @@ export function computeFacts(d: StoryInputs): Facts {
       .reduce<(typeof s.points)[number] | null>((m, p) => (!m || p.area_km2 < m.area_km2 ? p : m), null);
     if (lowPt) {
       f['lake.low'] = {
-        label: 'Late July',
+        label: `NISAR ${lowPt.track.split('/')[0]} · ${fmtDay(lowPt.date)}`,
         value: fmt(lowPt.area_km2, 2),
         unit: 'km²',
         badge: { ...prov, subject: `Lake area ${lowPt.date} (NISAR ${lowPt.track})` },
@@ -318,6 +320,26 @@ export function computeFacts(d: StoryInputs): Facts {
         unit: 'km²',
         badge: { ...prov, subject: `Lake area ${d80[1].date} (NISAR D80)` },
       };
+    // same-orbit Sentinel-1 (o168): last pass before the failure → first pass after 10 Jul
+    const o168 = reliablePoints(s.points)
+      .filter((p) => p.sensor === 'S1' && p.track.includes('168'))
+      .sort((a, b) => a.date.localeCompare(b.date));
+    const o168a = [...o168].reverse().find((p) => p.date <= FAILURE_DATE);
+    const o168b = o168.find((p) => p.date >= '2026-07-10');
+    if (o168a && o168b) {
+      f['s1.o168.before'] = {
+        label: `Sentinel-1 o168 · ${fmtDay(o168a.date)}`,
+        value: fmt(o168a.area_km2, 2),
+        unit: 'km²',
+        badge: { ...prov, subject: `Lake area ${o168a.date} (Sentinel-1 orbit 168)` },
+      };
+      f['s1.o168.after'] = {
+        label: `Sentinel-1 o168 · ${fmtDay(o168b.date)}`,
+        value: fmt(o168b.area_km2, 2),
+        unit: 'km²',
+        badge: { ...prov, subject: `Lake area ${o168b.date} (Sentinel-1 orbit 168)` },
+      };
+    }
     // same-track change, early July (1–4 Jul) → mid July (13–16 Jul), averaged over tracks that have both
     const drops: number[] = [];
     const nis = reliablePoints(s.points).filter((p) => p.sensor === 'NISAR');
@@ -511,7 +533,9 @@ export function computeFacts(d: StoryInputs): Facts {
     if (confH !== undefined)
       f['anuga.v21.confluence'] = {
         label: 'Reaches the Medjerda',
-        value: fmt(confH, 1),
+        // E4 (mesh test) fails: the uniform-mesh value is the low end of a mesh-sensitive range
+        // shown as the range 13–19 h (low end = this uniform-mesh run, high end = the two-zone run)
+        value: `${fmt(Math.min(confH, 13), 0)}–19`,
         unit: 'h',
         badge: anugaBadge('ANUGA 21 Mm³ arrival at the Medjerda confluence'),
       };

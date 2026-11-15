@@ -9,7 +9,7 @@ import { useAlerts } from '@/data/hooks';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/app';
 
-import { FAILURE_DATE, fmt, fmtSigned } from './facts';
+import { FAILURE_DATE, fmtSigned } from './facts';
 import { dayMs, daysBetween, firstConfirmedAlert, type Flag, flagsOf, fmtDay, phaseFlags } from './series';
 import { Panel } from './ui';
 
@@ -168,15 +168,15 @@ export function AlertCard({ className }: { className?: string }) {
             <CheckCircle2 className="mr-1 inline size-3 align-[-2px]" aria-hidden />
             Before: {model.before.length} flags in {model.checksBefore} checks
           </p>
-          <p className="text-ink/80">Drawdown: {model.drawdown.length} flags (gate open)</p>
+          <p className="text-ink/80">17 Jun–31 Jul: {model.drawdown.length} flags</p>
           <p className="text-alert">
             <AlertTriangle className="mr-1 inline size-3 align-[-2px]" aria-hidden />
             Aug–Nov: {model.later.length} · needs operator check
           </p>
         </div>
         <p className="mt-2 font-mono text-[10px] text-mute">
-          ● NISAR · ■ Sentinel-1 · filled = ALERT (&lt; −20%) · outline = WARNING (&lt; −12%)
-          {firstNisar ? ` · first NISAR flag ${fmtDay(firstNisar.date)} (${firstNisar.track.split('/')[0]}, ${firstNisar.level}, ${fmt(firstNisar.departurePct, 0)}%)` : ''}
+          ● NISAR · ■ Sentinel-1 · filled = confirmed ALERT (&lt; −20%) · outline = WARNING (&lt; −12%, or &lt; −20% unconfirmed)
+          {firstNisar ? ` · first NISAR flag ${fmtDay(firstNisar.date)} (${firstNisar.track.split('/')[0]}, ${firstNisar.level}, ${fmtSigned(firstNisar.departurePct, 0)}%)` : ''}
         </p>
       </div>
 

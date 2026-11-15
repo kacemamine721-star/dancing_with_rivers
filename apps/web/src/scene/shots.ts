@@ -24,6 +24,8 @@ export type ShotDef = {
   ease: ShotEase;
   /** Where the subject sits inside the free screen area, [-0.5, 0.5] each way (default centre). */
   bias?: { x: number; y: number };
+  /** Rough on-screen width/height of the subject (lake ≈ 1.3, corridor ≈ 2.6); picks the free area. */
+  aspect?: number;
 };
 
 export type Shot = {
@@ -34,6 +36,7 @@ export type Shot = {
   durationMs: number;
   ease: ShotEase;
   bias: { x: number; y: number };
+  aspect: number;
 };
 
 /** Centre of the 10 m lake chip (grid.json lake_chip.bounds_m), i.e. the reservoir. */
@@ -56,14 +59,14 @@ export const SHOTS: Record<ShotId, ShotDef> = {
   // Night: low from the south-west, across the dark lake towards the lit crest.
   night_dam: { anchor: DAM_LONLAT, position: [-4.6, 1.6, 4.2], target: [0.2, 0.15, -0.1], fov: 36, durationMs: 2600, ease: 'power2.inOut' },
   // Reservoir from the south, ~30° off nadir: the whole lake, the dam and its hills fit in the free area.
-  lake_top: { anchorUtm: LAKE_UTM, position: [0.3, 13.5, 7.5], target: [0.2, 0, 0.2], fov: 40, durationMs: 2600, ease: 'power2.inOut', bias: { x: -0.12, y: 0.1 } },
+  lake_top: { anchorUtm: LAKE_UTM, position: [0.3, 13.5, 7.5], target: [0.2, 0, 0.2], fov: 40, durationMs: 2600, ease: 'power2.inOut', aspect: 1.3 },
   // Static fallback of the valley flight (CameraRig flies the flow path when it is loaded).
-  valley_follow: { anchorUtm: CORRIDOR_UTM, position: [22, 30, 21], target: [0, 0, 0], fov: 40, durationMs: 2600, ease: 'power2.inOut', bias: { x: 0, y: 0.2 } },
+  valley_follow: { anchorUtm: CORRIDOR_UTM, position: [22, 30, 21], target: [0, 0, 0], fov: 40, durationMs: 2600, ease: 'power2.inOut', aspect: 2.6 },
   jendouba_wide: { anchor: JENDOUBA, position: [-9, 8, 15], target: [1, 0, -2], fov: 42, durationMs: 3000, ease: 'power2.inOut' },
   sidi_salem: { anchor: SIDI_SALEM, position: [-14, 8, 12], target: [1, 0, -1], fov: 42, durationMs: 3000, ease: 'power2.inOut' },
   // Act 7: the corridor from the side, the valley across the screen.
-  scenario_overview: { anchorUtm: CORRIDOR_UTM, position: [22, 30, 21], target: [0, 0, 0], fov: 40, durationMs: 3200, ease: 'power2.inOut', bias: { x: 0, y: 0.22 } },
-  catchment_wide: { anchor: CENTRE, position: [-8, 92, 58], target: [0, 0, 2], fov: 42, durationMs: 3600, ease: 'power2.inOut' },
+  scenario_overview: { anchorUtm: CORRIDOR_UTM, position: [22, 30, 21], target: [0, 0, 0], fov: 40, durationMs: 3200, ease: 'power2.inOut', aspect: 2.6 },
+  catchment_wide: { anchor: CENTRE, position: [-8, 92, 58], target: [0, 0, 2], fov: 42, durationMs: 3600, ease: 'power2.inOut', aspect: 1.5 },
 };
 
 function anchorScene(d: ShotDef, frame: SceneFrame): Vec3 {
@@ -83,6 +86,7 @@ export function resolveShot(id: ShotId, frame: SceneFrame): Shot {
     durationMs: d.durationMs,
     ease: d.ease,
     bias: d.bias ?? { x: 0, y: 0 },
+    aspect: d.aspect ?? 1.3,
   };
 }
 

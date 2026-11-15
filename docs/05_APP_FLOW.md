@@ -32,7 +32,7 @@ The prototype HTML is the reference for timings, look and copy; the rebuilt `fea
 |---|---|---|
 | 1. Loader | "ACQUIRING SIGNAL" | Driven by drei `useProgress` + TanStack Query prefetch of `manifest.json`, the heightmap and the Act 1–3 textures |
 | 2. Cinematic (chapters Approach 0 s, Deploy 3.4 s, Orbit 6.8 s, Scan 9.2 s; hero at 11.2 s) | NISAR approaches, deploys its 12 m reflector, orbits at 747 km, scans with L-band 24 cm | Caption 4 → "L-band, 24 cm. It sees through clouds, day and night." HUD **TARGET → 36.31°N 8.70°E · MELLÈGUE DAM**. Skip button kept |
-| 3. Hero | Title HydroStress, the satellite to explore (hotspots, facts) | Subtitle → *"On the night of 17 June 2026, a dam gate failed in northwest Tunisia. NISAR was watching. Follow the water."* Primary button **Start the mission →**; secondary "Explore the satellite" |
+| 3. Hero | Title Dancing with the Rivers, the satellite to explore (hotspots, facts) | Subtitle → *"On the night of 17 June 2026, a dam gate failed in northwest Tunisia. NISAR was watching. Follow the water."* Primary button **Start the mission →**; secondary "Explore the satellite" |
 | 4. Dive (GSAP timeline: fuse 2.5 s, flash 3.1 s, end 3.4 s) | The camera rides the radar pulse down toward Earth | Caption → **"Riding the pulse down to the Mellègue dam, Kef"**. At the end of the dive **do not open the Tunis journey**: `navigate('/story/1')`. The persistent `<Stage>` switches its scene from the satellite to the Mellègue terrain under the white flash and fades in at shot `arrival` |
 
 Skipping: Esc or "Skip intro" goes straight to `/story/1` (for judges and repeat visits; remembered with `localStorage` in a try/catch). Any deep link (`/story/3?date=2026-07-01`) skips the intro automatically.
@@ -92,7 +92,7 @@ Each act lists: **shot** (camera), **stage** (layers and date), **card** (Everyo
 ### Act 6 · Could we have known?  (P0)
 - **Shot:** `lake_top` with an alert pulse ring on the reservoir.
 - **Stage:** replay "as if live": the scrubber stops on **22 Jun**; the **Alert card** animates in.
-- **Card:** *Title:* "An automatic alarm, from space." *Body:* "We taught HydroStress what a normal summer looks like for this lake. When the lake falls well below its recent normal, and a second satellite pass confirms it, it raises an alert. NISAR and Sentinel-1 together would have raised it on 22 June, five days after the failure, with no ground sensor."
+- **Card:** *Title:* "An automatic alarm, from space." *Body:* "We taught Dancing with the Rivers what a normal summer looks like for this lake. When the lake falls well below its recent normal, and a second satellite pass confirms it, it raises an alert. NISAR and Sentinel-1 together would have raised it on 22 June, five days after the failure, with no ground sensor."
 - **Experts:** the rule (area > 20% below the 21-day multi-sensor baseline, confirmed by an independent pass within 6 days), test results (no flag before the failure; October flags need operator data), latency (NISAR product latency in hours to days; Urgent Response mode as future).
 - **Try it:** [Why did it fire?] [Run the detector on all dates] (shows ✓/⚠ on each scrubber dot).
 - **Badges:** MEASURED + MODELLED (detector).
@@ -115,7 +115,7 @@ Each act lists: **shot** (camera), **stage** (layers and date), **card** (Everyo
 
 ### Act 9 · Dam Watch for every dam  (P1)
 - **Shot:** `catchment_wide`, pull out to show other reservoirs (Sidi Salem, Bou Heurtma, Ben Métir… P2) with status pills.
-- **Card:** *Title:* "One lake today. Every dam tomorrow." *Body:* "Tunisia's daily dam bulletins stopped in 2025. NISAR passes over every reservoir in the country every 12 days or less, for free. HydroStress turns that into an independent watch: area, alerts, level, and flood scenarios."
+- **Card:** *Title:* "One lake today. Every dam tomorrow." *Body:* "Tunisia's daily dam bulletins stopped in 2025. NISAR passes over every reservoir in the country every 12 days or less, for free. Dancing with the Rivers turns that into an independent watch: area, alerts, level, and flood scenarios."
 - **Try it:** **[Open Dam Watch →]** (unlocks the tool) · [Methods & validation] · [Sources] · [Replay the story].
 - **Badges:** —
 
@@ -169,7 +169,7 @@ That is the **30 s video**. The full tour (≈ 3 min) plays the same with all ca
 
 ## 7. Radar School (appendix, reuse of the old journey)
 
-The existing stylized Greater-Tunis content (Three surfaces Water/Land/City, Radar Detective quiz, 8 story steps) becomes an optional **Radar School** reachable from Act 3's 🧪 and the ☰ menu. It is labelled **ILLUSTRATIVE** (simulated map). Its footer button changes from "Enter HydroStress" (toast) to **"Back to the Mellègue story"**.
+The existing stylized Greater-Tunis content (Three surfaces Water/Land/City, Radar Detective quiz, 8 story steps) becomes an optional **Radar School** reachable from Act 3's 🧪 and the ☰ menu. It is labelled **ILLUSTRATIVE** (simulated map). Its footer button changes from "Enter Dancing with the Rivers" (toast) to **"Back to the Mellègue story"**.
 
 ## 8. Error & edge flows
 

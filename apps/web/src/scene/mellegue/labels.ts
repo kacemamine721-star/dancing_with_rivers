@@ -140,11 +140,13 @@ export class LabelLayer {
       const lift = e.spec.kind === 'reach' ? 16 : 6;
       const y = Math.round((-v.y * 0.5 + 0.5) * height) - lift;
       if (a > 0.01 && (x < -40 || x > width + 40 || y < -20 || y > height + 40)) a = 0;
+      if (a > 0.01 && e.w === 0) {
+        e.w = e.el.offsetWidth || e.spec.text.length * 7 + 16;
+        e.h = e.el.offsetHeight || 16;
+      }
+      // a label cut by the screen edge reads as a glitch: hide it until it fits
+      if (a > 0.01 && (x - e.w / 2 < 4 || x + e.w / 2 > width - 4 || y - e.h < 4 || y > height - 2)) a = 0;
       if (a > 0.01 && declutter) {
-        if (e.w === 0) {
-          e.w = e.el.offsetWidth || e.spec.text.length * 7 + 16;
-          e.h = e.el.offsetHeight || 16;
-        }
         const box: [number, number, number, number] = [x - e.w / 2 - 4, y - e.h - 2, x + e.w / 2 + 4, y + 2];
         if (placed.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) a = 0;
         else placed.push(box);

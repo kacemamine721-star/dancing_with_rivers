@@ -7,7 +7,7 @@ export const act9: ActConfig = {
   kicker: 'ACT 9 · DAM WATCH FOR EVERY DAM',
   title: 'One lake today. Every dam tomorrow.',
   body:
-    'Tunisia’s daily dam bulletins stopped in October 2025. NISAR passes over every reservoir in the country every 12 days per track, for free. HydroStress could turn that into an independent watch: area, alerts, level and flood scenarios. Today it covers one reservoir, Mellègue; the same steps are designed to run on any dam (roadmap).',
+    'Tunisia’s daily dam bulletins stopped in October 2025. NISAR passes over every reservoir in the country every 12 days per track, for free. Dancing with the Rivers could turn that into an independent watch: area, alerts, level and flood scenarios. Today it covers one reservoir, Mellègue; the same steps are designed to run on any dam (roadmap).',
   expertBody:
     'Roadmap: the Mellègue catchment covers {catchment.mellegue} km² and Sidi Salem’s {catchment.sidisalem} km² (derived from HydroBASINS). Adding a dam means a lake polygon and the same radar series, detector, terrain and flood steps, with the detector tested out of sample. None of that is done for other dams yet.',
   facts: ['watch.dams', 'watch.sensors', 'onagri.stopped'],

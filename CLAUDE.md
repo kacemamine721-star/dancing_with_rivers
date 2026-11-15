@@ -126,7 +126,7 @@ Not in v1 unless ahead of schedule: Storybook, Lighthouse CI, PWA, Sentry/analyt
 
 ## 8. Key findings already established (do not re-derive)
 
-- 1,755 NISAR L-band products over Tunisia, 17 Jun → 31 Oct 2026; over Mellègue, 31 dates across D80/A101/A173/D8, gap 25 Jul → 13 Aug.
+- 1,754 NISAR L-band products over Tunisia, 17 Jun → 31 Oct 2026; over Mellègue, 31 dates across D80/A101/A173/D8, gap 27 Jul → 13 Aug.
 - Go/no-go (`TESTS/mellegue_test_output/`): the lake is clearly visible on 19 Jun and gone by 13 Jul (visual check), but the **wide-box** water area *rose* (D80 5.5 → 9.4 km²; A101 16.9 → 22.7 km²) because harvested fields darken. Use the tight `A_LAKE` box (8.665–8.735 E, 36.29–36.33 N) and then `lake_max.geojson`. The lake sits at about 8.69–8.71 E, 36.31–36.32 N.
 - Change-map noise 0.6–0.9 dB; changed pixels are 92% cropland; SME2 decline is a regional heatwave signal (do not use).
 - **Reservoir series (02_reservoir.py, 14 Nov):** fixed −18 dB fails (17 Jun S1 orbit 88 lake is wind-roughened at −15…−17 dB; post-failure NISAR wet mud at −15…−18 dB). Adaptive per-image Otsu inside the pre-failure lake polygon (4.68 km² incl. 100 m dilation; user's dam point 6 m from it) gives 131 good + 2 low-confidence (wind, 29–30 May) measurements.

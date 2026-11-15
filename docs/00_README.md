@@ -1,6 +1,6 @@
 # Dancing with the Rivers — Project Documentation Index
 
-> **Project name: _Dancing with the Rivers_** (formerly "Dancing with Dams"). The product shown on screen is **HydroStress**, and its monitoring tool is **Dam Watch**.
+> **Project name: _Dancing with the Rivers_** (formerly "Dancing with Dams"). The product shown on screen is **Dancing with the Rivers**, and its monitoring tool is **Dam Watch**.
 
 > **NASA Space Apps Challenge 2026 · Tunis local event**
 > Challenge: *"Dancing with SARs"*, an interactive application that uses **NASA–ISRO NISAR** radar data to track and visualize surface change.
@@ -8,7 +8,7 @@
 
 ## One-sentence pitch
 
-**On the night of 17–18 June 2026, a gate failed at Tunisia's 72-year-old Mellègue dam and about 21 million m³ of water escaped down the river. NISAR watched the lake drain through the following weeks. HydroStress replays that night in 3D from real radar data, then turns it into *Dam Watch*: an open tool that monitors any reservoir from space every 6–12 days, raises an alert when a lake drops abnormally, and simulates where the water would go and who it would reach.**
+**On the night of 17–18 June 2026, a gate failed at Tunisia's 72-year-old Mellègue dam and about 21 million m³ of water escaped down the river. NISAR watched the lake drain through the following weeks. Dancing with the Rivers replays that night in 3D from real radar data, then turns it into *Dam Watch*: an open tool that monitors any reservoir from space every 6–12 days, raises an alert when a lake drops abnormally, and simulates where the water would go and who it would reach.**
 
 ## How to use these documents (for Claude Code and the team)
 

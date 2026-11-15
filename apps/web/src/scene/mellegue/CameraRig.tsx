@@ -5,7 +5,7 @@ import { type ComponentRef, useEffect, useRef } from 'react';
 import { Box3, CatmullRomCurve3, type PerspectiveCamera, Vector3 } from 'three';
 
 import type { SceneFrame, Vec3 } from '@/scene/coords';
-import { focusPoint, NARROW_PX, readOccluders } from '@/scene/framing';
+import { framing, NARROW_PX, readOccluders } from '@/scene/framing';
 import { sceneVectors } from '@/scene/mellegue/sceneVectors';
 import { ACT_SHOTS, resolveShot, type Shot } from '@/scene/shots';
 import { veil } from '@/scene/veil';
@@ -70,6 +70,7 @@ export function CameraRig({ frame }: { frame: SceneFrame }) {
   const camera = useThree((s) => s.camera) as PerspectiveCamera;
   const tween = useRef<gsap.core.Timeline | null>(null);
   const bias = useRef({ x: 0, y: 0 });
+  const aspect = useRef(1.3);
   /** valley_follow requested before the flow path loaded: fly once it arrives. */
   const pendingValley = useRef(false);
   const runRef = useRef<((ids: readonly ShotId[], cutFirst: boolean) => void) | null>(null);
@@ -107,7 +108,10 @@ export function CameraRig({ frame }: { frame: SceneFrame }) {
       const shots = ids.map((id) => resolveShot(id, frame));
       const reduced = useAppStore.getState().reducedMotion;
       const last = shots[shots.length - 1];
-      if (last) bias.current = last.bias;
+      if (last) {
+        bias.current = last.bias;
+        aspect.current = last.aspect;
+      }
       if (reduced) {
         if (last) veil.cut(() => apply(toState(last)));
         return;
@@ -178,7 +182,7 @@ export function CameraRig({ frame }: { frame: SceneFrame }) {
   }, [camera, frame]);
 
   // lens shift towards the free screen area, measured from the DOM a few times a second
-  const shift = useRef({ x: 0, y: 0, tx: 0, ty: 0, next: 0, w: 0, h: 0, applied: '' });
+  const shift = useRef({ x: 0, y: 0, tx: 0, ty: 0, z: 1, tz: 1, next: 0, w: 0, h: 0, applied: '' });
   useFrame((state, dt) => {
     const p = camera.position;
     // never under the terrain (runs after CameraControls' own update)
@@ -192,9 +196,10 @@ export function CameraRig({ frame }: { frame: SceneFrame }) {
     const t = state.clock.elapsedTime;
     if (t >= sh.next || w !== sh.w || h !== sh.h) {
       sh.next = t + 0.4;
-      const f = focusPoint(w, h, readOccluders(), bias.current);
-      sh.tx = w < NARROW_PX ? 0 : Math.max(-0.3 * w, Math.min(0.3 * w, f.x - w / 2));
-      sh.ty = Math.max(-0.3 * h, Math.min(0.3 * h, f.y - h / 2));
+      const f = framing(w, h, readOccluders(), bias.current, aspect.current);
+      sh.tx = w < NARROW_PX ? 0 : Math.max(-0.35 * w, Math.min(0.35 * w, f.x - w / 2));
+      sh.ty = Math.max(-0.35 * h, Math.min(0.35 * h, f.y - h / 2));
+      sh.tz = f.zoom;
       if (w !== sh.w || h !== sh.h) sh.applied = '';
       sh.w = w;
       sh.h = h;
@@ -202,11 +207,17 @@ export function CameraRig({ frame }: { frame: SceneFrame }) {
     const k = useAppStore.getState().reducedMotion ? 1 : 1 - Math.exp(-dt * 3);
     sh.x += (sh.tx - sh.x) * k;
     sh.y += (sh.ty - sh.y) * k;
-    const key = `${Math.round(sh.x * 4)}:${Math.round(sh.y * 4)}:${w}:${h}`;
+    sh.z += (sh.tz - sh.z) * k;
+    const key = `${Math.round(sh.x * 4)}:${Math.round(sh.y * 4)}:${Math.round(sh.z * 400)}:${w}:${h}`;
     if (key !== sh.applied) {
       sh.applied = key;
-      if (Math.abs(sh.x) < 0.5 && Math.abs(sh.y) < 0.5) camera.clearViewOffset();
-      else camera.setViewOffset(w, h, -sh.x, -sh.y, w, h);
+      if (Math.abs(sh.x) < 0.5 && Math.abs(sh.y) < 0.5 && sh.z < 1.0025) camera.clearViewOffset();
+      else {
+        // a sub-view larger than the full frame = zoom out by z, centred, then shifted (in full-frame px)
+        const vw = w * sh.z;
+        const vh = h * sh.z;
+        camera.setViewOffset(w, h, (w - vw) / 2 - sh.x * sh.z, (h - vh) / 2 - sh.y * sh.z, vw, vh);
+      }
       camera.updateProjectionMatrix();
     }
   });

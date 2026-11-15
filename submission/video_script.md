@@ -21,7 +21,7 @@
 | 15–19 | `/story/4` follow the water | Flow path dam → Jendouba → Medjerda → Bou Salem → Sidi Salem (101 km) | "The water follows the valley 101 km to Sidi Salem." |
 | 19–22 | `/story/6` scrubber stops on 22 Jun, alert card | AlertCard "ALERT · 22 Jun" | "NISAR and Sentinel-1 together would have raised an alarm on 22 June, with no ground sensor." |
 | 22–27 | `/story/7` slider 21 → 195 Mm³ | HAND flood layer grows; counters rise; banner visible | "What if? A scenario, not a forecast." |
-| 27–30 | `/story/9` → Open Dam Watch | Dam Watch panel; product name HydroStress | "Dancing with the Rivers. One lake today; every dam tomorrow." |
+| 27–30 | `/story/9` → Open Dam Watch | Dam Watch panel; product name Dancing with the Rivers | "Dancing with the Rivers. One lake today; every dam tomorrow." |
 
 If the ANUGA chips are working, the 22–27 s shot can show the 21 Mm³ "June 2026 reconstruction" first (front at the Medjerda confluence after about 13 h on our mesh) before the slider.
 

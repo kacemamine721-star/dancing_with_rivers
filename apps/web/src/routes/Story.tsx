@@ -81,13 +81,16 @@ export function Component() {
           'md:static md:mx-auto md:flex md:max-h-none md:max-w-[1600px] md:items-end md:justify-between md:gap-6 md:overflow-visible md:p-6 lg:p-8'
         }
       >
-        <div className="pointer-events-auto w-full md:max-w-[460px]">
+        <div className="pointer-events-auto w-full md:max-w-[400px] 2xl:max-w-[440px]">
           <AnimatePresence mode="wait">
             <ActCard key={config.act} config={config} facts={facts} />
           </AnimatePresence>
         </div>
         {config.widgets.length > 0 ? (
-          <div className="pointer-events-auto mt-3 flex w-full flex-col gap-3 md:mt-0 md:max-w-[580px]">
+          <div
+            data-stage-occluder
+            className="pointer-events-auto mt-3 flex w-full flex-col gap-3 md:mt-0 md:max-w-[500px] 2xl:max-w-[560px]"
+          >
             {config.widgets.map((w) => {
               const W = WIDGETS[w];
               return <W key={w} />;
