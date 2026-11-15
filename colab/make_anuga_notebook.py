@@ -94,12 +94,12 @@ SKIP_CONSISTENCY_TEST = False
 code("""
 # ---- platform + paths -------------------------------------------------------------------------
 import os, sys, json, glob, shutil, subprocess, time, zipfile, pathlib
-ON_KAGGLE = os.path.exists("/kaggle")
-try:
-    import google.colab  # noqa: F401
-    ON_COLAB = True
-except ImportError:
-    ON_COLAB = False
+# Kaggle images ship the google.colab package too, so "import google.colab" is NOT a Colab test.
+# Kaggle sets KAGGLE_KERNEL_RUN_TYPE and has /kaggle/input; Colab has /var/colab/hostname (what
+# drive.mount itself checks) and COLAB_RELEASE_TAG. Kaggle is decided first.
+ON_KAGGLE = bool(os.environ.get("KAGGLE_KERNEL_RUN_TYPE")) or os.path.exists("/kaggle/input")
+ON_COLAB = (not ON_KAGGLE) and (os.path.exists("/var/colab/hostname") or bool(os.environ.get("COLAB_RELEASE_TAG")))
+print("platform:", "kaggle" if ON_KAGGLE else "colab" if ON_COLAB else "local")
 if ON_COLAB:
     from google.colab import drive
     drive.mount("/content/drive")
