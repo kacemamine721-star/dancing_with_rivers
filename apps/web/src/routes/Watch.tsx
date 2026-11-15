@@ -222,7 +222,7 @@ export function Component() {
               <Link to="/methods">How it works</Link>
             </Button>
             <Button size="xs" variant="chip" asChild>
-              <Link to="/v2">Every dam (V2)</Link>
+              <Link to="/your-dam">Dancing with your Dam</Link>
             </Button>
           </div>
         </Section>

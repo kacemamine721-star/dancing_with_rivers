@@ -76,7 +76,7 @@ const ROADMAP = [
   },
 ] as const;
 
-/** `/v2` — landing page for the generalised version (in development, not deployed). */
+/** `/your-dam` — "Dancing with your Dam": pick a dam and watch the pipeline run on its real geometry. */
 export function Component() {
   useDocumentTitle('Dancing with your Dam');
   const experts = useAppStore((s) => s.level === 'experts');

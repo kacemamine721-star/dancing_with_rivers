@@ -10,7 +10,7 @@ const NAV = [
   { to: '/watch', label: 'Dam Watch' },
   { to: '/methods', label: 'Methods' },
   { to: '/sources', label: 'Sources' },
-  { to: '/v2', label: 'Your dam' },
+  { to: '/your-dam', label: 'Your dam' },
 ] as const;
 
 /**
