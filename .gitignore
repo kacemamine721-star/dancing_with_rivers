@@ -41,3 +41,12 @@ UI_REFERENCES/
 # ANUGA results downloaded from Colab/Kaggle (large; imported via pipeline/v2/anuga_ingest.py)
 dwr_anuga-*/
 /sidi-salem/
+
+# internal working files (not part of the public submission)
+CLAUDE.md
+.claude/
+.mcp.json
+antigravity_discussion.md
+docs/08_CLAUDE_CODE_BRIEF.md
+submission/numbers_check.md
+/sidi-salem/
