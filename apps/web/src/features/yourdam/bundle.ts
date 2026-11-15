@@ -63,7 +63,7 @@ export function useDamBundle(id: string | null): DamBundle {
     const fc = await json<GeoFC & { crs?: { properties?: { name?: string } } }>(src.fileUrl('vectors/flowpath.geojson'));
     return fc ? (toLonLat(fc as never) as GeoFC) : undefined;
   });
-  const first = anuga.data?.scenarios.find((s) => s.computed);
+  const first = pickAnuga(anuga.data ?? undefined, hand.data ?? undefined);
   const anugaStats = useQuery({
     queryKey: ['ywd', id, 'anugaStats', first?.id],
     queryFn: async () => (first ? ((await src.anugaStats(id!, first.id).catch(() => undefined)) ?? null) : null),
@@ -87,6 +87,14 @@ export function useDamBundle(id: string | null): DamBundle {
     ready: all.every((x) => !x.isPending),
     missing: manifest.isSuccess && !manifest.data,
   };
+}
+
+/** The computed ANUGA run shown: the full-mesh run closest (log scale) to the quick-flood volume. */
+export function pickAnuga(index: AnugaIndex | undefined, lut: HandLut | undefined) {
+  const runs = (index?.scenarios ?? []).filter((s) => s.computed && !/coarse/i.test(s.id));
+  if (!runs.length) return undefined;
+  const v = lut?.rows.length ? handVolumeM3(lut.rows) : 20e6;
+  return runs.reduce((a, s) => (Math.abs(Math.log(s.volume_m3 / v)) < Math.abs(Math.log(a.volume_m3 / v)) ? s : a));
 }
 
 /** HAND quick-flood volume shown on the map: 20 Mm³, or the LUT's minimum meaningful volume (h ≥ 0.5 m). */

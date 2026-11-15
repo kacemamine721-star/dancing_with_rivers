@@ -1,0 +1,13 @@
+{
+ "mass_balance_err": 3.0338391661643985e-11,
+ "peak_Q_m3s": 231.4814814814815,
+ "inundated_km2": 4.225,
+ "arrival_h": {
+  "Confluence Oued Mazouz": 13.42,
+  "Confluence unnamed tributary": 27.33
+ },
+ "max_depth_m": {
+  "Confluence Oued Mazouz": 7.85,
+  "Confluence unnamed tributary": 2.44
+ }
+}

@@ -1,7 +1,7 @@
 import type { BadgeKind } from '@/components/badge-model';
 import { flagsOf, reliablePoints } from '@/features/story/series';
 
-import { handHeightM, handVolumeM3, type DamBundle } from './bundle';
+import { handHeightM, handVolumeM3, pickAnuga, type DamBundle } from './bundle';
 import type { Dam } from './data';
 
 export type StepId = 'find' | 'upstream' | 'radar' | 'lake' | 'alert' | 'level' | 'path' | 'hand' | 'anuga';
@@ -50,7 +50,7 @@ export function buildSteps(dam: Dam, b: DamBundle): StepView[] {
   const rows = b.hand?.rows ?? [];
   const V = rows.length ? handVolumeM3(rows) : 0;
   const hr = rows.length ? rows.reduce((a, r) => (Math.abs(r.V_m3 - V) < Math.abs(a.V_m3 - V) ? r : a)) : null;
-  const an = b.anuga?.scenarios.find((s) => s.computed);
+  const an = pickAnuga(b.anuga, b.hand);
   const st = b.anugaStats;
 
   return [

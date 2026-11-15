@@ -1,0 +1,21 @@
+{
+ "mass_balance_err": 1.138448715209961e-13,
+ "peak_Q_m3s": 4629.62962962963,
+ "inundated_km2": 86.015,
+ "arrival_h": {
+  "Tebourba": 2.75,
+  "El Battan": 3.42,
+  "Djedeida": 6.5,
+  "Sidi Thabet": 10.5,
+  "Kalâat el-Andalous": 19.58,
+  "Sea": 23.67
+ },
+ "max_depth_m": {
+  "Tebourba": 10.4,
+  "El Battan": 5.9,
+  "Djedeida": 6.11,
+  "Sidi Thabet": 6.93,
+  "Kalâat el-Andalous": 4.98,
+  "Sea": 2.94
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "mass_balance_err": 5.3457915782928466e-14,
+ "peak_Q_m3s": 925.925925925926,
+ "inundated_km2": 23.835,
+ "arrival_h": {
+  "Confluence Oued Siliana": 3.08,
+  "Testour": 4.08,
+  "Medjez El-Bab": 20.83
+ },
+ "max_depth_m": {
+  "Confluence Oued Siliana": 7.01,
+  "Testour": 9.33,
+  "Medjez El-Bab": 7.65
+ }
+}

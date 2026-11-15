@@ -1,0 +1,13 @@
+{
+ "mass_balance_err": 2.0451843738555908e-13,
+ "peak_Q_m3s": 231.4814814814815,
+ "inundated_km2": 5.205,
+ "arrival_h": {
+  "Tebourba": 8.75,
+  "El Battan": 12.33
+ },
+ "max_depth_m": {
+  "Tebourba": 7.19,
+  "El Battan": 3.66
+ }
+}

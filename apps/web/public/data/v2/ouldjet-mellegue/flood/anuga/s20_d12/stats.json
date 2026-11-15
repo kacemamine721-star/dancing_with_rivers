@@ -1,0 +1,17 @@
+{
+ "mass_balance_err": 2.705976366996765e-11,
+ "peak_Q_m3s": 925.925925925926,
+ "inundated_km2": 23.132,
+ "arrival_h": {
+  "Confluence Oued Mazouz": 6.33,
+  "Confluence unnamed tributary": 8.67,
+  "Confluence Oued Sarrath": 10.58,
+  "120 km cap": 48.92
+ },
+ "max_depth_m": {
+  "Confluence Oued Mazouz": 10.61,
+  "Confluence unnamed tributary": 5.64,
+  "Confluence Oued Sarrath": 6.08,
+  "120 km cap": 2.3
+ }
+}

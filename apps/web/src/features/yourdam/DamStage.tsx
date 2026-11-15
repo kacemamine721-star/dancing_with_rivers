@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { handHeightM, handVolumeM3, type DamBundle, type LonLatBox } from './bundle';
+import { handHeightM, handVolumeM3, pickAnuga, type DamBundle, type LonLatBox } from './bundle';
 import type { Dam, DamIndex, GeoFC } from './data';
 import { partsOf, pointsOf } from './data';
 import { boxOf, makeProjection, pathD, type Box, type Position } from './projection';
@@ -200,8 +200,8 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
   }, [hand, b.hand, step, reduced]);
 
   // ---- ANUGA: real hourly depth frames when a run is computed
-  const an = b.anuga?.scenarios.find((s) => s.computed);
-  const files = an?.files as { frames?: string; n_frames?: number; maxdepth?: string } | undefined;
+  const an = pickAnuga(b.anuga, b.hand);
+  const files = an?.files as { frames?: string; n_frames?: number; maxdepth?: string; dt_s?: number } | undefined;
   const [hour, setHour] = useState<number | null>(null);
   useEffect(() => {
     if (step !== 'anuga' || !files) {
@@ -221,7 +221,10 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
     }, 140);
     return () => window.clearInterval(t);
   }, [step, files, reduced]);
-  useEffect(() => onFloodHour?.(hour !== null && hour >= 0 ? hour : null), [hour, onFloodHour]);
+  useEffect(
+    () => onFloodHour?.(hour !== null && hour >= 0 ? Math.round((hour * (files?.dt_s ?? 3600)) / 3600) : null),
+    [hour, onFloodHour, files],
+  );
   const anugaHref =
     hour === null || !files
       ? null

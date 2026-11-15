@@ -1,0 +1,13 @@
+{
+ "mass_balance_err": 1.873821020126343e-13,
+ "peak_Q_m3s": 231.4814814814815,
+ "inundated_km2": 3.39,
+ "arrival_h": {
+  "Confluence Oued Siliana": 5.58,
+  "Testour": 7.75
+ },
+ "max_depth_m": {
+  "Confluence Oued Siliana": 5.28,
+  "Testour": 6.51
+ }
+}

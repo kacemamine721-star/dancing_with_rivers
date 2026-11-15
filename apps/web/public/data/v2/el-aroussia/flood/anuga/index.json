@@ -4,63 +4,111 @@
  "scenarios": [
   {
    "badge": "MODELLED",
-   "source": "ANUGA (not run yet)",
-   "method": "Not computed yet",
-   "uncertainty": "Scenario exploration, not a forecast.",
-   "placeholder": true,
+   "source": "ANUGA (Geoscience Australia / ANU, GPL); GEM-15 / Copernicus GLO-30; ESA WorldCover 2021",
+   "method": "ANUGA 4.2.0 2D shallow-water (DE0, compute mode gpu, GPU offload) dam → sea (135 km², 83199 triangles, uniform ≤ 2500 m²). DEM: gem15 30 m, path cells lowered 2 m. Manning n from WorldCover fractions. Triangular release at the crest outlet: V = 5 Mm³ over 12 h, peak 231 m³/s at 0.3 D (screening values, not tied to any event). Dry start, free outflow, 35 h simulated. Wet = max depth > 0.1 m. Grid: flood/hand_grid.json. maxdepth/frames uint8 depth = value/255 × 8 m; arrival.png 0 = not reached, else hours = value × 0.2. Frames every 30 min.",
+   "uncertainty": "Scenario exploration, not a forecast. 30 m terrain without channel bathymetry; no calibration data; the release hydrograph is an assumption, not a breach model. Arrival times are mesh-sensitive (see test E4): show them as a range. Mass balance error 2.05e-11 % of V.",
+   "placeholder": false,
    "id": "s5_d12",
    "volume_m3": 5000000.0,
    "duration_h": 12.0,
    "label": "5 Mm³ over 12 h (screening scenario, not tied to any event)",
-   "computed": false,
-   "files": null,
-   "depth_encoding": null,
-   "stats": null
+   "computed": true,
+   "files": {
+    "maxdepth": "flood/anuga/s5_d12/maxdepth.png",
+    "arrival": "flood/anuga/s5_d12/arrival.png",
+    "frames": "flood/anuga/s5_d12/frames/{i}.png",
+    "n_frames": 71,
+    "dt_s": 1800.0
+   },
+   "depth_encoding": {
+    "type": "r8",
+    "min": null,
+    "max": 8.0,
+    "scale": null,
+    "offset": null
+   },
+   "stats": "flood/anuga/s5_d12/stats.json"
   },
   {
    "badge": "MODELLED",
-   "source": "ANUGA (not run yet)",
-   "method": "Not computed yet",
-   "uncertainty": "Scenario exploration, not a forecast.",
-   "placeholder": true,
+   "source": "ANUGA (Geoscience Australia / ANU, GPL); GEM-15 / Copernicus GLO-30; ESA WorldCover 2021",
+   "method": "ANUGA 4.2.0 2D shallow-water (DE0, compute mode gpu, GPU offload) dam → sea (135 km², 83199 triangles, uniform ≤ 2500 m²). DEM: gem15 30 m, path cells lowered 2 m. Manning n from WorldCover fractions. Triangular release at the crest outlet: V = 20 Mm³ over 12 h, peak 926 m³/s at 0.3 D (screening values, not tied to any event). Dry start, free outflow, 35 h simulated. Wet = max depth > 0.1 m. Grid: flood/hand_grid.json. maxdepth/frames uint8 depth = value/255 × 8 m; arrival.png 0 = not reached, else hours = value × 0.2. Frames every 60 min.",
+   "uncertainty": "Scenario exploration, not a forecast. 30 m terrain without channel bathymetry; no calibration data; the release hydrograph is an assumption, not a breach model. Arrival times are mesh-sensitive (see test E4): show them as a range. Mass balance error 2.69e-11 % of V.",
+   "placeholder": false,
    "id": "s20_d12",
    "volume_m3": 20000000.0,
    "duration_h": 12.0,
    "label": "20 Mm³ over 12 h (screening scenario, not tied to any event)",
-   "computed": false,
-   "files": null,
-   "depth_encoding": null,
-   "stats": null
+   "computed": true,
+   "files": {
+    "maxdepth": "flood/anuga/s20_d12/maxdepth.png",
+    "arrival": "flood/anuga/s20_d12/arrival.png",
+    "frames": "flood/anuga/s20_d12/frames/{i}.png",
+    "n_frames": 36,
+    "dt_s": 3600.0
+   },
+   "depth_encoding": {
+    "type": "r8",
+    "min": null,
+    "max": 8.0,
+    "scale": null,
+    "offset": null
+   },
+   "stats": "flood/anuga/s20_d12/stats.json"
   },
   {
    "badge": "MODELLED",
-   "source": "ANUGA (not run yet)",
-   "method": "Not computed yet",
-   "uncertainty": "Scenario exploration, not a forecast.",
-   "placeholder": true,
+   "source": "ANUGA (Geoscience Australia / ANU, GPL); GEM-15 / Copernicus GLO-30; ESA WorldCover 2021",
+   "method": "ANUGA 4.2.0 2D shallow-water (DE0, compute mode gpu, GPU offload) dam → sea (135 km², 83199 triangles, uniform ≤ 2500 m²). DEM: gem15 30 m, path cells lowered 2 m. Manning n from WorldCover fractions. Triangular release at the crest outlet: V = 100 Mm³ over 12 h, peak 4630 m³/s at 0.3 D (screening values, not tied to any event). Dry start, free outflow, 35 h simulated. Wet = max depth > 0.1 m. Grid: flood/hand_grid.json. maxdepth/frames uint8 depth = value/255 × 8 m; arrival.png 0 = not reached, else hours = value × 0.2. Frames every 120 min.",
+   "uncertainty": "Scenario exploration, not a forecast. 30 m terrain without channel bathymetry; no calibration data; the release hydrograph is an assumption, not a breach model. Arrival times are mesh-sensitive (see test E4): show them as a range. Mass balance error 1.14e-11 % of V.",
+   "placeholder": false,
    "id": "s100_d12",
    "volume_m3": 100000000.0,
    "duration_h": 12.0,
    "label": "100 Mm³ over 12 h (screening scenario, not tied to any event)",
-   "computed": false,
-   "files": null,
-   "depth_encoding": null,
-   "stats": null
+   "computed": true,
+   "files": {
+    "maxdepth": "flood/anuga/s100_d12/maxdepth.png",
+    "arrival": "flood/anuga/s100_d12/arrival.png",
+    "frames": "flood/anuga/s100_d12/frames/{i}.png",
+    "n_frames": 18,
+    "dt_s": 7200.0
+   },
+   "depth_encoding": {
+    "type": "r8",
+    "min": null,
+    "max": 8.0,
+    "scale": null,
+    "offset": null
+   },
+   "stats": "flood/anuga/s100_d12/stats.json"
   },
   {
    "badge": "MODELLED",
-   "source": "ANUGA (not run yet)",
-   "method": "Not computed yet",
-   "uncertainty": "Scenario exploration, not a forecast.",
-   "placeholder": true,
+   "source": "ANUGA (Geoscience Australia / ANU, GPL); GEM-15 / Copernicus GLO-30; ESA WorldCover 2021",
+   "method": "ANUGA 4.2.0 2D shallow-water (DE0, compute mode gpu, GPU offload) dam → sea (135 km², 20961 triangles, uniform ≤ 10000 m²). DEM: gem15 30 m, path cells lowered 2 m. Manning n from WorldCover fractions. Triangular release at the crest outlet: V = 20 Mm³ over 12 h, peak 926 m³/s at 0.3 D (screening values, not tied to any event). Dry start, free outflow, 35 h simulated. Wet = max depth > 0.1 m. Grid: flood/hand_grid.json. maxdepth/frames uint8 depth = value/255 × 8 m; arrival.png 0 = not reached, else hours = value × 0.2. Frames every 60 min.",
+   "uncertainty": "Scenario exploration, not a forecast. 30 m terrain without channel bathymetry; no calibration data; the release hydrograph is an assumption, not a breach model. Arrival times are mesh-sensitive (see test E4): show them as a range. Mass balance error 2.46e-12 % of V.",
+   "placeholder": false,
    "id": "s20_d12_coarse",
    "volume_m3": 20000000.0,
    "duration_h": 12.0,
    "label": "20 Mm³, coarse mesh (E4 mesh-sensitivity pair of s20_d12)",
-   "computed": false,
-   "files": null,
-   "depth_encoding": null,
-   "stats": null
+   "computed": true,
+   "files": {
+    "maxdepth": "flood/anuga/s20_d12_coarse/maxdepth.png",
+    "arrival": "flood/anuga/s20_d12_coarse/arrival.png",
+    "frames": "flood/anuga/s20_d12_coarse/frames/{i}.png",
+    "n_frames": 36,
+    "dt_s": 3600.0
+   },
+   "depth_encoding": {
+    "type": "r8",
+    "min": null,
+    "max": 8.0,
+    "scale": null,
+    "offset": null
+   },
+   "stats": "flood/anuga/s20_d12_coarse/stats.json"
   }
  ]
 }
