@@ -44,6 +44,39 @@
 | `docker/web` | Kept, rebuilt on pnpm with the committed lockfile (`docker compose up --build web` → http://localhost:5173) | lead |
 | API gateway, queue, workers, MapLibre picker, H3 cache | **Not in v1.** Shown as the roadmap slide | — |
 
+### 0.4 Science review of this plan (15 Nov 2026): these corrections override §4–§6
+
+Source: `work/review/science_review_2026-11-15.md` (science-reviewer, after the final v1 runs). Where §4–§6 below disagree, this table wins.
+
+| Topic | Plan said | Corrected |
+|---|---|---|
+| ANUGA cost | "≤ 45 min per scenario"; Tier 3 joins SAR + ANUGA | Measured **33 / 42 / 48 min** (21 / 50 / 195 Mm³) on 4 OpenMP threads for a 112 km², 69,616-triangle Reach 1. Time grows with domain area and peak Q (CFL). The full path to a downstream reservoir is ≈ 2× the domain → **2–5 h per dam** for 3 scenarios. **Never join SAR and ANUGA**: publish the SAR series on its own; ANUGA is an optional queued job |
+| Tier 2 "15–45 s" | GLO-30 window + HAND | Plausible, but the window must follow the flow path (Mellègue's path spans ≈ 0.7° of longitude), and Overpass alone can take 10–60 s and is rate-limited |
+| Reservoir "bowl" (Step 2 code) | cells ≤ z(dam) connected to the dam | That code leaks into the **downstream** valley and reads the whole raster: restrict to the upstream mask (flow directions, or cut at the dam line). No DEM sees below its acquisition-day water (SRTM Feb 2000; GLO-30 flattened; GEM-15 masked) → the bowl is an **upper bound**, never "the definitive lake boundary" |
+| Radar shadow mask | slope > 15° masked | Wrong physics: shadow needs back-slopes steeper than ≈ 90° − incidence (≈ 45–57°). Use the product's layover/shadow mask, restricted to the lake surroundings, and test it — steep drawdown shores carry real water |
+| "Mandatory ANUGA" | required everywhere | **Required for timing and speed**; HAND-only screening is the labelled fallback (as in v1) |
+| Mesh | ≤ 2,500 m² channel / ≤ 20,000 m² elsewhere | Exactly the set-up that failed the mesh test here (E4 ❌: two-zone → uniform changed arrival −32%, wet area +29%). Require gorge + inlet refinement and a **mesh-sensitivity test in every automated run**; report arrival as a range |
+| Breach scenarios | triangular 2V/T for "catastrophic breach" | A triangle is a release scenario, not a breach model. For breaches use empirical relations (e.g. Froehlich) and report a range (peaks can be several times the 9,028 m³/s of our 195 Mm³ triangle) |
+| ANUGA code sketch | `Inlet_operator(point)`, `set_quantity(filename=tif)`, 4-side boundary tags | `Inlet_operator` needs a line/polygon; `set_quantity` does not read GeoTIFF (v1 uses an interpolator); a valley polygon needs a free-outflow face (v1 `05_anuga_scenarios.py` is the working template) |
+| Exposure | villages within 200 m of wet cells | Picks up the channel (Muthul in v1). Use building footprints / village polygons and depth at the buildings |
+| Anomaly detector | ready for any dam | Validated on **one** event with in-sample thresholds. V2 must measure detection and false-alarm rates **out of sample** on other reservoirs before any alert is shown as operational |
+| "Real-time" | alerts as data arrive | NISAR June 2026 data became public ≈ 20 Jul (provisional). Data latency is part of the design and must be shown |
+| Optical | "clouds hinder optical" | Weak for a Tunisian summer (S2 had 12 scenes < 5% cloud Jun–Aug). The radar case is **systematic, all-weather revisit**, not clouds |
+| Datasets | — | MERIT-Hydro is CC-BY-NC 4.0 / ODbL (check before any commercial use); CDSE serves GRD (needs RTC processing); OPERA RTC-S1 is North America only; GEM-15 is a **model-predicted** DTM (badge MODELLED); prefer GeoDAR + OSM for small Tunisian dams; pyflwdir's Python requirement is unverified (check PyPI) |
+| Cache key | H3 res 8 "460 m" cell | H3 res 8 edge ≈ 0.46 km (≈ 0.74 km²). Cache by **snapped dam_id + data version**, not by click cell |
+| API example | `length_km 112.4` | Mellègue path is **101.0 km** |
+
+### 0.5 V2 milestone 1 (realistic scope, branch `v2`, not deployed)
+
+**Goal:** prove the method transfers, before building any live service.
+
+1. **Offline batch, static outputs.** No FastAPI / Redis / Celery yet. A `pipeline/v2/run_dam.py <dam_id>` that writes a v1-compatible bundle to `/data/<version>/<dam_id>/` (the web `DataSource` is already keyed by `dam_id`).
+2. **5–10 northern Tunisian reservoirs** (e.g. Sidi Salem, Bou Heurtma, Beni Mtir, Barbara, Kasseb, Siliana, Sidi el Barrak, Joumine): dam snapping from GeoDAR + OSM (crest line when available).
+3. **Per dam:** HydroBASINS/HydroRIVERS catchment (existing `catchment()` in `00_context_data.py`); D8 path on GEM-15 (else GLO-30) with tests D1/D2; lake mask = pre-period Sentinel-1 water frequency ∩ JRC GSW maximum (no DEM bowl yet); S1 + NISAR area series with confidence flags (`02_reservoir.py` generalised); HAND LUT.
+4. **Detector out of sample:** run `03_anomaly.py` unchanged on every dam and report detection / false-alarm rates (B2/B3) per dam. Re-tune only on a held-out split.
+5. **ANUGA only for the top 2–3 dams**, with a mesh-sensitivity pair per run (E4) and arrival reported as a range.
+6. **Then** (milestone 2): the live tiers — Cloudflare Pages front end; an API + queue; ANUGA workers on a ~4 vCPU instance (e.g. Render) or scheduled GitHub Actions running the `dwd-anuga` image; outputs to object storage (e.g. Cloudflare R2); cache keyed by dam_id + scenario + DEM version; Earthdata token server-side only; the API origin added to the CSP `connect-src` (v1 keeps no runtime API, hard rule 6).
+
 ---
 
 ## 1. Introduction: The Mellègue Reference Use Case
