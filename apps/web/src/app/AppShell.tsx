@@ -6,6 +6,7 @@ import { ErrorBoundary } from '@/app/ErrorBoundary';
 import { createQueryClient } from '@/app/queryClient';
 import { RouteFallback } from '@/app/RouteFallback';
 import { TopBar } from '@/components/TopBar';
+import { WaveBackdrop } from '@/components/WaveBackdrop';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { useAppStore } from '@/store/app';
@@ -53,6 +54,9 @@ export function AppShell() {
             </Suspense>
           </ErrorBoundary>
         </div>
+
+        {/* text pages get the wave backdrop; the 3D routes keep the terrain as their background */}
+        {stageVisible ? null : <WaveBackdrop />}
 
         {isIntro ? null : <TopBar />}
 

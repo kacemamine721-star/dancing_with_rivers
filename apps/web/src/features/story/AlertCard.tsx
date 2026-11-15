@@ -70,7 +70,7 @@ export function AlertCard({ className }: { className?: string }) {
       badge={<Badge {...provenanceProps(alerts.data)} subject="Anomaly detector" />}
       right={
         first ? (
-          <span className="inline-flex h-6 items-center gap-1.5 rounded-pill border border-danger/50 bg-danger/10 px-2.5 font-mono text-[10px] font-semibold uppercase tracking-badge text-[#ff8a8a]">
+          <span className="inline-flex h-6 items-center gap-1.5 rounded-pill border border-danger/50 bg-danger/10 px-2.5 font-mono text-[10px] font-semibold uppercase tracking-badge text-danger">
             <span aria-hidden className="size-1.5 rounded-full bg-danger" /> Alert · {fmtDay(first.flag.date)}
           </span>
         ) : null

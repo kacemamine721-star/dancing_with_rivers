@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         bg: 'var(--bg)',
+        paper: 'var(--paper)',
         ink: 'var(--ink)',
         mute: 'var(--mute)',
         teal: { DEFAULT: 'var(--teal)', dim: 'var(--teal-dim)' },
@@ -35,6 +36,7 @@ export default {
       },
       borderRadius: {
         card: 'var(--radius-card)',
+        wave: 'var(--radius-wave)',
         pill: 'var(--radius-pill)',
       },
       transitionTimingFunction: {
@@ -54,8 +56,8 @@ export default {
       },
       keyframes: {
         'pulse-ring': {
-          '0%': { boxShadow: '0 0 0 0 rgba(95,243,255,.55)' },
-          '100%': { boxShadow: '0 0 0 18px rgba(95,243,255,0)' },
+          '0%': { boxShadow: '0 0 0 0 rgba(26,34,180,.45)' },
+          '100%': { boxShadow: '0 0 0 18px rgba(26,34,180,0)' },
         },
       },
       animation: {

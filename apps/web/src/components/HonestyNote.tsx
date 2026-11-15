@@ -35,7 +35,7 @@ export function HonestyNote({ kind = 'caution', label, children, className }: Ho
         {label}
       </p>
       {children ? (
-        <div className="mt-2.5 text-[11px] leading-[1.6] text-mute [&_a]:text-[#8fb7c8]">{children}</div>
+        <div className="mt-2.5 text-[11px] leading-[1.6] text-mute [&_a]:text-teal">{children}</div>
       ) : null}
     </aside>
   );

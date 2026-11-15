@@ -22,7 +22,7 @@ export function TopBar({ section, className }: { section?: string; className?: s
     <header
       data-testid="topbar"
       className={cn(
-        'sticky top-0 z-30 flex h-[62px] items-center gap-4 border-b border-white/[.06] bg-[rgba(3,5,10,.82)] px-4 backdrop-blur-[10px] sm:px-5',
+        'sticky top-0 z-30 flex h-[62px] items-center gap-4 border-b border-hairline bg-[rgba(244,240,230,.9)] px-4 backdrop-blur-[10px] sm:px-5',
         className,
       )}
     >

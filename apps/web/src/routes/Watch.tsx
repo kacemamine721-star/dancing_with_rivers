@@ -122,9 +122,9 @@ export function Component() {
             </p>
             {sp ? (
               <svg viewBox={`0 0 ${W} ${H}`} className="mt-3 block h-auto w-full" role="img" aria-label="21-day median lake area with the ±2 dB threshold band, May to November 2026">
-                <path d={sp.band} fill="rgba(95,243,255,.12)" />
+                <path d={sp.band} fill="rgba(26,34,180,.12)" />
                 <line x1={sp.fail} x2={sp.fail} y1={0} y2={H} stroke="#ff5c7a" strokeDasharray="3 3" strokeWidth={1} />
-                <path d={sp.line} fill="none" stroke="#5ff3ff" strokeWidth={2} />
+                <path d={sp.line} fill="none" stroke="#1a22b4" strokeWidth={2} />
               </svg>
             ) : null}
             <p className="font-mono text-[10px] text-mute">

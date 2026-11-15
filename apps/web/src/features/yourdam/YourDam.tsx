@@ -41,7 +41,7 @@ function Spark({ points }: { points: SparkPoint[] }) {
     .join('');
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-[200px]" role="img" aria-label="Lake area, 21-day median">
-      <path d={d} fill="none" stroke="#5ff3ff" strokeWidth={2} />
+      <path d={d} fill="none" stroke="#1a22b4" strokeWidth={2} />
     </svg>
   );
 }
@@ -108,7 +108,7 @@ export function YourDam() {
     return <DataState kind="missing" subject="Dams" message="The dam catalogue is not in this build." minHeight={240} />;
 
   return (
-    <section aria-label="Pipeline demonstration" className="glass overflow-hidden bg-[rgba(4,8,14,.92)]">
+    <section aria-label="Pipeline demonstration" className="glass overflow-hidden bg-[rgba(251,248,241,.92)]">
       <div className="flex flex-wrap items-center gap-2 border-b border-hairline p-3 sm:p-4">
         <span className="telemetry-label mr-1">Pick a dam</span>
         {dams.map((d) => (
@@ -143,7 +143,7 @@ export function YourDam() {
           onFloodHour={onHour}
         />
         {radarFrame ? (
-          <div className="pointer-events-none absolute left-3 top-3 rounded-[10px] border border-hairline bg-black/65 px-3 py-1.5 font-mono text-[11px] backdrop-blur">
+          <div className="pointer-events-none absolute left-3 top-3 rounded-[10px] border border-hairline bg-paper/90 px-3 py-1.5 font-mono text-[11px] backdrop-blur">
             <span className={radarFrame.sensor === 'NISAR' ? 'text-teal' : 'text-alert'}>
               {radarFrame.sensor === 'S1' ? 'Sentinel-1 C-band' : `${radarFrame.sensor} L-band`}
             </span>
@@ -152,12 +152,12 @@ export function YourDam() {
           </div>
         ) : null}
         {step === 'anuga' && floodHour !== null ? (
-          <div className="pointer-events-none absolute left-3 top-3 rounded-[10px] border border-hairline bg-black/65 px-3 py-1.5 font-mono text-[11px] text-ink/85 backdrop-blur">
+          <div className="pointer-events-none absolute left-3 top-3 rounded-[10px] border border-hairline bg-paper/90 px-3 py-1.5 font-mono text-[11px] text-ink/85 backdrop-blur">
             ANUGA · +{floodHour} h after the release starts
           </div>
         ) : null}
         {(step === 'lake' || step === 'alert') && bundle.area ? (
-          <div className="pointer-events-none absolute bottom-3 right-3 rounded-[10px] border border-hairline bg-black/65 p-2 backdrop-blur">
+          <div className="pointer-events-none absolute bottom-3 right-3 rounded-[10px] border border-hairline bg-paper/90 p-2 backdrop-blur">
             <p className="mb-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-mute">lake area · 21-day median</p>
             <Spark points={bundle.area.points} />
           </div>
@@ -194,7 +194,7 @@ export function YourDam() {
                     aria-current={s.id === step ? 'step' : undefined}
                     className={cn(
                       'relative flex h-full w-full flex-col items-start overflow-hidden rounded-[10px] border px-2.5 pb-2 pt-2.5 text-left transition-colors',
-                      s.id === step ? 'border-teal bg-teal/[.08]' : k < i ? 'border-hairline bg-white/[.02]' : 'border-hairline',
+                      s.id === step ? 'border-teal bg-teal/[.08]' : k < i ? 'border-hairline bg-ink/[.03]' : 'border-hairline',
                       s.pending && 'border-dashed opacity-60',
                     )}
                   >
@@ -218,7 +218,7 @@ export function YourDam() {
             </ol>
           </div>
           <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-            <p className="text-[14.5px] leading-snug text-[#d6e0ee]">{experts ? cur.expert : cur.simple}</p>
+            <p className="text-[14.5px] leading-snug text-ink/85">{experts ? cur.expert : cur.simple}</p>
             {cur.pending ? (
               <span className="rounded-pill border border-dashed border-alert/60 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-alert">
                 {cur.id === 'anuga' ? 'Running on GPU' : 'Not available'}

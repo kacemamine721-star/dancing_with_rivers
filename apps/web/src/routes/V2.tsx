@@ -133,11 +133,11 @@ export function Component() {
       </div>
 
       {/* the goal */}
-      <section aria-labelledby="goal" className="glass relative mt-14 overflow-hidden bg-[rgba(6,12,20,.9)] p-6 sm:p-10">
+      <section aria-labelledby="goal" className="glass relative mt-14 overflow-hidden bg-[rgba(251,248,241,.92)] p-6 sm:p-10">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-28 -top-28 size-[460px] rounded-full opacity-40 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(95,243,255,.35), transparent 65%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(26,34,180,.35), transparent 65%)' }}
         />
         <div className="relative">
           <p className="kicker">Our goal</p>
@@ -153,7 +153,7 @@ export function Component() {
           {/* the service as one line */}
           <ol className="mt-8 grid gap-3 md:grid-cols-4" aria-label="How the hosted service works">
             {FLOW.map((f, i) => (
-              <li key={f.title} className="relative rounded-[14px] border border-hairline bg-black/30 p-4">
+              <li key={f.title} className="relative rounded-[14px] border border-hairline bg-ink/[.04] p-4">
                 {i < FLOW.length - 1 ? (
                   <span aria-hidden className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-teal md:block">
                     <ArrowRight className="size-5" />
@@ -178,7 +178,7 @@ export function Component() {
         </h2>
         <ul className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-5">
           {PROOF.map((p) => (
-            <li key={p.label} className="flex flex-col rounded-[14px] border border-hairline bg-[rgba(6,12,20,.85)] p-4">
+            <li key={p.label} className="flex flex-col rounded-[14px] border border-hairline bg-[rgba(251,248,241,.92)] p-4">
               <p className="font-mono leading-none">
                 <span className="text-[30px] tabular-nums text-ink">{p.value}</span>{' '}
                 <span className="text-[12px] text-mute">{p.unit}</span>
@@ -200,7 +200,7 @@ export function Component() {
         </h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {PREVIEWS.map((p) => (
-            <figure key={p.file} className="glass m-0 overflow-hidden bg-[rgba(6,12,20,.85)]">
+            <figure key={p.file} className="glass m-0 overflow-hidden bg-[rgba(251,248,241,.92)]">
               <Link to={`/your-dam?dam=${p.dam}`} className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal">
                 <img src={base + p.file} alt={`${p.title}. ${p.simple}`} width={1102} height={621} loading="eager" decoding="async" className="block h-auto w-full" />
               </Link>
@@ -225,7 +225,7 @@ export function Component() {
           {ROADMAP.map((r) => (
             <li
               key={r.title}
-              className={cn('rounded-[14px] border p-4', r.done ? 'border-teal/50 bg-teal/[.06]' : 'border-hairline bg-[rgba(6,12,20,.8)]')}
+              className={cn('rounded-[14px] border p-4', r.done ? 'border-teal/50 bg-teal/[.06]' : 'border-hairline bg-[rgba(251,248,241,.92)]')}
             >
               <p className={cn('font-mono text-[10.5px] uppercase tracking-[0.16em]', r.done ? 'text-teal' : 'text-mute')}>
                 {r.done ? '✓ ' : ''}

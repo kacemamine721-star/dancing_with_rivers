@@ -29,14 +29,14 @@ export function groupTests(tests: Test[]): [string, Test[]][] {
 }
 
 function Figure({ fig, experts, priority }: { fig: MethodFigure | undefined; experts: boolean; priority: boolean }) {
-  if (!fig) return <div className="aspect-[16/9] w-full rounded-[14px] border border-hairline bg-black/30" aria-hidden />;
+  if (!fig) return <div className="aspect-[16/9] w-full rounded-[14px] border border-hairline bg-ink/[.04]" aria-hidden />;
   return (
     <figure className="m-0">
       <a
         href={figureUrl(fig)}
         target="_blank"
         rel="noreferrer"
-        className="group relative block overflow-hidden rounded-[14px] border border-hairline bg-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal"
+        className="group relative block overflow-hidden rounded-[14px] border border-hairline bg-ink/[.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal"
       >
         <img
           src={figureUrl(fig)}
@@ -79,7 +79,7 @@ function Step({ step, n, fig, experts }: { step: MethodStep; n: number; fig: Met
           <h3 id={`step-${step.id}-title`} className="mt-3 text-[clamp(21px,2.2vw,28px)] font-bold leading-tight">
             {step.title}
           </h3>
-          <p className="mt-3 text-[15px] leading-[1.7] text-[#d6e0ee]">{experts ? step.expert : step.simple}</p>
+          <p className="mt-3 text-[15px] leading-[1.7] text-ink/85">{experts ? step.expert : step.simple}</p>
 
           <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3">
             {step.numbers.map((x) => (
@@ -183,7 +183,7 @@ export function Component() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6">
-      <header className="glass bg-[rgba(6,12,20,.9)] p-6 sm:p-9">
+      <header className="glass bg-[rgba(251,248,241,.92)] p-6 sm:p-9">
         <p className="kicker">Methods · {experts ? 'advanced' : 'simplified'} tutorial</p>
         <h1 className="mt-2 max-w-3xl text-[clamp(28px,3.8vw,46px)] font-bold leading-[1.08]">
           How we read a dam from space, step by step
@@ -200,7 +200,7 @@ export function Component() {
 
         <nav aria-label="Tutorial steps" className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {CHAPTERS.map((c, ci) => (
-            <div key={c.id} className="rounded-[14px] border border-hairline bg-black/25 p-4">
+            <div key={c.id} className="rounded-[14px] border border-hairline bg-ink/[.04] p-4">
               <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-teal">
                 Part {ci + 1} · {c.title}
               </p>
@@ -238,7 +238,7 @@ export function Component() {
         </section>
       ))}
 
-      <section aria-labelledby="validation-title" className="glass mt-10 bg-[rgba(6,12,20,.9)] p-6 sm:p-9">
+      <section aria-labelledby="validation-title" className="glass mt-10 bg-[rgba(251,248,241,.92)] p-6 sm:p-9">
         <p className="kicker">Part 5 · Test everything</p>
         <h2 id="validation-title" className="mt-2 text-[clamp(22px,2.6vw,32px)] font-bold">
           How we checked each step
@@ -252,7 +252,7 @@ export function Component() {
         {counts.length ? (
           <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Test results summary">
             {counts.map(([s, k]) => (
-              <li key={s} className="rounded-[12px] border border-hairline bg-black/25 px-4 py-3">
+              <li key={s} className="rounded-[12px] border border-hairline bg-ink/[.04] px-4 py-3">
                 <p className="font-mono text-[28px] leading-none">
                   <span aria-hidden>{STATUS[s].icon}</span> {k}
                 </p>
@@ -278,7 +278,7 @@ export function Component() {
             experts ? (
               <ValidationTable tests={v.data.tests} />
             ) : (
-              <details className="group rounded-[12px] border border-hairline bg-black/20 p-4">
+              <details className="group rounded-[12px] border border-hairline bg-ink/[.04] p-4">
                 <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.16em] text-teal">
                   Show all {v.data.tests.length} tests
                 </summary>

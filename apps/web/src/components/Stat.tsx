@@ -55,7 +55,7 @@ export function Stat({
           className="mt-3 h-[3px] w-full overflow-hidden rounded-pill bg-ink/10"
         >
           <div
-            className="h-full rounded-pill bg-teal shadow-[0_0_8px_rgba(95,243,255,.6)]"
+            className="h-full rounded-pill bg-teal shadow-[0_0_8px_rgba(26,34,180,.6)]"
             style={{ width: `${pct}%` }}
           />
         </div>

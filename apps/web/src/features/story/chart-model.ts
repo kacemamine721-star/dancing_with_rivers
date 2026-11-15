@@ -3,7 +3,7 @@ import type { ReservoirArea } from '@/data/schemas.gen';
 import { dayMs, fmtDay, type MedianSample } from './series';
 
 /** Sensor colours (validated pair on the dark surface; S1 also differs by marker shape). */
-export const SENSOR_COLOR = { NISAR: '#5ff3ff', S1: '#ffb547' } as const;
+export const SENSOR_COLOR = { NISAR: '#1a22b4', S1: '#ffb547' } as const;
 
 export interface ChartAnnotation {
   date: string;

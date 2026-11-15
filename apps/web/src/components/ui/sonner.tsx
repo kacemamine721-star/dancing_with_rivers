@@ -8,7 +8,7 @@ export function Toaster(props: ToasterProps) {
       position="bottom-center"
       toastOptions={{
         classNames: {
-          toast: 'glass !bg-[rgba(7,17,27,.94)] !border-teal-dim !text-ink font-sans text-sm shadow-xl',
+          toast: 'glass !bg-[rgba(251,248,241,.92)] !border-teal-dim !text-ink font-sans text-sm shadow-xl',
           description: '!text-mute',
           actionButton: '!bg-teal !text-on-teal font-mono uppercase tracking-btn',
           cancelButton: '!bg-ink/10 !text-ink',

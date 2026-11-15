@@ -10,7 +10,7 @@ import { ORDER, type StepId } from './steps';
 
 /** A length in screen px at the current zoom (the stage sets --u = user units per screen px). */
 const u = (px: number) => `calc(${px}px * var(--u))`;
-const LABEL = { paintOrder: 'stroke', stroke: '#03050a', strokeWidth: u(3) } as const;
+const LABEL = { paintOrder: 'stroke', stroke: '#f4f0e6', strokeWidth: u(3) } as const;
 const at = (step: StepId, s: StepId) => ORDER.indexOf(step) >= ORDER.indexOf(s);
 const LAKE_STEPS: StepId[] = ['radar', 'lake', 'alert', 'level'];
 
@@ -347,8 +347,8 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
     >
       <defs>
         <radialGradient id="ywd-glow">
-          <stop offset="0" stopColor="#5ff3ff" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#5ff3ff" stopOpacity="0" />
+          <stop offset="0" stopColor="#1a22b4" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#1a22b4" stopOpacity="0" />
         </radialGradient>
         {/* white water mask → cyan, black → transparent */}
         <filter id="ywd-water" colorInterpolationFilters="sRGB">
@@ -360,20 +360,20 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
         </filter>
       </defs>
 
-      <path d={base.country} fill="rgba(233,241,255,.035)" stroke="rgba(233,241,255,.35)" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
-      <path d={base.adm1} fill="none" stroke="rgba(233,241,255,.08)" strokeWidth={0.6} vectorEffect="non-scaling-stroke" />
+      <path d={base.country} fill="rgba(16,19,107,.035)" stroke="rgba(16,19,107,.35)" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
+      <path d={base.adm1} fill="none" stroke="rgba(16,19,107,.08)" strokeWidth={0.6} vectorEffect="non-scaling-stroke" />
       <path d={base.rivers} fill="none" stroke="rgba(47,143,255,.45)" strokeWidth={0.9} vectorEffect="non-scaling-stroke" />
 
       {g ? (
         <g>
           <g aria-hidden opacity={0.28}>
-            <path d={g.catchment} fill="none" stroke="rgba(233,241,255,.5)" strokeWidth={0.8} vectorEffect="non-scaling-stroke" />
+            <path d={g.catchment} fill="none" stroke="rgba(16,19,107,.5)" strokeWidth={0.8} vectorEffect="non-scaling-stroke" />
             {g.up.map((d, i) => (
               <path key={i} d={d} fill="none" stroke="#2f8fff" strokeWidth={0.9} vectorEffect="non-scaling-stroke" />
             ))}
             <path d={g.down} fill="none" stroke="#2f8fff" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
           </g>
-          <path data-l="catchment" d={g.catchment} fill="rgba(95,243,255,.08)" stroke="#5ff3ff" strokeOpacity={0.7} strokeWidth={1.2} vectorEffect="non-scaling-stroke" opacity={0} />
+          <path data-l="catchment" d={g.catchment} fill="rgba(26,34,180,.08)" stroke="#1a22b4" strokeOpacity={0.7} strokeWidth={1.2} vectorEffect="non-scaling-stroke" opacity={0} />
           {g.up.map((d, i) => (
             <path key={i} data-l="up" d={d} fill="none" stroke="#5fb8ff" strokeLinecap="round" style={{ strokeWidth: u(1.1) }} />
           ))}
@@ -384,7 +384,7 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
               {step !== 'radar' && shownRadar.mask ? (
                 <image href={b.src.fileUrl(shownRadar.mask)} {...rect(g.chip)} preserveAspectRatio="none" filter="url(#ywd-water)" className={reduced ? undefined : 'ywd-fadein'} />
               ) : null}
-              <rect {...rect(g.chip)} fill="none" stroke="#5ff3ff" strokeOpacity={0.6} strokeWidth={1} vectorEffect="non-scaling-stroke" />
+              <rect {...rect(g.chip)} fill="none" stroke="#1a22b4" strokeOpacity={0.6} strokeWidth={1} vectorEffect="non-scaling-stroke" />
             </g>
           ) : null}
 
@@ -396,7 +396,7 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
 
           {g.labels.map((t) => (
             <g key={`${t.name}-${t.km}`} data-l="lbl" data-km={t.km} opacity={0}>
-              <circle cx={t.xy[0]} cy={t.xy[1]} fill="#e9f1ff" style={{ r: u(3) }} />
+              <circle cx={t.xy[0]} cy={t.xy[1]} fill="#10136b" style={{ r: u(3) }} />
               {shownLabels.has(`${t.name}-${t.km}`) ? (
                 <text x={t.xy[0]} y={t.xy[1]} className="fill-ink font-mono" style={{ ...LABEL, fontSize: u(11), transform: `translate(${u(6)}, ${u(-5)})` }}>
                   {t.name} · km {Math.round(t.km)}
@@ -406,7 +406,7 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
               )}
             </g>
           ))}
-          <circle data-l="drop" fill="#9be7ff" opacity={0} style={{ r: u(5), filter: 'drop-shadow(0 0 6px #5ff3ff)' }} />
+          <circle data-l="drop" fill="#2b4ce0" opacity={0} style={{ r: u(5), filter: 'drop-shadow(0 0 6px #1a22b4)' }} />
           <circle cx={g.damPt[0]} cy={g.damPt[1]} fill="url(#ywd-glow)" className={reduced ? undefined : 'ywd-pulse'} style={{ r: u(26) }} />
         </g>
       ) : null}
@@ -416,7 +416,7 @@ export function DamStage({ index, dams, tunisia, dam, geo, bundle: b, step, redu
         const sel = d.id === dam?.id;
         return (
           <g key={d.id} role="button" tabIndex={-1} aria-label={`Pick ${d.name}`} onClick={() => onPick(d.id)} className="cursor-pointer">
-            <circle cx={xy[0]} cy={xy[1]} fill={sel ? '#5ff3ff' : '#6dffa8'} stroke="#03050a" opacity={sel || !dam ? 1 : 0.6} style={{ r: u(sel ? 6 : 5), strokeWidth: u(1.5) }} />
+            <circle cx={xy[0]} cy={xy[1]} fill={sel ? '#1a22b4' : '#1f7a4d'} stroke="#f4f0e6" opacity={sel || !dam ? 1 : 0.6} style={{ r: u(sel ? 6 : 5), strokeWidth: u(1.5) }} />
             {sel || !dam ? (
               <text x={xy[0]} y={xy[1]} className={sel ? 'fill-teal font-mono' : 'fill-ink font-mono'} style={{ ...LABEL, fontSize: u(sel ? 13 : 11), transform: `translate(${u(9)}, ${u(4)})` }}>
                 {d.name}

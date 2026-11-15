@@ -78,7 +78,7 @@ export function TimeScrubber({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'glass pointer-events-auto flex flex-col gap-2 rounded-xl border border-white/10 bg-[rgba(6,12,20,.85)] p-3 text-ink backdrop-blur-md',
+        'glass pointer-events-auto flex flex-col gap-2 rounded-xl border border-hairline bg-[rgba(251,248,241,.92)] p-3 text-ink backdrop-blur-md',
         className,
       )}
     >
@@ -116,7 +116,7 @@ export function TimeScrubber({ className }: { className?: string }) {
               'inline-flex items-center rounded px-1.5 py-0.5 font-semibold text-[10px] tracking-wider',
               currentAcq?.sensor === 'NISAR'
                 ? 'bg-teal/20 text-teal border border-teal/40'
-                : 'bg-white/10 text-ink border border-white/20',
+                : 'bg-ink/10 text-ink border border-hairline',
             )}
           >
             {currentAcq?.sensor} {currentAcq?.pol ?? ''}
@@ -156,7 +156,7 @@ export function TimeScrubber({ className }: { className?: string }) {
                     ? 'scale-150 bg-teal ring-2 ring-teal/50'
                     : acq.sensor === 'NISAR'
                     ? 'bg-teal/60 hover:bg-teal hover:scale-125'
-                    : 'bg-white/40 hover:bg-white hover:scale-125',
+                    : 'bg-ink/30 hover:bg-white hover:scale-125',
                 )}
               />
             </button>

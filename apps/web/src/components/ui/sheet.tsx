@@ -30,7 +30,7 @@ SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
   [
-    'fixed z-50 flex flex-col gap-4 border-teal-dim bg-[rgba(6,12,20,.92)] p-6 text-ink shadow-2xl backdrop-blur-glass',
+    'fixed z-50 flex flex-col gap-4 border-teal-dim bg-[rgba(251,248,241,.92)] p-6 text-ink shadow-2xl backdrop-blur-glass',
     'ease-cine data-[state=closed]:duration-300 data-[state=open]:duration-500',
     'data-[state=open]:animate-in data-[state=closed]:animate-out',
   ],

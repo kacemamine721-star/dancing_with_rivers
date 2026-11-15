@@ -23,12 +23,12 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         ghost: [
-          'border-ink/20 bg-[rgba(10,18,30,.55)] text-ink backdrop-blur-[6px]',
+          'border-ink/20 bg-[rgba(251,248,241,.92)] text-ink backdrop-blur-[6px]',
           'hover:border-teal hover:text-teal',
           'aria-pressed:border-teal aria-pressed:bg-teal aria-pressed:text-on-teal',
           'data-[state=on]:border-teal data-[state=on]:bg-teal data-[state=on]:text-on-teal',
         ],
-        primary: ['border-teal bg-teal font-semibold text-on-teal', 'hover:bg-[#9ff8ff] hover:text-on-teal'],
+        primary: ['border-teal bg-teal font-semibold text-on-teal', 'hover:bg-[#1a22b4] hover:text-on-teal'],
         chip: [
           'border-teal/35 bg-teal/[.06] text-ink backdrop-blur-[6px]',
           'hover:border-teal hover:text-teal',

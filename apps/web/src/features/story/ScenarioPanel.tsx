@@ -170,7 +170,7 @@ export function ScenarioPanel({ className }: { className?: string }) {
       </div>
 
       {anuga ? (
-        <div className="mt-3 flex items-center gap-3 rounded-[10px] border border-hairline bg-black/30 px-3 py-2">
+        <div className="mt-3 flex items-center gap-3 rounded-[10px] border border-hairline bg-ink/[.04] px-3 py-2">
           <Button
             size="icon"
             variant="ghost"
@@ -254,7 +254,7 @@ export function ScenarioPanel({ className }: { className?: string }) {
           <span
             aria-hidden
             className="h-2 w-28 rounded-pill"
-            style={{ background: 'linear-gradient(90deg, #9be7ff, #2f8fff, #1b3a9e, #120b4a)' }}
+            style={{ background: 'linear-gradient(90deg, #2b4ce0, #2f8fff, #1b3a9e, #120b4a)' }}
           />
           <span>0.1 m → ≥ 8 m</span>
         </div>

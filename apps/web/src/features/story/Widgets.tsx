@@ -129,19 +129,19 @@ export function LevelVolumeCard({ className }: { className?: string }) {
       <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full" role="img" aria-label={`SWOT water-surface elevation, ${pts.length} passes in 2026`}>
         {[lo, (lo + hi) / 2, hi].map((v) => (
           <g key={v}>
-            <line x1={M.l} x2={W - M.r} y1={y(v)} y2={y(v)} stroke="rgba(233,241,255,.07)" />
+            <line x1={M.l} x2={W - M.r} y1={y(v)} y2={y(v)} stroke="rgba(16,19,107,.07)" />
             <text x={M.l - 5} y={y(v)} dy="0.32em" textAnchor="end" className="fill-mute font-mono text-[9px]">
               {fmt(v, 0)}
             </text>
           </g>
         ))}
         <text x={M.l - 5} y={H - 4} textAnchor="end" className="fill-mute font-mono text-[9px]">m</text>
-        <line x1={fx} x2={fx} y1={M.t} y2={H - M.b} stroke="rgba(233,241,255,.55)" strokeDasharray="3 3" />
+        <line x1={fx} x2={fx} y1={M.t} y2={H - M.b} stroke="rgba(16,19,107,.55)" strokeDasharray="3 3" />
         <text x={fx + 4} y={M.t + 8} className="fill-ink font-mono text-[9px]">Failure {fmtDay(FAILURE_DATE)}</text>
         <path
           d={`M${pts.map((p) => `${x(p.time)},${y(p.wse_m)}`).join('L')}`}
           fill="none"
-          stroke="rgba(95,243,255,.5)"
+          stroke="rgba(26,34,180,.5)"
           strokeWidth={1.5}
         />
         {pts.map((p) => (
@@ -150,8 +150,8 @@ export function LevelVolumeCard({ className }: { className?: string }) {
             cx={x(p.time)}
             cy={y(p.wse_m)}
             r={3.5}
-            fill={p.quality === 0 ? '#5ff3ff' : 'none'}
-            stroke="#5ff3ff"
+            fill={p.quality === 0 ? '#1a22b4' : 'none'}
+            stroke="#1a22b4"
             strokeWidth={1.2}
           >
             <title>{`${p.time.slice(0, 10)}: ${fmt(p.wse_m, 2)} ± ${fmt(p.wse_u, 2)} m${p.quality === 0 ? '' : ' (suspect quality)'}`}</title>

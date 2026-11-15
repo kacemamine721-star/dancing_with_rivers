@@ -43,10 +43,10 @@ export function ActRail({ current }: { current: number }) {
                     aria-hidden
                     className={cn(
                       'block h-1.5 rounded-pill transition-all duration-ui group-hover:brightness-150',
-                      active ? 'w-5 shadow-[0_0_8px_rgba(95,243,255,.7)]' : 'w-1.5',
+                      active ? 'w-5 shadow-[0_0_8px_rgba(26,34,180,.7)]' : 'w-1.5',
                     )}
                     style={{
-                      background: active ? '#5ff3ff' : done ? 'rgba(95,243,255,.6)' : 'rgba(233,241,255,.3)',
+                      background: active ? '#1a22b4' : done ? 'rgba(26,34,180,.6)' : 'rgba(16,19,107,.3)',
                     }}
                   />
                 </Link>
@@ -110,7 +110,7 @@ export function ActCard({ config, facts, className }: ActCardProps) {
       </h2>
 
       <div id="act-card-body" className={cn(!open && 'hidden md:block')}>
-        <p className="mt-3 text-[14.5px] leading-[1.65] text-[#d6e0ee]">{fillTemplate(config.body, facts)}</p>
+        <p className="mt-3 text-[14.5px] leading-[1.65] text-ink/85">{fillTemplate(config.body, facts)}</p>
 
         {factIds.length > 0 ? (
           <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-3">
@@ -123,7 +123,7 @@ export function ActCard({ config, facts, className }: ActCardProps) {
         {experts ? (
           <div className="mt-4 border-l-2 border-model/50 pl-3">
             <p className="telemetry-label !text-model">Experts</p>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-[#c2d3eb]">{fillTemplate(config.expertBody, facts)}</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-ink/85">{fillTemplate(config.expertBody, facts)}</p>
           </div>
         ) : null}
 

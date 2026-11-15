@@ -28,9 +28,9 @@ const H = 250;
 const M = { l: 36, r: 12, t: 44, b: 24 };
 
 const TONE: Record<ChartAnnotation['tone'], string> = {
-  event: 'rgba(233,241,255,.55)',
+  event: 'rgba(16,19,107,.55)',
   alert: '#ff5a5a',
-  season: 'rgba(95,243,255,.55)',
+  season: 'rgba(26,34,180,.55)',
 };
 
 export function ReservoirChart({ className }: { className?: string }) {
@@ -143,14 +143,14 @@ export function ReservoirChart({ className }: { className?: string }) {
         </desc>
         <defs>
           <pattern id={hatchId} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(233,241,255,.13)" strokeWidth="2" />
+            <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(16,19,107,.13)" strokeWidth="2" />
           </pattern>
         </defs>
 
         {/* grid + y axis */}
         {yTicks.map((t) => (
           <g key={t}>
-            <line x1={M.l} x2={W - M.r} y1={py(t)} y2={py(t)} stroke="rgba(233,241,255,.07)" />
+            <line x1={M.l} x2={W - M.r} y1={py(t)} y2={py(t)} stroke="rgba(16,19,107,.07)" />
             <text x={M.l - 6} y={py(t)} dy="0.32em" textAnchor="end" className="fill-mute font-mono text-[9px]">
               {fmt(t, 1)}
             </text>
@@ -188,14 +188,14 @@ export function ReservoirChart({ className }: { className?: string }) {
 
         {/* uncertainty band + median line */}
         {segs.map((seg, i) => (
-          <path key={`b${i}`} d={bandPath(seg)} fill="rgba(95,243,255,.10)" />
+          <path key={`b${i}`} d={bandPath(seg)} fill="rgba(26,34,180,.10)" />
         ))}
         {segs.map((seg, i) => (
           <path
             key={`l${i}`}
             d={linePath(seg)}
             fill="none"
-            stroke="rgba(233,241,255,.85)"
+            stroke="rgba(16,19,107,.85)"
             strokeWidth={2}
             strokeLinejoin="round"
           />
@@ -220,7 +220,7 @@ export function ReservoirChart({ className }: { className?: string }) {
                 x={ax + (flip ? -4 : 4)}
                 y={M.t - 6 - row * 11}
                 textAnchor={flip ? 'end' : 'start'}
-                fill={a.tone === 'alert' ? '#ff8a8a' : 'rgba(233,241,255,.85)'}
+                fill={a.tone === 'alert' ? '#ff8a8a' : 'rgba(16,19,107,.85)'}
                 className="font-mono text-[9px]"
               >
                 {a.label}
@@ -230,7 +230,7 @@ export function ReservoirChart({ className }: { className?: string }) {
         })}
 
         {/* cursor = store date */}
-        <line x1={cursorX} x2={cursorX} y1={M.t} y2={H - M.b} stroke="#5ff3ff" strokeWidth={1.5} opacity={0.9} />
+        <line x1={cursorX} x2={cursorX} y1={M.t} y2={H - M.b} stroke="#1a22b4" strokeWidth={1.5} opacity={0.9} />
 
         {/* points */}
         {pts.map((p) => {
@@ -300,8 +300,8 @@ export function ReservoirChart({ className }: { className?: string }) {
         </li>
         <li className="flex items-center gap-1.5">
           <svg width="16" height="10" aria-hidden>
-            <rect x="0" y="1" width="16" height="8" fill="rgba(95,243,255,.18)" />
-            <line x1="0" x2="16" y1="5" y2="5" stroke="rgba(233,241,255,.85)" strokeWidth="2" />
+            <rect x="0" y="1" width="16" height="8" fill="rgba(26,34,180,.18)" />
+            <line x1="0" x2="16" y1="5" y2="5" stroke="rgba(16,19,107,.85)" strokeWidth="2" />
           </svg>
           21-day median · ±2 dB band
         </li>
@@ -320,7 +320,7 @@ export function ReservoirChart({ className }: { className?: string }) {
         <div className="mt-2 max-h-48 overflow-auto rounded border border-hairline">
           <table className="w-full text-left font-mono text-[10.5px]">
             <caption className="sr-only">Lake area measurements and 21-day median</caption>
-            <thead className="sticky top-0 bg-[#08101c] text-mute">
+            <thead className="sticky top-0 bg-paper text-mute">
               <tr>
                 <th className="px-2 py-1">Date</th>
                 <th className="px-2 py-1">Sensor</th>

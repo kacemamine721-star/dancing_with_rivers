@@ -348,7 +348,7 @@ export function IntroExperience() {
             <div className="ix-hero">
               <div className="ix-meta">NASA · ISRO · L-band synthetic aperture radar</div>
               <h1 style={{ margin: '10px 0 14px' }}>
-                <Lockup size="lg" />
+                <Lockup size="lg" tone="cream" />
               </h1>
               <p>
                 On the night of 17 June 2026, a dam gate failed in northwest Tunisia. NISAR was watching. Follow the
@@ -427,7 +427,7 @@ export function IntroExperience() {
       ) : null}
 
       <div className={`ix-loader${loaderOff ? ' off' : ''}`} role="status" aria-live="polite" aria-hidden={loaderOff}>
-        <LogoMark className="ix-lmark" />
+        <LogoMark className="ix-lmark text-[#f4f0e6]" animated />
         <div>ACQUIRING SIGNAL</div>
       </div>
     </div>

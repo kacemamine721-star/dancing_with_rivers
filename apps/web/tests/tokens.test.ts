@@ -10,8 +10,8 @@ const cssVar = (name: string): string | undefined =>
   new RegExp(`--${name}:\\s*([^;]+);`).exec(css)?.[1]?.trim().toLowerCase();
 
 describe('design tokens', () => {
-  it('tokens.ts matches tokens.css', () => {
-    const c = tokens.color;
+  it('tokens.ts (ui) matches tokens.css', () => {
+    const c = tokens.ui;
     const pairs: Array<[string, string]> = [
       ['bg', c.bg],
       ['ink', c.ink],
@@ -35,8 +35,8 @@ describe('design tokens', () => {
     expect(cssVar('glass-blur')).toBe(`${tokens.glassBlurPx}px`);
   });
 
-  it('keeps --mute at the AA-raised value', () => {
-    expect(cssVar('mute')).toBe('#9aa7bd');
+  it('keeps --mute at the AA value for the light theme', () => {
+    expect(cssVar('mute')).toBe('#545985');
   });
 
   it('converts hex to shader rgb', () => {

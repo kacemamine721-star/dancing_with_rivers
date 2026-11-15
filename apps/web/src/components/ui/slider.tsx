@@ -31,7 +31,7 @@ export const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.R
             aria-label={thumbLabel}
             aria-valuetext={valueText}
             className={cn(
-              'block size-4 cursor-grab rounded-full border-2 border-teal bg-bg shadow-[0_0_10px_rgba(95,243,255,.5)]',
+              'block size-4 cursor-grab rounded-full border-2 border-teal bg-bg shadow-[0_0_10px_rgba(26,34,180,.5)]',
               'transition-transform duration-ui hover:scale-110 active:cursor-grabbing',
               'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
             )}

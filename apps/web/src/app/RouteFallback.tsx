@@ -18,7 +18,7 @@ export function BootFallback() {
       aria-live="polite"
       className="fixed inset-0 flex flex-col items-center justify-center gap-4 bg-bg font-mono text-xs uppercase tracking-[0.3em] text-teal"
     >
-      <LogoMark className="size-[110px] animate-pulse" />
+      <LogoMark className="size-[110px]" animated />
       <span>Acquiring signal</span>
     </div>
   );
