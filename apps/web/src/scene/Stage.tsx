@@ -16,6 +16,7 @@ import { ACESFilmicToneMapping, SRGBColorSpace } from 'three';
 import { D_FUSE, intro } from '@/features/intro/runtime';
 import { Effects } from '@/scene/Effects';
 import { IntroScene } from '@/scene/intro/IntroScene';
+import { LoadingVeil } from '@/scene/LoadingVeil';
 import { MellegueScene } from '@/scene/mellegue/MellegueScene';
 import { hasWebGL2, TIERS } from '@/scene/quality';
 import { veil } from '@/scene/veil';
@@ -167,6 +168,7 @@ export default function Stage({ active = true }: { active?: boolean }) {
         <MellegueScene active={!isIntro} />
         {!isIntro ? <Effects /> : null}
       </Canvas>
+      <LoadingVeil active={active} />
       {grain ? (
         <div
           aria-hidden

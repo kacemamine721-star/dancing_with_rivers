@@ -23,3 +23,6 @@ export const ACT_CONFIGS: Record<Act, ActConfig> = {
 };
 
 export { act1, act2, act3, act4, act5, act6, act7, act8, act9 };
+
+/** Acts in story order (progress rail, tests). */
+export const ACT_LIST: ActConfig[] = [act1, act2, act3, act4, act5, act6, act7, act8, act9];

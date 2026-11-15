@@ -1,34 +1,23 @@
 import type { ActConfig } from '../types';
+import { onlyLayers } from './layers';
 
 export const act8: ActConfig = {
   act: 8,
+  short: 'Level & volume',
   kicker: 'ACT 8 · LEVEL & VOLUME',
   title: 'From area to water level and volume.',
   body:
-    'Radar shows how big the lake is. To know how much water it holds, we add SWOT, a NASA–CNES satellite that measures lake height, and the shape of the valley. Together they estimate how many million m³ left.',
+    'Radar measures how big the lake is, not how deep. SWOT, a NASA–CNES satellite, measures the height of the lake surface. Before the failure it read {level.before} m; on its first pass after, {level.after} m. Combined with the lake area, that is a storage change we can compare with the reported {release.reported} million m³.',
   expertBody:
-    'Surface Water and Ocean Topography (SWOT) Ka-band radar interferometer measures absolute water surface elevation (WSE) ± 10 cm. Combined with DEM hypsometry (area-elevation curves), radar surface area translates directly into volume depletion estimates.',
-  expertStats: [
-    { label: 'Satellite', value: 'SWOT', unit: 'KaRIn', badge: { kind: 'measured', source: 'NASA / CNES' } },
-    { label: 'Elevation Precision', value: '± 10', unit: 'cm', badge: { kind: 'measured', source: 'Ka-band KaRIn' } },
-    { label: 'Volume Method', value: 'Hypsometry', badge: { kind: 'modelled', source: 'DEM integration' } },
-    { label: 'Reported Loss', value: '≈ 21', unit: 'Mm³', badge: { kind: 'reported', source: 'Official report' } },
-  ],
-  badges: [
-    { kind: 'measured', source: 'NASA–CNES SWOT Satellite Radar Altimetry', subject: 'Water elevation' },
-    { kind: 'modelled', source: 'GEM-15 Shoreline Contour Inversion', subject: 'Volume curve' },
-  ],
-  defaultShot: 'lake_top',
-  defaultDate: '2026-07-15',
-  compareDate: null,
-  defaultLayers: {
-    basemap: true,
-    radar: true,
-    mask: true,
-    change: false,
-    flowpath: false,
-    flood: false,
-    villages: false,
-    cropland: false,
+    'SWOT LakeSP (Hydrocron), good-quality passes only for the numbers. Storage change between two SWOT passes = ∫ area · dh, with a range from radar area (low) to SWOT area (high). It is net of inflow, so it is not the released volume; consistent with the reported {release.range} Mm³ within a factor of 2. SWOT’s lake area (larger polygon) differs from the radar area; the level is unaffected. The radar-shoreline × DEM level method was tested and rejected (fails test L5 against SWOT).',
+  facts: ['level.drop', 'volume.change', 'release.range'],
+  badges: [{ from: 'file', file: 'level_volume', subject: 'Level and volume' }],
+  stage: {
+    shot: 'lake_top',
+    date: '2026-07-15',
+    compareDate: null,
+    layers: onlyLayers('basemap', 'radar', 'mask'),
   },
+  tryIt: [{ label: 'How we test this', actions: [{ kind: 'navigate', to: '/methods' }] }],
+  widgets: ['levelVolume'],
 };

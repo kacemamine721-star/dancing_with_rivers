@@ -15,6 +15,7 @@ import {
   ManifestSchema,
   ReservoirAreaSchema,
   SourcesSchema,
+  ValidationSchema,
 } from '@/data/schemas.gen';
 
 export const DEFAULT_DATA_BASE_URL = '/data/2026-11-15';
@@ -31,6 +32,7 @@ export const DEFAULT_FILES: Record<Exclude<ContractName, 'anuga_stats'>, string>
   level_volume: 'level/level_volume.json',
   sources: 'story/sources.json',
   events: 'story/events.json',
+  validation: 'validation/validation.json',
 };
 
 type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
@@ -143,6 +145,10 @@ export class StaticBundleSource implements DataSource {
 
   async events() {
     return this.load('events', await this.pathFor('events'), EventsSchema);
+  }
+
+  async validation() {
+    return this.load('validation', await this.pathFor('validation'), ValidationSchema);
   }
 
   private async pathFor(name: Exclude<ContractName, 'anuga_stats' | 'manifest'>): Promise<string> {

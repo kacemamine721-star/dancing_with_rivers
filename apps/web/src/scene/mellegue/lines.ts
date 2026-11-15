@@ -53,23 +53,35 @@ uniform float uTime;
 uniform float uDraw;   // 0..1 fraction of the length drawn (draw-on)
 uniform float uLen;    // total length (km)
 uniform float uDash;   // dash period (km); 0 = solid
-uniform float uSpeed;  // dash speed (km/s), downstream
-uniform float uGlow;   // brightness of the draw-on head (> 1 feeds the bloom)
+uniform float uSpeed;  // dash / pulse speed (km/s), downstream
+uniform float uGlow;   // brightness of the draw-on head and pulses (> 1 feeds the bloom)
+uniform float uPulse;  // pulse period (km); 0 = no travelling pulses
+uniform float uCore;   // half-width of the solid core, fraction of the strip (1 = no halo)
+uniform float uHalo;   // strength of the soft halo around the core
 varying float vDist;
 varying float vSide;
 
 void main() {
   float s = vDist / max(uLen, 1e-6);
   if (s > uDraw) discard;
-  float edge = 1.0 - smoothstep(0.55, 1.0, abs(vSide));
+  float a = abs(vSide);
+  float core = 1.0 - smoothstep(max(uCore - 0.18, 0.0), uCore, a);
+  float halo = (1.0 - a) * (1.0 - a) * uHalo;
   float k = 1.0;
   if (uDash > 0.0) {
     float ph = fract((vDist - uTime * uSpeed) / uDash);
     k = 0.42 + 0.58 * smoothstep(0.0, 0.12, ph) * (1.0 - smoothstep(0.5, 0.62, ph));
   }
+  float pulse = 0.0;
+  if (uPulse > 0.0) {
+    // sawtooth: a bright leading head with a fading tail, moving downstream
+    float ph = fract((vDist - uTime * uSpeed) / uPulse);
+    pulse = pow(smoothstep(0.0, 0.9, ph), 3.0) * (1.0 - smoothstep(0.9, 0.97, ph));
+  }
   float head = uDraw < 0.999 ? smoothstep(uDraw - 0.015, uDraw, s) : 0.0;
-  vec3 col = uColor * (k + head * uGlow);
-  gl_FragColor = vec4(col, uOpacity * edge * max(k, head));
+  vec3 col = uColor * (k + head * uGlow + pulse * uGlow);
+  float alpha = max(core * max(k, head), halo * (0.55 + 0.45 * pulse));
+  gl_FragColor = vec4(col, uOpacity * alpha);
   #include <colorspace_fragment>
 }
 `;
@@ -82,6 +94,11 @@ export type LineStyle = {
   speedKmS?: number;
   glow?: number;
   lift?: number;
+  /** Travelling pulse period (km); pulses move at `speedKmS`. */
+  pulseKm?: number;
+  /** Solid core half-width as a fraction of the strip (default 1 = no halo). */
+  core?: number;
+  halo?: number;
 };
 
 export function lineMaterial(style: LineStyle): ShaderMaterial {
@@ -103,6 +120,9 @@ export function lineMaterial(style: LineStyle): ShaderMaterial {
       uDash: { value: style.dashKm ?? 0 },
       uSpeed: { value: style.speedKmS ?? 0 },
       uGlow: { value: style.glow ?? 0 },
+      uPulse: { value: style.pulseKm ?? 0 },
+      uCore: { value: style.core ?? 1 },
+      uHalo: { value: style.halo ?? 0 },
     },
   });
 }

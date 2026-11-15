@@ -10,6 +10,7 @@ import type {
   Manifest,
   ReservoirArea,
   Sources,
+  Validation,
 } from '@/data/schemas.gen';
 
 /**
@@ -31,6 +32,8 @@ export interface DataSource {
   levelVolume(damId: string): Promise<LevelVolume>;
   sources(): Promise<Sources>;
   events(): Promise<Events>;
+  /** docs/07 §8 test results (validation/validation.json). */
+  validation(): Promise<Validation>;
   /** URL of a raster layer listed in the manifest (call after `manifest()` resolved). */
   textureUrl(layerId: string): string;
   /** URL of any file referenced by a bundle-relative path (e.g. `radar/…_mask.png`). */
@@ -49,4 +52,5 @@ export type ContractName =
   | 'impacts'
   | 'level_volume'
   | 'sources'
-  | 'events';
+  | 'events'
+  | 'validation';
