@@ -37,3 +37,6 @@ Thumbs.db
 .claude/skills/
 UI_REFERENCES/
 .playwright-mcp/
+
+# ANUGA results downloaded from Colab/Kaggle (large; imported via pipeline/v2/anuga_ingest.py)
+dwr_anuga-*/
