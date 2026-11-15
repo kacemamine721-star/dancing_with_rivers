@@ -1,0 +1,11 @@
+{
+ "mass_balance_err": 4.3738633394241334e-13,
+ "peak_Q_m3s": 2314.814814814815,
+ "inundated_km2": 35.431,
+ "arrival_h": {
+  "Muthul": 4.0
+ },
+ "max_depth_m": {
+  "Muthul": 5.92
+ }
+}

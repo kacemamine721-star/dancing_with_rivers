@@ -20,6 +20,19 @@
     }
    ]
   },
+  "v50_d12": {
+   "cropland_ha": 2447.7,
+   "builtup_ha": 34.6,
+   "buildings": 41,
+   "road_km": 56.26,
+   "villages": [
+    {
+     "name": "Muthul",
+     "arrival_h": 4.0,
+     "max_depth_m": 5.92
+    }
+   ]
+  },
   "v195_d12": {
    "cropland_ha": 5573.0,
    "builtup_ha": 165.3,

@@ -11,11 +11,11 @@ interface VolumeSliderProps {
 }
 
 /** Scenarios that have a fully computed ANUGA run available. */
-const COMPUTED_SCENARIOS = new Set(['v21_d12', 'v195_d12']);
+const COMPUTED_SCENARIOS = new Set(['v21_d12', 'v50_d12', 'v195_d12']);
 
 const PRESETS = [
   { label: '21 Mm³ · June 2026', volumeMm3: 21, scenarioId: 'v21_d12', computed: true },
-  { label: '50 Mm³', volumeMm3: 50, scenarioId: 'v50_d12', computed: false },
+  { label: '50 Mm³', volumeMm3: 50, scenarioId: 'v50_d12', computed: true },
   { label: '195 Mm³ · Upper Mellègue', volumeMm3: 195, scenarioId: 'v195_d12', computed: true },
 ] as const;
 
