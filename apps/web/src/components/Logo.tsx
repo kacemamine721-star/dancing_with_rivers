@@ -80,6 +80,8 @@ export function Lockup({ size = 'sm', className }: { size?: 'sm' | 'md' | 'lg'; 
             {lead.trim()}
           </span>
         ) : null}
+        {/* keeps the accessible text "Dancing with the Rivers" (not "theRivers") for the home link name */}
+        {accent ? ' ' : null}
         <span
           className={cn(
             accent ? 'text-teal' : 'text-ink',
