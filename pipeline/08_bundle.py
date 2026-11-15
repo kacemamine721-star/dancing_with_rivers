@@ -5,6 +5,7 @@
                                              # app can be built before real outputs exist; real files overwrite it
   python pipeline/08_bundle.py --validate    # validate every contract JSON + check that every manifest file exists
   python pipeline/08_bundle.py --schemas     # export contracts/*.schema.json from pipeline/common/contracts.py
+  python pipeline/08_bundle.py --events      # rewrite story/events.json (press sources) + events in reservoir_area.json
 
 Real pipeline steps (01–07) write their own files into the bundle and register layers through `register_layer`;
 this script never overwrites a non-placeholder file with a fixture.
@@ -109,9 +110,7 @@ def fixture(cfg: dict, out: Path) -> None:
     write_json(out / C.BUNDLE_PATHS["grid"], grid)
     fixture_rasters(out, grid)
 
-    events = [C.Event(date=e["date"], label=e["label"], kind=e["kind"], badge="REPORTED",
-                      source="docs/01_CONTEXT_AND_RESEARCH.md §6") for e in cfg["events"]]
-    write_json(out / C.BUNDLE_PATHS["events"], C.Events(events=events), force=True)
+    events = write_events(cfg, out)
 
     # Acquisition dates are real (docs/01 §4); AREAS ARE PLACEHOLDERS until 02_reservoir.py runs.
     acq = [("2026-06-17", "S1", "o88"), ("2026-06-19", "NISAR", "D80"), ("2026-06-21", "NISAR", "A101"),
@@ -164,6 +163,11 @@ def fixture(cfg: dict, out: Path) -> None:
         dem_shoreline=[], delta_volume=[],
         reported=[C.Reported(what="Released volume", value_m3=21e6, alt=29e6,
                              source="https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/")]))
+
+    write_json(out / C.BUNDLE_PATHS["validation"], C.Validation(
+        dam_id=dam, generated_utc="1970-01-01T00:00Z", placeholder=True,
+        tests=[C.ValidationTest(id="E1", name="Placeholder — real results come from 08b_validation.py", group="Flood (ANUGA)",
+                                status="pending", source_file="pipeline/08b_validation.py", badge="ILLUSTRATIVE")]))
 
     write_json(out / C.BUNDLE_PATHS["sources"], C.Sources(sources=SOURCES), force=True)
 
@@ -220,6 +224,25 @@ SOURCES = [C.Source(**s) for s in [
 ]]
 
 
+# ------------------------------------------------------------------------------------------------ events
+EVENT_SOURCE = {"failure": "bn-gate", "arrival": "aa-sidisalem", "repair": "mg-repair", "plan": "wd-upper"}
+
+
+def write_events(cfg: dict, out: Path) -> list:
+    """story/events.json from config.yaml events, each sourced by its press URL (sources.json id via EVENT_SOURCE or
+    an explicit `source_id` in config). Also refreshes the events copied into timeseries/reservoir_area.json."""
+    urls = {s.id: s.url for s in SOURCES}
+    events = [C.Event(date=e["date"], label=e["label"], kind=e["kind"], badge="REPORTED",
+                      source=urls[e.get("source_id") or EVENT_SOURCE[e["kind"]]]) for e in cfg["events"]]
+    write_json(out / C.BUNDLE_PATHS["events"], C.Events(events=events), force=True)
+    ra = out / C.BUNDLE_PATHS["reservoir_area"]
+    if ra.exists():
+        d = json.loads(ra.read_text(encoding="utf-8"))
+        d["events"] = [e.model_dump(mode="json") for e in events]
+        write_json(ra, C.ReservoirArea.model_validate(d), force=True)
+    return events
+
+
 # ------------------------------------------------------------------------------------------------ validation
 def validate(out: Path) -> int:
     errors = 0
@@ -253,6 +276,7 @@ def main() -> int:
     ap.add_argument("--fixture", action="store_true")
     ap.add_argument("--validate", action="store_true")
     ap.add_argument("--schemas", action="store_true")
+    ap.add_argument("--events", action="store_true", help="rewrite story/events.json (press sources) from config.yaml")
     args = ap.parse_args()
     cfg = common.load_config(args.config)
     out = common.bundle_dir(cfg)
@@ -261,7 +285,9 @@ def main() -> int:
             print("schema", p.relative_to(common.ROOT))
     if args.fixture:
         fixture(cfg, out)
-    if args.validate or args.fixture:
+    elif args.events:
+        write_events(cfg, out)
+    if args.validate or args.fixture or args.events:
         return 1 if validate(out) else 0
     return 0
 

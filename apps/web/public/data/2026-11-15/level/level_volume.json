@@ -1,25 +1,367 @@
 {
- "badge": "ILLUSTRATIVE",
- "source": "Placeholder fixture — replaced by pipeline output",
- "method": "",
- "uncertainty": "",
- "placeholder": true,
+ "badge": "MEASURED",
+ "source": "SWOT (NASA/CNES) Hydrocron LakeSP; NISAR GCOV + Sentinel-1 RTC water areas (timeseries/reservoir_area.json); NASADEM; press (reported volumes)",
+ "method": "A: SWOT lake height (MEASURED). B: radar shoreline × NASADEM (MODELLED, valid only above the DEM-era water surface; rejected here, fails test L5 against SWOT, see notes). C: ΔV = trapezoid ∫A·dh between SWOT passes (MODELLED). Reported volumes are press figures (REPORTED).",
+ "uncertainty": "SWOT wse ± wse_u (cm–dm); ΔV band spans radar-area (low) vs SWOT-area (high) and ±2σ Δh; storage change is net of inflow, so it is not the released volume",
+ "placeholder": false,
  "schema_version": 1,
  "dam_id": "mellegue",
  "swot": {
-  "available": false,
-  "lake_id": null,
-  "reason": "Not queried yet (07_level_volume.py)",
-  "points": []
+  "available": true,
+  "lake_id": "1530007983",
+  "reason": "PLD lake 1530007983 (BARRAGE MELLEGUE;OUED MELLEGUE); 23 observed passes 2024-03-26…2026-10-31 (quality_f 0/1/2 = 6/13/4); kept quality_f ≤ 1, partial_f = 0: 19 passes",
+  "points": [
+   {
+    "time": "2024-03-26T15:10:34Z",
+    "wse_m": 255.855,
+    "wse_u": 0.029,
+    "area_km2": 3.949,
+    "quality": 1
+   },
+   {
+    "time": "2024-04-16T11:55:40Z",
+    "wse_m": 255.626,
+    "wse_u": 0.024,
+    "area_km2": 3.981,
+    "quality": 1
+   },
+   {
+    "time": "2026-03-26T21:28:20Z",
+    "wse_m": 260.561,
+    "wse_u": 0.008,
+    "area_km2": 4.825,
+    "quality": 0
+   },
+   {
+    "time": "2026-04-06T06:38:09Z",
+    "wse_m": 260.819,
+    "wse_u": 0.006,
+    "area_km2": 4.901,
+    "quality": 0
+   },
+   {
+    "time": "2026-04-16T18:13:26Z",
+    "wse_m": 260.69,
+    "wse_u": 0.007,
+    "area_km2": 4.041,
+    "quality": 0
+   },
+   {
+    "time": "2026-05-07T14:58:30Z",
+    "wse_m": 260.751,
+    "wse_u": 0.006,
+    "area_km2": 4.191,
+    "quality": 0
+   },
+   {
+    "time": "2026-05-28T11:43:34Z",
+    "wse_m": 260.572,
+    "wse_u": 0.006,
+    "area_km2": 4.225,
+    "quality": 1
+   },
+   {
+    "time": "2026-06-07T20:53:22Z",
+    "wse_m": 260.539,
+    "wse_u": 0.005,
+    "area_km2": 4.331,
+    "quality": 0
+   },
+   {
+    "time": "2026-06-28T17:38:28Z",
+    "wse_m": 256.79,
+    "wse_u": 0.076,
+    "area_km2": 4.404,
+    "quality": 0
+   },
+   {
+    "time": "2026-07-09T05:13:43Z",
+    "wse_m": 255.947,
+    "wse_u": 0.052,
+    "area_km2": 4.034,
+    "quality": 1
+   },
+   {
+    "time": "2026-07-19T14:23:31Z",
+    "wse_m": 255.803,
+    "wse_u": 0.062,
+    "area_km2": 4.022,
+    "quality": 1
+   },
+   {
+    "time": "2026-07-30T01:58:47Z",
+    "wse_m": 255.747,
+    "wse_u": 0.067,
+    "area_km2": 3.875,
+    "quality": 1
+   },
+   {
+    "time": "2026-08-09T11:08:37Z",
+    "wse_m": 255.08,
+    "wse_u": 0.042,
+    "area_km2": 3.98,
+    "quality": 1
+   },
+   {
+    "time": "2026-08-19T22:43:52Z",
+    "wse_m": 254.76,
+    "wse_u": 0.017,
+    "area_km2": 3.908,
+    "quality": 1
+   },
+   {
+    "time": "2026-09-09T19:28:57Z",
+    "wse_m": 255.179,
+    "wse_u": 0.017,
+    "area_km2": 3.95,
+    "quality": 1
+   },
+   {
+    "time": "2026-09-20T04:38:46Z",
+    "wse_m": 257.435,
+    "wse_u": 0.041,
+    "area_km2": 4.143,
+    "quality": 1
+   },
+   {
+    "time": "2026-09-30T16:14:00Z",
+    "wse_m": 258.32,
+    "wse_u": 0.008,
+    "area_km2": 4.065,
+    "quality": 1
+   },
+   {
+    "time": "2026-10-11T01:23:48Z",
+    "wse_m": 255.796,
+    "wse_u": 0.05,
+    "area_km2": 4.033,
+    "quality": 1
+   },
+   {
+    "time": "2026-10-21T12:59:05Z",
+    "wse_m": 255.182,
+    "wse_u": 0.044,
+    "area_km2": 3.952,
+    "quality": 1
+   }
+  ],
+  "badge": "MEASURED",
+  "source": "SWOT (NASA/CNES) Hydrocron LakeSP (PLD lake_id 1530007983, collection SWOT_L2_HR_LakeSP_D; Hydrocron retrieved 2026-11-15T02:31 UTC)",
+  "method": "lake water-surface elevation (wse, m above the EGM2008 geoid) and area_total per pass; quality_f ≤ 1 (0 good, 1 suspect: shown hollow), partial_f = 0, no ice flag; ΔV and the level-drop tests use only quality_f = 0 passes",
+  "uncertainty": "± wse_u per pass (product total uncertainty, 1σ); area_total includes SWOT's dark-water/edge estimate and reads larger than the radar masks"
  },
- "dem_shoreline": [],
- "delta_volume": [],
+ "dem_shoreline": [
+  {
+   "date": "2026-05-28",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o161: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-06-04",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o168: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-06-17",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o88: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-06-19",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 30% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-06-28",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o161: 49% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-01",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 33% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-08",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR A173/F20: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-13",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 47% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-20",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR A173/F20: 40% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-25",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 50% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-07-29",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o168: 53% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-08-09",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o161: 52% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-08-18",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 52% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-08-30",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 52% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-09-09",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o168: 54% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-09-11",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 55% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-09-20",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o161: 35% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-09-23",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 33% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-09-30",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR A173/F20: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-10-05",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: method rejected: shoreline × NASADEM reads +10.1 m vs SWOT (test L5, criterion ≤ 2 m) — 30 m DEM on steep banks, lake within ~1 m of the DEM-era water surface (260 m, SRTM Feb 2000); post-failure levels are below it",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-10-12",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR A173/F20: 45% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-10-17",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 49% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-10-21",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "S1 o168: 55% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  },
+  {
+   "date": "2026-10-29",
+   "level_m": null,
+   "sigma_m": null,
+   "measurable": false,
+   "note": "NISAR D80/F70: 54% of the shoreline lies on the DEM-era water surface (260 m, SRTM Feb 2000): level at or below it is not measurable",
+   "badge": "MODELLED"
+  }
+ ],
+ "delta_volume": [
+  {
+   "from": "2026-06-07",
+   "to": "2026-06-28",
+   "dV_m3": -12680000.0,
+   "low": -17080000.0,
+   "high": -7800000.0,
+   "method": "C2 trapezoid ∫A·dh between quality_f = 0 SWOT passes: Δh = -3.75 m (SWOT 260.54 → 256.79 m); A = radar 2.61/2.18 km² (low side) or SWOT area_total 4.33/4.40 km² (high side); central = mean",
+   "badge": "MODELLED"
+  }
+ ],
  "reported": [
   {
-   "what": "Released volume",
+   "what": "Released volume (gate failure, 17–18 Jun 2026)",
    "value_m3": 21000000.0,
    "alt": 29000000.0,
-   "source": "https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/"
+   "source": "https://www.lapresse.tn/2026/06/19/panne-au-barrage-de-mellegue-21-millions-de-m%C2%B3-deau-relaches-en-quelques-heures/ ; alt. 29 Mm³: https://www.tunisienumerique.com/incident-du-barrage-de-mellegue-ce-que-lon-sait-apres-lecoulement-de-29-millions-de-m%C2%B3/",
+   "badge": "REPORTED"
   }
  ]
 }

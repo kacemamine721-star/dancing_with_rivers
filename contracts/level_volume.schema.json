@@ -26,6 +26,17 @@
         "method": {
           "title": "Method",
           "type": "string"
+        },
+        "badge": {
+          "default": "MODELLED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
         }
       },
       "required": [
@@ -64,6 +75,17 @@
         },
         "source": {
           "title": "Source",
+          "type": "string"
+        },
+        "badge": {
+          "default": "REPORTED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
           "type": "string"
         }
       },
@@ -115,6 +137,17 @@
           "default": "",
           "title": "Note",
           "type": "string"
+        },
+        "badge": {
+          "default": "MODELLED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
         }
       },
       "required": [
@@ -153,6 +186,32 @@
           },
           "title": "Points",
           "type": "array"
+        },
+        "badge": {
+          "default": "MEASURED",
+          "enum": [
+            "MEASURED",
+            "REPORTED",
+            "MODELLED",
+            "ILLUSTRATIVE"
+          ],
+          "title": "Badge",
+          "type": "string"
+        },
+        "source": {
+          "default": "",
+          "title": "Source",
+          "type": "string"
+        },
+        "method": {
+          "default": "",
+          "title": "Method",
+          "type": "string"
+        },
+        "uncertainty": {
+          "default": "",
+          "title": "Uncertainty",
+          "type": "string"
         }
       },
       "required": [

@@ -34,6 +34,7 @@ const CONTRACTS = {
   level_volume: 'LevelVolume',
   sources: 'Sources',
   events: 'Events',
+  validation: 'Validation',
 };
 
 /** Keywords that carry no validation meaning for Zod and only add noise. */

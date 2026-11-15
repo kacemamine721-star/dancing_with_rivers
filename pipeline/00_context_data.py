@@ -783,7 +783,7 @@ def step_hydrosheds(cfg, st, bnd: Bundle):
     web["rivers_hydrorivers"] = write_web_geojson(r4, out / "rivers_hydrorivers.geojson",
                                                   ["ORD_STRA", "UPLAND_SKM", "DIS_AV_CMS", "MAIN_RIV"], 25)
     bnd.register(id="rivers_hydrorivers", kind="vector", grid="none", file="vectors/rivers_hydrorivers.geojson",
-                 label="River network (HydroRIVERS, Strahler ≥ 4)", badge="MEASURED",
+                 label="River network (HydroRIVERS, Strahler ≥ 4)", badge="MODELLED",
                  source="HydroRIVERS v1.0 (Lehner & Grill 2013, WWF/McGill), derived from SRTM 15 arc-second hydrology",
                  method="Africa shapefile clipped to context.hydro_bbox, ORD_STRA ≥ 4, simplified 25 m",
                  uncertainty="Modelled from a 500 m DEM-derived network: centrelines off by up to a few hundred metres; "
@@ -842,7 +842,7 @@ def step_hydrosheds(cfg, st, bnd: Bundle):
         cat = gpd.GeoDataFrame(pd_concat(rows), crs=CRS)
         web["catchment"] = write_web_geojson(cat, out / "catchment.geojson", ["id", "name", "area_km2"], 25)
         bnd.register(id="catchment", kind="vector", grid="none", file="vectors/catchment.geojson",
-                     label="Catchments upstream of Mellègue and Sidi Salem dams", badge="MEASURED",
+                     label="Catchments upstream of Mellègue and Sidi Salem dams", badge="MODELLED",
                      source="HydroBASINS v1c level 12 (Lehner & Grill 2013) + HydroRIVERS v1.0",
                      method="dam point snapped to the nearest main-stem HydroRIVERS reach (≤ 3 km), its HYBAS_L12 "
                             "basin + all basins draining to it via NEXT_DOWN, dissolved; area in EPSG:32632",
@@ -863,7 +863,7 @@ def step_hydrosheds(cfg, st, bnd: Bundle):
     basins = gpd.GeoDataFrame(pd_concat(bl), crs=4326)
     web["basins"] = write_web_geojson(basins, out / "basins.geojson", ["level", "HYBAS_ID", "SUB_AREA"], 25)
     bnd.register(id="basins", kind="vector", grid="none", file="vectors/basins.geojson",
-                 label="River basins (HydroBASINS levels 6–7)", badge="MEASURED",
+                 label="River basins (HydroBASINS levels 6–7)", badge="MODELLED",
                  source="HydroBASINS v1c (Lehner & Grill 2013)",
                  method="levels 6 and 7 clipped to context.hydro_bbox, simplified 25 m",
                  uncertainty="15 arc-second DEM-derived boundaries (±0.5 km)")
