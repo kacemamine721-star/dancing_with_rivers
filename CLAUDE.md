@@ -94,17 +94,17 @@ The **main session is the lead and integrator**. It plans each milestone, spawns
 
 Lanes run in parallel: **Data** (geo-pipeline) · **Model** (hydro-modeler) · **Scene** (scene-3d) · **UI** (frontend-ui). Gates: **QA** (qa-verifier), **Sci** (science-reviewer).
 
-| M | Content | Lanes | Gate | Target | Status (Sat 14 Nov, 23:30) |
+| M | Content | Lanes | Gate | Target | Status (Sun 15 Nov, 05:00) |
 |---|---|---|---|---|---|
 | M1 | Repo skeleton, git, `.gitignore`, `config.yaml` (AOIs docs/03 §2), py3.11 venv, `pipeline/common`, contracts + codegen, **fixture bundle**, Vite scaffold with tokens, CI (typecheck + build + 1 smoke) | lead + Data + UI | builds; fixture validates | Sat 21:30 | ✅ done |
 | M2 | **Run the reservoir series** (critical path: the main chart does not exist yet) + `01_terrain.py` | Data | Sci on numbers | Sat 23:30 | ✅ done (adaptive masks; see §8) |
 | M3 | Intro port (parity) → dive → `/story/1`; Stage + Terrain shader + shots on real terrain | Scene | QA parity + ≤ 4 s | Sun 03:00 | ✅ done, commit e7c2c12 (dive 3.9 s; bloom sweep not built) |
-| M4 | `02_reservoir` lake polygon + chips; Acts 1–3, scrubber, swipe, badges | Data + UI + Scene | QA | Sun 06:00 | ◐ data ✅; **UI acts 1–3 to do** |
-| M5 | `03_anomaly` + Acts 5–6 (chart, alert card) | Data + UI | QA + Sci (B1–B3) | Sun 08:00 | ◐ detector ✅; **chart + alert card UI to do** |
-| M6 | `04_routing_hand` + Act 4 path + Act 7 slider and counters; ANUGA v21 in Docker in background | Model + UI + Scene | QA + Sci (D1–D5) | Sun 11:00 | ◐ 04_routing_hand ✅ (D1⚠️ D2✅ D3✅); **UI to do** |
-| M7 | ANUGA ingest, `06_impacts`, `07_level_volume` + Act 8 | Model + Data + UI | Sci (E, F, L) | Sun 13:00 | ◐ ANUGA v21 + impacts ✅ interim; fine-mesh re-runs in progress (§11); `07_level_volume` **not started**; UI to do |
-| M8 | Act 9, Dam Watch drawer, Methods/Validation (07 §8 filled), Sources, 2D fallback, a11y pass | UI + Pitch | QA full + Sci full | Sun 14:30 | ⬜ |
-| M9 | Deploy, private-window test, 30 s video from Tour, project page, deck | lead + Pitch | QA on public URL | **Sun 16:00** | ⬜ |
+| M4 | `02_reservoir` lake polygon + chips; Acts 1–3, scrubber, swipe, badges | Data + UI + Scene | QA | Sun 06:00 | ✅ data; ◐ acts 1–3 built (session 2), copy being fixed from the 15 Nov science review |
+| M5 | `03_anomaly` + Acts 5–6 (chart, alert card) | Data + UI | QA + Sci (B1–B3) | Sun 08:00 | ◐ chart + alert card built; review fixes (low-confidence points, gaps, −20.5 %) in progress |
+| M6 | `04_routing_hand` + Act 4 path + Act 7 slider and counters; ANUGA v21 in Docker in background | Model + UI + Scene | QA + Sci (D1–D5) | Sun 11:00 | ◐ flow path, HAND slider, ANUGA chips built; review fixes + 3D visibility upgrade in progress |
+| M7 | ANUGA ingest, `06_impacts`, `07_level_volume` + Act 8 | Model + Data + UI | Sci (E, F, L) | Sun 13:00 | ✅ ANUGA v21/v50/v195 final (uniform mesh) + impacts; ✅ `07_level_volume` (SWOT); Act 8 UI in progress |
+| M8 | Act 9, Dam Watch drawer, Methods/Validation (07 §8 filled), Sources, 2D fallback, a11y pass | UI + Pitch | QA full + Sci full | Sun 14:30 | ◐ `validation.json` ✅; Methods / Sources / Dam Watch pages in progress (see §11) |
+| M9 | Deploy, private-window test, 30 s video from Tour, project page, deck | lead + Pitch | QA on public URL | **Sun 16:00** | ◐ Cloudflare config ✅ (docs/DEPLOY.md); submission/ texts in progress; deploy + video + rehearsal to do |
 
 ## 6. Cut line (pre-approved)
 
@@ -154,38 +154,33 @@ Components: `<Badge>` (dot pill), `<Stat>`, `<HonestyNote>` in `src/components/`
 - ~~Hosting~~ **Decided 14 Nov: Cloudflare (Pages / static assets)** for the static app (`_redirects` SPA fallback + `_headers` CSP). On-demand ANUGA for any user is **v2 only**: a Render background worker running the `dwd-anuga` image behind a job queue (30–45 min per run, paid instance). v1 offers the HAND slider (any volume) + precomputed ANUGA scenarios.
 - Project `.npmrc` pointing at `registry.yarnpkg.com`.
 
-## 11. Session handoff (end of session 1 — Sat 14 Nov 2026, ~23:50; all agents and Docker runs stopped)
+## 11. Session handoff (session 2 — Sun 15 Nov 2026, ~05:00; usage budget nearly spent)
 
-**Commits (all on `main`):** `ff6b68b` foundation · `56263aa` web skeleton · `5e326e0` anomaly detector · `9273527` data bundle + context layers · `dcc4498` rename, doc 09, GEM-15, Docker · `e7c2c12` M3 intro + 3D stage + irrigation · `d2aef07` handoff · `bb6619e` flow path, HAND, ANUGA v21 interim, impacts · `e9b1ff4` handoff · `9c6bf4b` ANUGA post options. Working tree is clean except the untracked `TESTS/` archive (intentionally not committed). Run `git log --oneline` and `git status` first; anything uncommitted is described below.
+**Start a new session with:** `git log --oneline | head -15`, `git status`, then `cd apps/web && pnpm -s typecheck && pnpm -s lint && pnpm -s test && pnpm -s build` and `.venv/Scripts/python pipeline/08_bundle.py --validate`. Read `work/review/science_review_2026-11-15.md` (binding corrections, exact replacement copy) before touching any copy.
 
-### What exists and works
-- **Pipeline** (`.venv`, py 3.11), run in this order; all write to `apps/web/public/data/2026-11-15/` and validate with `python pipeline/08_bundle.py --validate`:
-  `00_context_data.py` (OSM, HydroSHEDS, JRC, WorldCover, WorldPop, boundaries) · `00b_irrigation.py` (irrigated cropland summer 2026) · `01_terrain.py` (NASADEM, basemap, hillshade) · `01b_gem15.py` (GEM-15 15 m valley DTM) · `02a_reservoir_series.py` (NISAR + S1 download, cached) · `02_reservoir.py` (lake polygon, adaptive masks, series, chips) · `03_anomaly.py` (detector + tests) · `04_routing_hand.py` (flow path, streams, corridor, HAND, LUT) · `05_anuga_scenarios.py` (Docker) · `06_impacts.py`.
-- **Web** (`apps/web`): shell, routes, store + URL sync, data layer with generated Zod schemas, tokens, Badge/Stat/HonestyNote, **full cinematic intro** (parity with the prototype), **3D Mellègue stage** (terrain, lake chip + mask + swipe, lake outline, dam label, camera shots), dive → `/story/1`. 48 tests; typecheck, lint, build green. `docker compose up --build web` → http://localhost:5173.
-- **Dev tips:** `/?t=9.2` freezes the intro; `/?dive=2` freezes the dive; once "Skip intro" is pressed, `/` redirects to `/story/1` — use `/?intro=1` to see the intro again.
+### What happened overnight
+- Between sessions another assistant (log: `antigravity_discussion.md`, untracked) built the story system (`src/features/story/`: ActCard, acts/act1–9, TimeScrubber, SwipeHandle, ReservoirChart, AlertCard, VolumeSlider, ImpactCounters), distinct HAND (amber) / ANUGA (teal) flood looks, "Simplified / Advanced" level labels, and ran the final ANUGA scenarios. Its last commit (national Dam Watch with invented dams and statuses) was reverted (028bd5d).
+- Session 2 commits: 028bd5d revert + `reference/` tracked again · 89b0a2d Cloudflare deploy (strict CSP `_headers`, no GitHub-Pages 404 hack, `wrangler.toml`, nginx same CSP) + confluence arrival in stats · f5192ab docs/07 §8 filled, same-sensor wording · 3c90cc0 branch policy · 5c9351a SWOT level/volume, `validation/validation.json`, MODELLED badges for DEM-derived layers, press sources in events.
 
-### State of the flood modelling (nothing is running)
-- **In the app bundle (committed):** `flood/anuga/index.json` has **v21_d12 computed** (interim run on a two-zone mesh: ≤ 2,500 m² where HAND < 5 m, ≤ 20,000 m² elsewhere; 31k triangles; 18 min) with `maxdepth.png`, `arrival.png`, 97 frames, `stats.json`, and `impacts/impacts.json`. **v195_d12 and v50_d12 are `computed: false`** → the UI must disable those chips ("Not computed yet") and the HAND slider covers all volumes.
-- **Known weakness of the interim v21:** the gorge just below the dam was meshed coarsely (depths up to 16.8 m there). A uniform 2,500 m² mesh re-run was started and **stopped at 34/48 h by the user's request**; its partial output in `work/anuga/v21_d12/` is NOT valid (the valid interim copy is in `work/anuga/twozone/`). `work/anuga/STOP` exists and blocks the queue.
-- **To finish (≈ 30–45 min per scenario in Docker, 4 OMP threads):** `rm work/anuga/STOP`, then `bash work/anuga/run_all.sh` (runs v21, v195, v50 in `dwd-anuga:1`) and `bash work/anuga/post_all.sh` (waits for each run, then `05_anuga_scenarios.py --post <id>`, `06_impacts.py`, `08_bundle.py --validate`). Or one scenario at a time: see `.venv/Scripts/python pipeline/05_anuga_scenarios.py --help`. If time is short, **skip the re-run**: v21 interim + HAND for all volumes is enough for the pitch (cut line §6), say "screening level".
-- Tests still to report in docs/07 §8 for the final runs: E1 (mass balance — interim ~1e-12 ✅), E3, E7 (arrival at the confluence — interim 19.1 h), D5 (IoU HAND vs ANUGA — interim 0.48–0.53 ✅), F1–F3.
+### Data state (final for v1)
+- ANUGA uniform mesh v21 / v50 / v195 computed (`flood/anuga/`), impacts for all three, E4 mesh test fails → arrival shown as 13–19 h. SWOT level real (`level/level_volume.json`, quality 0 + 1). 37 validation tests in `validation/validation.json`. Bundle 11.5 MB, validates. Nothing is running in Docker.
+- Upper Mellègue: not detected; candidate construction site near 8.62–8.63 E, 36.24–36.25 N (S2 7 Apr 2026, `work/upper_mellegue/`), unconfirmed → the 195 Mm³ case stays "hypothetical, released at the old dam".
 
-### Next steps, in order (deadline Sun 15 Nov 16:30)
-1. **Start:** `git log --oneline | head` and `git status`; `cd apps/web && pnpm -s typecheck && pnpm -s test` and `.venv/Scripts/python pipeline/08_bundle.py --validate` should all pass. Never commit `work/`, `cache/`, `.env`, `docs/earthdata_token.md`.
-   Decide (ask the user if unclear) whether to run the ANUGA re-runs above in the background while the UI is built.
-2. **M4–M6 UI (frontend-ui + scene-3d, the critical path):** story cards for Acts 1–7 from docs/05 §3 (copy from `story-pitch`), TimeScrubber + chart (`ReservoirChart`, visx) on `reservoir_area.json`, AlertCard on `alerts.json` (first ALERT 22 Jun), SwipeHandle (set `compareDate` = 2026-06-17 in Act 3), flow path line + `valley_follow` spline from `vectors/flowpath.geojson`, HAND flood layer (`uHand`/`uHandH` already wired) + VolumeSlider + ImpactCounters from `hand_lut.json`, ANUGA scenario chips from `flood/anuga/index.json`. Story layout must use `pointer-events: none` except on cards (else the 3D view cannot be dragged).
-3. **M7:** `07_level_volume.py` (SWOT Hydrocron + DEM shoreline, docs/03 §5.4) — cut to "reported volumes + DEM method" if short of time; Act 8 card.
-4. **M8:** Act 9 (catchment 10,315 km², other reservoirs from `vectors/dams.geojson`), Dam Watch drawer (one panel for Mellègue), Methods page with the docs/07 §8 table, Sources page from `story/sources.json` + docs/DATA_SOURCES.md, 2D fallback, axe pass. Run `science-reviewer` on all copy.
-5. **M9:** deploy (Vercel or GitHub Pages — user decision pending), private-window test, 30 s video from the Tour (English subtitles), project page text (docs/02 §9, AI declaration), rehearsal.
-6. Apply the cut line (§6) without asking if behind schedule.
+### In progress when the budget ran out (check `git status`; uncommitted files are agents' work)
+- **UI (general-purpose agent acting as frontend-ui):** applying the science review to all act copy (no invented sources/figures; numbers read from the bundle), try-it actions as data in act configs (`features/story/actions.ts`, `acts/layers.ts`, `facts.ts`, `series.ts`, `useStoryData.ts`), chart fixes, Act 4 corridor strip, Act 7 single panel + ANUGA playback (store fields `floodPaused`, `floodSeekH`), Act 8 real SWOT chart, then Methods (render `validation.json`), Sources (AI declaration, Copernicus / NISAR / GEM-15 credits), Dam Watch (ONE honest Mellègue panel). `VolumeSlider.tsx` / `ImpactCounters.tsx` were deleted/replaced in its working tree.
+- **scene-3d:** loading veil (`scene/LoadingVeil.tsx`, `scene/status.ts`), framing beside the card (`scene/framing.ts`), lake shots pulled back and sharpened, flood ramp (`mellegue/floodRamp.ts`, top class "≥ 8 m"), glowing flow path + reach labels, dam crest pin, villages layer, ANUGA playback wiring.
+- **story-pitch:** `submission/` (project page with AI declaration, video script + .srt, deck, pitch outline, numbers_check) and root `README.md`.
+- If any of this is half-done: commit only what passes typecheck/lint/test/build; otherwise finish from the agent's TODO in its report (the lead pastes it below when it arrives).
 
-### Decisions and facts from this session that the docs now reflect
-- Project name **Dancing with the Rivers**; on-screen product **HydroStress** / **Dam Watch** (§10 open question about the title).
-- The story is "the lake drained for a month until the gate was repaired" and "NISAR + Sentinel-1 would have alarmed on **22 June**" (§8). Not "vanished", not "19 June", not "NISAR alone".
-- Irrigated cropland comes from data, not drawing: ~2,000 ha of cropland still green in Jul–Aug 2026 (Sentinel-2), 90% inside NASA LGRIP30's irrigated class; LGRIP30 alone marks 84% of cropland irrigated (over-inclusive), so it is a check, not the layer. `vectors/irrigated.geojson`, MEASURED.
-- The user drew the dam crest line: `geojson_data/BARRAGE_MELLEGUE_LINE.geojson` (994 m, 9 m from the dam point; OSM's line is 587 m). Not yet used by any script: candidate for the ANUGA inlet line and the 3D dam marker.
-- **Generalisation:** v1 is a Mellègue-specific bundle; the methods are generic (see docs/09 §0). Hard-coded per site: `config.yaml` AOIs/CRS/dates, `02_reservoir.CHIP_DATES`, the pre-failure window and the Aug–Oct calibration period in `03_anomaly.py`, the story copy. A second Tunisian reservoir as proof is P2.
-- Still needed from the user: Upper Mellègue dam (line + reservoir polygon) for the 195 Mm³ "new dam" scenario origin; hosting choice.
-- Agents can be stopped by the account's usage limit mid-task; their files stay on disk. In a new session the custom agents in `.claude/agents/` load normally (`subagent_type: frontend-ui`, `scene-3d`, …); brief them with the relevant part of this section.
-- Notes left by scene-3d for the UI work: the Story placeholder's full-screen div blocks 3D dragging (`pointer-events: none` except cards); Act 3 must set `compareDate` (e.g. 2026-06-17) for the swipe; `Terrain.tsx` hides the radar chip when `act === 1` (move that to act configs); bloom has no emitter yet (radar swath sweep not built); `valley_follow` shot reuses `arrival` until a spline is built from `vectors/flowpath.geojson`.
+### Next steps (deadline 16:30)
+1. Verify + commit the agents' work (green checks, screenshots of /story/1–9, /methods, /sources, /watch at 1440×900 and 390×844 with Playwright MCP; save in `.playwright-mcp/`).
+2. `science-reviewer` pass on the new copy (quick: only the changed act files and pages).
+3. Push `main` (and `v2`) to GitHub; connect Cloudflare Pages (docs/DEPLOY.md, the user does the dashboard step); private-window test on the public URL.
+4. 30 s video from the app (script in `submission/`), rehearsal, submit.
+5. Cut line if late (§6): Acts 8–9 as cards, Dam Watch = one panel.
 
+### Decisions
+- Hosting **Cloudflare Pages** (§10). On-demand ANUGA for any user = V2 only.
+- **Licence:** still open — ask the user (README says TBD).
+- V2 lives on branch `v2` (worktree `../NASA_CHALLENGE_v2`); docs/09 §0.4–0.5 hold the reviewed plan; milestone 1 = offline batch bundles for 5–10 Tunisian reservoirs. Not started in code.
+- Agent quirk: `.claude/agents/frontend-ui.md` no longer preloads the shadcn skill (its `npx shadcn` call hits the blocked npmjs.org and kills the agent at launch); definitions load at session start, so in a session where it still fails, run a general-purpose agent told to read that file as its role.
