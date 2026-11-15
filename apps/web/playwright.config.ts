@@ -22,7 +22,23 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], ...(CI ? {} : { channel: 'chrome' }) },
+      use: {
+        ...devices['Desktop Chrome'],
+        ...(CI
+          ? {
+              launchOptions: {
+                args: [
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox',
+                  '--use-gl=angle',
+                  '--use-angle=swiftshader',
+                  '--enable-webgl',
+                  '--ignore-gpu-blocklist',
+                ],
+              },
+            }
+          : { channel: 'chrome' }),
+      },
     },
   ],
   webServer: {
