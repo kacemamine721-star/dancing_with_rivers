@@ -15,8 +15,7 @@ interface ActCardProps {
 
 export function ActCard({ config, className }: ActCardProps) {
   const level = useAppStore((s) => s.level);
-  const isExpert = level === 'experts';
-  const [expertOpen, setExpertOpen] = useState(false);
+  const isExpert = level === 'experts';  const [expertOpen, setExpertOpen] = useState(false);
 
   return (
     <section
@@ -58,7 +57,7 @@ export function ActCard({ config, className }: ActCardProps) {
             className="flex w-full items-center justify-between font-mono font-semibold uppercase tracking-wider text-teal hover:text-white"
           >
             <span className="flex items-center gap-1.5">
-              <Sparkles className="size-3 text-teal" /> Expert Radar & Hydraulic Telemetry
+              <Sparkles className="size-3 text-teal" /> Advanced · Technical Details
             </span>
             {expertOpen ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
           </button>

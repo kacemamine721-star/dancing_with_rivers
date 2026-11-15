@@ -110,15 +110,33 @@ void main() {
     col = mix(col, uCropCol, ce * 0.8 * uCropOn);
   }
 
-  // --- flood: HAND bathtub (depth = h − HAND) or ANUGA depth (max envelope / time frames)
+  // --- flood: HAND bathtub (amber-gold flat fill) or ANUGA depth (animated teal-cyan ramp)
   if (uFloodOn > 0.001) {
     float depth = -1.0;
     float wet = 0.0;
     float ghost = 0.0;
+    // HAND mode (uFloodMode < 0.5): warm amber-gold flat fill — clearly distinct from ANUGA
     if (uFloodMode < 0.5) {
       depth = uHandH - texture2D(uHand, vUv).r * uHandScale;
       wet = smoothstep(-0.12, 0.12, depth) * smoothstep(0.0, 0.08, uHandH);
+      float d = max(depth, 0.0);
+      // Slow, calm shimmer — still water in a bathtub
+      float sh = 0.90 + 0.10 * sin(uTime * 0.6 + vUv.x * 420.0 + vUv.y * 310.0);
+      // Warm amber-gold palette: shallow=pale straw, deep=burnt-sienna/rust
+      vec3 handShallow = vec3(0.98, 0.85, 0.42); // straw-gold
+      vec3 handMid     = vec3(0.90, 0.60, 0.18); // amber
+      vec3 handDeep    = vec3(0.72, 0.34, 0.09); // rust
+      vec3 handCol = mix(handShallow, handMid, smoothstep(0.0, 1.5, d));
+      handCol      = mix(handCol,     handDeep,  smoothstep(1.5, 5.0, d));
+      col = mix(col, handCol * sh, wet * 0.80 * uFloodOn);
+      // Faint stipple grid to signal "estimate" / static nature
+      float grid = step(0.72, fract(vUv.x * 420.0)) * step(0.72, fract(vUv.y * 420.0));
+      col = mix(col, handDeep * 0.7, grid * wet * 0.14 * uFloodOn);
+      // Soft warm glow at the edge
+      float front = wet * (1.0 - smoothstep(0.0, 0.5, d));
+      col += handShallow * front * 0.22 * uFloodOn;
     } else {
+      // ANUGA mode (uFloodMode >= 0.5): animated teal-cyan depth ramp — dynamic physics wave
       vec2 fuv = (vUv - uFloodRect.xy) / (uFloodRect.zw - uFloodRect.xy);
       if (fuv.x >= 0.0 && fuv.y >= 0.0 && fuv.x <= 1.0 && fuv.y <= 1.0) {
         float dmax = texture2D(uFloodMax, fuv).r * 255.0 * uFloodScale;
@@ -134,15 +152,16 @@ void main() {
         }
         wet = smoothstep(0.08, 0.14, depth);
       }
+      float d = max(depth, 0.0);
+      // Brisk wave shimmer — dynamic water
+      float sh = 0.93 + 0.07 * sin(uTime * 1.6 + vUv.x * 1400.0 + vUv.y * 900.0);
+      // Ghost = where water was at peak (shown as faint blue-grey behind the wave front)
+      col = mix(col, uRamp[1] * 0.45, ghost * (1.0 - wet) * 0.30 * uFloodOn);
+      col = mix(col, floodRamp(d) * sh, wet * 0.84 * uFloodOn);
+      // Bright teal glow at the leading edge
+      float front = wet * (1.0 - smoothstep(0.0, 0.45, d));
+      col += uRamp[0] * front * 0.28 * uFloodOn;
     }
-    float d = max(depth, 0.0);
-    float sh = 0.93 + 0.07 * sin(uTime * 1.6 + vUv.x * 1400.0 + vUv.y * 900.0);
-    // where the water reached at its peak (behind the animated front)
-    col = mix(col, uRamp[1] * 0.45, ghost * (1.0 - wet) * 0.30 * uFloodOn);
-    col = mix(col, floodRamp(d) * sh, wet * 0.84 * uFloodOn);
-    // soft glow at the wet front (shallow edge)
-    float front = wet * (1.0 - smoothstep(0.0, 0.45, d));
-    col += uRamp[0] * front * 0.28 * uFloodOn;
   }
 
   // --- faint teal contour every 100 m

@@ -8,7 +8,8 @@ docs/earthdata_token.md
 # data caches and intermediates
 cache/
 work/
-TESTS/**/cache/
+TESTS/
+reference/
 *.npz
 
 # python

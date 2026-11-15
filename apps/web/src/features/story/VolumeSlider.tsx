@@ -1,4 +1,4 @@
-import { Waves } from 'lucide-react';
+import { AlertTriangle, Waves } from 'lucide-react';
 
 import { HonestyNote } from '@/components/HonestyNote';
 import { Button } from '@/components/ui/button';
@@ -10,22 +10,32 @@ interface VolumeSliderProps {
   className?: string;
 }
 
+/** Scenarios that have a fully computed ANUGA run available. */
+const COMPUTED_SCENARIOS = new Set(['v21_d12', 'v195_d12']);
+
+const PRESETS = [
+  { label: '21 Mm³ · June 2026', volumeMm3: 21, scenarioId: 'v21_d12', computed: true },
+  { label: '50 Mm³', volumeMm3: 50, scenarioId: 'v50_d12', computed: false },
+  { label: '195 Mm³ · Upper Mellègue', volumeMm3: 195, scenarioId: 'v195_d12', computed: true },
+] as const;
+
 export function VolumeSlider({ className }: VolumeSliderProps) {
   const flood = useAppStore((s) => s.flood);
   const setFlood = useAppStore((s) => s.setFlood);
 
   const volumeMm3 = Math.round(flood.volumeM3 / 1e6);
 
-  const presets = [
-    { label: '21 Mm³ · June 2026', volumeMm3: 21, scenarioId: 'v21_d12' },
-    { label: '50 Mm³', volumeMm3: 50, scenarioId: 'v50_d12' },
-    { label: '195 Mm³ · Upper Mellègue', volumeMm3: 195, scenarioId: 'v195_d12' },
-  ];
+  // Is ANUGA data actually available for the currently selected scenario?
+  const anugaAvailable = COMPUTED_SCENARIOS.has(flood.scenarioId ?? '');
+  // Are we trying to show ANUGA but it's not available?
+  const anugaFallback = flood.mode === 'anuga' && !anugaAvailable;
 
-  const handlePreset = (p: (typeof presets)[number]) => {
+  const handlePreset = (p: (typeof PRESETS)[number]) => {
     setFlood({
       volumeM3: p.volumeMm3 * 1e6,
       scenarioId: p.scenarioId,
+      // Auto-switch to ANUGA when a computed scenario is selected, or back to HAND when not
+      mode: p.computed ? 'anuga' : 'hand',
     });
   };
 
@@ -52,7 +62,7 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
           </span>
         </div>
 
-        {/* Mode Switch: Quick (HAND) vs Physics (ANUGA) */}
+        {/* Mode Switch: Quick HAND vs Physics ANUGA */}
         <div className="flex rounded-lg border border-white/10 bg-black/40 p-0.5">
           <button
             type="button"
@@ -60,11 +70,11 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
             className={cn(
               'px-2 py-0.5 font-mono text-[10px] font-semibold uppercase rounded transition-colors',
               flood.mode === 'hand'
-                ? 'bg-teal text-on-teal'
+                ? 'bg-amber-500/80 text-black'
                 : 'text-mute hover:text-white',
             )}
           >
-            Quick (HAND)
+            Bathtub
           </button>
           <button
             type="button"
@@ -76,7 +86,7 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
                 : 'text-mute hover:text-white',
             )}
           >
-            Physics (ANUGA)
+            2D Physics
           </button>
         </div>
       </div>
@@ -87,10 +97,26 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
           <span className="text-3xl font-bold tracking-tight text-ink">{volumeMm3}</span>
           <span className="ml-1.5 text-sm font-normal text-mute">million m³</span>
         </p>
-        <span className="font-mono text-[11px] text-mute">
-          {flood.mode === 'hand' ? 'Bathtub equilibrium' : '2D Hydrodynamic wave'}
+        <span
+          className={cn(
+            'font-mono text-[11px]',
+            flood.mode === 'hand' ? 'text-amber-400/80' : 'text-teal/80',
+          )}
+        >
+          {flood.mode === 'hand' ? '↔ HAND bathtub' : '〜 ANUGA wave'}
         </span>
       </div>
+
+      {/* ANUGA unavailable notice */}
+      {anugaFallback && (
+        <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/[0.07] px-3 py-2">
+          <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-amber-400" aria-hidden />
+          <p className="font-mono text-[10px] leading-relaxed text-amber-300/90">
+            <span className="font-semibold">ANUGA not yet computed</span> for 50 Mm³.
+            Showing HAND bathtub estimate instead.
+          </p>
+        </div>
+      )}
 
       {/* Slider */}
       <div className="px-1 py-1">
@@ -112,7 +138,7 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
 
       {/* Preset Chips */}
       <div className="flex flex-wrap items-center gap-1.5 pt-1">
-        {presets.map((p) => {
+        {PRESETS.map((p) => {
           const isSelected = volumeMm3 === p.volumeMm3;
           return (
             <Button
@@ -120,9 +146,18 @@ export function VolumeSlider({ className }: VolumeSliderProps) {
               size="xs"
               variant={isSelected ? 'primary' : 'chip'}
               onClick={() => handlePreset(p)}
-              className="text-[10.5px]"
+              className={cn(
+                'text-[10.5px]',
+                !p.computed && 'opacity-60',
+              )}
+              title={!p.computed ? 'ANUGA run pending — HAND estimate shown' : undefined}
             >
               {p.label}
+              {!p.computed && (
+                <span className="ml-1 font-mono text-[9px] uppercase tracking-wide opacity-70">
+                  est.
+                </span>
+              )}
             </Button>
           );
         })}

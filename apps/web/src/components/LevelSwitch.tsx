@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { type Level, useAppStore } from '@/store/app';
 
 // TODO(i18n, M4): labels move to locales/en/common.json.
-const LABELS: Record<Level, string> = { everyone: 'Everyone', experts: 'Experts' };
+const LABELS: Record<Level, string> = { everyone: 'Simplified', experts: 'Advanced' };
 
 /**
  * Everyone / Experts reading level (prototype `.lvl`). Writes the store (persisted to
