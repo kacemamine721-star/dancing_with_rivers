@@ -6,11 +6,11 @@
 
 <p align="center">
   NASA Space Apps Challenge 2026 · Tunis · challenge <em>“Dancing with SARs”</em><br />
-  <a href="www.dancingwithrivers.study"><strong>Live demo → dancingwithrivers.study</strong></a>
+  <a href="https://dancingwithrivers.study"><strong>Live demo → dancingwithrivers.study</strong></a>
 </p>
 
 <p align="center">
-  <a href="https://dancing-with-rivers.pages.dev"><img alt="Live demo" src="https://img.shields.io/badge/demo-live-1a22b4?style=flat-square" /></a>
+  <a href="https://dancingwithrivers.study"><img alt="Live demo" src="https://img.shields.io/badge/demo-live-1a22b4?style=flat-square" /></a>
   <img alt="NASA Space Apps 2026" src="https://img.shields.io/badge/NASA%20Space%20Apps-2026%20%C2%B7%20Tunis-1a22b4?style=flat-square" />
   <img alt="NISAR + Sentinel-1" src="https://img.shields.io/badge/radar-NISAR%20%2B%20Sentinel--1-10136b?style=flat-square" />
   <img alt="Validation tests" src="https://img.shields.io/badge/validation-43%20tests-1f7a4d?style=flat-square" />
