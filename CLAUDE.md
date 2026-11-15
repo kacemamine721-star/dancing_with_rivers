@@ -6,6 +6,8 @@ NASA Space Apps 2026 (Tunis), challenge "Dancing with SARs". **Submission Sun 15
 
 **Names (decided by the user, 14 Nov):** the project is **Dancing with the Rivers** (formerly "Dancing with Dams"). The on-screen product stays **HydroStress** with its tool **Dam Watch** until the user says otherwise; both come from `apps/web/src/brand.ts` and `config.yaml`, never hard-coded.
 
+**Branches (decided 15 Nov):** `main` = **v1**, deployed to Cloudflare Pages on every push (docs/DEPLOY.md), so keep it green. `v2` = generalisation work (docs/09 §0.4–0.5), **never deployed**, worked in the separate worktree `../NASA_CHALLENGE_v2`; merge `main` into `v2` regularly, never `v2` into `main` before the submission.
+
 **New session? Read §11 (handoff) first**: it says exactly where the build stopped and what to do next.
 
 **Read first:** `docs/00_README.md` → 02 PRD → 05 App flow → 06 System design → 03 TRD → 04 UI/UX → 07 Analysis & validation. `docs/01_CONTEXT_AND_RESEARCH.md` is the source of truth for facts and sources. `docs/09_GENERALIZATION_AND_RIVER_DETECTION.md` is the **v2 roadmap** (any dam, automatic amont/aval detection, API + workers): not on the v1 critical path; its §0.3 lists the few things v1 uses. `docs/08_CLAUDE_CODE_BRIEF.md` is **superseded** where it says vanilla JS, `web/` or "keep three.js r128": the stack is the React/TS one in 03/04/06.
