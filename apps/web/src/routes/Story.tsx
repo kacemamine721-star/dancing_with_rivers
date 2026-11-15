@@ -129,6 +129,19 @@ export function Component() {
         { label: '50 Mm³ Flood', action: () => setFlood({ volumeM3: 50e6, scenarioId: 'v50_d12' }) },
         { label: '195 Mm³ Full Dam', action: () => setFlood({ volumeM3: 195e6, scenarioId: 'v195_d12' }) },
       ];
+    } else if (config.act === 8) {
+      tryIt = [
+        { label: 'SWOT Pass 15 Jul', action: () => setDate('2026-07-15') },
+        { label: 'Lake Top View', action: () => setShot('lake_top') },
+        { label: 'Dam Crest', action: () => setShot('dam_close') },
+      ];
+    } else if (config.act === 9) {
+      tryIt = [
+        { label: 'Catchment Overview', action: () => setShot('catchment_wide') },
+        { label: 'Downstream Valley', action: () => setShot('valley_follow') },
+        { label: 'Toggle Cropland', action: () => toggleLayer('cropland') },
+        { label: 'Toggle Villages', action: () => toggleLayer('villages') },
+      ];
     }
 
     return {
