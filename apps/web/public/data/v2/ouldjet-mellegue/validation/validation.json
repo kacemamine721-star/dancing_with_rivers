@@ -1,0 +1,111 @@
+{
+ "schema_version": 1,
+ "dam_id": "ouldjet-mellegue",
+ "generated_utc": "2026-11-15T09:28Z",
+ "placeholder": false,
+ "tests": [
+  {
+   "id": "A0",
+   "name": "Radar lake polygon vs OSM reservoir polygon",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "radar_km2": 14.261,
+    "osm_km2": 11.838,
+    "ratio": 1.2
+   },
+   "criterion": "0.5 ≤ ratio ≤ 2 (polygon includes a 100 m dilation)",
+   "passed": true,
+   "status": "pass",
+   "summary": "components ≥ 50 % within 200 m of the OSM reservoir polygon; intersected with JRC GSW max extent (+30 m); GSW covered 100% of the S1 core",
+   "source_file": "work/v2/ouldjet-mellegue/polygon.json",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A1",
+   "name": "Threshold sensitivity (±2 dB)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "median_half_spread": 0.05
+   },
+   "criterion": "median half-spread ≤ 25 % of the area",
+   "passed": true,
+   "status": "pass",
+   "summary": "band shown as sigma_km2 = (hi − lo)/4",
+   "source_file": "work/v2/ouldjet-mellegue/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A2",
+   "name": "Low-confidence fraction",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "n": 102,
+    "low": 1,
+    "fraction": 0.01
+   },
+   "criterion": "≤ 20 % of images low confidence",
+   "passed": true,
+   "status": "pass",
+   "summary": "low = undilated water core not ≥ 0.5 dB darker than the 300 m land ring",
+   "source_file": "work/v2/ouldjet-mellegue/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A3",
+   "name": "NISAR vs Sentinel-1 raw area (same period, cross-sensor)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "nisar_median_km2": 11.738,
+    "s1_median_km2": 11.029,
+    "ratio": 1.064
+   },
+   "criterion": "0.8 ≤ ratio ≤ 1.25 (L vs C band; harmonisation removes the offset)",
+   "passed": true,
+   "status": "pass",
+   "summary": "cross-sensor comparison, label as such",
+   "source_file": "work/v2/ouldjet-mellegue/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "B2",
+   "name": "Detector flags (no reference event: monitoring only)",
+   "group": "Anomaly",
+   "scenario": null,
+   "values": {
+    "evaluations": 98,
+    "alerts": 0,
+    "warnings": 0,
+    "sigma_departure": 0.0133
+   },
+   "criterion": "not evaluable without an operator log",
+   "passed": null,
+   "status": "caveat",
+   "summary": "out-of-sample run of the Mellègue rule",
+   "source_file": "work/v2/ouldjet-mellegue/anomaly.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L0",
+   "name": "SWOT LakeSP level available",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "available": true,
+    "n_good": 20,
+    "wse_min": 573.15,
+    "wse_max": 574.64,
+    "lake_id": "1530012492"
+   },
+   "criterion": "PLD lake found and ≥ 1 pass with quality ≤ 1",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/v2/ouldjet-mellegue/swot.json",
+   "badge": "MEASURED"
+  }
+ ]
+}

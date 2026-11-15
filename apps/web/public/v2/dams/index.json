@@ -16,6 +16,7 @@
   11.6,
   37.542
  ],
+ "tunisia_bbox_note": "Tunisia (geoBoundaries ADM0) extended to every catalogued dam, incl. --extra dams abroad",
  "dams": [
   {
    "id": "adira",
@@ -493,6 +494,70 @@
    "badge": "MODELLED",
    "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
    "file": "v2/dams/djoumine.geojson"
+  },
+  {
+   "id": "el-aroussia",
+   "name": "Barrage El Aroussia",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w158528099",
+   "lon": 9.77261,
+   "lat": 36.79965,
+   "river": "Medjerda",
+   "governorate": "Manouba",
+   "reservoir_km2": null,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 21863.2,
+   "catchment_sum_sub_area_km2": 21875.1,
+   "snap_m": 28,
+   "snap_rule": "nearest main stem within 3 km",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 21812.6,
+   "snap_warning": null,
+   "downstream_km": 65.9,
+   "downstream_to": "sea",
+   "towns": [
+    {
+     "name": "El Aroussia",
+     "km": 0.3
+    },
+    {
+     "name": "Tebourba",
+     "km": 7.1
+    },
+    {
+     "name": "El Battan",
+     "km": 9.5
+    },
+    {
+     "name": "Djedeida",
+     "km": 19.9
+    },
+    {
+     "name": "Essaïda",
+     "km": 22.0
+    },
+    {
+     "name": "Kantarat Benzart",
+     "km": 45.7
+    },
+    {
+     "name": "Utique Nouvelle",
+     "km": 57.7
+    }
+   ],
+   "nisar_dates": 21,
+   "nisar_tracks": [
+    "A173",
+    "D80"
+   ],
+   "status": "processed",
+   "badge": "MODELLED",
+   "name_source": "user point + crest (= OSM way 158528099, unnamed)",
+   "bundle": "data/v2/el-aroussia/",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/el-aroussia.geojson"
   },
   {
    "id": "enasr1",
@@ -2571,8 +2636,8 @@
    "catchment_shared_with": null,
    "snap_reach_upland_km2": 38.6,
    "snap_warning": null,
-   "downstream_km": 163.8,
-   "downstream_to": "sea",
+   "downstream_km": 97.8,
+   "downstream_to": "el-aroussia",
    "towns": [
     {
      "name": "Gaâfour",
@@ -2616,11 +2681,7 @@
     },
     {
      "name": "El Aroussia",
-     "km": 98.1
-    },
-    {
-     "name": "Tebourba",
-     "km": 104.9
+     "km": 97.8
     }
    ],
    "nisar_dates": 21,
@@ -2679,6 +2740,41 @@
    "file": "v2/dams/oued-sidi-salem.geojson"
   },
   {
+   "id": "ouldjet-mellegue",
+   "name": "Barrage Ouldjet Mellègue",
+   "name_en": null,
+   "name_ar": null,
+   "osm_id": "w720711317",
+   "lon": 8.03089,
+   "lat": 35.98405,
+   "river": "Oued Messiana",
+   "governorate": null,
+   "reservoir_km2": 11.838,
+   "height_m": null,
+   "start_date": null,
+   "catchment_km2": 4498.7,
+   "catchment_sum_sub_area_km2": 4500.7,
+   "snap_m": 772,
+   "snap_rule": "main stem through the reservoir polygon",
+   "catchment_shared_with": null,
+   "snap_reach_upland_km2": 4399.9,
+   "snap_warning": null,
+   "downstream_km": 103.8,
+   "downstream_to": "mellegue",
+   "towns": [],
+   "nisar_dates": 20,
+   "nisar_tracks": [
+    "A101",
+    "D8"
+   ],
+   "status": "processed",
+   "badge": "MODELLED",
+   "name_source": "https://www.algerie360.com/lancement-des-travaux-du-barrage-douldjet-mellegue-pres-de-tebessa/",
+   "bundle": "data/v2/ouldjet-mellegue/",
+   "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
+   "file": "v2/dams/ouldjet-mellegue.geojson"
+  },
+  {
    "id": "ourehniya",
    "name": "Barrage Ourehniya",
    "name_en": null,
@@ -2732,8 +2828,8 @@
    "catchment_shared_with": null,
    "snap_reach_upland_km2": 260.8,
    "snap_warning": null,
-   "downstream_km": 155.4,
-   "downstream_to": "sea",
+   "downstream_km": 89.4,
+   "downstream_to": "el-aroussia",
    "towns": [
     {
      "name": "Testour",
@@ -2765,23 +2861,7 @@
     },
     {
      "name": "El Aroussia",
-     "km": 89.7
-    },
-    {
-     "name": "Tebourba",
-     "km": 96.5
-    },
-    {
-     "name": "El Battan",
-     "km": 99.0
-    },
-    {
-     "name": "Djedeida",
-     "km": 109.3
-    },
-    {
-     "name": "Essaïda",
-     "km": 111.4
+     "km": 89.4
     }
    ],
    "nisar_dates": 21,
@@ -3047,8 +3127,8 @@
    "catchment_shared_with": null,
    "snap_reach_upland_km2": 18040.3,
    "snap_warning": null,
-   "downstream_km": 121.5,
-   "downstream_to": "sea",
+   "downstream_km": 55.5,
+   "downstream_to": "el-aroussia",
    "towns": [
     {
      "name": "Testour",
@@ -3080,23 +3160,7 @@
     },
     {
      "name": "El Aroussia",
-     "km": 55.8
-    },
-    {
-     "name": "Tebourba",
-     "km": 62.6
-    },
-    {
-     "name": "El Battan",
-     "km": 65.1
-    },
-    {
-     "name": "Djedeida",
-     "km": 75.4
-    },
-    {
-     "name": "Essaïda",
-     "km": 77.5
+     "km": 55.5
     }
    ],
    "nisar_dates": 21,
@@ -3104,8 +3168,10 @@
     "A173",
     "D80"
    ],
-   "status": "catalogued",
+   "status": "processed",
    "badge": "MODELLED",
+   "name_source": "OSM w172827257",
+   "bundle": "data/v2/sidi-salem/",
    "source": "OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); NISAR footprints from ASF search; geoBoundaries ADM1",
    "file": "v2/dams/sidi-salem.geojson"
   },
@@ -3129,8 +3195,8 @@
    "catchment_shared_with": null,
    "snap_reach_upland_km2": 1041.4,
    "snap_warning": null,
-   "downstream_km": 185.5,
-   "downstream_to": "sea",
+   "downstream_km": 119.5,
+   "downstream_to": "el-aroussia",
    "towns": [
     {
      "name": "El Agsab",
@@ -3178,7 +3244,7 @@
     },
     {
      "name": "El Aroussia",
-     "km": 119.8
+     "km": 119.5
     }
    ],
    "nisar_dates": 21,

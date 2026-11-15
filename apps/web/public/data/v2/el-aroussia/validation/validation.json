@@ -1,0 +1,111 @@
+{
+ "schema_version": 1,
+ "dam_id": "el-aroussia",
+ "generated_utc": "2026-11-15T09:28Z",
+ "placeholder": false,
+ "tests": [
+  {
+   "id": "A0",
+   "name": "Radar lake polygon vs OSM reservoir polygon",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "radar_km2": 0.522,
+    "osm_km2": null,
+    "ratio": null
+   },
+   "criterion": "0.5 ≤ ratio ≤ 2 (polygon includes a 100 m dilation)",
+   "passed": null,
+   "status": "caveat",
+   "summary": "component nearest the dam (79 m); intersected with JRC GSW max extent (+30 m); GSW covered 97% of the S1 core",
+   "source_file": "work/v2/el-aroussia/polygon.json",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A1",
+   "name": "Threshold sensitivity (±2 dB)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "median_half_spread": 0.432
+   },
+   "criterion": "median half-spread ≤ 25 % of the area",
+   "passed": false,
+   "status": "caveat",
+   "summary": "band shown as sigma_km2 = (hi − lo)/4",
+   "source_file": "work/v2/el-aroussia/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A2",
+   "name": "Low-confidence fraction",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "n": 95,
+    "low": 0,
+    "fraction": 0.0
+   },
+   "criterion": "≤ 20 % of images low confidence",
+   "passed": true,
+   "status": "pass",
+   "summary": "low = undilated water core not ≥ 0.5 dB darker than the 300 m land ring",
+   "source_file": "work/v2/el-aroussia/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A3",
+   "name": "NISAR vs Sentinel-1 raw area (same period, cross-sensor)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "nisar_median_km2": 0.15,
+    "s1_median_km2": 0.114,
+    "ratio": 1.316
+   },
+   "criterion": "0.8 ≤ ratio ≤ 1.25 (L vs C band; harmonisation removes the offset)",
+   "passed": false,
+   "status": "caveat",
+   "summary": "cross-sensor comparison, label as such",
+   "source_file": "work/v2/el-aroussia/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "B2",
+   "name": "Detector flags (no reference event: monitoring only)",
+   "group": "Anomaly",
+   "scenario": null,
+   "values": {
+    "evaluations": 92,
+    "alerts": 4,
+    "warnings": 4,
+    "sigma_departure": 0.0964
+   },
+   "criterion": "not evaluable without an operator log",
+   "passed": null,
+   "status": "caveat",
+   "summary": "out-of-sample run of the Mellègue rule",
+   "source_file": "work/v2/el-aroussia/anomaly.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L0",
+   "name": "SWOT LakeSP level available",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "available": false,
+    "n_good": null,
+    "wse_min": null,
+    "wse_max": null,
+    "lake_id": null
+   },
+   "criterion": "PLD lake found and ≥ 1 pass with quality ≤ 1",
+   "passed": false,
+   "status": "caveat",
+   "summary": "no Prior Lake Database lake within ≈1 km of the radar lake polygon in 32 LakeSP_Prior granules (60 over the lake box in CMR)",
+   "source_file": "work/v2/el-aroussia/swot.json",
+   "badge": "MEASURED"
+  }
+ ]
+}

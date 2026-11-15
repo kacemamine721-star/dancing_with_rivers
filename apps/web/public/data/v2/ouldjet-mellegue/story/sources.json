@@ -1,0 +1,53 @@
+{
+ "schema_version": 1,
+ "sources": [
+  {
+   "id": "nisar",
+   "title": "NISAR L2 GCOV (NASA/JPL–ISRO), ASF DAAC",
+   "url": "https://search.asf.alaska.edu/",
+   "kind": "data"
+  },
+  {
+   "id": "s1",
+   "title": "Sentinel-1 RTC, Microsoft Planetary Computer",
+   "url": "https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc",
+   "kind": "data"
+  },
+  {
+   "id": "copdem",
+   "title": "Copernicus DEM GLO-30",
+   "url": "https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30",
+   "kind": "data"
+  },
+  {
+   "id": "osm",
+   "title": "OpenStreetMap (ODbL)",
+   "url": "https://www.openstreetmap.org/copyright",
+   "kind": "data"
+  },
+  {
+   "id": "hydrosheds",
+   "title": "HydroSHEDS HydroBASINS / HydroRIVERS",
+   "url": "https://www.hydrosheds.org/",
+   "kind": "data"
+  },
+  {
+   "id": "swot",
+   "title": "SWOT Hydrocron (PO.DAAC)",
+   "url": "https://podaac.github.io/hydrocron/",
+   "kind": "data"
+  },
+  {
+   "id": "gsw",
+   "title": "JRC Global Surface Water",
+   "url": "https://global-surface-water.appspot.com/",
+   "kind": "data"
+  },
+  {
+   "id": "name",
+   "title": "Dam identification: Barrage Ouldjet Mellègue",
+   "url": "https://www.algerie360.com/lancement-des-travaux-du-barrage-douldjet-mellegue-pres-de-tebessa/",
+   "kind": "official"
+  }
+ ]
+}

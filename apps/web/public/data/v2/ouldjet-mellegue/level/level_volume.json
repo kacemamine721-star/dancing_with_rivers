@@ -1,0 +1,163 @@
+{
+ "badge": "MEASURED",
+ "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+ "method": "SWOT level only (no DEM-shoreline levels or ΔV computed for V2 dams yet)",
+ "uncertainty": "",
+ "placeholder": false,
+ "schema_version": 1,
+ "dam_id": "ouldjet-mellegue",
+ "swot": {
+  "available": true,
+  "lake_id": "1530012492",
+  "reason": "PLD 'no_data' (12.594753 km² reference area); all 21 usable passes are partial observations (partial_f = 1): WSE from the observed part of the lake, area_total omitted; 1 single-pass outlier(s) > 5 robust σ removed: 2026-05-28 569.89 m",
+  "points": [
+   {
+    "time": "2024-04-06T13:33:17Z",
+    "wse_m": 573.347,
+    "wse_u": 0.132,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2024-04-27T10:18:23Z",
+    "wse_m": 573.832,
+    "wse_u": 0.005,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2024-08-30T14:48:50Z",
+    "wse_m": 573.155,
+    "wse_u": 0.018,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-03-27T08:16:00Z",
+    "wse_m": 574.474,
+    "wse_u": 0.102,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-04-06T19:51:04Z",
+    "wse_m": 574.124,
+    "wse_u": 0.079,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-04-17T05:01:05Z",
+    "wse_m": 574.461,
+    "wse_u": 0.053,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-04-27T16:36:10Z",
+    "wse_m": 574.343,
+    "wse_u": 0.012,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-05-08T01:46:09Z",
+    "wse_m": 574.459,
+    "wse_u": 0.052,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-05-18T13:21:13Z",
+    "wse_m": 574.236,
+    "wse_u": 0.02,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-06-08T10:06:17Z",
+    "wse_m": 574.19,
+    "wse_u": 0.02,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-06-18T19:16:18Z",
+    "wse_m": 574.643,
+    "wse_u": 0.087,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-06-29T06:51:23Z",
+    "wse_m": 574.468,
+    "wse_u": 0.065,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-07-09T16:01:23Z",
+    "wse_m": 574.332,
+    "wse_u": 0.034,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-07-20T03:36:26Z",
+    "wse_m": 574.276,
+    "wse_u": 0.005,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-08-10T00:21:31Z",
+    "wse_m": 574.073,
+    "wse_u": 0.005,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-08-30T21:06:36Z",
+    "wse_m": 573.893,
+    "wse_u": 0.026,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-09-10T06:16:37Z",
+    "wse_m": 573.857,
+    "wse_u": 0.006,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-10-11T14:36:43Z",
+    "wse_m": 574.456,
+    "wse_u": 0.005,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-10-21T23:46:44Z",
+    "wse_m": 574.335,
+    "wse_u": 0.006,
+    "area_km2": null,
+    "quality": 1
+   },
+   {
+    "time": "2026-11-01T11:21:49Z",
+    "wse_m": 574.241,
+    "wse_u": 0.068,
+    "area_km2": null,
+    "quality": 1
+   }
+  ],
+  "badge": "MEASURED",
+  "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+  "method": "Hydrocron PriorLake time series; kept quality_f ≤ 1, ice_clim_f 0 or fill, partial_f = 0 (partial passes only when no full pass exists, area dropped); > 5 robust σ WSE outliers removed",
+  "uncertainty": "wse_u per pass; SWOT area_total is the PLD-polygon water area, not the radar area"
+ },
+ "dem_shoreline": [],
+ "delta_volume": [],
+ "reported": []
+}

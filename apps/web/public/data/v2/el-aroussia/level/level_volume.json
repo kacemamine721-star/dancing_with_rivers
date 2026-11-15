@@ -1,0 +1,22 @@
+{
+ "badge": "ILLUSTRATIVE",
+ "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+ "method": "SWOT level only (no DEM-shoreline levels or ΔV computed for V2 dams yet)",
+ "uncertainty": "",
+ "placeholder": true,
+ "schema_version": 1,
+ "dam_id": "el-aroussia",
+ "swot": {
+  "available": false,
+  "lake_id": null,
+  "reason": "no Prior Lake Database lake within ≈1 km of the radar lake polygon in 32 LakeSP_Prior granules (60 over the lake box in CMR)",
+  "points": [],
+  "badge": "MEASURED",
+  "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+  "method": "Hydrocron PriorLake time series; kept quality_f ≤ 1, ice_clim_f 0 or fill, partial_f = 0 (partial passes only when no full pass exists, area dropped); > 5 robust σ WSE outliers removed",
+  "uncertainty": "wse_u per pass; SWOT area_total is the PLD-polygon water area, not the radar area"
+ },
+ "dem_shoreline": [],
+ "delta_volume": [],
+ "reported": []
+}

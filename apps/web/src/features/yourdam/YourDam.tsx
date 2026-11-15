@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/app';
 
+import { DamResults } from './DamResults';
 import { DamStage } from './DamStage';
 import { useDamGeometry, useDamIndex, useTunisia } from './data';
 import { makeSteps, type StepId } from './steps';
@@ -235,6 +236,8 @@ export function YourDam() {
             </div>
           </div>
         ) : null}
+        {/* real per-dam outputs (radar chips, NISAR + Sentinel-1 series, alerts, SWOT, quick flood) */}
+        {dam && dam.status === 'processed' ? <DamResults key={dam.id} dam={dam} /> : null}
       </section>
     </div>
   );

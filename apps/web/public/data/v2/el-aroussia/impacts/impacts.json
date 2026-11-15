@@ -1,0 +1,10 @@
+{
+ "badge": "ILLUSTRATIVE",
+ "source": "Placeholder: no flood model run for this dam (V2)",
+ "method": "",
+ "uncertainty": "",
+ "placeholder": true,
+ "schema_version": 1,
+ "dam_id": "el-aroussia",
+ "scenarios": {}
+}

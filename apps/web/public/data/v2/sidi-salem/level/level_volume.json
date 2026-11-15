@@ -1,0 +1,352 @@
+{
+ "badge": "MEASURED",
+ "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+ "method": "SWOT level only (no DEM-shoreline levels or ΔV computed for V2 dams yet)",
+ "uncertainty": "",
+ "placeholder": false,
+ "schema_version": 1,
+ "dam_id": "sidi-salem",
+ "swot": {
+  "available": true,
+  "lake_id": "1530007493",
+  "reason": "PLD 'no_data' (37.8819 km² reference area)",
+  "points": [
+   {
+    "time": "2023-07-30T15:19:22Z",
+    "wse_m": 104.792,
+    "wse_u": 0.004,
+    "area_km2": 34.077,
+    "quality": 0
+   },
+   {
+    "time": "2023-10-22T02:19:40Z",
+    "wse_m": 102.676,
+    "wse_u": 0.003,
+    "area_km2": 33.671,
+    "quality": 1
+   },
+   {
+    "time": "2023-11-11T23:04:45Z",
+    "wse_m": 102.249,
+    "wse_u": 0.003,
+    "area_km2": 33.502,
+    "quality": 1
+   },
+   {
+    "time": "2023-12-02T19:49:51Z",
+    "wse_m": 102.084,
+    "wse_u": 0.006,
+    "area_km2": 33.811,
+    "quality": 1
+   },
+   {
+    "time": "2024-01-13T13:20:00Z",
+    "wse_m": 103.758,
+    "wse_u": 0.013,
+    "area_km2": 36.073,
+    "quality": 0
+   },
+   {
+    "time": "2024-02-03T10:05:07Z",
+    "wse_m": 103.873,
+    "wse_u": 0.007,
+    "area_km2": 34.697,
+    "quality": 0
+   },
+   {
+    "time": "2024-02-24T06:50:12Z",
+    "wse_m": 104.521,
+    "wse_u": 0.006,
+    "area_km2": 34.221,
+    "quality": 1
+   },
+   {
+    "time": "2024-03-16T03:35:14Z",
+    "wse_m": 105.643,
+    "wse_u": 0.003,
+    "area_km2": 33.63,
+    "quality": 0
+   },
+   {
+    "time": "2024-05-17T17:50:29Z",
+    "wse_m": 104.304,
+    "wse_u": 0.004,
+    "area_km2": 33.968,
+    "quality": 0
+   },
+   {
+    "time": "2024-06-28T11:20:38Z",
+    "wse_m": 102.571,
+    "wse_u": 0.003,
+    "area_km2": 33.879,
+    "quality": 0
+   },
+   {
+    "time": "2024-07-19T08:05:43Z",
+    "wse_m": 101.489,
+    "wse_u": 0.003,
+    "area_km2": 33.874,
+    "quality": 1
+   },
+   {
+    "time": "2024-08-09T04:50:47Z",
+    "wse_m": 100.413,
+    "wse_u": 0.004,
+    "area_km2": 33.557,
+    "quality": 1
+   },
+   {
+    "time": "2024-09-19T22:20:58Z",
+    "wse_m": 99.16,
+    "wse_u": 0.015,
+    "area_km2": 33.91,
+    "quality": 1
+   },
+   {
+    "time": "2024-10-10T19:06:03Z",
+    "wse_m": 99.092,
+    "wse_u": 0.016,
+    "area_km2": 33.785,
+    "quality": 1
+   },
+   {
+    "time": "2024-10-31T15:51:07Z",
+    "wse_m": 98.94,
+    "wse_u": 0.02,
+    "area_km2": 33.759,
+    "quality": 1
+   },
+   {
+    "time": "2024-11-21T12:36:13Z",
+    "wse_m": 99.127,
+    "wse_u": 0.019,
+    "area_km2": 33.896,
+    "quality": 1
+   },
+   {
+    "time": "2024-12-12T09:21:17Z",
+    "wse_m": 98.909,
+    "wse_u": 0.019,
+    "area_km2": 33.845,
+    "quality": 1
+   },
+   {
+    "time": "2025-01-02T06:06:22Z",
+    "wse_m": 101.855,
+    "wse_u": 0.061,
+    "area_km2": 34.392,
+    "quality": 1
+   },
+   {
+    "time": "2025-01-23T02:51:26Z",
+    "wse_m": 100.943,
+    "wse_u": 0.038,
+    "area_km2": 34.101,
+    "quality": 1
+   },
+   {
+    "time": "2025-03-05T20:21:34Z",
+    "wse_m": 100.698,
+    "wse_u": 0.016,
+    "area_km2": 33.662,
+    "quality": 1
+   },
+   {
+    "time": "2025-03-26T17:06:40Z",
+    "wse_m": 100.305,
+    "wse_u": 0.013,
+    "area_km2": 33.618,
+    "quality": 1
+   },
+   {
+    "time": "2025-04-16T13:51:45Z",
+    "wse_m": 100.851,
+    "wse_u": 0.013,
+    "area_km2": 33.809,
+    "quality": 1
+   },
+   {
+    "time": "2025-05-07T10:36:48Z",
+    "wse_m": 103.253,
+    "wse_u": 0.01,
+    "area_km2": 33.872,
+    "quality": 1
+   },
+   {
+    "time": "2025-05-28T07:21:55Z",
+    "wse_m": 105.326,
+    "wse_u": 0.003,
+    "area_km2": 34.093,
+    "quality": 0
+   },
+   {
+    "time": "2025-06-18T04:06:58Z",
+    "wse_m": 104.672,
+    "wse_u": 0.002,
+    "area_km2": 33.82,
+    "quality": 0
+   },
+   {
+    "time": "2025-07-09T00:52:05Z",
+    "wse_m": 103.842,
+    "wse_u": 0.002,
+    "area_km2": 33.852,
+    "quality": 0
+   },
+   {
+    "time": "2025-07-29T21:37:10Z",
+    "wse_m": 102.939,
+    "wse_u": 0.003,
+    "area_km2": 34.144,
+    "quality": 1
+   },
+   {
+    "time": "2025-08-19T18:22:14Z",
+    "wse_m": 101.962,
+    "wse_u": 0.003,
+    "area_km2": 33.813,
+    "quality": 1
+   },
+   {
+    "time": "2025-09-30T11:52:22Z",
+    "wse_m": 101.146,
+    "wse_u": 0.009,
+    "area_km2": 33.747,
+    "quality": 1
+   },
+   {
+    "time": "2025-10-21T08:37:28Z",
+    "wse_m": 101.153,
+    "wse_u": 0.008,
+    "area_km2": 33.704,
+    "quality": 1
+   },
+   {
+    "time": "2025-11-11T05:22:31Z",
+    "wse_m": 100.829,
+    "wse_u": 0.008,
+    "area_km2": 33.664,
+    "quality": 1
+   },
+   {
+    "time": "2025-12-02T02:07:35Z",
+    "wse_m": 100.748,
+    "wse_u": 0.017,
+    "area_km2": 34.064,
+    "quality": 1
+   },
+   {
+    "time": "2025-12-22T22:52:40Z",
+    "wse_m": 100.66,
+    "wse_u": 0.015,
+    "area_km2": 34.118,
+    "quality": 1
+   },
+   {
+    "time": "2026-01-12T19:37:45Z",
+    "wse_m": 100.488,
+    "wse_u": 0.019,
+    "area_km2": 34.04,
+    "quality": 1
+   },
+   {
+    "time": "2026-02-02T16:22:49Z",
+    "wse_m": 102.416,
+    "wse_u": 0.047,
+    "area_km2": 34.754,
+    "quality": 1
+   },
+   {
+    "time": "2026-02-23T13:07:55Z",
+    "wse_m": 105.637,
+    "wse_u": 0.004,
+    "area_km2": 34.141,
+    "quality": 0
+   },
+   {
+    "time": "2026-03-16T09:53:02Z",
+    "wse_m": 105.884,
+    "wse_u": 0.004,
+    "area_km2": 34.267,
+    "quality": 0
+   },
+   {
+    "time": "2026-04-06T06:38:05Z",
+    "wse_m": 106.943,
+    "wse_u": 0.005,
+    "area_km2": 34.244,
+    "quality": 0
+   },
+   {
+    "time": "2026-04-27T03:23:11Z",
+    "wse_m": 109.444,
+    "wse_u": 0.002,
+    "area_km2": 34.025,
+    "quality": 0
+   },
+   {
+    "time": "2026-05-18T00:08:14Z",
+    "wse_m": 109.462,
+    "wse_u": 0.002,
+    "area_km2": 34.335,
+    "quality": 1
+   },
+   {
+    "time": "2026-06-28T17:38:24Z",
+    "wse_m": 108.762,
+    "wse_u": 0.002,
+    "area_km2": 35.357,
+    "quality": 0
+   },
+   {
+    "time": "2026-07-19T14:23:27Z",
+    "wse_m": 107.993,
+    "wse_u": 0.002,
+    "area_km2": 34.587,
+    "quality": 0
+   },
+   {
+    "time": "2026-08-09T11:08:33Z",
+    "wse_m": 107.387,
+    "wse_u": 0.003,
+    "area_km2": 34.335,
+    "quality": 1
+   },
+   {
+    "time": "2026-08-30T07:53:38Z",
+    "wse_m": 106.64,
+    "wse_u": 0.002,
+    "area_km2": 34.344,
+    "quality": 0
+   },
+   {
+    "time": "2026-09-20T04:38:42Z",
+    "wse_m": 106.184,
+    "wse_u": 0.011,
+    "area_km2": 35.423,
+    "quality": 0
+   },
+   {
+    "time": "2026-10-11T01:23:44Z",
+    "wse_m": 105.781,
+    "wse_u": 0.005,
+    "area_km2": 35.07,
+    "quality": 0
+   },
+   {
+    "time": "2026-10-31T22:08:50Z",
+    "wse_m": 105.634,
+    "wse_u": 0.002,
+    "area_km2": 33.702,
+    "quality": 0
+   }
+  ],
+  "badge": "MEASURED",
+  "source": "SWOT (NASA/CNES) Hydrocron LakeSP",
+  "method": "Hydrocron PriorLake time series; kept quality_f ≤ 1, ice_clim_f 0 or fill, partial_f = 0 (partial passes only when no full pass exists, area dropped); > 5 robust σ WSE outliers removed",
+  "uncertainty": "wse_u per pass; SWOT area_total is the PLD-polygon water area, not the radar area"
+ },
+ "dem_shoreline": [],
+ "delta_volume": [],
+ "reported": []
+}

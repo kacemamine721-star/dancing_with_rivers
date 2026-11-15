@@ -1,0 +1,20 @@
+{
+ "badge": "ILLUSTRATIVE",
+ "source": "Placeholder: no flood model run for this dam (V2)",
+ "method": "",
+ "uncertainty": "",
+ "placeholder": true,
+ "schema_version": 1,
+ "dam_id": "sidi-salem",
+ "corridor": "",
+ "reach": "",
+ "hand_file": "",
+ "hand_encoding": {
+  "type": "r16",
+  "min": null,
+  "max": null,
+  "scale": null,
+  "offset": null
+ },
+ "rows": []
+}

@@ -196,6 +196,10 @@ def main():
     ap.add_argument("--fetch-osm", action="store_true", help="query Overpass for missing Tunisia-wide extracts")
     ap.add_argument("--qa", action="store_true", help="write work/v2/catalog_qa.png")
     ap.add_argument("--min-res-km2", type=float, default=0.2)
+    ap.add_argument("--extra", nargs="+", action="append", default=[], metavar="ID LON LAT [CREST]",
+                    help="add (or override the nearest entry within 1.5 km with) an explicit dam anywhere: id, point and "
+                         "an optional crest GeoJSON. Name / reservoir come from config/dams/<id>.yaml + "
+                         "work/v2/<id>/osm_dam.geojson (pipeline/v2/run_dam.py --steps config) when present. Repeatable.")
     a = ap.parse_args()
     cfg = yaml.safe_load((ROOT / a.config).read_text(encoding="utf-8")) if (ROOT / a.config).exists() else \
         yaml.safe_load(Path(a.config).read_text(encoding="utf-8"))
@@ -372,6 +376,56 @@ def main():
             seen[b] = 1
     assert any(e["id"] == "sidi-salem" for e in entries), "Sidi Salem not found in OSM"
 
+    # ---- explicit extra dams (any country): --extra id lon lat [crest.geojson]
+    extra_ids = set()
+    for ex in a.extra:
+        if len(ex) < 3:
+            raise SystemExit(f"--extra needs ID LON LAT [CREST], got {ex}")
+        xid, xlon, xlat = ex[0], float(ex[1]), float(ex[2])
+        dcfg_p = ROOT / "config/dams" / f"{xid}.yaml"
+        dcfg = yaml.safe_load(dcfg_p.read_text(encoding="utf-8")).get("dam", {}) if dcfg_p.exists() else {}
+        xpt = gpd.GeoSeries([Point(xlon, xlat)], crs=4326).to_crs(CRS).iloc[0]
+        crest = None
+        if len(ex) > 3:
+            for f in json.loads(Path(ex[3]).read_text(encoding="utf-8"))["features"]:
+                if f["geometry"]["type"] == "LineString":
+                    crest = gpd.GeoSeries([shape(f["geometry"])], crs=4326).to_crs(CRS).iloc[0]
+        elif dcfg.get("crest"):
+            c = dcfg["crest"]
+            cg = shape(c) if isinstance(c, dict) else (LineString(c) if np.ndim(c) == 2 else Polygon(c[0]))
+            crest = gpd.GeoSeries([cg], crs=4326).to_crs(CRS).iloc[0]
+        osm_dam = dcfg.get("osm_dam")
+        hit = min(entries, key=lambda e: e["rec"]["pt"].distance(xpt))
+        if hit["rec"]["pt"].distance(xpt) > 1500:
+            hit = None
+        if hit is None:                               # new entry: reservoir polygon from the run_dam config step
+            rk, rkm2, rosm = None, None, None
+            od = ROOT / "work/v2" / xid / "osm_dam.geojson"
+            if od.exists():
+                rf = [f for f in json.loads(od.read_text(encoding="utf-8"))["features"]
+                      if f["properties"].get("role") == "reservoir_osm"]
+                if rf:
+                    rg = gpd.GeoSeries([shape(rf[0]["geometry"])], crs=4326).to_crs(CRS).iloc[0].buffer(0)
+                    rosm = rf[0]["properties"].get("source", "OSM ?").split(" ")[1]
+                    rk = int(res.index.max()) + 1
+                    res = pd.concat([res, gpd.GeoDataFrame([dict(osm_id=rosm, geometry=rg, area_km2=rg.area / 1e6)],
+                                                           geometry="geometry", crs=res.crs, index=[rk])])
+                    rkm2 = rg.area / 1e6
+            nn = {f: None for f in ("name", "name_fr", "name_en", "name_ar")}
+            hit = dict(rec=dict(i=None, osm_id=osm_dam or "user", pt=xpt, geom=crest or xpt, res_k=rk, res_km2=rkm2,
+                                res_osm=rosm, nm=dict(nn), rnm=dict(nn), height=None, start=None,
+                                length=crest.length if crest is not None else 0.0),
+                       all=[], names=dict(nn), rnames=dict(nn), height=None, start=None, name_ar=None, name_en=None)
+            entries.append(hit)
+        hit["id"] = xid
+        hit["rec"]["pt"] = xpt
+        if osm_dam:
+            hit["rec"]["osm_id"] = osm_dam
+        hit["name"] = dcfg.get("name") or hit.get("name") or xid
+        hit["name_source"] = dcfg.get("name_source") or None
+        extra_ids.add(xid)
+    prov["extra"] = [dict(id=x[0], lonlat=[float(x[1]), float(x[2])], crest=x[3] if len(x) > 3 else None) for x in a.extra]
+
     # ---- HydroSHEDS
     hr_cache = work / "hydrorivers_tn.gpkg"
     hb_cache = work / "hybas12_tn.gpkg"
@@ -471,6 +525,7 @@ def main():
         parts = [substring(first, first.project(pt), first.length)]
         visited = {rid}
         stop = None
+        entered = pt.within(tun_in)   # a dam outside Tunisia walks until it has entered and left the country
         nd = int(riv.loc[rid, "NEXT_DOWN"])
         while True:
             if nd == 0:
@@ -491,7 +546,9 @@ def main():
                 parts.append(substring(g, 0, g.project(o["rec"]["pt"])))
                 stop = o["id"]
                 break
-            if not g.centroid.within(tun_in):
+            if g.centroid.within(tun_in):
+                entered = True
+            elif entered:
                 inside = g.intersection(tun_in)
                 if not inside.is_empty:
                     parts.append(inside if inside.geom_type == "LineString" else linemerge(inside))
@@ -641,7 +698,9 @@ def main():
             downstream_to=e["down_to"],
             towns=[{"name": t["name"], "km": t["km"]} for t in e["towns"]],
             nisar_dates=e["nisar_dates"], nisar_tracks=e["nisar_tracks"],
-            status="processed" if e["id"] == "mellegue" else "catalogued", badge="MODELLED",
+            status="processed" if e["id"] == "mellegue" or bundle_ok(e["id"]) else "catalogued", badge="MODELLED",
+            **({"name_source": e["name_source"]} if e.get("name_source") else {}),
+            **({"bundle": f"data/v2/{e['id']}/"} if bundle_ok(e["id"]) else {}),
             source="OSM dam/reservoir (ODbL); HydroBASINS/HydroRIVERS (Lehner & Grill 2013); "
                    "NISAR footprints from ASF search; geoBoundaries ADM1",
             file=f"v2/dams/{e['id']}.geojson"))
@@ -670,7 +729,11 @@ def main():
                         "the outlet (can over-count small dams), paths differ from OSM rivers by up to a few hundred "
                         "metres and from our 30 m D8 path in length. OSM coverage and names are incomplete; null = "
                         "not in the sources. Reservoir area is the mapped polygon, not current storage."),
-        "tunisia_bbox": [round(float(v), 3) for v in tb],
+        "tunisia_bbox": [round(float(v), 3) for v in (min(tb[0], min(d["lon"] for d in dams_out) - 0.1),
+                                                      min(tb[1], min(d["lat"] for d in dams_out) - 0.1),
+                                                      max(tb[2], max(d["lon"] for d in dams_out) + 0.1),
+                                                      max(tb[3], max(d["lat"] for d in dams_out) + 0.1))],
+        "tunisia_bbox_note": "Tunisia (geoBoundaries ADM0) extended to every catalogued dam, incl. --extra dams abroad",
         "dams": dams_out,
     }
     pi = out_dir / "dams" / "index.json"
@@ -728,6 +791,20 @@ def main():
 
     if a.qa:
         qa_png(out_dir, index, adm1, work / "catalog_qa.png")
+
+
+def bundle_ok(dam_id: str) -> bool:
+    """True when apps/web/public/data/v2/<id>/ exists and every contract file validates (pipeline/v2/run_dam.py)."""
+    from common import contracts as C
+    out = ROOT / "apps/web/public/data/v2" / dam_id
+    if not (out / "manifest.json").exists():
+        return False
+    try:
+        for name, rel in C.BUNDLE_PATHS.items():
+            C.validate_file(name, out / rel)
+        return True
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def qa_png(out_dir, index, adm1, path):

@@ -1,0 +1,1391 @@
+{
+ "badge": "MODELLED",
+ "source": "Rule-based detector on MEASURED NISAR + Sentinel-1 water areas (this project)",
+ "method": "harmonised area vs 21-day multi-sensor baseline; WARNING < -12%, ALERT < -20%, each confirmed by an independent pass within 6 days (03_anomaly.departure_rule, unchanged)",
+ "uncertainty": "σ of departures 1.3% over the whole series. No reference event is known for this dam: flags are monitoring prompts for an operator, not validated detections. rule.sigma_per_sqrt_day carries the departure σ (not per √day).",
+ "placeholder": false,
+ "schema_version": 1,
+ "dam_id": "ouldjet-mellegue",
+ "rule": {
+  "z_alert": -3.0,
+  "drop_alert": -0.2,
+  "z_warn": -2.0,
+  "drop_warn": -0.12,
+  "seasonal_rate_per_day": 0.0,
+  "sigma_per_sqrt_day": 0.0133
+ },
+ "evaluations": [
+  {
+   "date": "2026-04-16",
+   "prev": "2026-04-04",
+   "days": 21.0,
+   "delta": 0.007,
+   "expected": 0.0,
+   "z": 0.53,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-16 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.215 km² vs median of 3 obs since 2026-04-04 → +0.7% (z 0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-04-17",
+   "prev": "2026-04-04",
+   "days": 21.0,
+   "delta": 0.0157,
+   "expected": 0.0,
+   "z": 1.18,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-17 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.351 km² vs median of 4 obs since 2026-04-04 → +1.6% (z 1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-04-22",
+   "prev": "2026-04-04",
+   "days": 21.0,
+   "delta": -0.0108,
+   "expected": 0.0,
+   "z": -0.81,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-22 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.094 km² vs median of 5 obs since 2026-04-04 → -1.1% (z -0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-04-23",
+   "prev": "2026-04-04",
+   "days": 21.0,
+   "delta": -0.0123,
+   "expected": 0.0,
+   "z": -0.92,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-23 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.039 km² vs median of 6 obs since 2026-04-04 → -1.2% (z -0.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-04-28",
+   "prev": "2026-04-10",
+   "days": 21.0,
+   "delta": -0.0082,
+   "expected": 0.0,
+   "z": -0.62,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-28 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.024 km² vs median of 6 obs since 2026-04-10 → -0.8% (z -0.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-04-29",
+   "prev": "2026-04-10",
+   "days": 21.0,
+   "delta": 0.005,
+   "expected": 0.0,
+   "z": 0.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-04-29 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.150 km² vs median of 7 obs since 2026-04-10 → +0.5% (z 0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-04",
+   "prev": "2026-04-16",
+   "days": 21.0,
+   "delta": 0.0029,
+   "expected": 0.0,
+   "z": 0.22,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-04 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.154 km² vs median of 6 obs since 2026-04-16 → +0.3% (z 0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-05",
+   "prev": "2026-04-16",
+   "days": 21.0,
+   "delta": -0.0127,
+   "expected": 0.0,
+   "z": -0.96,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-05 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.008 km² vs median of 7 obs since 2026-04-16 → -1.3% (z -1.0). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-10",
+   "prev": "2026-04-22",
+   "days": 21.0,
+   "delta": 0.0117,
+   "expected": 0.0,
+   "z": 0.88,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-10 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.196 km² vs median of 6 obs since 2026-04-22 → +1.2% (z 0.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-11",
+   "prev": "2026-04-22",
+   "days": 21.0,
+   "delta": 0.0067,
+   "expected": 0.0,
+   "z": 0.5,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-11 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.168 km² vs median of 7 obs since 2026-04-22 → +0.7% (z 0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-16",
+   "prev": "2026-04-28",
+   "days": 21.0,
+   "delta": 0.0117,
+   "expected": 0.0,
+   "z": 0.88,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-16 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.282 km² vs median of 6 obs since 2026-04-28 → +1.2% (z 0.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-17",
+   "prev": "2026-04-28",
+   "days": 21.0,
+   "delta": 0.0108,
+   "expected": 0.0,
+   "z": 0.82,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-17 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.275 km² vs median of 7 obs since 2026-04-28 → +1.1% (z 0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-17",
+   "prev": "2026-04-28",
+   "days": 21.0,
+   "delta": -0.0021,
+   "expected": 0.0,
+   "z": -0.16,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-17 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.131 km² vs median of 7 obs since 2026-04-28 → -0.2% (z -0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-18",
+   "prev": "2026-04-28",
+   "days": 21.0,
+   "delta": -0.0109,
+   "expected": 0.0,
+   "z": -0.82,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-18 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.032 km² vs median of 9 obs since 2026-04-28 → -1.1% (z -0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-22",
+   "prev": "2026-05-04",
+   "days": 21.0,
+   "delta": 0.0168,
+   "expected": 0.0,
+   "z": 1.26,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-22 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.348 km² vs median of 8 obs since 2026-05-04 → +1.7% (z 1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-23",
+   "prev": "2026-05-04",
+   "days": 21.0,
+   "delta": 0.0011,
+   "expected": 0.0,
+   "z": 0.08,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-23 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.180 km² vs median of 9 obs since 2026-05-04 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-28",
+   "prev": "2026-05-10",
+   "days": 21.0,
+   "delta": 0.0071,
+   "expected": 0.0,
+   "z": 0.53,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-28 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.267 km² vs median of 8 obs since 2026-05-10 → +0.7% (z 0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-29",
+   "prev": "2026-05-10",
+   "days": 21.0,
+   "delta": -0.0159,
+   "expected": 0.0,
+   "z": -1.2,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-29 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.018 km² vs median of 9 obs since 2026-05-10 → -1.6% (z -1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-05-30",
+   "prev": "2026-05-10",
+   "days": 21.0,
+   "delta": -0.4036,
+   "expected": 0.0,
+   "z": -30.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-05-30 (Sentinel-1): lake area -40% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 6.672 km² vs median of 10 obs since 2026-05-10 → -40.4% (z -30.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-03",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": 0.0147,
+   "expected": 0.0,
+   "z": 1.1,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-03 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.344 km² vs median of 9 obs since 2026-05-16 → +1.5% (z 1.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-04",
+   "prev": "2026-05-16",
+   "days": 21.0,
+   "delta": -0.0173,
+   "expected": 0.0,
+   "z": -1.3,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-04 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.029 km² vs median of 10 obs since 2026-05-16 → -1.7% (z -1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-10",
+   "prev": "2026-05-22",
+   "days": 21.0,
+   "delta": 0.0018,
+   "expected": 0.0,
+   "z": 0.13,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-10 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.200 km² vs median of 7 obs since 2026-05-22 → +0.2% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-11",
+   "prev": "2026-05-22",
+   "days": 21.0,
+   "delta": -0.0063,
+   "expected": 0.0,
+   "z": -0.48,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-11 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.119 km² vs median of 8 obs since 2026-05-22 → -0.6% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-15",
+   "prev": "2026-05-28",
+   "days": 21.0,
+   "delta": -0.0079,
+   "expected": 0.0,
+   "z": -0.6,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-15 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.031 km² vs median of 7 obs since 2026-05-28 → -0.8% (z -0.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-16",
+   "prev": "2026-05-28",
+   "days": 21.0,
+   "delta": 0.0217,
+   "expected": 0.0,
+   "z": 1.63,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-16 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.315 km² vs median of 8 obs since 2026-05-28 → +2.2% (z 1.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-21",
+   "prev": "2026-06-03",
+   "days": 21.0,
+   "delta": -0.016,
+   "expected": 0.0,
+   "z": -1.2,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-21 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 10.981 km² vs median of 6 obs since 2026-06-03 → -1.6% (z -1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-22",
+   "prev": "2026-06-03",
+   "days": 21.0,
+   "delta": 0.0187,
+   "expected": 0.0,
+   "z": 1.41,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-22 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.327 km² vs median of 7 obs since 2026-06-03 → +1.9% (z 1.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-23",
+   "prev": "2026-06-03",
+   "days": 21.0,
+   "delta": -0.0069,
+   "expected": 0.0,
+   "z": -0.52,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-23 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.083 km² vs median of 8 obs since 2026-06-03 → -0.7% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-26",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": 0.0341,
+   "expected": 0.0,
+   "z": 2.57,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-26 (NISAR): lake area +3% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.498 km² vs median of 7 obs since 2026-06-10 → +3.4% (z 2.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-27",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": 0.0099,
+   "expected": 0.0,
+   "z": 0.75,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-27 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.270 km² vs median of 8 obs since 2026-06-10 → +1.0% (z 0.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-28",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.0055,
+   "expected": 0.0,
+   "z": -0.42,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-28 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.138 km² vs median of 9 obs since 2026-06-10 → -0.6% (z -0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-28",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.0137,
+   "expected": 0.0,
+   "z": -1.03,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-28 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.047 km² vs median of 9 obs since 2026-06-10 → -1.4% (z -1.0). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-06-29",
+   "prev": "2026-06-10",
+   "days": 21.0,
+   "delta": -0.0129,
+   "expected": 0.0,
+   "z": -0.97,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-06-29 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 10.994 km² vs median of 11 obs since 2026-06-10 → -1.3% (z -1.0). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-03",
+   "prev": "2026-06-15",
+   "days": 21.0,
+   "delta": 0.022,
+   "expected": 0.0,
+   "z": 1.66,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-03 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.355 km² vs median of 10 obs since 2026-06-15 → +2.2% (z 1.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-04",
+   "prev": "2026-06-15",
+   "days": 21.0,
+   "delta": 0.0151,
+   "expected": 0.0,
+   "z": 1.14,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-04 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.306 km² vs median of 11 obs since 2026-06-15 → +1.5% (z 1.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-05",
+   "prev": "2026-06-15",
+   "days": 21.0,
+   "delta": 0.0086,
+   "expected": 0.0,
+   "z": 0.64,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-05 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.300 km² vs median of 12 obs since 2026-06-15 → +0.9% (z 0.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-08",
+   "prev": "2026-06-21",
+   "days": 21.0,
+   "delta": 0.0155,
+   "expected": 0.0,
+   "z": 1.17,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-08 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.445 km² vs median of 11 obs since 2026-06-21 → +1.6% (z 1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-10",
+   "prev": "2026-06-21",
+   "days": 21.0,
+   "delta": -0.122,
+   "expected": 0.0,
+   "z": -9.19,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-10 (Sentinel-1): lake area -12% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 9.908 km² vs median of 12 obs since 2026-06-21 → -12.2% (z -9.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-11",
+   "prev": "2026-06-21",
+   "days": 21.0,
+   "delta": -0.022,
+   "expected": 0.0,
+   "z": -1.66,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-11 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.022 km² vs median of 13 obs since 2026-06-21 → -2.2% (z -1.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-15",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": -0.0021,
+   "expected": 0.0,
+   "z": -0.16,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-15 (NISAR): lake area -0% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.246 km² vs median of 11 obs since 2026-06-26 → -0.2% (z -0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-16",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": 0.0024,
+   "expected": 0.0,
+   "z": 0.18,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-16 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.285 km² vs median of 12 obs since 2026-06-26 → +0.2% (z 0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-17",
+   "prev": "2026-06-26",
+   "days": 21.0,
+   "delta": -0.0072,
+   "expected": 0.0,
+   "z": -0.54,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-17 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.189 km² vs median of 13 obs since 2026-06-26 → -0.7% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-20",
+   "prev": "2026-06-29",
+   "days": 21.0,
+   "delta": -0.02,
+   "expected": 0.0,
+   "z": -1.51,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-20 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.040 km² vs median of 10 obs since 2026-06-29 → -2.0% (z -1.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-22",
+   "prev": "2026-07-03",
+   "days": 21.0,
+   "delta": -0.0125,
+   "expected": 0.0,
+   "z": -0.94,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-22 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.125 km² vs median of 10 obs since 2026-07-03 → -1.2% (z -0.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-23",
+   "prev": "2026-07-03",
+   "days": 21.0,
+   "delta": -0.0012,
+   "expected": 0.0,
+   "z": -0.09,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-23 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.233 km² vs median of 11 obs since 2026-07-03 → -0.1% (z -0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-27",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": -0.0205,
+   "expected": 0.0,
+   "z": -1.54,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-27 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 10.960 km² vs median of 9 obs since 2026-07-08 → -2.0% (z -1.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-28",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": 0.0186,
+   "expected": 0.0,
+   "z": 1.4,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-28 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.365 km² vs median of 10 obs since 2026-07-08 → +1.9% (z 1.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-07-29",
+   "prev": "2026-07-08",
+   "days": 21.0,
+   "delta": -0.0052,
+   "expected": 0.0,
+   "z": -0.39,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-07-29 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.131 km² vs median of 11 obs since 2026-07-08 → -0.5% (z -0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-03",
+   "prev": "2026-07-15",
+   "days": 21.0,
+   "delta": 0.0102,
+   "expected": 0.0,
+   "z": 0.77,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-03 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.303 km² vs median of 9 obs since 2026-07-15 → +1.0% (z 0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-04",
+   "prev": "2026-07-15",
+   "days": 21.0,
+   "delta": -0.0062,
+   "expected": 0.0,
+   "z": -0.47,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-04 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.141 km² vs median of 10 obs since 2026-07-15 → -0.6% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-09",
+   "prev": "2026-07-20",
+   "days": 21.0,
+   "delta": 0.0348,
+   "expected": 0.0,
+   "z": 2.62,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-09 (Sentinel-1): lake area +3% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.523 km² vs median of 8 obs since 2026-07-20 → +3.5% (z 2.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-10",
+   "prev": "2026-07-20",
+   "days": 21.0,
+   "delta": -0.0001,
+   "expected": 0.0,
+   "z": -0.01,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-10 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.140 km² vs median of 9 obs since 2026-07-20 → -0.0% (z -0.0). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-13",
+   "prev": "2026-07-23",
+   "days": 21.0,
+   "delta": -0.0046,
+   "expected": 0.0,
+   "z": -0.34,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-13 (NISAR): lake area -0% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.136 km² vs median of 8 obs since 2026-07-23 → -0.5% (z -0.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "prev": "2026-07-27",
+   "days": 21.0,
+   "delta": -0.0018,
+   "expected": 0.0,
+   "z": -0.14,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-15 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.120 km² vs median of 8 obs since 2026-07-27 → -0.2% (z -0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-16",
+   "prev": "2026-07-27",
+   "days": 21.0,
+   "delta": -0.0079,
+   "expected": 0.0,
+   "z": -0.59,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-16 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.052 km² vs median of 9 obs since 2026-07-27 → -0.8% (z -0.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": -0.0091,
+   "expected": 0.0,
+   "z": -0.68,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-20 (NISAR): lake area -1% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.039 km² vs median of 7 obs since 2026-08-03 → -0.9% (z -0.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": -0.0176,
+   "expected": 0.0,
+   "z": -1.32,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-21 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 10.942 km² vs median of 8 obs since 2026-08-03 → -1.8% (z -1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-22",
+   "prev": "2026-08-03",
+   "days": 21.0,
+   "delta": -0.0167,
+   "expected": 0.0,
+   "z": -1.26,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-22 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 10.950 km² vs median of 9 obs since 2026-08-03 → -1.7% (z -1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "prev": "2026-08-04",
+   "days": 21.0,
+   "delta": -0.0045,
+   "expected": 0.0,
+   "z": -0.34,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-25 (NISAR): lake area -0% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.070 km² vs median of 9 obs since 2026-08-04 → -0.4% (z -0.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": 0.0008,
+   "expected": 0.0,
+   "z": 0.06,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-27 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.079 km² vs median of 9 obs since 2026-08-09 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "prev": "2026-08-09",
+   "days": 21.0,
+   "delta": 0.0011,
+   "expected": 0.0,
+   "z": 0.08,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-08-28 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.087 km² vs median of 10 obs since 2026-08-09 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": -0.0106,
+   "expected": 0.0,
+   "z": -0.8,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-01 (NISAR): lake area -1% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 10.953 km² vs median of 9 obs since 2026-08-13 → -1.1% (z -0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": 0.0043,
+   "expected": 0.0,
+   "z": 0.33,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-02 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.109 km² vs median of 10 obs since 2026-08-13 → +0.4% (z 0.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "prev": "2026-08-13",
+   "days": 21.0,
+   "delta": 0.0099,
+   "expected": 0.0,
+   "z": 0.75,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-03 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.180 km² vs median of 11 obs since 2026-08-13 → +1.0% (z 0.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-06",
+   "prev": "2026-08-16",
+   "days": 21.0,
+   "delta": 0.0052,
+   "expected": 0.0,
+   "z": 0.39,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-06 (NISAR): lake area +1% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.118 km² vs median of 10 obs since 2026-08-16 → +0.5% (z 0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "prev": "2026-08-20",
+   "days": 21.0,
+   "delta": 0.0007,
+   "expected": 0.0,
+   "z": 0.05,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-08 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.082 km² vs median of 10 obs since 2026-08-20 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "prev": "2026-08-20",
+   "days": 21.0,
+   "delta": 0.0014,
+   "expected": 0.0,
+   "z": 0.1,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-09 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.094 km² vs median of 11 obs since 2026-08-20 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-13",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.0192,
+   "expected": 0.0,
+   "z": -1.45,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-13 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 10.874 km² vs median of 9 obs since 2026-08-25 → -1.9% (z -1.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.0015,
+   "expected": 0.0,
+   "z": -0.11,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-14 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.068 km² vs median of 10 obs since 2026-08-25 → -0.1% (z -0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "prev": "2026-08-25",
+   "days": 21.0,
+   "delta": -0.0051,
+   "expected": 0.0,
+   "z": -0.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-15 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.026 km² vs median of 11 obs since 2026-08-25 → -0.5% (z -0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "prev": "2026-08-28",
+   "days": 21.0,
+   "delta": -0.0176,
+   "expected": 0.0,
+   "z": -1.33,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-18 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 10.889 km² vs median of 10 obs since 2026-08-28 → -1.8% (z -1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-20",
+   "prev": "2026-09-01",
+   "days": 21.0,
+   "delta": 0.0002,
+   "expected": 0.0,
+   "z": 0.01,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-20 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.077 km² vs median of 10 obs since 2026-09-01 → +0.0% (z 0.0). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "prev": "2026-09-01",
+   "days": 21.0,
+   "delta": -0.001,
+   "expected": 0.0,
+   "z": -0.07,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-21 (Sentinel-1): lake area -0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.066 km² vs median of 11 obs since 2026-09-01 → -0.1% (z -0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.0089,
+   "expected": 0.0,
+   "z": 0.67,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-25 (NISAR): lake area +1% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.166 km² vs median of 9 obs since 2026-09-06 → +0.9% (z 0.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-26",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": 0.0276,
+   "expected": 0.0,
+   "z": 2.08,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-26 (Sentinel-1): lake area +3% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.378 km² vs median of 10 obs since 2026-09-06 → +2.8% (z 2.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-27",
+   "prev": "2026-09-06",
+   "days": 21.0,
+   "delta": -0.0062,
+   "expected": 0.0,
+   "z": -0.47,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-27 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.008 km² vs median of 11 obs since 2026-09-06 → -0.6% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "prev": "2026-09-09",
+   "days": 21.0,
+   "delta": 0.0013,
+   "expected": 0.0,
+   "z": 0.1,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-09-30 (NISAR): lake area +0% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.081 km² vs median of 10 obs since 2026-09-09 → +0.1% (z 0.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "prev": "2026-09-13",
+   "days": 21.0,
+   "delta": -0.0085,
+   "expected": 0.0,
+   "z": -0.64,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-02 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 10.973 km² vs median of 10 obs since 2026-09-13 → -0.8% (z -0.6). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-03",
+   "prev": "2026-09-13",
+   "days": 21.0,
+   "delta": -0.0098,
+   "expected": 0.0,
+   "z": -0.74,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-03 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 10.957 km² vs median of 11 obs since 2026-09-13 → -1.0% (z -0.7). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": 0.0239,
+   "expected": 0.0,
+   "z": 1.8,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-07 (NISAR): lake area +2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.331 km² vs median of 9 obs since 2026-09-18 → +2.4% (z 1.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": 0.0042,
+   "expected": 0.0,
+   "z": 0.32,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-08 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.118 km² vs median of 10 obs since 2026-09-18 → +0.4% (z 0.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "prev": "2026-09-18",
+   "days": 21.0,
+   "delta": 0.0051,
+   "expected": 0.0,
+   "z": 0.38,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-09 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.133 km² vs median of 11 obs since 2026-09-18 → +0.5% (z 0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "prev": "2026-09-21",
+   "days": 21.0,
+   "delta": 0.0459,
+   "expected": 0.0,
+   "z": 3.46,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-12 (NISAR): lake area +5% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.609 km² vs median of 10 obs since 2026-09-21 → +4.6% (z 3.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "prev": "2026-09-25",
+   "days": 21.0,
+   "delta": 0.0256,
+   "expected": 0.0,
+   "z": 1.92,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-14 (Sentinel-1): lake area +3% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.410 km² vs median of 10 obs since 2026-09-25 → +2.6% (z 1.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "prev": "2026-09-25",
+   "days": 21.0,
+   "delta": 0.0164,
+   "expected": 0.0,
+   "z": 1.24,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-15 (Sentinel-1): lake area +2% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.316 km² vs median of 11 obs since 2026-09-25 → +1.6% (z 1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": 0.0022,
+   "expected": 0.0,
+   "z": 0.17,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-19 (NISAR): lake area +0% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.158 km² vs median of 9 obs since 2026-09-30 → +0.2% (z 0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": -0.0053,
+   "expected": 0.0,
+   "z": -0.4,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-20 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.086 km² vs median of 10 obs since 2026-09-30 → -0.5% (z -0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "prev": "2026-09-30",
+   "days": 21.0,
+   "delta": 0.0148,
+   "expected": 0.0,
+   "z": 1.12,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-21 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.298 km² vs median of 11 obs since 2026-09-30 → +1.5% (z 1.1). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-24",
+   "prev": "2026-10-03",
+   "days": 21.0,
+   "delta": 0.0387,
+   "expected": 0.0,
+   "z": 2.91,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-24 (NISAR): lake area +4% compared with the previous 21 days.",
+    "experts": "NISAR D8/F70: harmonised 11.662 km² vs median of 10 obs since 2026-10-03 → +3.9% (z 2.9). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "prev": "2026-10-07",
+   "days": 21.0,
+   "delta": -0.0162,
+   "expected": 0.0,
+   "z": -1.22,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-26 (Sentinel-1): lake area -2% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.124 km² vs median of 10 obs since 2026-10-07 → -1.6% (z -1.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "prev": "2026-10-07",
+   "days": 21.0,
+   "delta": 0.0036,
+   "expected": 0.0,
+   "z": 0.27,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-27 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.339 km² vs median of 11 obs since 2026-10-07 → +0.4% (z 0.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": -0.0167,
+   "expected": 0.0,
+   "z": -1.26,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-10-31 (NISAR): lake area -2% compared with the previous 21 days.",
+    "experts": "NISAR A101/F20: harmonised 11.127 km² vs median of 9 obs since 2026-10-12 → -1.7% (z -1.3). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-01",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": -0.0112,
+   "expected": 0.0,
+   "z": -0.85,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-01 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.180 km² vs median of 10 obs since 2026-10-12 → -1.1% (z -0.8). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "prev": "2026-10-12",
+   "days": 21.0,
+   "delta": 0.0047,
+   "expected": 0.0,
+   "z": 0.35,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-02 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.351 km² vs median of 11 obs since 2026-10-12 → +0.5% (z 0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-07",
+   "prev": "2026-10-19",
+   "days": 21.0,
+   "delta": 0.0021,
+   "expected": 0.0,
+   "z": 0.15,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-07 (Sentinel-1): lake area +0% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.203 km² vs median of 9 obs since 2026-10-19 → +0.2% (z 0.2). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-08",
+   "prev": "2026-10-19",
+   "days": 21.0,
+   "delta": -0.0061,
+   "expected": 0.0,
+   "z": -0.46,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-08 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.123 km² vs median of 10 obs since 2026-10-19 → -0.6% (z -0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-13",
+   "prev": "2026-10-24",
+   "days": 21.0,
+   "delta": -0.0056,
+   "expected": 0.0,
+   "z": -0.42,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-13 (Sentinel-1): lake area -1% compared with the previous 21 days.",
+    "experts": "S1 o161: harmonised 11.129 km² vs median of 8 obs since 2026-10-24 → -0.6% (z -0.4). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  },
+  {
+   "date": "2026-11-14",
+   "prev": "2026-10-24",
+   "days": 21.0,
+   "delta": 0.0062,
+   "expected": 0.0,
+   "z": 0.46,
+   "level": "NORMAL",
+   "cross_sensor": false,
+   "text": {
+    "everyone": "2026-11-14 (Sentinel-1): lake area +1% compared with the previous 21 days.",
+    "experts": "S1 o168: harmonised 11.249 km² vs median of 9 obs since 2026-10-24 → +0.6% (z 0.5). WARNING < -12%, ALERT < -20%, confirmed within 6 d. Thresholds tuned on one event (Mellègue 2026): out-of-sample here."
+   }
+  }
+ ]
+}
