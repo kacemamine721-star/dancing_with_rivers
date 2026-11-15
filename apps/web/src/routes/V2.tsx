@@ -100,7 +100,7 @@ export function Component() {
         <p className="mt-4 max-w-3xl text-[16px] leading-relaxed text-ink/85">
           {experts
             ? 'Pick any catalogued Tunisian dam and watch the V2 pipeline run on its real geometry: snap to HydroRIVERS, upstream HydroBASINS catchment, mapped reservoir, NISAR passes from the ASF inventory, and the downstream path with the places it passes. Lake series, alerts and floods are computed for Mellègue (V1); for other dams they are the milestone-1 work, shown as planned.'
-            : 'Pick a dam. Watch what we do with it, step by step: find its river, the land that feeds it, the radar passes over its lake, and where its water would go downstream. For Mellègue every step is done; for the other dams the first steps are ready and the rest is coming in V2.'}
+            : 'Pick a dam and watch real satellite results appear, step by step.'}
         </p>
       </header>
 

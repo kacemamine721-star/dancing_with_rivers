@@ -1,129 +1,156 @@
+import type { BadgeKind } from '@/components/badge-model';
+import { flagsOf, reliablePoints } from '@/features/story/series';
+
+import { handHeightM, handVolumeM3, type DamBundle } from './bundle';
 import type { Dam } from './data';
 
-export type StepId = 'find' | 'snap' | 'catchment' | 'lake' | 'radar' | 'downstream' | 'watch' | 'flood';
+export type StepId = 'find' | 'upstream' | 'radar' | 'lake' | 'alert' | 'level' | 'path' | 'hand' | 'anuga';
+export const ORDER: StepId[] = ['find', 'upstream', 'radar', 'lake', 'alert', 'level', 'path', 'hand', 'anuga'];
 
-const nf = (n: number, d = 0) => new Intl.NumberFormat('en-GB', { maximumFractionDigits: d, minimumFractionDigits: d }).format(n);
-const or = (v: number | null | undefined, f: (n: number) => string, dash = 'not available') => (v === null || v === undefined ? dash : f(v));
-
-export interface StepDef {
+export interface StepView {
   id: StepId;
   label: string;
-  title: (d: Dam) => string;
-  simple: (d: Dam) => string;
-  expert: (d: Dam) => string;
-  /** big number shown with the step */
-  stat?: (d: Dam) => { value: string; unit?: string } | null;
-  /** true when the step's analysis exists only for processed dams (Mellègue) */
-  processedOnly?: boolean;
+  /** the one key number (real data) or a dash when the data does not exist */
+  value: string;
+  unit?: string | undefined;
+  /** one short sentence (Simplified) */
+  simple: string;
+  /** one technical line (Advanced) */
+  expert: string;
+  badge: BadgeKind;
+  /** the result does not exist for this dam (yet): shown dimmed, never invented */
+  pending?: boolean;
 }
 
-const downName = (d: Dam, names: Map<string, string>) =>
-  d.downstream_to === 'sea'
-    ? 'the sea'
-    : d.downstream_to === 'border'
-      ? 'the border'
-      : d.downstream_to === 'sink'
-        ? 'an inland basin'
-        : d.downstream_to ? (names.get(d.downstream_to) ?? d.downstream_to) : 'its end';
+const nf = (n: number, d = 0) => new Intl.NumberFormat('en-GB', { maximumFractionDigits: d, minimumFractionDigits: d }).format(n);
+const day = (iso: string) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
 
-export function makeSteps(names: Map<string, string>): StepDef[] {
+function pathKm(fc: DamBundle['flowpath']): number | null {
+  const f = fc?.features.find((x) => x.geometry && /LineString/.test(x.geometry.type));
+  const p = (f?.properties ?? {}) as Record<string, unknown>;
+  const v = p['length_km'] ?? p['total_km'] ?? p['km'];
+  return typeof v === 'number' ? v : null;
+}
+
+/** Every value comes from the dam's bundle or the catalogue; missing → "—" and `pending`. */
+export function buildSteps(dam: Dam, b: DamBundle): StepView[] {
+  const pts = b.area ? [...b.area.points].sort((x, y) => x.date.localeCompare(y.date)) : [];
+  const rel = reliablePoints(pts);
+  const nN = pts.filter((p) => p.sensor === 'NISAR').length;
+  const nS = pts.length - nN;
+  const last = rel[rel.length - 1];
+  const areas = rel.map((p) => p.area_km2);
+  const flags = b.alerts ? flagsOf(b.alerts) : [];
+  const lastEval = b.alerts?.evaluations[b.alerts.evaluations.length - 1];
+  const swot = b.level?.swot;
+  const good = (swot?.points ?? []).filter((p) => p.quality === 0);
+  const usable = (swot?.points ?? []).filter((p) => p.quality <= 1);
+  const lv = good[good.length - 1] ?? usable[usable.length - 1];
+  const km = pathKm(b.flowpath) ?? dam.downstream_km ?? null;
+  const rows = b.hand?.rows ?? [];
+  const V = rows.length ? handVolumeM3(rows) : 0;
+  const hr = rows.length ? rows.reduce((a, r) => (Math.abs(r.V_m3 - V) < Math.abs(a.V_m3 - V) ? r : a)) : null;
+  const an = b.anuga?.scenarios.find((s) => s.computed);
+  const st = b.anugaStats;
+
   return [
     {
       id: 'find',
-      label: 'Find',
-      title: (d) => `${d.name}`,
-      simple: (d) =>
-        `${d.name}${d.governorate ? `, in ${d.governorate}` : ''}${d.river ? `, on the ${d.river}` : ''}. Everything that follows is computed for this dam from open maps and satellite data.`,
-      expert: (d) =>
-        `Dam location from OpenStreetMap (${nf(d.lat, 4)}° N, ${nf(d.lon, 4)}° E)${d.height_m ? `, height ${nf(d.height_m)} m` : ''}${d.start_date ? `, built ${d.start_date}` : ''}. Status: ${d.status === 'processed' ? 'full V1 pipeline run' : 'catalogued (geometry only)'}.`,
+      label: 'Dam',
+      value: `${nf(dam.lat, 2)}°N`,
+      unit: `${nf(dam.lon, 2)}°E`,
+      simple: `${dam.name}${dam.governorate ? `, ${dam.governorate}` : ''}.`,
+      expert: `OSM crest ${dam.osm_id ?? ''}; river snap ${dam.snap_m ?? '—'} m (HydroRIVERS).`,
+      badge: 'modelled',
     },
     {
-      id: 'snap',
-      label: 'Snap',
-      title: () => 'Snap the dam to its river',
-      simple: (d) =>
-        d.snap_warning
-          ? 'A dam blocks a river. Here the computer could not find a main river close enough to this dam on the global river map, so the next steps stop at the dam point.'
-          : 'A dam blocks a river. First, we find which river: the computer moves the dam point onto the nearest main river line.',
-      expert: (d) =>
-        `Nearest HydroRIVERS main-stem reach: ${or(d.snap_m, (m) => `${nf(m)} m`)} from the OSM point.${d.snap_warning ? ` ⚠ ${d.snap_warning}: needs a manual check (docs/09 §4.1).` : ''}`,
-      stat: (d) => (d.snap_m === null || d.snap_m === undefined ? null : { value: nf(d.snap_m), unit: 'm snap' }),
-    },
-    {
-      id: 'catchment',
-      label: 'Upstream',
-      title: () => 'Upstream: all the land that feeds the lake',
-      simple: (d) =>
-        d.catchment_km2
-          ? `Every drop of rain that falls inside this outline ends up in the lake: ${nf(d.catchment_km2)} km². The thin lines are the rivers that carry it.${d.catchment_shared_with?.length ? ' This dam is small for the global basin map, so the outline is an upper bound.' : ''}`
-          : 'No catchment could be drawn for this dam with the global basin map.',
-      expert: (d) =>
-        `Union of the HydroBASINS level-12 sub-basins upstream of the snapped basin (topological, via NEXT_DOWN): ${or(d.catchment_km2, (a) => `${nf(a, 1)} km²`)}. Rivers: HydroRIVERS v1.0 reaches inside it.${d.catchment_shared_with?.length ? ` Shared catchment with ${d.catchment_shared_with.map((x) => names.get(x) ?? x).join(', ')} (resolution-limited: the whole level-12 unit is counted).` : ''}`,
-      stat: (d) => (d.catchment_km2 ? { value: nf(d.catchment_km2), unit: 'km² catchment' } : null),
-    },
-    {
-      id: 'lake',
-      label: 'Lake',
-      title: () => 'The lake',
-      simple: (d) =>
-        d.reservoir_km2
-          ? `On the map the reservoir covers about ${nf(d.reservoir_km2, 1)} km² when it is full. In reality it is often smaller: that is what radar measures.`
-          : 'The map has no outline for this reservoir yet. In V2 the outline comes from radar images of past months.',
-      expert: (d) =>
-        `OSM reservoir polygon ${or(d.reservoir_km2, (a) => `${nf(a, 2)} km²`, 'missing')} (static, often at full supply). V2 mask = pre-period Sentinel-1 water frequency ∩ JRC GSW maximum (docs/09 §0.5).`,
-      stat: (d) => (d.reservoir_km2 ? { value: nf(d.reservoir_km2, 1), unit: 'km² mapped' } : null),
+      id: 'upstream',
+      label: 'Catchment',
+      value: dam.catchment_km2 ? nf(dam.catchment_km2) : '—',
+      unit: 'km²',
+      simple: 'All the land whose rain ends in this lake.',
+      expert: 'HydroBASINS level-12 units upstream of the snapped reach, dissolved.',
+      badge: 'modelled',
+      pending: !dam.catchment_km2,
     },
     {
       id: 'radar',
-      label: 'Radar',
-      title: () => 'Radar passes over the lake',
-      simple: (d) =>
-        d.nisar_dates
-          ? `NISAR flew over this dam on ${nf(d.nisar_dates)} different days between June and October 2026, day and night, through clouds. Each pass is one new look at the lake.`
-          : 'NISAR coverage for this dam is not in our inventory yet.',
-      expert: (d) =>
-        `NISAR GCOV acquisitions whose footprint contains the dam (ASF search footprints, 17 Jun → 31 Oct 2026): ${or(d.nisar_dates, (n) => `${nf(n)} dates`)}${d.nisar_tracks?.length ? ` on tracks ${d.nisar_tracks.join(', ')}` : ''}. Sentinel-1 adds a pass every few days.`,
-      stat: (d) => (d.nisar_dates ? { value: nf(d.nisar_dates), unit: 'NISAR dates' } : null),
+      label: 'Radar passes',
+      value: pts.length ? `${nN} + ${nS}` : '—',
+      unit: 'NISAR + S1',
+      simple: 'Radar images of the lake, day or night, through clouds.',
+      expert: `NISAR L-band GCOV + Sentinel-1 C-band RTC, ${pts.length ? `${day(pts[0]!.date)} → ${day(pts[pts.length - 1]!.date)} 2026` : '—'}.`,
+      badge: 'measured',
+      pending: !pts.length,
     },
     {
-      id: 'downstream',
+      id: 'lake',
+      label: 'Lake area',
+      value: last ? nf(last.area_km2, last.area_km2 < 1 ? 2 : 1) : '—',
+      unit: 'km²',
+      simple: last ? `Water area on ${day(last.date)}, measured from space.` : 'No lake series yet.',
+      expert: areas.length
+        ? `Adaptive Otsu per image in the radar lake outline; range ${nf(Math.min(...areas), 2)}–${nf(Math.max(...areas), 2)} km², ±2 dB band.`
+        : '—',
+      badge: 'measured',
+      pending: !last,
+    },
+    {
+      id: 'alert',
+      label: 'Alert',
+      value: lastEval?.level ?? '—',
+      unit: b.alerts ? `${flags.length} flags` : undefined,
+      simple: lastEval ? 'Automatic check of every new pass against the last 3 weeks.' : 'Not computed.',
+      expert: 'Harmonised area vs 21-day multi-sensor median; WARNING < −12 %, ALERT < −20 %, confirmed by a second pass.',
+      badge: 'modelled',
+      pending: !lastEval,
+    },
+    {
+      id: 'level',
+      label: 'Water level',
+      value: lv ? nf(lv.wse_m, 1) : '—',
+      unit: lv ? 'm (SWOT)' : 'no SWOT lake',
+      simple: lv ? 'Height of the lake surface, measured by SWOT.' : 'This lake is too small for SWOT.',
+      expert: lv
+        ? `SWOT LakeSP ${good.length ? `quality 0, ${day(lv.time)}` : `partial passes only, ${day(lv.time)}`}.`
+        : (swot?.reason ?? 'No SWOT lake.'),
+      badge: 'measured',
+      pending: !lv,
+    },
+    {
+      id: 'path',
       label: 'Downstream',
-      title: () => 'Downstream: where released water would go',
-      simple: (d) =>
-        !d.downstream_km
-          ? 'No downstream route could be drawn for this dam with the global river map.'
-          : `Water leaving the dam follows the river for about ${nf(d.downstream_km)} km to ${downName(d, names)}${d.towns.length ? `, passing ${d.towns.slice(0, 3).map((t) => t.name).join(', ')}${d.towns.length > 3 ? ' and more' : ''}` : ''}.`,
-      expert: (d) =>
-        `Modelled drainage route: HydroRIVERS NEXT_DOWN chain (500 m-scale network) from the snapped reach to ${downName(d, names)}: ${or(d.downstream_km, (k) => `${nf(k, 1)} km`)}. OSM places within 2 km: ${d.towns.length}. Not a flood extent; V1's 30 m D8 path on GEM-15 gives 101.0 km for Mellègue (HydroRIVERS 104.9 km).`,
-      stat: (d) => (d.downstream_km ? { value: nf(d.downstream_km), unit: 'km downstream' } : null),
+      value: km !== null ? nf(km) : '—',
+      unit: 'km',
+      simple: 'Where released water would flow.',
+      expert: 'D8 steepest descent on GEM-15 30 m (GLO-30 in gaps).',
+      badge: 'modelled',
+      pending: km === null,
     },
     {
-      id: 'watch',
-      label: 'Watch',
-      processedOnly: true,
-      title: () => 'Watch the lake, raise alerts',
-      simple: (d) =>
-        d.status === 'processed'
-          ? 'For Mellègue the full watch is running: 133 radar measurements, and an automatic alarm that would have fired on 22 June 2026, five days after the gate failed.'
-          : 'Next for this dam: measure the lake on every radar pass and test the alarm here before trusting it (V2 milestone 1).',
-      expert: (d) =>
-        d.status === 'processed'
-          ? '41 NISAR + 92 Sentinel-1 areas (per-image Otsu), 21-day multi-sensor baseline, WARNING < −12 %, ALERT < −20 % with independent confirmation; first ALERT 22 Jun (S1 o161 −20.5 %).'
-          : 'Planned: generalised 02_reservoir (confidence flags) and 03_anomaly run unchanged, with detection / false-alarm rates reported out of sample before any alert is shown.',
+      id: 'hand',
+      label: 'Quick flood',
+      value: hr ? nf(hr.area_km2) : '—',
+      unit: hr ? `km² · ${nf(V / 1e6)} Mm³` : undefined,
+      simple: hr ? `Land under water if ${nf(V / 1e6)} million m³ were released.` : 'Not computed.',
+      expert: hr
+        ? `HAND bathtub: h ${nf(handHeightM(rows, V), 2)} m, ${nf(hr.cropland_ha)} ha cropland. Scenario, not a forecast.`
+        : '—',
+      badge: 'modelled',
+      pending: !hr,
     },
     {
-      id: 'flood',
-      label: 'Flood',
-      processedOnly: true,
-      title: () => '“What if” flood scenarios',
-      simple: (d) =>
-        d.status === 'processed'
-          ? 'For Mellègue you can already release any volume and see the fields, roads and villages the water could reach (scenario, not a forecast).'
-          : 'Next: the same quick flood for any volume along this river, and physics runs for the dams that matter most.',
-      expert: (d) =>
-        d.status === 'processed'
-          ? 'HAND bathtub (any volume ≥ 5 Mm³) and ANUGA 2D for 21 / 50 / 195 Mm³; arrival at the confluence 13–19 h (mesh-sensitive).'
-          : 'Planned: HAND LUT on GEM-15 (else GLO-30) for every dam; ANUGA for the top 2–3 dams with a mesh-sensitivity pair per run (2–5 h per dam).',
+      id: 'anuga',
+      label: 'Physics flood',
+      value: st ? nf(st.inundated_km2, 1) : '—',
+      unit: st && an ? `km² · ${nf(an.volume_m3 / 1e6)} Mm³` : 'GPU runs in progress',
+      simple: st ? 'Water flowing hour by hour, from a 2D flood model.' : 'Hour-by-hour flood model: running on GPU.',
+      expert:
+        st && an
+          ? `ANUGA 2D, ${nf(an.volume_m3 / 1e6)} Mm³ over ${nf(an.duration_h)} h; arrival times are mesh-sensitive.`
+          : 'ANUGA package ready; results not imported yet.',
+      badge: 'modelled',
+      pending: !st,
     },
   ];
 }
