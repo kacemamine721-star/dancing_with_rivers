@@ -227,15 +227,26 @@ Notes:
 | Analysis | Check | Result | Status |
 |---|---|---|---|
 | Water area | A1 threshold ±2 dB | Area moves about ±20% (target < 15%); the drawdown shape is unchanged. Shown as a band | ⚠️ |
-| | A2 track consistency | After per-track harmonisation the four NISAR tracks follow one curve; raw tracks differ by incidence angle | ⚠️ (number to add) |
-| | A3 NISAR vs S1 | Agree from mid-July; NISAR reads higher in the first weeks (wet sediment at L-band), explained on the page | ⚠️ (number to add) |
-| Anomaly | B1 true positive / B2 false alarms / B3 synthetic | Confirmed-departure rule: ALERT 22 Jun (5 days after), 0 flags before the failure; Oct–Nov flags coincide with a real decline (unclassified). The first pair z-score rule failed B2/B3 and was replaced | ⚠️ |
-| Level | L1–L3 SWOT | [TBD / not available] | ⏳ |
-| | L4–L5 DEM shoreline | [TBD] | ⏳ |
-| Volume | L6 ΔV vs 21 Mm³ | [TBD] | ⏳ |
-| Flood (HAND) | D1–D5 | [TBD] | ⏳ |
-| Flood (ANUGA) | E1 mass balance / E4–E6 sensitivity / E7 arrival | [TBD] | ⏳ |
-| Impacts | F1–F3 | [TBD] | ⏳ |
+| | A2 track consistency | Raw NISAR track medians Aug–Oct 1.67–1.96 km² (about ±8%, incidence angle); after per-track harmonisation they follow one curve | ⚠️ |
+| | A3 NISAR vs S1 (±2 days, harmonised) | Before 14 Jul NISAR reads +33% higher (median, n = 9: wet sediment at L-band); from 14 Jul median difference +1.7% (median abs 15%, n = 32) | ⚠️ |
+| Anomaly | B1 true positive / B2 false alarms / B3 synthetic | Confirmed-departure rule: first ALERT 22 Jun (S1 o161 −20.5%, confirmed by o88 −28.8%), 5 days after; 0 flags in 14 pre-failure evaluations (16 May–17 Jun); first NISAR flag 26 Jun (A173, −13%). Aug–Oct: 11 WARNING + 2 ALERT coinciding with real declines, unclassified (B2 ❌ as specified). B3 not re-run for this rule (the replaced z-score rule detected 52% of −20% drops). Thresholds set on this event (in-sample) | ⚠️ |
+| Level | L1–L3 SWOT | PLD lake 1530007983 (Barrage Mellègue), 6 good passes (quality_f 0) 26 Mar–28 Jun 2026. L3: 260.54 m (7 Jun) → 256.79 m (28 Jun), Δh −3.75 ± 0.08 m ✅; L2 sign consistent with radar area (2.61 → 2.18 km²) ✅; L1 SWOT area_total 4.3–4.4 km² vs radar 2.2–2.6 km² (+66…+102%) ❌, area only, levels unaffected (`work/level/tests.json`) | ⚠️ |
+| | L4–L5 DEM shoreline | NASADEM water surface 260 m (Feb 2000) ≈ 2026 pre-failure level; 11/14 dates not measurable (shoreline on or below the DEM water surface); L5 shoreline − SWOT = +6.9 m (4 Jun) ❌ → method B not shipped | ❌ |
+| Volume | L6 ΔV vs 21 Mm³ | Trapezoid ∫A·dh, SWOT 7 → 28 Jun: −12.7 Mm³ (−7.8 … −17.1; radar vs SWOT area); 0.6 × reported 21 Mm³, within a factor of 2. Net storage change over three weeks, not the release | ✅ (MODELLED) |
+| Flood (HAND) | D1 path continuity | Reaches the Medjerda and Sidi Salem; conditioned path monotonic; raw DEM has 161 rises > 1 m (max 3.3 m) | ⚠️ |
+| | D2 path vs OSM rivers | 98.8% of the path within 300 m (GEM-15; NASADEM 98.6%) | ✅ |
+| | D3 LUT monotonic | V(h) non-decreasing | ✅ |
+| | D4 21 Mm³ sanity | h 0.97 m, 26.5 km², 94% of wet cells within 1 km of the path | ✅ (visual QA pending) |
+| | D5 IoU HAND vs ANUGA (whole corridor / Reach 1 LUT) | 21 Mm³ 0.49 / 0.55 · 50 Mm³ 0.40 / 0.48 · 195 Mm³ 0.44 / 0.66 | ✅ (50 Mm³ borderline) |
+| Flood (ANUGA) | E1 mass balance | ≤ 9×10⁻¹³ of V (21 / 50 / 195 Mm³; uniform mesh 69,616 triangles ≤ 2,500 m², 112 km²) | ✅ |
+| | E2 inflow volume | Error ≤ 3×10⁻¹⁰ of V; peak Q 972 / 2,315 / 9,028 m³/s = 2V/T | ✅ |
+| | E3 stability | Max speed 4.2 / 5.1 / 7.7 m/s (p99 2.8 / 3.4 / 4.9); max depth 11.9 / 15.2 / 24.2 m in the gorge; no NaN | ✅ |
+| | E4 mesh sensitivity | Two-zone vs uniform mesh (21 Mm³): wet area +29%, arrival −32% (19.1 → 12.9 h) — beyond the 15% / 20% limits; timing shown as a range 13–19 h | ❌ |
+| | E5 friction / E6 release duration | Not run (a 4–6 h release would give a 2–3× higher peak than the assumed 12 h) | ⏳ |
+| | E7 arrival at the Medjerda confluence | 12.9 / 9.3 / 6.2 h, earlier than the reported 3–4 days to Sidi Salem | ✅ (weak test) |
+| Impacts | F1 exposed ≤ wet | Cropland + built-up ≤ wet area for all three scenarios | ✅ |
+| | F2 monotonic | Non-decreasing with volume (HAND LUT and ANUGA) | ✅ |
+| | F3 spot check | Only Muthul (water within 200 m of the village point, i.e. the channel); manual check not done | ⏳ |
 
 Replace ⏳ with ✅ (pass), ⚠️ (pass with caveat, explained) or ❌ (fail: removed from the claims).
 
@@ -243,8 +254,8 @@ Replace ⏳ with ✅ (pass), ⚠️ (pass with caveat, explained) or ❌ (fail: 
 
 | ✅ Say | ❌ Do not say |
 |---|---|
-| "NISAR measured the lake shrinking 2 days after the failure" | "NISAR saw the gate fail" (first image 19 Jun) |
-| "An automatic rule on NISAR images would have raised an alert on 19 June" | "We predicted the failure" |
+| "NISAR imaged the lake 2 days after the failure; its own tracks show it shrinking by about 18% from early to mid-July" | "NISAR saw the gate fail" (first image 19 Jun) |
+| "An automatic rule on NISAR + Sentinel-1 images would have raised an alert on 22 June, five days after the failure" | "We predicted the failure" |
 | "Estimated volume loss X–Y Mm³, consistent with the reported 21 Mm³" | A single volume number without uncertainty |
 | "Scenario: if 195 Mm³ were released, these areas could be exposed" | "Jendouba will flood" / a forecast |
 | "Screening-level flood exposure using 30 m terrain" | "Flood map" without qualifiers |

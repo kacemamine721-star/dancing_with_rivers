@@ -152,7 +152,7 @@ Everything we learned during the hackathon, in one place. Facts carry a source l
 | Late September | rise to about 2.3–2.6 km² | autumn rain |
 | October → mid-November | decline to about 1.5–1.8 km² | cause unknown: needs operator data |
 
-Same-orbit Sentinel-1 (o168): 2.88 km² (16 Jun) → 2.21 (23 Jun) → 1.51 (11 Jul), about −48% in a month. Threshold ±2 dB moves the area by about ±20% (shown as a band). **NISAR's area lags** in the first weeks (D80: 2.49 km² on 19 Jun, 2.50 on 1 Jul) because exposed wet sediment is as dark as water at L-band; the median backscatter inside the lake rises at once (about −16…−17.5 dB before → about −14 dB on 19–21 Jun).
+Same-orbit Sentinel-1 (o168): 2.88 km² (16 Jun) → 2.21 (23 Jun) → 1.51 (11 Jul), about −48% in a month. Threshold ±2 dB moves the area by about ±20% (shown as a band). **NISAR's area lags** in the first weeks (D80: 2.49 km² on 19 Jun, 2.50 on 1 Jul) because exposed wet sediment is as dark as water at L-band; same-orbit Sentinel-1 shows the median backscatter inside the lake rising at once (orbit 88: −14.9 → −12.5 dB, 17 → 22 Jun; orbit 168: −15.1 → −13.3 dB). (Comparing Sentinel-1 before with NISAR after mixes C- and L-band and is not used as evidence.)
 
 **Anomaly detector (`pipeline/03_anomaly.py`):** area more than 20% below the 21-day multi-sensor baseline, confirmed by an independent pass within 6 days → **first ALERT 22 Jun 2026**, 5 days after the failure; no flag before it; first NISAR flag 26 Jun. The story therefore says: *the lake drained for a month; NISAR and Sentinel-1 together would have raised an alarm on 22 June.* It does **not** say "the lake vanished", "alarm on 19 June" or "NISAR alone".
 
