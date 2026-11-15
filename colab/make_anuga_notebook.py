@@ -284,7 +284,9 @@ def run_one(dam, sid, mode, out, extra=(), gpu_id=None):
         env["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
     cmd = [sys.executable, "anuga_run.py", "--package", str(PKGS / dam), "--scenario", sid, "--mode", mode,
            "--out", str(out), *extra]
-    with open(pathlib.Path(out).with_suffix(".log"), "w") as log:
+    out = pathlib.Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)   # the log sits next to the run folder
+    with open(out.with_suffix(".log"), "w") as log:
         p = subprocess.Popen(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         for line in p.stdout:
             log.write(line)
