@@ -363,6 +363,10 @@ def post(sid: str, cfg: dict, results_dir=None, frames_mb: float = 1.2):
         name=n, osm_id=str(villages.osm_id[i]), place=villages.place[i], x=float(villages.geometry[i].x),
         y=float(villages.geometry[i].y), arrival_h=arrival[n], max_depth_m=depth[n]) for n, i in zip(names, hit)],
         ensure_ascii=False, indent=1), "utf-8")
+    # the reach landmark the story uses (Act 4/7): front arrival at the Medjerda confluence (test E7)
+    e7 = tests.get("E7", {}).get("arrival_at_confluence_h")
+    if e7 is not None and np.isfinite(e7):
+        arrival["Medjerda confluence"] = round(float(e7), 2)
     (od / "tests.json").write_text(json.dumps(tests, indent=1, ensure_ascii=False), "utf-8")
     for k, v in tests.items():
         log(k, json.dumps(v, ensure_ascii=False))

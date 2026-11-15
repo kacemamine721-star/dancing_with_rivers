@@ -3,7 +3,8 @@
  "peak_Q_m3s": 9027.777777777777,
  "inundated_km2": 71.813,
  "arrival_h": {
-  "Muthul": 2.67
+  "Muthul": 2.67,
+  "Medjerda confluence": 6.17
  },
  "max_depth_m": {
   "Muthul": 8.19

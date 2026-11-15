@@ -1,0 +1,6 @@
+# Cloudflare Pages project for the static v1 app (see docs/DEPLOY.md).
+# Git integration: root directory apps/web, build command `pnpm build`, output `dist`.
+# Direct upload alternative: `wrangler pages deploy` from apps/web after `pnpm build`.
+name = "dancing-with-the-rivers"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-11-01"
