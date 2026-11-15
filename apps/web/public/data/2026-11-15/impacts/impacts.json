@@ -8,15 +8,15 @@
  "dam_id": "mellegue",
  "scenarios": {
   "v21_d12": {
-   "cropland_ha": 749.5,
-   "builtup_ha": 2.4,
-   "buildings": 1,
-   "road_km": 8.47,
+   "cropland_ha": 1111.9,
+   "builtup_ha": 7.5,
+   "buildings": 4,
+   "road_km": 20.26,
    "villages": [
     {
      "name": "Muthul",
-     "arrival_h": 9.08,
-     "max_depth_m": 5.1
+     "arrival_h": 5.33,
+     "max_depth_m": 4.84
     }
    ]
   },
