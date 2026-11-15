@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -265,6 +265,10 @@ class Swot(Strict):
     lake_id: Optional[str] = None
     reason: str = ""
     points: list[SwotPoint] = Field(default_factory=list)
+    badge: Badge = "MEASURED"
+    source: str = ""
+    method: str = ""
+    uncertainty: str = ""
 
 
 class ShorelineLevel(Strict):
@@ -273,6 +277,7 @@ class ShorelineLevel(Strict):
     sigma_m: Optional[float] = None
     measurable: bool = True
     note: str = ""
+    badge: Badge = "MODELLED"
 
 
 class DeltaVolume(Strict):
@@ -282,6 +287,7 @@ class DeltaVolume(Strict):
     low: float
     high: float
     method: str
+    badge: Badge = "MODELLED"
     model_config = ConfigDict(extra="forbid", populate_by_name=True)
 
 
@@ -290,6 +296,7 @@ class Reported(Strict):
     value_m3: float
     alt: Optional[float] = None
     source: str
+    badge: Badge = "REPORTED"
 
 
 class LevelVolume(Provenance):
@@ -299,6 +306,34 @@ class LevelVolume(Provenance):
     dem_shoreline: list[ShorelineLevel]
     delta_volume: list[DeltaVolume]
     reported: list[Reported]
+
+
+# ---------------------------------------------------------------- validation/validation.json
+TestStatus = Literal["pass", "caveat", "fail", "pending"]
+Scalar = Union[float, int, str, bool, None]
+
+
+class ValidationTest(Strict):
+    """One docs/07 test result, copied from a pipeline output file (never typed by hand)."""
+    id: str                                   # docs/07 test id, e.g. "E1", "D5", "B2", "L3"
+    name: str
+    group: str                                # docs/07 §8 row: "Water area", "Anomaly", "Level", "Volume", ...
+    scenario: Optional[str] = None            # ANUGA scenario id (v21_d12 …) when per-scenario
+    values: dict[str, Scalar] = Field(default_factory=dict)
+    criterion: str = ""
+    passed: Optional[bool] = None             # None = ⚠️ caveat or not evaluable
+    status: TestStatus
+    summary: str = ""
+    source_file: str                          # repo-relative file the numbers were read from
+    badge: Badge
+
+
+class Validation(Strict):
+    schema_version: int = SCHEMA_VERSION
+    dam_id: str
+    generated_utc: str
+    placeholder: bool = False
+    tests: list[ValidationTest]
 
 
 # ---------------------------------------------------------------- story/sources.json
@@ -332,6 +367,7 @@ CONTRACTS: dict[str, type[BaseModel]] = {
     "level_volume": LevelVolume,
     "sources": Sources,
     "events": Events,
+    "validation": Validation,
 }
 
 # where each contract lives inside a bundle
@@ -346,6 +382,7 @@ BUNDLE_PATHS: dict[str, str] = {
     "level_volume": "level/level_volume.json",
     "sources": "story/sources.json",
     "events": "story/events.json",
+    "validation": "validation/validation.json",
 }
 
 

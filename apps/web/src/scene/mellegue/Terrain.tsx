@@ -11,6 +11,7 @@ import {
   type Texture,
   UnsignedByteType,
   Vector2,
+  Vector3,
   Vector4,
 } from 'three';
 
@@ -26,6 +27,7 @@ import {
   loadAnuga,
   loadHand,
 } from '@/scene/mellegue/flood';
+import { ANUGA_RAMP, HAND_RAMP } from '@/scene/mellegue/floodRamp';
 import { HAZE_DAY, HAZE_NIGHT, SUN_DIR } from '@/scene/mellegue/look';
 import { blankTexture, loadRaster, type TerrainAssets } from '@/scene/mellegue/assets';
 import { rasterizePolygons } from '@/scene/mellegue/rasterize';
@@ -33,7 +35,7 @@ import { useVectorLayer } from '@/scene/mellegue/vectors';
 import { TIERS } from '@/scene/quality';
 import fragmentShader from '@/scene/shaders/terrain.frag.glsl';
 import vertexShader from '@/scene/shaders/terrain.vert.glsl';
-import { useAppStore } from '@/store/app';
+import { type AppState, useAppStore } from '@/store/app';
 import { tokens } from '@/styles/tokens';
 
 type RadarLayer = Manifest['layers'][number];
@@ -41,6 +43,16 @@ type RadarLayer = Manifest['layers'][number];
 /** ANUGA playback: simulated hours per real second, and the hold on the last frame (s). */
 const ANUGA_HOURS_PER_S = 3;
 const ANUGA_HOLD_S = 2.5;
+
+/**
+ * Playback controls owned by the UI (frontend-ui adds them to the store). Read defensively so the
+ * scene builds and runs before / without them.
+ */
+type FloodPlayback = Partial<{
+  floodPaused: boolean;
+  floodSeekH: number | null;
+  seekFlood: (h: number | null) => void;
+}>;
 
 function blankArray(): DataArrayTexture {
   const t = new DataArrayTexture(new Uint8Array([0]), 1, 1, 1);
@@ -77,6 +89,7 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
   const geometry = useMemo(() => {
     const { frame } = assets;
     const long = TIERS[quality === '2d' ? 'low' : quality].segments;
+    frame.setMesh(long); // lines drape on the rendered surface (SceneFrame.surfaceHeight)
     const g = new PlaneGeometry(frame.width, frame.depth, long, Math.round((long * frame.depth) / frame.width));
     g.rotateX(-Math.PI / 2); // uv.y = 1 on the north edge (−z)
     // the vertex shader lifts y: give culling a box that contains the relief
@@ -121,7 +134,11 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
         uFloodT: { value: 0 },
         uFloodN: { value: 1 },
         uFloodAnim: { value: 0 },
-        uRamp: { value: tokens.color.flood.map((c) => new Color(c)) },
+        uFloodGlow: { value: 1 },
+        uRamp: { value: ANUGA_RAMP.map((r) => new Color(r.color)) },
+        uRampStops: { value: new Vector4(...(ANUGA_RAMP.map((r) => r.depthM) as [number, number, number, number])) },
+        uHandRamp: { value: HAND_RAMP.map((r) => new Color(r.color)) },
+        uHandStops: { value: new Vector3(...(HAND_RAMP.map((r) => r.depthM) as [number, number, number])) },
         uCrop: { value: blank as Texture },
         uCropOn: { value: 0 },
         uCropCol: { value: new Color(tokens.color.ok) },
@@ -157,7 +174,8 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
       if (!file) return blank;
       const hit = store.get(file);
       if (hit) return hit;
-      const t = await loadRaster(ds.fileUrl(file), { mipmaps: false });
+      // mipmaps + max anisotropy: the 10 m chip is seen from far and at grazing angles
+      const t = await loadRaster(ds.fileUrl(file), { mipmaps: true, anisotropy: gl.capabilities.getMaxAnisotropy() });
       if (cancelled) {
         t.dispose();
         return blank;
@@ -186,7 +204,7 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
     return () => {
       cancelled = true;
     };
-  }, [assets, blank, compareDate, date, ds, material]);
+  }, [assets, blank, compareDate, date, ds, gl, material]);
   useEffect(() => {
     const store = cache.current;
     return () => {
@@ -195,13 +213,29 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
     };
   }, []);
 
-  // --- flood data (lazy: the first time the flood layer is asked for)
+  // --- flood data: the first time the flood layer is asked for, or quietly a few seconds after the
+  // terrain is up (Act 7 is the key visual: it must not wait on a decode when the reader gets there)
   const [floodWanted, setFloodWanted] = useState(false);
   useEffect(() => {
     if (floodLayer) setFloodWanted(true);
   }, [floodLayer]);
+  useEffect(() => {
+    const id = setTimeout(() => setFloodWanted(true), 2500);
+    return () => clearTimeout(id);
+  }, []);
   const { data: lut } = useQuery({ ...dataQueries.handLut(ds, damId), enabled: floodWanted });
   const { data: anugaIndex } = useQuery({ ...dataQueries.anugaIndex(ds, damId), enabled: floodWanted });
+  // warm the HTTP cache with the first computed scenario's rasters (decoded only when shown)
+  useEffect(() => {
+    const sc = anugaIndex?.scenarios.find((x) => x.computed && x.files);
+    if (!sc?.files) return;
+    const files = sc.files;
+    const id = setTimeout(() => {
+      const urls = [files.maxdepth, ...Array.from({ length: files.n_frames }, (_, i) => files.frames.replace('{i}', String(i)))];
+      for (const u of urls) void fetch(ds.fileUrl(u), { priority: 'low' } as RequestInit).catch(() => undefined);
+    }, 1500);
+    return () => clearTimeout(id);
+  }, [anugaIndex, ds]);
   const lutRef = useRef(lut);
   lutRef.current = lut;
   const indexRef = useRef(anugaIndex);
@@ -239,6 +273,8 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
   // ANUGA rasters of the selected, computed scenario; the previous scenario's are disposed
   const anugaRef = useRef<AnugaRasters | null>(null);
   const playhead = useRef(0);
+  /** Reduced motion shows the envelope, unless the reader seeks to an hour (then that frame, held). */
+  const heldFrame = useRef(false);
   const scenarioKey = floodLayer && floodMode === 'anuga' ? (computedScenario(anugaIndex, scenarioId)?.id ?? null) : null;
   useEffect(() => {
     if (!scenarioKey || anugaRef.current?.id === scenarioKey) return;
@@ -316,7 +352,8 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
     night.value += ((s.act === 2 ? 1 : 0) - (night.value as number)) * Math.min(1, dt * 1.5);
     if (assets.frame.exag !== s.exag) assets.frame.exag = s.exag;
     u.uExag!.value = s.exag;
-    u.uTime!.value = state.clock.elapsedTime;
+    if (!s.reducedMotion) u.uTime!.value = state.clock.elapsedTime;
+    u.uFloodGlow!.value = s.quality === 'low' ? 0.7 : 1;
     gl.getDrawingBufferSize(u.uResolution!.value as Vector2);
 
     // --- flood: ANUGA when its scenario is computed and loaded, else the HAND bathtub
@@ -337,16 +374,33 @@ export function Terrain({ assets }: { assets: TerrainAssets }) {
     const hNow = hh.value as number;
     hh.value = s.reducedMotion ? target : hNow + (target - hNow) * Math.min(1, dt * 3.5);
     const anim = u.uFloodAnim!;
-    if (show === 'anuga' && ra?.frames && !s.reducedMotion) {
+    const pb = s as AppState & FloodPlayback;
+    if (show === 'anuga' && ra?.frames) {
       const total = (ra.nFrames - 1) * ra.dtH;
-      playhead.current += dt;
-      if (playhead.current > total / ANUGA_HOURS_PER_S + ANUGA_HOLD_S) playhead.current = 0;
-      const hours = Math.min(total, playhead.current * ANUGA_HOURS_PER_S);
-      u.uFloodT!.value = hours / ra.dtH;
-      anim.value += (1 - (anim.value as number)) * Math.min(1, dt * 3);
-      floodClock.hours = hours;
-      floodClock.totalHours = total;
-      floodClock.playing = true;
+      if (pb.floodSeekH !== undefined && pb.floodSeekH !== null) {
+        playhead.current = Math.min(total, Math.max(0, pb.floodSeekH)) / ANUGA_HOURS_PER_S;
+        heldFrame.current = true;
+        pb.seekFlood?.(null);
+      }
+      if (!s.reducedMotion) heldFrame.current = false;
+      if (!s.reducedMotion || heldFrame.current) {
+        const paused = Boolean(pb.floodPaused) || s.reducedMotion;
+        if (!paused) {
+          playhead.current += dt;
+          if (playhead.current > total / ANUGA_HOURS_PER_S + ANUGA_HOLD_S) playhead.current = 0;
+        }
+        const hours = Math.min(total, playhead.current * ANUGA_HOURS_PER_S);
+        u.uFloodT!.value = hours / ra.dtH;
+        anim.value = s.reducedMotion ? 1 : (anim.value as number) + (1 - (anim.value as number)) * Math.min(1, dt * 3);
+        floodClock.hours = hours;
+        floodClock.totalHours = total;
+        floodClock.playing = !paused;
+      } else {
+        anim.value = 0;
+        floodClock.hours = -1;
+        floodClock.totalHours = total;
+        floodClock.playing = false;
+      }
     } else {
       anim.value = 0;
       floodClock.hours = -1;

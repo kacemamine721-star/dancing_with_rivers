@@ -56,6 +56,8 @@ export const dataQueries = {
     queryOptions({ queryKey: ['data', 'level_volume', damId], queryFn: () => ds.levelVolume(damId), ...STATIC }),
   sources: (ds: DataSource) => queryOptions({ queryKey: ['data', 'sources'], queryFn: () => ds.sources(), ...STATIC }),
   events: (ds: DataSource) => queryOptions({ queryKey: ['data', 'events'], queryFn: () => ds.events(), ...STATIC }),
+  validation: (ds: DataSource) =>
+    queryOptions({ queryKey: ['data', 'validation'], queryFn: () => ds.validation(), ...STATIC }),
 };
 
 /** Dam id from the argument, else the store. */
@@ -108,4 +110,8 @@ export function useSources() {
 
 export function useEvents() {
   return useQuery(dataQueries.events(useDataSource()));
+}
+
+export function useValidation() {
+  return useQuery(dataQueries.validation(useDataSource()));
 }

@@ -1614,33 +1614,33 @@
    "label": "Gate failure ~21:15",
    "kind": "failure",
    "badge": "REPORTED",
-   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+   "source": "https://businessnews.com.tn/2026/06/18/la-fuite-spectaculaire-du-barrage-de-mellegue-na-cause-aucun-degat/1406440/"
   },
   {
    "date": "2026-06-21",
    "label": "Water reaches Sidi Salem",
    "kind": "arrival",
    "badge": "REPORTED",
-   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+   "source": "https://fr.allafrica.com/stories/202606240126.html"
   },
   {
    "date": "2026-07-16",
    "label": "Gate repaired",
    "kind": "repair",
    "badge": "REPORTED",
-   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+   "source": "https://managers.tn/2026/07/16/barrage-de-mellegue-la-vanne-est-de-nouveau-operationnelle-un-mois-apres-lincident-qui-a-libere-21-millions-de-m%C2%B3-deau/"
   },
   {
    "date": "2026-09-15",
    "label": "Upper Mellègue planned start",
    "kind": "plan",
    "badge": "REPORTED",
-   "source": "docs/01_CONTEXT_AND_RESEARCH.md §6"
+   "source": "https://www.webdo.tn/fr/?p=396788"
   }
  ],
  "gaps": [
   [
-   "2026-07-25",
+   "2026-07-27",
    "2026-08-13"
   ]
  ]

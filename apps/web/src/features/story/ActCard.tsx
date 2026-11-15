@@ -1,108 +1,152 @@
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Badge } from '@/components/Badge';
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/app';
-import type { ActConfig } from './types';
+
+import { applyActions } from './actions';
+import { ACT_LIST } from './acts';
+import { fillTemplate, type Facts } from './facts';
+import type { ActConfig, TryIt } from './types';
+import { useBadgeSpecs } from './badges';
+import { FactTile } from './ui';
 
 interface ActCardProps {
   config: ActConfig;
+  facts: Facts;
   className?: string;
 }
 
-export function ActCard({ config, className }: ActCardProps) {
+/** Act progress rail: one dot per act, title on hover/focus, the current act highlighted. */
+export function ActRail({ current }: { current: number }) {
+  return (
+    <ol aria-label="Story progress" className="flex items-center gap-1.5">
+      {ACT_LIST.map((a) => {
+        const active = a.act === current;
+        const done = a.act < current;
+        return (
+          <li key={a.act}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  to={`/story/${a.act}`}
+                  aria-label={`Act ${a.act}: ${a.short}`}
+                  aria-current={active ? 'step' : undefined}
+                  className="group flex h-6 items-center px-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal"
+                >
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'block h-1.5 rounded-pill transition-all duration-ui group-hover:brightness-150',
+                      active ? 'w-5 shadow-[0_0_8px_rgba(95,243,255,.7)]' : 'w-1.5',
+                    )}
+                    style={{
+                      background: active ? '#5ff3ff' : done ? 'rgba(95,243,255,.6)' : 'rgba(233,241,255,.3)',
+                    }}
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="top" className="font-mono text-[11px] uppercase tracking-[0.12em]">
+                {a.act} · {a.short}
+              </TooltipContent>
+            </Tooltip>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+export function ActCard({ config, facts, className }: ActCardProps) {
   const level = useAppStore((s) => s.level);
-  const isExpert = level === 'experts';  const [expertOpen, setExpertOpen] = useState(false);
+  const reduced = useReducedMotion() || useAppStore.getState().reducedMotion;
+  const experts = level === 'experts';
+  const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
+  const badges = useBadgeSpecs(config.badges);
+
+  const run = (t: TryIt) => applyActions(t.actions, useAppStore.getState(), navigate);
+  const factIds = experts ? [...config.facts, ...(config.expertFacts ?? [])] : config.facts;
 
   return (
-    <section
+    <motion.section
       aria-labelledby="act-title"
-      className={cn(
-        'glass w-full max-w-[480px] rounded-[16px] border border-white/10 bg-[rgba(6,12,20,.88)] p-6 shadow-2xl backdrop-blur-xl',
-        className,
-      )}
+      initial={reduced ? { opacity: 0 } : { opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={reduced ? { opacity: 0 } : { opacity: 0, y: -10 }}
+      transition={{ duration: reduced ? 0.15 : 0.45, ease: [0.65, 0, 0.35, 1] }}
+      className={cn('panel pointer-events-auto w-full p-5 text-ink sm:p-6', className)}
+      data-testid="act-card"
     >
-      {/* Header: Kicker + Badges */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-teal">
-          {config.kicker}
-        </p>
-        <div className="flex flex-wrap items-center gap-1.5">
-          {config.badges.map((b, i) => (
-            <Badge key={i} {...b} />
-          ))}
+      <div className="flex items-start justify-between gap-3 border-b border-hairline pb-3">
+        <div className="min-w-0">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-kick text-teal">{config.kicker}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            {badges.map((b, i) => (
+              <Badge key={i} {...b} />
+            ))}
+          </div>
         </div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="act-card-body"
+          className="shrink-0 rounded-pill border border-ink/15 p-1.5 text-mute hover:border-teal hover:text-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal md:hidden"
+        >
+          <ChevronDown className={cn('size-4 transition-transform', !open && 'rotate-180')} aria-hidden />
+          <span className="sr-only">{open ? 'Collapse the story card' : 'Expand the story card'}</span>
+        </button>
       </div>
 
-      {/* Title */}
-      <h2
-        id="act-title"
-        className="mt-3 text-[clamp(22px,2.2vw,28px)] font-bold leading-tight tracking-tight text-ink"
-      >
+      <h2 id="act-title" className="mt-3 text-[clamp(21px,2.1vw,27px)] font-bold leading-tight tracking-tight">
         <span className="sr-only">Act {config.act} · </span>
         {config.title}
       </h2>
 
-      {/* Narrative Body */}
-      <p className="mt-3 text-[14.5px] leading-[1.65] text-[#d6e0ee]">{config.body}</p>
+      <div id="act-card-body" className={cn(!open && 'hidden md:block')}>
+        <p className="mt-3 text-[14.5px] leading-[1.65] text-[#d6e0ee]">{fillTemplate(config.body, facts)}</p>
 
-      {/* Expert Mode Section */}
-      {isExpert && (
-        <div className="mt-4 rounded-lg border border-teal/20 bg-teal/[0.04] p-3 text-xs">
-          <button
-            type="button"
-            onClick={() => setExpertOpen(!expertOpen)}
-            className="flex w-full items-center justify-between font-mono font-semibold uppercase tracking-wider text-teal hover:text-white"
-          >
-            <span className="flex items-center gap-1.5">
-              <Sparkles className="size-3 text-teal" /> Advanced · Technical Details
-            </span>
-            {expertOpen ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
-          </button>
+        {factIds.length > 0 ? (
+          <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-3">
+            {factIds.map((id) => (
+              <FactTile key={id} fact={facts[id]} />
+            ))}
+          </div>
+        ) : null}
 
-          {expertOpen && (
-            <div className="mt-3 space-y-3 pt-2 text-mute border-t border-teal/15">
-              <p className="leading-relaxed text-[#c2d3eb]">{config.expertBody}</p>
+        {experts ? (
+          <div className="mt-4 border-l-2 border-model/50 pl-3">
+            <p className="telemetry-label !text-model">Experts</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-[#c2d3eb]">{fillTemplate(config.expertBody, facts)}</p>
+          </div>
+        ) : null}
 
-              {config.expertStats && config.expertStats.length > 0 && (
-                <div className="grid grid-cols-2 gap-2 pt-1">
-                  {config.expertStats.map((st, i) => (
-                    <div key={i} className="rounded border border-white/5 bg-black/40 p-2">
-                      <p className="font-mono text-[10px] uppercase tracking-wider text-mute">{st.label}</p>
-                      <p className="font-mono text-base font-semibold text-ink">
-                        {st.value}{' '}
-                        {st.unit ? <span className="text-xs text-mute font-normal">{st.unit}</span> : null}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+        {config.tryIt.length > 0 ? (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="telemetry-label">Try it</span>
+            {config.tryIt.map((t) => (
+              <Button key={t.label} size="xs" variant="chip" onClick={() => run(t)} title={t.hint}>
+                {t.label}
+              </Button>
+            ))}
+          </div>
+        ) : null}
+      </div>
 
-      {/* Try It Actions */}
-      {config.tryIt && config.tryIt.length > 0 && (
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <span className="font-mono text-[10.5px] uppercase tracking-wider text-mute">Try it:</span>
-          {config.tryIt.map((act, i) => (
-            <Button key={i} size="xs" variant="chip" onClick={act.action}>
-              {act.label}
-            </Button>
-          ))}
-        </div>
-      )}
-
-      {/* Footer Navigation */}
-      <nav aria-label="Story Acts Navigation" className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
+      <nav
+        aria-label="Story acts"
+        className="mt-5 flex items-center justify-between gap-2 border-t border-hairline pt-4"
+      >
         {config.act > 1 ? (
           <Button size="sm" variant="ghost" asChild>
             <Link to={`/story/${config.act - 1}`}>
-              <ArrowLeft className="mr-1 size-3.5" aria-hidden /> Act {config.act - 1}
+              <ArrowLeft aria-hidden /> Act {config.act - 1}
             </Link>
           </Button>
         ) : (
@@ -111,22 +155,20 @@ export function ActCard({ config, className }: ActCardProps) {
           </Button>
         )}
 
-        <span className="font-mono text-[11px] text-mute">
-          {config.act} of 9
-        </span>
+        <ActRail current={config.act} />
 
         {config.act < 9 ? (
           <Button size="sm" variant="primary" asChild>
             <Link to={`/story/${config.act + 1}`}>
-              Act {config.act + 1} <ArrowRight className="ml-1 size-3.5" aria-hidden />
+              Act {config.act + 1} <ArrowRight aria-hidden />
             </Link>
           </Button>
         ) : (
           <Button size="sm" variant="primary" asChild>
-            <Link to="/watch">Open Dam Watch</Link>
+            <Link to="/watch">Dam Watch</Link>
           </Button>
         )}
       </nav>
-    </section>
+    </motion.section>
   );
 }

@@ -1,8 +1,12 @@
 /**
- * Product naming. Every place that shows the product name reads it from here,
- * so the pending "HydroStress" vs "Dancing with the Rivers" decision is a one-line change.
+ * Product naming. Every place that shows the product name reads it from here.
+ * Decided 15 Nov 2026: the product is shown as "Dancing with the Rivers" (formerly HydroStress).
  */
-export const BRAND = { product: 'HydroStress', project: 'Dancing with the Rivers' } as const;
+export const BRAND = {
+  product: 'Dancing with the Rivers',
+  project: 'Dancing with the Rivers',
+  tagline: 'NISAR radar · Mellègue dam · Tunisia',
+} as const;
 
 /**
  * Split a name for the two-tone wordmark (prototype: Hydro<b>Stress</b>).

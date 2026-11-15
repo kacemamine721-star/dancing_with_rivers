@@ -2,7 +2,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // GENERATED FILE — DO NOT EDIT. Run `pnpm gen:schemas` after a contract change.
 // Source: contracts/*.schema.json (pydantic models in pipeline/common/contracts.py)
-// Contracts: grid, manifest, reservoir_area, alerts, hand_lut, anuga_index, anuga_stats, impacts, level_volume, sources, events
+// Contracts: grid, manifest, reservoir_area, alerts, hand_lut, anuga_index, anuga_stats, impacts, level_volume, sources, events, validation
 // ─────────────────────────────────────────────────────────────────────────────
 import { z } from 'zod';
 
@@ -356,6 +356,10 @@ export const LevelVolumeSchema = z
               .strict(),
           )
           .optional(),
+        badge: z.enum(['MEASURED', 'REPORTED', 'MODELLED', 'ILLUSTRATIVE']).default('MEASURED'),
+        source: z.string().default(''),
+        method: z.string().default(''),
+        uncertainty: z.string().default(''),
       })
       .strict(),
     dem_shoreline: z.array(
@@ -366,6 +370,7 @@ export const LevelVolumeSchema = z
           sigma_m: z.union([z.number(), z.null()]).default(null),
           measurable: z.boolean().default(true),
           note: z.string().default(''),
+          badge: z.enum(['MEASURED', 'REPORTED', 'MODELLED', 'ILLUSTRATIVE']).default('MODELLED'),
         })
         .strict(),
     ),
@@ -378,6 +383,7 @@ export const LevelVolumeSchema = z
           low: z.number(),
           high: z.number(),
           method: z.string(),
+          badge: z.enum(['MEASURED', 'REPORTED', 'MODELLED', 'ILLUSTRATIVE']).default('MODELLED'),
         })
         .strict(),
     ),
@@ -388,6 +394,7 @@ export const LevelVolumeSchema = z
           value_m3: z.number(),
           alt: z.union([z.number(), z.null()]).default(null),
           source: z.string(),
+          badge: z.enum(['MEASURED', 'REPORTED', 'MODELLED', 'ILLUSTRATIVE']).default('REPORTED'),
         })
         .strict(),
     ),
@@ -432,6 +439,35 @@ export const EventsSchema = z
   .strict();
 export type Events = z.infer<typeof EventsSchema>;
 
+/** contracts/validation.schema.json (schema v1) */
+export const ValidationSchema = z
+  .object({
+    schema_version: z.number().int().default(1),
+    dam_id: z.string(),
+    generated_utc: z.string(),
+    placeholder: z.boolean().default(false),
+    tests: z.array(
+      z
+        .object({
+          id: z.string(),
+          name: z.string(),
+          group: z.string(),
+          scenario: z.union([z.string(), z.null()]).default(null),
+          values: z.record(z.union([z.number(), z.number().int(), z.string(), z.boolean(), z.null()])).optional(),
+          criterion: z.string().default(''),
+          passed: z.union([z.boolean(), z.null()]).default(null),
+          status: z.enum(['pass', 'caveat', 'fail', 'pending']),
+          summary: z.string().default(''),
+          source_file: z.string(),
+          badge: z.enum(['MEASURED', 'REPORTED', 'MODELLED', 'ILLUSTRATIVE']),
+        })
+        .strict()
+        .describe('One docs/07 test result, copied from a pipeline output file (never typed by hand).'),
+    ),
+  })
+  .strict();
+export type Validation = z.infer<typeof ValidationSchema>;
+
 /** All contract schemas by file stem (manifest `files` keys). */
 export const contractSchemas = {
   grid: GridSchema,
@@ -445,5 +481,6 @@ export const contractSchemas = {
   level_volume: LevelVolumeSchema,
   sources: SourcesSchema,
   events: EventsSchema,
+  validation: ValidationSchema,
 } as const;
 export type ContractStem = keyof typeof contractSchemas;

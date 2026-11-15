@@ -20,6 +20,7 @@ export const routes: RouteObject[] = [
       { path: 'methods', lazy: () => import('@/routes/Methods') },
       { path: 'sources', lazy: () => import('@/routes/Sources') },
       { path: 'school', lazy: () => import('@/routes/School') },
+      { path: 'v2', lazy: () => import('@/routes/V2') },
       { path: '*', lazy: () => import('@/routes/NotFound') },
     ],
   },

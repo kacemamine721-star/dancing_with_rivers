@@ -1,6 +1,6 @@
 # Dancing with the Rivers — single pipeline configuration (docs/03_TRD.md §2, §5; docs/07)
 brand:
-  product: HydroStress          # on-screen product name (open decision: "Dancing with the Rivers")
+  product: Dancing with the Rivers   # on-screen product name (decided 15 Nov, formerly HydroStress)
   project: Dancing with the Rivers
 
 bundle:
@@ -41,7 +41,7 @@ event:
   failure_local: "2026-06-17T21:15:00+01:00"
   s1_before: {date: "2026-06-17", time_utc: "17:20", orbit: 88}
   first_nisar: {date: "2026-06-19", track: D80}
-  gap: ["2026-07-25", "2026-08-13"]
+  gap: ["2026-07-27", "2026-08-13"]
 
 period:
   nisar: ["2026-06-15", "2026-11-15"]

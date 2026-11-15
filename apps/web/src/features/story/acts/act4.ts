@@ -1,34 +1,36 @@
 import type { ActConfig } from '../types';
+import { onlyLayers } from './layers';
 
 export const act4: ActConfig = {
   act: 4,
+  short: 'Where it went',
   kicker: 'ACT 4 · WHERE THE WATER WENT',
   title: 'Downhill, all the way to Sidi Salem.',
   body:
-    "Water always takes the steepest way down. Following the terrain, the release travelled down the Mellègue into the Medjerda and reached Sidi Salem, the country's largest reservoir, about 4 days later. Sidi Salem absorbed it.",
+    'Water always takes the steepest way down. Following the terrain, the release travelled down the Mellègue into the Medjerda and reached the Sidi Salem reservoir 3 to 4 days later (reported: {sidisalem.arrival}). Sidi Salem absorbed it.',
   expertBody:
-    'D8 routing on GEM-15 15 m DTM traces 101.0 km channel corridor (98.8% agreement within 300 m of OSM river lines). Medjerda confluence at km 44.9; Bou Salem at km 66.8. ANUGA 2D shallow water hydrodynamic wave simulates 19.1 h arrival time at the Medjerda confluence.',
-  expertStats: [
-    { label: 'Flow Path Length', value: '101.0', unit: 'km', badge: { kind: 'modelled', source: 'D8 Flow Routing' } },
-    { label: 'Confluence', value: 'km 44.9', badge: { kind: 'measured', source: 'HydroRIVERS' } },
-    { label: 'Confluence Arrival', value: '19.1', unit: 'h', badge: { kind: 'modelled', source: 'ANUGA 2D v21' } },
-    { label: 'Sidi Salem Arrival', value: '21 Jun', badge: { kind: 'reported', source: 'Official Communiqué' } },
-  ],
+    'Steepest-descent (D8) routing on GEM-15 averaged to 30 m gives a {path.length} km path. ANUGA scenario (21 Mm³ over an assumed 12 h): front at the Medjerda confluence after about {anuga.v21.confluence} h (19 h on a coarser mesh, so timing is mesh-sensitive). The model stops 2 km below the confluence: the arrival at Sidi Salem is reported, not modelled.',
+  facts: ['path.length', 'anuga.v21.confluence', 'sidisalem.arrival'],
   badges: [
-    { kind: 'modelled', source: 'ANUGA 2D Hydrodynamic Model & D8 routing', subject: 'Wave routing' },
-    { kind: 'reported', source: 'General Directorate of Dams (DGBGTH)', subject: 'Sidi Salem arrival' },
+    { from: 'layer', layer: 'flowpath', subject: 'Flow path (D8)' },
+    { from: 'file', file: 'anuga', subject: 'ANUGA arrival times' },
+    {
+      from: 'static',
+      kind: 'reported',
+      source: 'AllAfrica, 24 Jun 2026; Tunisie Numérique — see Sources',
+      subject: 'Arrival at Sidi Salem',
+    },
   ],
-  defaultShot: 'valley_follow',
-  defaultDate: '2026-06-21',
-  compareDate: null,
-  defaultLayers: {
-    basemap: true,
-    radar: false,
-    mask: false,
-    change: false,
-    flowpath: true,
-    flood: false,
-    villages: true,
-    cropland: true,
+  stage: {
+    shot: 'valley_follow',
+    date: '2026-06-21',
+    compareDate: null,
+    layers: onlyLayers('basemap', 'flowpath', 'villages'),
   },
+  tryIt: [
+    { label: 'Follow the water', actions: [{ kind: 'shot', shot: 'valley_follow' }] },
+    { label: 'Jendouba plain', actions: [{ kind: 'shot', shot: 'jendouba_wide' }] },
+    { label: 'Sidi Salem', actions: [{ kind: 'shot', shot: 'sidi_salem' }] },
+  ],
+  widgets: ['corridor'],
 };

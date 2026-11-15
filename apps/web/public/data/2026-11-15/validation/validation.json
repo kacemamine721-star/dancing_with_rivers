@@ -1,0 +1,738 @@
+{
+ "schema_version": 1,
+ "dam_id": "mellegue",
+ "generated_utc": "2026-11-15T02:36Z",
+ "placeholder": false,
+ "tests": [
+  {
+   "id": "A1",
+   "name": "Threshold sensitivity (adaptive threshold ±2 dB)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "median_rel_change": 0.457,
+    "median_half_range": 0.229,
+    "n_images": 131
+   },
+   "criterion": "area change < 15% between T−2 and T+2 dB on calm dates; drawdown shape unchanged",
+   "passed": null,
+   "status": "caveat",
+   "summary": "Area moves by a median 46% across ±2 dB; shown as a band on the chart (above the 15% target)",
+   "source_file": "work/reservoir/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A2",
+   "name": "Track consistency (NISAR tracks ≤ 2 days apart, harmonised)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "median_abs_diff": 0.04,
+    "p90_abs_diff": 0.115,
+    "n_pairs": 15
+   },
+   "criterion": "difference ≤ 10% after offset normalisation",
+   "passed": true,
+   "status": "pass",
+   "summary": "pairs from 20 Jul onward (after the drawdown), per-track harmonised areas",
+   "source_file": "work/reservoir/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "A3",
+   "name": "Cross-sensor (NISAR vs Sentinel-1 ≤ 2 days, harmonised)",
+   "group": "Water area",
+   "scenario": null,
+   "values": {
+    "median_abs_diff": 0.162,
+    "p90_abs_diff": 0.261,
+    "n_pairs": 52
+   },
+   "criterion": "≤ 15%",
+   "passed": false,
+   "status": "fail",
+   "summary": "pairs from 20 Jul onward; in the first weeks after the failure NISAR reads higher (wet sediment at L-band)",
+   "source_file": "work/reservoir/series_adaptive.csv",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "B1",
+   "name": "True positive (confirmed-departure rule)",
+   "group": "Anomaly",
+   "scenario": null,
+   "values": {
+    "first_alert": "2026-06-22",
+    "days_after_failure": 5,
+    "first_alert_track": "S1 o161",
+    "departure": "-0.20529801324503305",
+    "confirmed_by": "S1 o88 2026-06-22",
+    "first_nisar_flag": "2026-06-26",
+    "first_nisar_level": "WARNING"
+   },
+   "criterion": "ALERT/WARNING on the first observations after the 17 Jun failure",
+   "passed": true,
+   "status": "pass",
+   "summary": "First ALERT 2026-06-22 (5 days after the failure), confirmed by an independent pass",
+   "source_file": "work/anomaly/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "B2",
+   "name": "False alarms (confirmed-departure rule)",
+   "group": "Anomaly",
+   "scenario": null,
+   "values": {
+    "pre_failure_flags": 0,
+    "aug_nov_alerts": 3,
+    "aug_nov_warnings": 12
+   },
+   "criterion": "≤ 1 WARNING, 0 ALERT outside the event",
+   "passed": null,
+   "status": "caveat",
+   "summary": "0 flags before the failure; 3 ALERT / 12 WARNING in Aug–Nov coincide with a real multi-sensor decline after the late-September rise: reported as 'needs operator check'",
+   "source_file": "work/anomaly/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "B3",
+   "name": "Synthetic −20% drops (first single-pair z-score rule, superseded)",
+   "group": "Anomaly",
+   "scenario": null,
+   "values": {
+    "detect_-10%": 0.173,
+    "detect_-20%": 0.52,
+    "detect_-30%": 0.807,
+    "false_alarm_rate": 0.085
+   },
+   "criterion": "detection ≥ 90% at −20%, false-alarm rate ≤ 5%",
+   "passed": false,
+   "status": "fail",
+   "summary": "The single-pair rule failed and was replaced by the confirmed-departure rule; the synthetic test has not been re-run on the new rule",
+   "source_file": "work/anomaly/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D1",
+   "name": "Flow path reaches the Medjerda and Sidi Salem; downhill",
+   "group": "Flow path & HAND",
+   "scenario": null,
+   "values": {
+    "reaches_medjerda": true,
+    "reaches_sidi_salem": true,
+    "raw_max_uphill_step_m": 3.29,
+    "raw_uphill_steps_gt1m": 161,
+    "z_start_m": 206.617,
+    "z_end_m": 112.724
+   },
+   "criterion": "path reaches both targets; no uphill step on the conditioned DEM",
+   "passed": true,
+   "status": "caveat",
+   "summary": "Raw-DEM uphill steps (bridges, 30 m noise) are removed by depression filling",
+   "source_file": "work/routing/gem15/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D2",
+   "name": "Flow path vs OSM rivers",
+   "group": "Flow path & HAND",
+   "scenario": null,
+   "values": {
+    "pct_within_300m_osm": 98.826,
+    "median_m_osm": 19.899,
+    "p95_m_osm": 212.075,
+    "max_m_osm": 489.887,
+    "dem": "gem15"
+   },
+   "criterion": "path within 300 m of mapped rivers",
+   "passed": true,
+   "status": "pass",
+   "summary": "HydroRIVERS is the burn line (not independent); OSM river lines are the independent reference",
+   "source_file": "work/routing/gem15/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D3",
+   "name": "HAND lookup table monotonic",
+   "group": "Flow path & HAND",
+   "scenario": null,
+   "values": {
+    "V_strictly_increasing": true,
+    "V_min_m3": 4580287.186,
+    "V_max_m3": 2649868969.607
+   },
+   "criterion": "V, area and counts increase with h",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/routing/gem15/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L1",
+   "name": "SWOT area_total vs radar area (≤ 3 days)",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "pairs": "[{\"date\": \"2026-06-07\", \"swot_km2\": 4.331, \"radar_km2\": 2.609, \"diff\": 0.66}, {\"date\": \"2026-06-28\", \"swot_km2\": 4.404, \"radar_km2\": 2.18, \"diff\": 1.02}]",
+    "median_abs_diff": 0.84
+   },
+   "criterion": "≤ 20%",
+   "passed": false,
+   "status": "fail",
+   "summary": "SWOT area_total includes its dark-water/edge estimate over the PLD polygon and reads larger than the radar masks; levels are unaffected",
+   "source_file": "work/level/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L2",
+   "name": "Sign test: SWOT level and radar area both fall across the failure",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "swot_dates": "[\"2026-06-07\", \"2026-06-28\"]",
+    "dh_m": -3.749,
+    "radar_area_km2": "[2.609, 2.18]"
+   },
+   "criterion": "same sign",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/level/tests.json",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "L3",
+   "name": "Level drop across the event (last SWOT before → first after)",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "from_date": "2026-06-07",
+    "to_date": "2026-06-28",
+    "wse_from": 260.539,
+    "wse_to": 256.79,
+    "dh_m": -3.749,
+    "dh_u_m": 0.076
+   },
+   "criterion": "report Δh ± wse_u",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/level/tests.json",
+   "badge": "MEASURED"
+  },
+  {
+   "id": "L4",
+   "name": "Shoreline level stability on stable dates (Sep–Oct)",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "n": 2,
+    "sd_m": 1.22
+   },
+   "criterion": "σ ≤ 1.5 m",
+   "passed": null,
+   "status": "caveat",
+   "summary": "Stable on 2 dates (σ 1.22 m) but biased high against SWOT (L5): method B is not shipped",
+   "source_file": "work/level/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L5",
+   "name": "Shoreline level vs SWOT (≤ 3 days)",
+   "group": "Level",
+   "scenario": null,
+   "values": {
+    "pairs": "[{\"date\": \"2026-05-28\", \"shoreline_m\": 267.02, \"swot_m\": 260.57, \"diff_m\": 6.45}, {\"date\": \"2026-06-04\", \"shoreline_m\": 267.42, \"swot_m\": 260.54, \"diff_m\": 6.88}, {\"date\": \"2026-07-08\", \"shoreline_m\": 266.05, \"swot_m\": 255.95, \"diff_m\": 10.1}, {\"date\": \"2026-09-30\", \"shoreline_m\": 266.17, \"swot_m\": 258.32, \"diff_m\": 7.85}]",
+    "max_abs_diff_m": 10.1,
+    "shipped": false
+   },
+   "criterion": "≤ 2 m",
+   "passed": false,
+   "status": "fail",
+   "summary": "Shoreline × 30 m NASADEM is biased high on the steep banks; method B is not shipped (dates marked not measurable)",
+   "source_file": "work/level/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L6",
+   "name": "ΔV across the event vs reported 21 Mm³ (alt. 29)",
+   "group": "Volume",
+   "scenario": null,
+   "values": {
+    "from_date": "2026-06-07",
+    "to_date": "2026-06-28",
+    "dV_mm3": 12.7,
+    "low_mm3": 7.8,
+    "high_mm3": 17.1,
+    "ratio_to_21": 0.6
+   },
+   "criterion": "within a factor of 2, or the discrepancy explained",
+   "passed": true,
+   "status": "pass",
+   "summary": "Storage change is net of inflow and covers only the first three weeks of a release that lasted until the 16 Jul repair",
+   "source_file": "work/level/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E1",
+   "name": "Mass balance",
+   "group": "Flood (ANUGA)",
+   "scenario": "v21_d12",
+   "values": {
+    "mass_balance_err": 0.0,
+    "inflow_m3": 20999999.994,
+    "out_boundary_m3": 13441546.586,
+    "final_in_domain_m3": 7558453.408
+   },
+   "criterion": "< 1% of V",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E2",
+   "name": "Inflow integrates to the scenario volume",
+   "group": "Flood (ANUGA)",
+   "scenario": "v21_d12",
+   "values": {
+    "V_scenario_m3": 21000000.0,
+    "inflow_applied_m3": 20999999.994,
+    "err_applied": 0.0
+   },
+   "criterion": "< 0.1%",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E3",
+   "name": "Stability (no NaN, speed < 15 m/s)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v21_d12",
+   "values": {
+    "nan_seen": false,
+    "max_speed_m_s": 4.215,
+    "p99_speed_m_s": 2.825,
+    "max_depth_m": 11.875
+   },
+   "criterion": "no NaN; max speed < 15 m/s",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E7",
+   "name": "Arrival plausibility (Medjerda confluence)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v21_d12",
+   "values": {
+    "arrival_at_confluence_h": 12.917,
+    "confluence_km": 44.934,
+    "mean_front_speed_m_s": 0.966
+   },
+   "criterion": "arrival at the end of Reach 1 within hours to ~1 day (reported arrival at Sidi Salem ≈ 3–4 days)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D5",
+   "name": "HAND vs ANUGA footprint (IoU)",
+   "group": "Flood (HAND)",
+   "scenario": "v21_d12",
+   "values": {
+    "iou_whole_corridor": 0.486,
+    "iou_reach1": 0.552,
+    "hand_km2": 10.819,
+    "anuga_km2": 19.367
+   },
+   "criterion": "IoU reported (screening agreement)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E1",
+   "name": "Mass balance",
+   "group": "Flood (ANUGA)",
+   "scenario": "v195_d12",
+   "values": {
+    "mass_balance_err": 0.0,
+    "inflow_m3": 194999999.978,
+    "out_boundary_m3": 182769853.724,
+    "final_in_domain_m3": 12230146.254
+   },
+   "criterion": "< 1% of V",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v195_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E2",
+   "name": "Inflow integrates to the scenario volume",
+   "group": "Flood (ANUGA)",
+   "scenario": "v195_d12",
+   "values": {
+    "V_scenario_m3": 195000000.0,
+    "inflow_applied_m3": 194999999.978,
+    "err_applied": 0.0
+   },
+   "criterion": "< 0.1%",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v195_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E3",
+   "name": "Stability (no NaN, speed < 15 m/s)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v195_d12",
+   "values": {
+    "nan_seen": false,
+    "max_speed_m_s": 7.73,
+    "p99_speed_m_s": 4.924,
+    "max_depth_m": 24.173
+   },
+   "criterion": "no NaN; max speed < 15 m/s",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v195_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E7",
+   "name": "Arrival plausibility (Medjerda confluence)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v195_d12",
+   "values": {
+    "arrival_at_confluence_h": 6.167,
+    "confluence_km": 44.934,
+    "mean_front_speed_m_s": 2.024
+   },
+   "criterion": "arrival at the end of Reach 1 within hours to ~1 day (reported arrival at Sidi Salem ≈ 3–4 days)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v195_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D5",
+   "name": "HAND vs ANUGA footprint (IoU)",
+   "group": "Flood (HAND)",
+   "scenario": "v195_d12",
+   "values": {
+    "iou_whole_corridor": 0.44,
+    "iou_reach1": 0.661,
+    "hand_km2": 34.03,
+    "anuga_km2": 71.834
+   },
+   "criterion": "IoU reported (screening agreement)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v195_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E1",
+   "name": "Mass balance",
+   "group": "Flood (ANUGA)",
+   "scenario": "v50_d12",
+   "values": {
+    "mass_balance_err": 0.0,
+    "inflow_m3": 49999999.994,
+    "out_boundary_m3": 40554350.406,
+    "final_in_domain_m3": 9445649.588
+   },
+   "criterion": "< 1% of V",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v50_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E2",
+   "name": "Inflow integrates to the scenario volume",
+   "group": "Flood (ANUGA)",
+   "scenario": "v50_d12",
+   "values": {
+    "V_scenario_m3": 50000000.0,
+    "inflow_applied_m3": 49999999.994,
+    "err_applied": 0.0
+   },
+   "criterion": "< 0.1%",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v50_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E3",
+   "name": "Stability (no NaN, speed < 15 m/s)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v50_d12",
+   "values": {
+    "nan_seen": false,
+    "max_speed_m_s": 5.101,
+    "p99_speed_m_s": 3.394,
+    "max_depth_m": 15.23
+   },
+   "criterion": "no NaN; max speed < 15 m/s",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v50_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E7",
+   "name": "Arrival plausibility (Medjerda confluence)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v50_d12",
+   "values": {
+    "arrival_at_confluence_h": 9.333,
+    "confluence_km": 44.934,
+    "mean_front_speed_m_s": 1.337
+   },
+   "criterion": "arrival at the end of Reach 1 within hours to ~1 day (reported arrival at Sidi Salem ≈ 3–4 days)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v50_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "D5",
+   "name": "HAND vs ANUGA footprint (IoU)",
+   "group": "Flood (HAND)",
+   "scenario": "v50_d12",
+   "values": {
+    "iou_whole_corridor": 0.401,
+    "iou_reach1": 0.478,
+    "hand_km2": 15.033,
+    "anuga_km2": 35.447
+   },
+   "criterion": "IoU reported (screening agreement)",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/v50_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E4",
+   "name": "Mesh sensitivity (two-zone 31,074 vs uniform 69,616 triangles)",
+   "group": "Flood (ANUGA)",
+   "scenario": "v21_d12",
+   "values": {
+    "area_uniform_km2": 19.367,
+    "area_twozone_km2": 14.971,
+    "area_change": 0.294,
+    "arrival_uniform_h": 12.917,
+    "arrival_twozone_h": 19.083,
+    "arrival_change": -0.323
+   },
+   "criterion": "inundated area within 15 %; arrival at the confluence within 20 %",
+   "passed": false,
+   "status": "fail",
+   "summary": "arrival and wet area depend on the mesh, so the app shows arrival as a 13–19 h range",
+   "source_file": "work/anuga/v21_d12/tests.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E5",
+   "name": "Friction sensitivity (n × 0.7 / × 1.3)",
+   "group": "Flood (ANUGA)",
+   "scenario": null,
+   "values": {},
+   "criterion": "report the arrival-time range",
+   "passed": null,
+   "status": "pending",
+   "summary": "not run for v1 (time); listed so the gap is visible",
+   "source_file": "docs/07_ANALYSIS_AND_VALIDATION.md",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E6",
+   "name": "Release-duration sensitivity (6 / 12 / 24 h)",
+   "group": "Flood (ANUGA)",
+   "scenario": null,
+   "values": {},
+   "criterion": "report peak Q and extent range",
+   "passed": null,
+   "status": "pending",
+   "summary": "not run for v1 (time); listed so the gap is visible",
+   "source_file": "docs/07_ANALYSIS_AND_VALIDATION.md",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E8",
+   "name": "Qualitative damage match (reported farmland)",
+   "group": "Flood (ANUGA)",
+   "scenario": null,
+   "values": {},
+   "criterion": "wet cells overlap cropland along the lower Mellègue",
+   "passed": null,
+   "status": "pending",
+   "summary": "not run for v1 (time); listed so the gap is visible",
+   "source_file": "docs/07_ANALYSIS_AND_VALIDATION.md",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "E9",
+   "name": "Radar hint match (river line 17 → 22 Jun)",
+   "group": "Flood (ANUGA)",
+   "scenario": null,
+   "values": {},
+   "criterion": "lies inside the ANUGA wet footprint",
+   "passed": null,
+   "status": "pending",
+   "summary": "not run for v1 (time); listed so the gap is visible",
+   "source_file": "docs/07_ANALYSIS_AND_VALIDATION.md",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "L7",
+   "name": "Sidi Salem storage change after 21 Jun",
+   "group": "Level",
+   "scenario": null,
+   "values": {},
+   "criterion": "same order of magnitude as the release minus losses",
+   "passed": null,
+   "status": "pending",
+   "summary": "not run for v1 (time); listed so the gap is visible",
+   "source_file": "docs/07_ANALYSIS_AND_VALIDATION.md",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F1",
+   "name": "Exposure areas ≤ wet area",
+   "group": "Impacts",
+   "scenario": "v21_d12",
+   "values": {
+    "cropland_plus_builtup_ha": 1119.4,
+    "wet_ha": 1936.71
+   },
+   "criterion": "cropland + built-up ≤ wet area",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F3",
+   "name": "Village spot check",
+   "group": "Impacts",
+   "scenario": "v21_d12",
+   "values": {
+    "villages": "Muthul",
+    "n": 1
+   },
+   "criterion": "villages checked on the basemap",
+   "passed": null,
+   "status": "caveat",
+   "summary": "villages within 200 m of wet cells, listed for a manual check on the basemap",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F1",
+   "name": "Exposure areas ≤ wet area",
+   "group": "Impacts",
+   "scenario": "v50_d12",
+   "values": {
+    "cropland_plus_builtup_ha": 2482.3,
+    "wet_ha": 3544.74
+   },
+   "criterion": "cropland + built-up ≤ wet area",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F3",
+   "name": "Village spot check",
+   "group": "Impacts",
+   "scenario": "v50_d12",
+   "values": {
+    "villages": "Muthul",
+    "n": 1
+   },
+   "criterion": "villages checked on the basemap",
+   "passed": null,
+   "status": "caveat",
+   "summary": "villages within 200 m of wet cells, listed for a manual check on the basemap",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F1",
+   "name": "Exposure areas ≤ wet area",
+   "group": "Impacts",
+   "scenario": "v195_d12",
+   "values": {
+    "cropland_plus_builtup_ha": 5738.3,
+    "wet_ha": 7183.35
+   },
+   "criterion": "cropland + built-up ≤ wet area",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F3",
+   "name": "Village spot check",
+   "group": "Impacts",
+   "scenario": "v195_d12",
+   "values": {
+    "villages": "Muthul",
+    "n": 1
+   },
+   "criterion": "villages checked on the basemap",
+   "passed": null,
+   "status": "caveat",
+   "summary": "villages within 200 m of wet cells, listed for a manual check on the basemap",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  },
+  {
+   "id": "F2",
+   "name": "Impacts increase with volume",
+   "group": "Impacts",
+   "scenario": null,
+   "values": {
+    "order": "v21_d12 < v50_d12 < v195_d12",
+    "n_scenarios": 3
+   },
+   "criterion": "all counts monotonic across scenarios",
+   "passed": true,
+   "status": "pass",
+   "summary": "",
+   "source_file": "work/anuga/impacts_report.json",
+   "badge": "MODELLED"
+  }
+ ]
+}

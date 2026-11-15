@@ -63,6 +63,10 @@ export type AppState = {
   shotSeq: number;
   /** "Before" date for the radar swipe (left of `swipe`); `null` = no swipe, `date` fills the chip. */
   compareDate: string | null;
+  /** ANUGA frame playback (Act 7): the scene stops advancing its playhead while paused. */
+  floodPaused: boolean;
+  /** One-shot seek request in simulated hours; the scene applies it and clears it (`seekFlood(null)`). */
+  floodSeekH: number | null;
 };
 
 /** A partial update where nested objects may also be partial (URL hydration, act configs, Tour). */
@@ -90,6 +94,9 @@ export type AppActions = {
   /** Fly the camera to a named shot (repeat calls re-fly). */
   setShot: (shot: ShotId | null) => void;
   setCompareDate: (date: string | null) => void;
+  setFloodPaused: (paused: boolean) => void;
+  /** Ask the scene to jump the ANUGA playback to `h` simulated hours (`null` clears the request). */
+  seekFlood: (h: number | null) => void;
   /** Apply a partial state (URL hydration, act configs, Tour). */
   hydrate: (patch: StatePatch) => void;
   reset: () => void;
@@ -128,6 +135,8 @@ export const DEFAULT_STATE: AppState = {
   shot: null,
   shotSeq: 0,
   compareDate: null,
+  floodPaused: false,
+  floodSeekH: null,
 };
 
 export const clamp01 = (n: number): number => Math.min(1, Math.max(0, n));
@@ -194,6 +203,8 @@ export const useAppStore = create<AppStore>()((set) => ({
   setExag: (exag) => set({ exag: Math.min(5, Math.max(0.5, exag)) }),
   setShot: (shot) => set((s) => ({ shot, shotSeq: s.shotSeq + 1 })),
   setCompareDate: (compareDate) => set({ compareDate }),
+  setFloodPaused: (floodPaused) => set({ floodPaused }),
+  seekFlood: (h) => set({ floodSeekH: h === null || !Number.isFinite(h) ? null : Math.max(0, h) }),
   hydrate: (patch) =>
     set((s) => {
       const { layers, flood, ...rest } = patch;

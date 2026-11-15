@@ -10,6 +10,7 @@ const NAV = [
   { to: '/watch', label: 'Dam Watch' },
   { to: '/methods', label: 'Methods' },
   { to: '/sources', label: 'Sources' },
+  { to: '/v2', label: 'V2' },
 ] as const;
 
 /**
@@ -29,7 +30,7 @@ export function TopBar({ section, className }: { section?: string; className?: s
         <Lockup size="sm" />
       </Link>
       <p className="hidden flex-1 truncate text-center font-mono text-[11px] uppercase tracking-kick text-mute md:block">
-        {section ?? BRAND.project}
+        {section ?? BRAND.tagline}
       </p>
       <nav aria-label="Main" className="ml-auto flex items-center gap-1 md:ml-0">
         <ul className="hidden items-center gap-1 lg:flex">

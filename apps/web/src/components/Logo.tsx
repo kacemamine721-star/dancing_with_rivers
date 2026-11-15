@@ -49,7 +49,7 @@ export function LogoMark({ className, title }: { className?: string; title?: str
   );
 }
 
-/** Prototype `.lockup`: mark + two-tone Bowlby One wordmark read from BRAND.product. */
+/** Prototype `.lockup`: mark + stacked wordmark read from BRAND.product (small lead line, Bowlby One accent). */
 export function Lockup({ size = 'sm', className }: { size?: 'sm' | 'md' | 'lg'; className?: string }) {
   const [lead, accent] = splitWordmark(BRAND.product);
   return (
@@ -63,14 +63,33 @@ export function Lockup({ size = 'sm', className }: { size?: 'sm' | 'md' | 'lg'; 
       />
       <span
         className={cn(
-          'font-display leading-none tracking-[0.01em] text-ink',
-          size === 'sm' && 'text-[22px]',
-          size === 'md' && 'text-[38px]',
-          size === 'lg' && 'text-[clamp(40px,5.6vw,76px)] [text-shadow:0_4px_30px_rgba(0,0,0,.6)]',
+          'flex flex-col font-display leading-[0.92] tracking-[0.01em] text-ink',
+          size === 'lg' && '[text-shadow:0_4px_30px_rgba(0,0,0,.6)]',
         )}
       >
-        {lead}
-        {accent ? <span className="text-teal">{accent}</span> : null}
+        {/* two lines: a small tracked lead ("Dancing with the") over the accent word ("Rivers") */}
+        {accent ? (
+          <span
+            className={cn(
+              'font-mono font-semibold uppercase tracking-[0.2em] text-ink/85',
+              size === 'sm' && 'text-[9.5px]',
+              size === 'md' && 'text-[14px]',
+              size === 'lg' && 'text-[clamp(13px,1.5vw,20px)]',
+            )}
+          >
+            {lead.trim()}
+          </span>
+        ) : null}
+        <span
+          className={cn(
+            accent ? 'text-teal' : 'text-ink',
+            size === 'sm' && 'text-[22px]',
+            size === 'md' && 'text-[38px]',
+            size === 'lg' && 'text-[clamp(40px,5.6vw,76px)]',
+          )}
+        >
+          {accent || lead}
+        </span>
       </span>
     </span>
   );

@@ -35,7 +35,10 @@ export type TerrainAssets = {
 const loader = new TextureLoader();
 
 /** A colour or data raster on the scene / lake-chip grid. */
-export async function loadRaster(url: string, opts: { srgb?: boolean; mipmaps?: boolean } = {}): Promise<Texture> {
+export async function loadRaster(
+  url: string,
+  opts: { srgb?: boolean; mipmaps?: boolean; anisotropy?: number } = {},
+): Promise<Texture> {
   const t = await loader.loadAsync(url);
   t.flipY = false;
   t.colorSpace = opts.srgb ? SRGBColorSpace : NoColorSpace;
@@ -43,7 +46,7 @@ export async function loadRaster(url: string, opts: { srgb?: boolean; mipmaps?: 
   t.generateMipmaps = opts.mipmaps ?? true;
   t.minFilter = t.generateMipmaps ? LinearMipmapLinearFilter : LinearFilter;
   t.magFilter = LinearFilter;
-  t.anisotropy = 8;
+  t.anisotropy = opts.anisotropy ?? 8;
   t.needsUpdate = true;
   return t;
 }

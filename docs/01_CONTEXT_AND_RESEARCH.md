@@ -103,7 +103,7 @@ Everything we learned during the hackathon, in one place. Facts carry a source l
 
 - Tunisia has under **400–420 m³ of fresh water per person per year**, far below the FAO water-stress threshold of 1,700 m³.
 - **Dam reserves:** about 29% (Sep 2025) → about **60–67% (spring–June 2026)** after the heaviest rain in decades (January 2026 floods, 5 dead) → **46% on 23 Oct 2026** (1.075 billion m³) → **45% early Nov 2026**. Summer evaporation exceeds 1 million m³ per day.
-- **ONAGRI (the national agriculture observatory) stopped publishing its daily dam bulletins in October 2025**, so there is no public, independent dam monitoring. This is the gap HydroStress fills.
+- **ONAGRI (the national agriculture observatory) stopped publishing its daily dam bulletins in October 2025**, so there is no public, independent dam monitoring. This is the gap Dancing with the Rivers fills.
 - **Groundwater pressure:** 21,000 to 30,000+ illegal wells; about 827 million m³ pumped illegally in 2024; the Kairouan aquifer is exploited at about 230%.
 - **Ageing infrastructure:** Mellègue (1954) is about 80% silted; it is being replaced by the **Upper Mellègue dam** (195–200 million m³ capacity, 276 MDT cost, 12,000–13,000 ha irrigated, over 98% complete in June 2026, operation scheduled for 15 Sept 2026).
 
