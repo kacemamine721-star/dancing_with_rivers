@@ -124,7 +124,7 @@ for p in (RESULTS, WHEELS, WORK):
     p.mkdir(parents=True, exist_ok=True)
 PLATFORM = "colab" if ON_COLAB else "kaggle" if ON_KAGGLE else "local"
 print(PLATFORM, "| packages:", PKG_SRC, "| results:", RESULTS, "| wheels:", WHEELS)
-print(sorted(p.name for p in PKG_SRC.glob("*.zip")) if PKG_SRC.exists() else "PACKAGE FOLDER MISSING")
+print(sorted(str(p.relative_to(PKG_SRC)) for p in PKG_SRC.rglob("*") if p.suffix == ".zip" or p.name == "scenarios.json") if PKG_SRC.exists() else f"{PKG_SRC} not found (will search /kaggle/input)")
 """)
 
 md("## (a) GPU check")
@@ -216,11 +216,28 @@ cells.append(nbf.v4.new_code_cell("%%writefile anuga_run.py\n" + RUNNER))
 code("""
 PKGS = WORK / "packages"
 PKGS.mkdir(exist_ok=True)
-for z in sorted(PKG_SRC.glob("*.zip")):
-    if not (PKGS / z.stem / "domain.json").exists():
-        with zipfile.ZipFile(z) as zf:
-            zf.extractall(PKGS)
+# Packages may arrive zipped (<dam>.zip) or already extracted: Kaggle unzips uploaded archives in
+# datasets, and its mount path can differ (/kaggle/input/<slug>/ or deeper), so search recursively.
+roots = [PKG_SRC] + ([pathlib.Path("/kaggle/input")] if ON_KAGGLE else [])
+roots = [r for r in roots if r.exists()]
+for r in roots:
+    for z in sorted(r.rglob("*.zip")):
+        if not (PKGS / z.stem / "domain.json").exists():
+            with zipfile.ZipFile(z) as zf:
+                if any(n.endswith("/scenarios.json") for n in zf.namelist()):
+                    zf.extractall(PKGS)
+    for sj in sorted(r.rglob("scenarios.json")):
+        d = sj.parent
+        if (d / "domain.json").exists() and not (PKGS / d.name / "domain.json").exists():
+            shutil.copytree(d, PKGS / d.name, dirs_exist_ok=True)   # read-only input → writable copy
 DAMS = sorted(p.parent.name for p in PKGS.glob("*/scenarios.json"))
+if not DAMS:
+    raise SystemExit(
+        "No dam packages found. Looked for <dam>.zip or <dam>/scenarios.json under: "
+        + ", ".join(map(str, roots or [PKG_SRC]))
+        + ". On Kaggle: Add data → attach the dataset with the zips; on Colab: put them in MyDrive/dwr_anuga/packages/."
+    )
+print("dams found:", DAMS)
 ALL = [(d, s) for d in DAMS for s in json.loads((PKGS / d / "scenarios.json").read_text())["scenarios"]]
 for d, s in ALL:
     print(f"{d:20s} {s['id']:16s} V={s['volume_m3'] / 1e6:5g} Mm³  ≤{s['max_area_m2']:6g} m²  ~{s['est_triangles']:7d} tri  "
