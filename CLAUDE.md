@@ -6,7 +6,7 @@ NASA Space Apps 2026 (Tunis), challenge "Dancing with SARs". **Submission Sun 15
 
 **Names (decided by the user, 14 Nov):** the project is **Dancing with the Rivers** (formerly "Dancing with Dams"). The on-screen product stays **HydroStress** with its tool **Dam Watch** until the user says otherwise; both come from `apps/web/src/brand.ts` and `config.yaml`, never hard-coded.
 
-**Branches (decided 15 Nov):** `main` = **v1**, deployed to Cloudflare Pages on every push (docs/DEPLOY.md), so keep it green. `v2` = generalisation work (docs/09 §0.4–0.5), **never deployed**, worked in the separate worktree `../NASA_CHALLENGE_v2`; merge `main` into `v2` regularly, never `v2` into `main` before the submission.
+**Branches (decided 15 Nov):** `main` = **v1**, deployed to Cloudflare Pages on every push (docs/DEPLOY.md), so keep it green. `v2` = generalisation work (docs/09 §0.4–0.5), **never deployed**, worked in the separate worktree `../NASA_CHALLENGE_v2`; merge `main` into `v2` regularly, never `v2` into `main` before the submission. **Update 15 Nov ~12:30 (user's decision): `v2` was fast-forwarded into `main` and deployed, so the live site now includes "Dancing with your Dam" (/your-dam) with 4 processed dams. Cloudflare preview deployments for non-production branches are off, so pushing `v2` does not publish it.**
 
 **New session? Read §11 (handoff) first**: it says exactly where the build stopped and what to do next.
 
