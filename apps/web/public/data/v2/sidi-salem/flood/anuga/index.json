@@ -1,5 +1,66 @@
 {
  "schema_version": 1,
  "dam_id": "sidi-salem",
- "scenarios": []
+ "scenarios": [
+  {
+   "badge": "MODELLED",
+   "source": "ANUGA (not run yet)",
+   "method": "Not computed yet",
+   "uncertainty": "Scenario exploration, not a forecast.",
+   "placeholder": true,
+   "id": "s5_d12",
+   "volume_m3": 5000000.0,
+   "duration_h": 12.0,
+   "label": "5 Mm³ over 12 h (screening scenario, not tied to any event)",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  },
+  {
+   "badge": "MODELLED",
+   "source": "ANUGA (not run yet)",
+   "method": "Not computed yet",
+   "uncertainty": "Scenario exploration, not a forecast.",
+   "placeholder": true,
+   "id": "s20_d12",
+   "volume_m3": 20000000.0,
+   "duration_h": 12.0,
+   "label": "20 Mm³ over 12 h (screening scenario, not tied to any event)",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  },
+  {
+   "badge": "MODELLED",
+   "source": "ANUGA (not run yet)",
+   "method": "Not computed yet",
+   "uncertainty": "Scenario exploration, not a forecast.",
+   "placeholder": true,
+   "id": "s100_d12",
+   "volume_m3": 100000000.0,
+   "duration_h": 12.0,
+   "label": "100 Mm³ over 12 h (screening scenario, not tied to any event)",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  },
+  {
+   "badge": "MODELLED",
+   "source": "ANUGA (not run yet)",
+   "method": "Not computed yet",
+   "uncertainty": "Scenario exploration, not a forecast.",
+   "placeholder": true,
+   "id": "s20_d12_coarse",
+   "volume_m3": 20000000.0,
+   "duration_h": 12.0,
+   "label": "20 Mm³, coarse mesh (E4 mesh-sensitivity pair of s20_d12)",
+   "computed": false,
+   "files": null,
+   "depth_encoding": null,
+   "stats": null
+  }
+ ]
 }

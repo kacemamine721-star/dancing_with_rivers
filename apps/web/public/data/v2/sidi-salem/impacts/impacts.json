@@ -1,10 +1,65 @@
 {
- "badge": "ILLUSTRATIVE",
- "source": "Placeholder: no flood model run for this dam (V2)",
- "method": "",
- "uncertainty": "",
- "placeholder": true,
+ "badge": "MODELLED",
+ "source": "HAND bathtub (GEM-15 (experimental, model-predicted) DTM 15 m area-averaged to 30 m, gaps from Copernicus GLO-30); ESA WorldCover 2021; WorldPop 2020; OpenStreetMap contributors (ODbL); Microsoft Global ML Building Footprints (ODbL)",
+ "method": "Screening volumes 5, 20, 100 Mm³ (not tied to any reported event) on the static HAND volume→stage table of the whole corridor (flood/hand_lut.json). Wet = HAND < h. Cropland/built-up = WorldCover 2021 class 40/50 area fractions; buildings = building centroids (Microsoft ML footprints where available, else OSM); roads = OSM highway lines of all classes; villages = OSM place nodes whose lowest built cell within 300 m is below h, depth = h − HAND there. No timing: arrival_h is null (needs ANUGA).",
+ "uncertainty": "Scenario exploration, not a forecast. 30 m terrain. Static bathtub: one water height along the whole corridor at once, no timing or attenuation. Exposure, not damage. OSM buildings and roads are incomplete (lower bounds); roads only partly downloaded (see hand_lut uncertainty). Volumes below 18.5 Mm³ (h < 0.5 m) are not meaningful.",
+ "placeholder": false,
  "schema_version": 1,
  "dam_id": "sidi-salem",
- "scenarios": {}
+ "scenarios": {
+  "hand_s5": {
+   "cropland_ha": 2290.1,
+   "builtup_ha": 13.9,
+   "buildings": 268,
+   "road_km": 13.17,
+   "villages": [
+    {
+     "name": "Djedeida",
+     "arrival_h": null,
+     "max_depth_m": 0.15
+    },
+    {
+     "name": "Qarish al Wadi",
+     "arrival_h": null,
+     "max_depth_m": 0.15
+    }
+   ]
+  },
+  "hand_s20": {
+   "cropland_ha": 2961.1,
+   "builtup_ha": 21.7,
+   "buildings": 433,
+   "road_km": 15.9,
+   "villages": [
+    {
+     "name": "Djedeida",
+     "arrival_h": null,
+     "max_depth_m": 0.53
+    },
+    {
+     "name": "Qarish al Wadi",
+     "arrival_h": null,
+     "max_depth_m": 0.53
+    }
+   ]
+  },
+  "hand_s100": {
+   "cropland_ha": 5109.1,
+   "builtup_ha": 73.7,
+   "buildings": 1407,
+   "road_km": 33.8,
+   "villages": [
+    {
+     "name": "Djedeida",
+     "arrival_h": null,
+     "max_depth_m": 1.9
+    },
+    {
+     "name": "Qarish al Wadi",
+     "arrival_h": null,
+     "max_depth_m": 1.9
+    }
+   ]
+  }
+ }
 }

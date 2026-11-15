@@ -1,0 +1,27 @@
+{
+ "crs": "EPSG:32632",
+ "bounds_m": [
+  565200.0,
+  4068660.0,
+  604350.0,
+  4108440.0
+ ],
+ "bounds_lonlat": [
+  9.7305,
+  36.75796,
+  10.17456,
+  37.12003
+ ],
+ "res_m": 30.0,
+ "size_px": [
+  1305,
+  1326
+ ],
+ "encoding": {
+  "type": "r16",
+  "scale": 0.01
+ },
+ "nodata": 65535,
+ "note": "Corridor grid (not the scene grid): HAND in cm, 65535 = outside the corridor",
+ "badge": "MODELLED"
+}

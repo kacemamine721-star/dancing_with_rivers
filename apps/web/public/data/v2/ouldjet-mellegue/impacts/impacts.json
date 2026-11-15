@@ -1,10 +1,32 @@
 {
- "badge": "ILLUSTRATIVE",
- "source": "Placeholder: no flood model run for this dam (V2)",
- "method": "",
- "uncertainty": "",
- "placeholder": true,
+ "badge": "MODELLED",
+ "source": "HAND bathtub (GEM-15 (experimental, model-predicted) DTM 15 m area-averaged to 30 m, gaps from Copernicus GLO-30); ESA WorldCover 2021; WorldPop 2020; OpenStreetMap contributors (ODbL); Microsoft Global ML Building Footprints (ODbL)",
+ "method": "Screening volumes 5, 20, 100 Mm³ (not tied to any reported event) on the static HAND volume→stage table of the whole corridor (flood/hand_lut.json). Wet = HAND < h. Cropland/built-up = WorldCover 2021 class 40/50 area fractions; buildings = building centroids (Microsoft ML footprints where available, else OSM); roads = OSM highway lines of all classes; villages = OSM place nodes whose lowest built cell within 300 m is below h, depth = h − HAND there. No timing: arrival_h is null (needs ANUGA).",
+ "uncertainty": "Scenario exploration, not a forecast. 30 m terrain. Static bathtub: one water height along the whole corridor at once, no timing or attenuation. Exposure, not damage. OSM buildings and roads are incomplete (lower bounds); roads only partly downloaded (see hand_lut uncertainty). Volumes below 4.2 Mm³ (h < 0.5 m) are not meaningful.",
+ "placeholder": false,
  "schema_version": 1,
  "dam_id": "ouldjet-mellegue",
- "scenarios": {}
+ "scenarios": {
+  "hand_s5": {
+   "cropland_ha": 125.3,
+   "builtup_ha": 1.2,
+   "buildings": 0,
+   "road_km": 0.45,
+   "villages": []
+  },
+  "hand_s20": {
+   "cropland_ha": 231.6,
+   "builtup_ha": 1.7,
+   "buildings": 6,
+   "road_km": 0.79,
+   "villages": []
+  },
+  "hand_s100": {
+   "cropland_ha": 807.1,
+   "builtup_ha": 4.4,
+   "buildings": 20,
+   "road_km": 2.02,
+   "villages": []
+  }
+ }
 }
