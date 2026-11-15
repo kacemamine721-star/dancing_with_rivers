@@ -9,7 +9,6 @@ docs/earthdata_token.md
 cache/
 work/
 TESTS/
-reference/
 *.npz
 
 # python
@@ -37,3 +36,4 @@ Thumbs.db
 # local-only: third-party skills (licences not ours to redistribute) and inspiration screenshots
 .claude/skills/
 UI_REFERENCES/
+.playwright-mcp/
