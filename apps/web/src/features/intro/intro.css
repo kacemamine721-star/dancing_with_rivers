@@ -1,5 +1,14 @@
 /* Cinematic intro overlay — ported from reference/NISAR-HydroStress-Cinematic-Intro.html (CSS) */
 .ix-root {
+  /* the intro is always in space: it keeps the night palette whatever the UI theme */
+  --bg: #03050a;
+  --ink: #e9f1ff;
+  --mute: #9aa7bd;
+  --teal: #5ff3ff;
+  --teal-dim: rgba(95, 243, 255, 0.18);
+  --glass-bg: rgba(8, 14, 24, 0.72);
+  --hairline: rgba(233, 241, 255, 0.08);
+  --on-teal: #021014;
   position: fixed;
   inset: 0;
   pointer-events: none;

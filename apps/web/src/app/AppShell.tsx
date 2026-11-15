@@ -47,6 +47,10 @@ export function AppShell() {
           Skip to content
         </a>
 
+        {/* the intro is always space: a night-black layer under the canvas, so returning to it never
+            flashes the cream page background while the 3D scene switches back */}
+        {isIntro ? <div aria-hidden className="fixed inset-0 z-0 bg-[#03050a]" /> : null}
+
         <div id="stage-root" className="pointer-events-none fixed inset-0 z-0 [&>*]:pointer-events-auto">
           <ErrorBoundary fallback={() => null}>
             <Suspense fallback={null}>
