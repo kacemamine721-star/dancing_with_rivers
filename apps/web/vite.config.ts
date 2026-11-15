@@ -10,7 +10,7 @@ function brandHtml(): Plugin {
   return {
     name: 'dwd-brand-html',
     transformIndexHtml: (html) =>
-      html.replaceAll('%BRAND_PRODUCT%', BRAND.product).replaceAll('%BRAND_PROJECT%', BRAND.project),
+      html.replaceAll('%BRAND_PRODUCT%', BRAND.product).replaceAll('%BRAND_PROJECT%', BRAND.tagline),
   };
 }
 
